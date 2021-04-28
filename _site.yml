@@ -1,8 +1,8 @@
-name: "R for Data Science Bootcamp"
+name: "NV INBRE DSC"
 output_dir: "docs"
 include: ["external_links.js"]
 navbar:
-  title: "Nevada INBRE"
+  title: "Nevada INBRE DSCore"
   left:
     - text: "Home"
       icon: fa-home

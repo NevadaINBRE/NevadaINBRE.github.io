@@ -1,5 +1,6 @@
 ---
 title: "Nevada IDeA Network of Biomedical Research Excellence"
+subtitle: "Data Science Core for Biomedical Research"
 ---
 
-Welcome! This page is a work in progress. Some useful information can be found on the [about page](about.html). 
+Welcome! This page is a work in progress. Some useful information can be found on the [about page](about.html).

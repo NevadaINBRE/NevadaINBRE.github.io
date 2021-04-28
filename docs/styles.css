@@ -3,6 +3,10 @@ footer {
   clear: both;
 }
 
+p {
+  text-align: justify;
+}
+
 .hl {text-align: left;}
 .hc {text-align: center;}
 .hr {text-align: right;}
