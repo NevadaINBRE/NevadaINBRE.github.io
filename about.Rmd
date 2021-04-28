@@ -8,7 +8,7 @@ Nevada INBRE, part of the [IDeA Network of Biomedical Research Excellence](https
 
 ## People
 
-<div class="container"><!--contains person blocks (fixes formatting)-->
+<div class="people"><!--contains person blocks (fixes formatting)-->
 
 <div class="person">
 ### Juli Petereit

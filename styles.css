@@ -1,5 +1,6 @@
 footer {
   margin-top: 50px;
+  clear: both;
 }
 
 .hl {text-align: left;}
@@ -46,6 +47,10 @@ footer {
 }
 
 /* About page - person box */
+.people {
+  width: 100%;
+}
+
 .person {
   width: 100%;
   float: left;
