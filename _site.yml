@@ -12,6 +12,12 @@ navbar:
         - text: "Upcoming"
         - text: "R for Data Science"
           href: bootcamp-r-series.html
+        - text: "Previous"
+    - text: "Tutorials"
+      menu:
+        - text: "R"
+        - text: "Julia"
+        - text: "Python"
   right:
     - text: "About"
       icon: fa-address-book

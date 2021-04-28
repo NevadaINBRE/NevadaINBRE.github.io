@@ -254,3 +254,7 @@ Participants should know:
 - how to search for additional information
 
 <a href='#schedule' class='top'>back to top</a>
+
+## Acknowledgements
+
+This bootcamp was made possible by a grant from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health.
