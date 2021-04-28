@@ -1,5 +1,6 @@
 name: "R for Data Science Bootcamp"
 output_dir: "docs"
+include: ["external_links.js"]
 navbar:
   title: "Nevada INBRE"
   left:
@@ -13,7 +14,10 @@ navbar:
           href: bootcamp-r-series.html
   right:
     - text: "About"
+      icon: fa-address-book
       href: about.html
+    - icon: fa-github
+      href: https://github.com/NevadaINBRE
 output:
   html_document:
     theme: cosmo
