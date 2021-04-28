@@ -1,5 +1,5 @@
-blockquote {
-  font-style: italic
+footer {
+  margin-top: 50px;
 }
 
 .hl {text-align: left;}
@@ -10,15 +10,15 @@ blockquote {
 .tg {
   width: 100%;
 	border-collapse: collapse;
-	border-color: #ccc;
+	border-color: #cccccc;
 	border-spacing: 0;
 }
 
 .tg td {
-	border-color: #ccc;
+	border-color: #cccccc;
 	border-style: solid;
 	border-width: 1px;
-	color: #333;
+	color: #333333;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 	overflow: hidden;
@@ -31,7 +31,7 @@ blockquote {
 	border-color: #ccc;
 	border-style: solid;
 	border-width: 1px;
-	color: #333;
+	color: #333333;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 	font-weight: bold;
@@ -44,3 +44,21 @@ blockquote {
 .tg tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+
+/* About page - person box */
+.person {
+  width: 100%;
+  float: left;
+  clear: left;
+}
+
+.person img {
+  width: 200px;
+  float: left;
+  padding: 5pt 20pt;
+}
+
+.person p {
+  text-align: justify;
+}
+

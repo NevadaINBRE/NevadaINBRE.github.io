@@ -1,5 +1,40 @@
 ---
-title: "About This Website"
+title: "About Nevada INBRE"
 ---
 
-More about this website.
+Nevada INBRE, part of the [IDeA Network of Biomedical Research Excellence](https://www.nigms.nih.gov/Research/DRCB/IDeA/Pages/INBRE.aspx), is a National Institutes of Health (NIH) program designed to help traditionally underfunded states build biomedical infrastructure. Nevada INBRE also works with [NSHE partner institutions](https://med.unr.edu/inbre/about-us/partner-institutions) to promote [biomedical research knowledge and educational opportunities](https://med.unr.edu/inbre/programs-and-projects) across the state of Nevada via biomedical and science pipeline programs.
+
+---
+
+## People
+
+<div class="person">
+### Juli Petereit
+
+<img src="img/labrador-retriever.jpg">
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae hendrerit mi, tempor ullamcorper libero. Mauris auctor elit mi, sed viverra enim gravida sit amet. Donec porttitor vulputate sem, id cursus neque luctus nec. Vivamus pretium sed elit eget blandit. In risus nulla, rhoncus in dignissim ut, iaculis a sapien. Nullam semper at augue quis pellentesque. Integer id pretium elit. Sed vel sem in lectus luctus finibus vel in ante. Mauris ut libero turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna leo, hendrerit a porta vel, ultrices at augue. Mauris metus felis, fermentum sit amet elementum quis, ullamcorper nec eros. Integer in congue leo. Nulla quam turpis, viverra vitae pretium iaculis, interdum id ex. Cras a elementum metus.
+
+Nulla gravida, nisl et pretium finibus, dui arcu dignissim elit, sit amet malesuada felis justo et massa. Nunc et mattis nisi. Donec facilisis tellus lorem, id luctus tortor consectetur eget. Cras convallis fermentum justo sit amet euismod. Aenean est enim, iaculis ut efficitur at, fermentum a felis. Curabitur quis augue at orci volutpat molestie. Fusce tempus faucibus suscipit. Aenean at malesuada magna, at malesuada mauris. Donec vitae dapibus risus. Sed ut sem sed diam viverra ornare nec quis velit. Integer non imperdiet elit. Nam at tortor ac arcu porttitor dictum.
+
+</div>
+
+
+<div class="person">
+### Alex Knudson
+
+<img src="img/red-fox.jpg">
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae placerat tellus. Morbi at urna sit amet velit commodo lacinia. In tortor felis, mollis eu ante non, laoreet placerat mi. Fusce varius risus quis auctor laoreet. Vivamus venenatis, leo sit amet suscipit finibus, purus massa venenatis mi, at posuere purus velit a libero. Ut quis libero eget diam elementum rhoncus a in dolor. Suspendisse vehicula purus ut quam ultrices, in convallis dolor blandit. Duis ut eros vitae metus rutrum consequat.
+
+</div>
+
+
+<div class="person">
+### Lucas Bishop
+
+<img src="img/bald-eagle.jpg">
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris varius purus lacus, at aliquam purus sagittis eu. Pellentesque consequat commodo neque at accumsan. In lacinia lacinia iaculis. Nullam quis ligula quis quam varius auctor. Pellentesque congue odio a vehicula imperdiet. Vivamus elit lorem, egestas nec enim ut, luctus eleifend mauris. Vestibulum id porta justo. Fusce tincidunt ipsum odio, ut maximus nibh pellentesque vel. Quisque ornare turpis et diam convallis rhoncus. Aenean mollis, nisl ut porttitor vestibulum, purus tortor laoreet mauris, nec gravida nisi sem in urna. Phasellus ac lobortis risus. Cras a lectus id ipsum elementum commodo id id lectus. Fusce facilisis odio sit amet enim fringilla egestas.
+
+</div>

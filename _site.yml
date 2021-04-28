@@ -16,7 +16,7 @@ navbar:
     - text: "About"
       icon: fa-address-book
       href: about.html
-    - icon: fa-github
+    - icon: fa-code-branch
       href: https://github.com/NevadaINBRE
 output:
   html_document:
