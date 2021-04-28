@@ -1,0 +1,46 @@
+---
+title: "R for Data Science Bootcamp"
+---
+
+<table class="tg">
+<thead>
+  <tr>
+    <th>Workshop</th>
+    <th>Date and Time</th>
+    <th>Location</th>
+    <th>Speaker(s)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Introduction to R Part 1</td>
+    <td>May 20, 2021, 1-4pm</td>
+    <td>DMSC 106</td>
+    <td>Alex, Lucas, and Juli</td>
+  </tr>
+  <tr>
+    <td>Introduction to R Part 2</td>
+    <td>May 27, 2021, 1-4pm</td>
+    <td>DMSC 106</td>
+    <td>Alex, Lucas, and Juli</td>
+  </tr>
+  <tr>
+    <td>Reproducible Data Science</td>
+    <td>June 3, 2021, 1-4pm</td>
+    <td>DMSC 106 + Virtual</td>
+    <td>Alex, Lucas, and Juli</td>
+  </tr>
+  <tr>
+    <td>Tidy R</td>
+    <td>June 10, 2021, 1-4pm</td>
+    <td>DMSC 106</td>
+    <td>Alex, Lucas, and Juli</td>
+  </tr>
+  <tr>
+    <td>Producing Clean Documents, Graphs, and Tables</td>
+    <td>June 17, 2021, 1-4pm</td>
+    <td>DMSC 106</td>
+    <td>Alex, Lucas, and Juli</td>
+  </tr>
+</tbody>
+</table>
