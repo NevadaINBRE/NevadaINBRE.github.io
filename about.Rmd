@@ -34,16 +34,6 @@ The primary questions that drive Dr. Oh’s research program are 1) what are the
 
 </div>
 
-
-<div class="person">
-### Alex Knudson --- Everything guy
-
-<img src="img/knudson.jpg">
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae placerat tellus. Morbi at urna sit amet velit commodo lacinia. In tortor felis, mollis eu ante non, laoreet placerat mi. Fusce varius risus quis auctor laoreet. Vivamus venenatis, leo sit amet suscipit finibus, purus massa venenatis mi, at posuere purus velit a libero. Ut quis libero eget diam elementum rhoncus a in dolor. Suspendisse vehicula purus ut quam ultrices, in convallis dolor blandit. Duis ut eros vitae metus rutrum consequat.
-
-</div>
-
 <div class="person">
 ### Hans Vasquez-Gross --- Bioinformatician
 
@@ -62,5 +52,16 @@ Hans is a bioinformatician with expertise in genomics, transcriptomics, and DNA-
 Lucas is a bioinformatician who began his scientific career as a ‘wet lab’ researcher at the Desert Research Institute in Reno and thus can truly relate to the daily troubles of a life-scientist. Lucas most recently was a scientific technician in Dr. Pat Schloss’ microbiome lab creating and analyzing large-scale NGS datasets to help gain an understanding of the role of the gut microbiota in Clostridium difficile infections and the progression of colorectal cancer. As such, Lucas brings unique expertise to the core with specializations in microbial pathway analysis and large-scale genetic ecology, particularly of the microbiome (human, animal, environmental). Lucas is a University of Nevada, Reno alumnus who received his B.S./M.S. in biotechnology and joined the Nevada Bioinformatics Center in February 2021. He looks forward to assisting in many research projects at the University and beyond. He is interested in the development of reproducible bioinformatics pipelines and in the application of machine learning techniques to better diagnose and treat human disease.
 
 </div>
+
+
+<div class="person">
+### Alex Knudson --- Data Scientist
+
+<img src="img/knudson.jpg">
+
+Alex is a data scientist with a passion for programming. He is a UNR alumnus who received his M.S. in Statistics and Data Science, and joined the Nevada Bioinformatics Center in January 2021.
+
+</div>
+
 
 </div><!--end container-->

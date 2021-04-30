@@ -3,4 +3,9 @@ title: "Nevada IDeA Network of Biomedical Research Excellence"
 subtitle: "Data Science Core for Biomedical Research"
 ---
 
+<div style="width: 100%;">
+  <img src="img/NVINBRE-logo.jpg" 
+   style="margin: 50px auto; width: 50%; display: block; max-width: 500px;">
+</div>
+
 Welcome! This page is a work in progress. Some useful information can be found on the [about page](about.html).
