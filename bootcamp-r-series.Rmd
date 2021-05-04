@@ -29,20 +29,29 @@ Please also note this course **is NOT a training on statistics** but rather a tr
 
 Registration fee is supported by NV INBRE upon successful acceptance. 
 
-Application is required to be considered to participate. Students and faculty from TMCC, WNC, SNU, and UNR interested in R are encouraged to apply. Complete the application form [here](https://nvideaoffice.formstack.com/forms/bootcamp_application). Application is open until May 14th, but will close as soon as spots are filled with qualifying participants.
+Application is required to be considered to participate. Students and faculty from TMCC, WNC, SNU, and UNR interested in R are encouraged to apply. 
+
+**For students:**
+
+<span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/bootcamp_application">Click here to be taken to the application form</a></span>
 
 Application requires:
 
 - Copy of unofficial transcript
-- Academic reference
-- Statement of purpose
-  - Tell us about yourself and why you are interested
-  - How will this workshop affect your academic and professional career
-  - Any research you may currently be involved in
+- Academic references
+- Personal statements
+  - Tell us about yourself and why you are interested (1000-character limit)
+  - How will this workshop affect your academic and professional career (1000-character limit)
+  - Any research you may currently be involved in (1000-character limit)
+  - Anything else you want to share (1000-character limit)
 
-You will be informed by email of your participation confirmation by no later than Monday May 17th. Upon reception of the confirmation email, participants will be asked to confirm their attendance within 2 days. 
+Application is open until **May 14th at 3pm**, but will close as soon as spots are filled with qualifying participants.
 
-<span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/bootcamp_application">Click here to be taken to the application form</a></span>
+You will receive an email to confirm participation confirmation by no later than Monday, May 17th. Upon reception of the confirmation email, participants will be asked to confirm their attendance within 2 days. 
+
+**For faculty:**
+
+Please contact Dr. Juli Petereit directly at <jpetereit@unr.edu> (priority will be given to students, but we are planning a faculty-specific workshop, and your interest/feedback would be appreciated).
 
 ### Additional Information
 
