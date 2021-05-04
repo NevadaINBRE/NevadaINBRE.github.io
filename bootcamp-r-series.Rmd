@@ -27,8 +27,6 @@ Please also note this course **is NOT a training on statistics** but rather a tr
 
 ### Application to Participate
 
-Registration fee is supported by NV INBRE upon successful acceptance. 
-
 Application is required to be considered to participate. Students and faculty from TMCC, WNC, SNU, and UNR interested in R are encouraged to apply. Applicants may sign up for individual workshops, but priority will be given to those that sign up for the whole series.
 
 **For students:**
