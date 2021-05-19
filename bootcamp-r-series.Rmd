@@ -73,7 +73,6 @@ Important:
   <tr>
     <th>Workshop</th>
     <th>Date and Time</th>
-    <th>Location</th>
     <th>Speaker(s)</th>
   </tr>
 </thead>
@@ -81,37 +80,31 @@ Important:
   <tr>
     <td>[Introduction to R Part 1](#intro1)</td>
     <td>May 20, 2021, 1-4pm</td>
-    <td>DMSC 106</td>
     <td>Alex, Lucas, and Juli</td>
   </tr>
   <tr>
     <td>[Introduction to R Part 2](#intro2)</td>
     <td>May 27, 2021, 1-4pm</td>
-    <td>DMSC 106</td>
     <td>Alex, Lucas, and Juli</td>
   </tr>
   <tr>
     <td>[Reproducible Data Science](#reproduce)</td>
     <td>June 3, 2021, 1-4pm</td>
-    <td>DMSC 106 + Virtual</td>
     <td>Alex, Lucas, and Juli</td>
   </tr>
   <tr>
     <td>[Tidy R](#tidy)</td>
     <td>June 10, 2021, 1-4pm</td>
-    <td>DMSC 106</td>
     <td>Alex, Lucas, and Juli</td>
   </tr>
   <tr>
     <td>[Producing Clean Documents, Graphs, and Tables](#docs)</td>
     <td>June 17, 2021, 1-4pm</td>
-    <td>DMSC 106</td>
     <td>Alex, Lucas, and Juli</td>
   </tr>
   <tr>
     <td>Open R Lab</td>
     <td>June 24, 2021, 1-4pm</td>
-    <td>TBD - In Person</td>
     <td>Lucas and Juli</td>
   </tr>
 </tbody>
