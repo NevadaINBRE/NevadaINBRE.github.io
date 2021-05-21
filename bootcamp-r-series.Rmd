@@ -10,7 +10,7 @@ title: "R for Data Science Bootcamp"
   .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
 </style>
 
-<img src="img/Rlogo.png" style="width: 100px; float: left; margin: 0px 20px 0px 0px;">
+<img src="media/img/Rlogo.png" style="width: 100px; float: left; margin: 0px 20px 0px 0px;">
 
 NV INBRE and the Nevada Bioinformatics Center are pleased to announce the R for Data Science Bootcamp. R is a complete, flexible, and open source system for statistical analysis and graphics, and has become a tool of choice for biologists and biomedical scientists.
 
@@ -145,6 +145,10 @@ Participants should know:
 - arithmetic and order of operations
 - basic statistics (summary statistics, simple linear models)
 - basic ideas of plots and charts
+
+#### Session Notes
+
+[Click here for the session notes](bootcamp-r-series-010-intro-to-r-pt1.html)
 
 <a href='#schedule' class='top'>back to top</a>
 

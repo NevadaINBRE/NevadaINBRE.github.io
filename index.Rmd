@@ -4,7 +4,7 @@ subtitle: "Data Science Core for Biomedical Research"
 ---
 
 <div style="width: 100%;">
-  <img src="img/NVINBRE-logo.jpg" 
+  <img src="media/img/NVINBRE-logo.jpg" 
    style="margin: 50px auto; width: 50%; display: block; max-width: 500px;">
 </div>
 
