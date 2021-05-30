@@ -179,6 +179,10 @@ Participants should know:
 - the basic functions in R
 - the basic ideas of conditional statements
 
+#### Session Notes
+
+[Click here for the session notes](bootcamp-r-series-020-intro-to-r-pt2.html)
+
 <a href='#schedule' class='top'>back to top</a>
 
 ### Reproducible Data Science {#reproduce}

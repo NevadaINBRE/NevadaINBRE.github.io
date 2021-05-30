@@ -39,17 +39,18 @@ This workshop serves as a gentle introduction to programming with R, with a focu
 
 ### Basic arithmetic operators
 
-| Operator | Description      | Example        |
-|:---------|:-----------------|:---------------|
-| `+`      | addition         | `3 + 4 = 7`    |
-| `-`      | subtraction      | `10 - 2 = 8`   |
-| `*`      | multiplication   | `2.5 * 4 = 10` |
-| `/`      | division         | `9 / 2 = 4.5`  |
-| `^`      | exponentiation   | `11^2 = 121`   |
-| `%%`     | modulus          | `5 %% 3 = 2`   |
-| `%/%`    | integer division | `9 %/% 2 = 4`  |
+| Operator    | Description      | Example         | 
+| :---------- | :----------------| :-------------- |
+| `+`         | addition         | `3 + 4 = 7`     | 
+| `-`         | subtraction      | `10 - 2 = 8`    | 
+| `*`         | multiplication   | `2.5 * 4 = 10`  | 
+| `/`         | division         | `9 / 2 = 4.5`   | 
+| `^`         | exponentiation   | `11^2 = 121`    | 
+| `%%`        | modulus          | `5 %% 3 = 2`    | 
+| `%/%`       | integer division | `9 %/% 2 = 4`   | 
 
-```{r 010-Navy-Flannel}
+
+```{r 010-dental-mammal}
 # Order of operations still applies
 5 - 4 + 5*2^4
 # Use parentheses to ensure desired order of operations
@@ -60,15 +61,15 @@ This workshop serves as a gentle introduction to programming with R, with a focu
 
 I say there are three types of numbers in R because R has different ways of working with different numbers
 
-| Number type | Description                                              | Example        |
-|:------------|:---------------------------------------------------------|:---------------|
-| Integer     | Whole numbers, positive or negative                      | `4L, -3L, 0L`  |
-| Decimal     | Any number, positive or negative, with a fractional part | `3.1, pi, 4.0` |
-| Complex     | A real decimal number with an imaginary decimal part     | `-2.1+5i`      |
+| Number type | Description                                                                | Example         | 
+| :---------- | :------------------------------------------------------------------------- | :-------------- |
+| Integer     | Whole numbers, positive or negative                                        | `4L, -3L, 0L`                | 
+| Decimal     | Any number, positive or negative, with a fractional part                   | `3.1, pi, 4.0`                | 
+| Complex     | A real decimal number with an imaginary decimal part                       | `-2.1+5i`                | 
 
 Notice that the integers have an `L` at the end. This is to explicitly tell R to represent a number as a [[long](https://en.wikipedia.org/wiki/Integer_(computer_science)#Long_integer)] integer, rather than a double (decimal) number.
 
-```{r 010-Global-Toupee}
+```{r 010-noted-citron}
 is.integer(4)  # FALSE
 is.double(4)   # TRUE
 is.integer(4L) # TRUE
@@ -78,59 +79,58 @@ is.integer(4L) # TRUE
 
 Logical operators test for a condition. They ask a question, and the answer is either `TRUE` or `FALSE`.
 
-| Operator | Description            | Example                                         |
-|:---------|:-----------------------|:------------------------------------------------|
-| `<`      | less than              | `5 < 4 -> FALSE`                                |
-| `<=`     | less than or equal     | `6 <= 6 -> TRUE`                                |
-| `>`      | greater than           | `Inf > 1e6 -> TRUE`                             |
-| `>=`     | greater than or equal  | `3.5 >= 9 -> FALSE`                             |
-| `==`     | exactly equal          | `sin(0) == 0 -> TRUE`                           |
-| `!=`     | not equal              | `(3+1)^2 != 3^2 + 1^1 -> TRUE`                  |
-| `!`      | not                    | `!TRUE -> FALSE`                                |
-| `&&`     | and (short-circuiting) | `(5 < 7) && (7 < 10) -> TRUE`                   |
-| `||`     | or (short-circuiting)  | `(2 > 7) || (2 < 4) -> TRUE`                    |
-| `&`      | and (vectorized)       | `TRUE & 2 > c(1,2,3) -> c(FALSE, FALSE, TRUE)`  |
-| `|`      | or (vectorized)        | `FALSE | 2 <= c(1,2,3) -> c(FALSE, TRUE, TRUE)` |
+| Operator    | Description                                                                | Example         | 
+| :---------- | :------------------------------------------------------------------------- | :-------------- |
+| `<`            | less than                                                                  | `5 < 4 -> FALSE`                | 
+| `<=`            | less than or equal                                                         | `6 <= 6 -> TRUE`                | 
+| `>`            | greater than                                                               | `Inf > 1e6 -> TRUE`                | 
+| `>=`            | greater than or equal                                                      | `3.5 >= 9 -> FALSE`                | 
+| `==`            | exactly equal                                                              | `sin(0) == 0 -> TRUE`                | 
+| `!=`            | not equal                                                                  | `(3+1)^2 != 3^2 + 1^1 -> TRUE`                | 
+| `!`            | not                                                                        | `!TRUE -> FALSE`                | 
+| `&&`            | and (short-circuiting)                                                     | `(5 < 7) && (7 < 10) -> TRUE`                | 
+| \`           |                                                                            | \`               | 
+| `&`            | and (vectorized)                                                           | `TRUE & 2 > c(1,2,3) -> c(FALSE, FALSE, TRUE)`                | 
+| \`           | \`                                                                          | or (vectorized) | 
 
 ### Other math functions
 
-| Function  | Description | Example |
-|:----------|:------------|:--------|
-| `abs`   | absolute value of a number | `abs(-2.5), abs(3L), abs(3+4i)` |
-| `sqrt`  | square root of a number    | `sqrt(0.81), sqrt(-1+0i)`       |
-| `exp`   | $e^x$                      | `exp(1) ->` `r exp(1)`          |
-| `log`   | logarithm of a number (base is the natural number $e$ by default)       | |
-| `log10` | base 10 logarithm of a number (see also `log2`, `log1p`, `logb`)        | |
-| `sin`, `cos`, `tan` | basic trigonometric functions (radians by default)          | |
-| `asin`, `acos`, `atan` | inverse trigonometric functions                          | |
-| `sinh`, `asinh`, etc. | hyperbolic and inverse hyperbolic trigonometric functions | |
-| `ceiling` | rounds a number towards infinity        | `ceiling(-2.8) -> -2` |
-| `floor` | rounds a number towards negative infinity | `floor(3.9) -> 3`     |
-| `round` | rounds a number to a specified number of digits (round to even by default) | |
-| `trunc` | strips the decimal part from a number | `trunc(2.1) -> 2`, `trunc(2.9) -> 2` |
+| Function    | Description                                                                | Example         | 
+| :---------- | :------------------------------------------------------------------------- | :-------------- |
+| `abs`            | absolute value of a number                                                 | `abs(-2.5), abs(3L), abs(3+4i)`                | 
+| `sqrt`            | square root of a number                                                    | `sqrt(0.81), sqrt(-1+0i)`                | 
+| `exp`            | $e^x$                                                                      | `exp(1) ->` `r exp(1)`               | 
+| `log`            | logarithm of a number (base is the natural number $e$ by default)          |                 | 
+| `log10`            | base 10 logarithm of a number (see also `log2`, `log1p`, `logb`)                                   |                 | 
+| `sin`, `cos`, `tan`          | basic trigonometric functions (radians by default)                         |                 | 
+| `asin`, `acos`, `atan`          | inverse trigonometric functions                                            |                 | 
+| `sinh`, `asinh`, etc.          | hyperbolic and inverse hyperbolic trigonometric functions                  |                 | 
+| `ceiling`            | rounds a number towards infinity                                           | `ceiling(-2.8) -> -2`                | 
+| `floor`            | rounds a number towards negative infinity                                  | `floor(3.9) -> 3`                | 
+| `round`            | rounds a number to a specified number of digits (round to even by default) |                 | 
+| `trunc`            | strips the decimal part from a number                                      | `trunc(2.1) -> 2`, `trunc(2.9) -> 2`              | 
 
 Also note, all *infix* operations can be used with *prefix* notation:
 
-```{r 010-Sad-Door}
+```{r 010-near-whippet}
 3 + 4 # infix
 `+`(3, 4) # prefix
 ```
 
-
 ### Built-in constants and other values
 
-| Keyword | Description                                           | Example          |
-|:--------|:------------------------------------------------------|:-----------------|
-| `Inf`   | The floating point representation of infinity         | `1 / 0 -> Inf`   |
-| `-Inf`  | Negative infinity                                     | `1 / -0 -> -Inf` |
-| `NaN`   | **N**ot **a** **N**umber                              | `0 / 0 -> NaN`   |
-| `NA`    | A placeholder for missing values                      |                  |
-| `NULL`  | An R object representing the empty set or nothing     |                  |
-| `pi`    | The ratio of a circle's circumference to its diameter | `3.14159...`     |
+| Keyword     | Description                                           | Example          |
+| :---------- | :-----------------------------------------------------| :----------------|
+| `Inf`       | The floating point representation of infinity         | `1 / 0 -> Inf`   |
+| `-Inf`      | Negative infinity                                     | `1 / -0 -> -Inf` |
+| `NaN`       | **N**ot **a** **N**umber                              | `0 / 0 -> NaN`   |
+| `NA`        | A placeholder for missing values                      |                  |
+| `NULL`      | An R object representing the empty set or nothing     |                  |
+| `pi`        | The ratio of a circle's circumference to its diameter | `3.14159...`     |
 
 The *Institute of Electrical and Electronics Engineers* (IEEE, "eye-triple-ee") sets many of the standards for computer protocol, including how *floating point* numbers behave. A floating point number is the computer representation of a real number, but due to finite precision, there are some inconsistencies:
 
-```{r 010-Olive-Toupee}
+```{r 010-several-peacock}
 0.3 - 0.1 # should be 0.2
 (0.3 - 0.1) == 0.2 # should be true
 # R is lying to us!
@@ -140,18 +140,22 @@ all.equal(0.3 - 0.1, 0.2)
 ```
 
 - R uses 64 bit (double) precision for floating point numbers and 32 bit *signed* integers
-- https://en.wikipedia.org/wiki/IEEE_754
-- https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic
+- [https://en.wikipedia.org/wiki/IEEE_754](https://en.wikipedia.org/wiki/IEEE_754)
+- [https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic](https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic)
 
 ### Practice
 
-The quadratic equation is used to find the roots of quadratic (2nd degree) polynomials. For a quadratic polynomial given by 
+The quadratic equation is used to find the roots of quadratic (2nd degree) polynomials. For a quadratic polynomial given by
 
-$$ax^2 + bx + c$$
+$$
+ax^2 + bx + c
+$$
 
 the roots are given by
 
-$$x_{1,2} = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}$$
+$$
+x_{1,2} = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}
+$$
 
 Find the roots of the following equations using the quadratic equation:
 
@@ -163,7 +167,7 @@ c) $y = x^2 + 4x + 4$
 
 Most if not all functions in R have useful help documentation that can be accessed directly within the R console.
 
-``` r
+```r
 > help(sum)
 
 > ?sum
@@ -178,7 +182,7 @@ Most if not all functions in R have useful help documentation that can be access
 
 To create a new variable, we can use *left* or *right* assignment:
 
-```{r 010-Balcony Hollow}
+```{r 010-youthful-mochi}
 # left assignment
 x <- 10
 # right assignment
@@ -189,14 +193,14 @@ x <- 10
 
 To list all variables in the session (environment), do:
 
-```{r 010-Sleepy Limousine}
+```{r 010-united-piranha}
 # list all variables in the environment
 ls()
 ```
 
 We can see what is stored in those variables by typing them into the console:
 
-```{r 010-Tasty Rhinestone}
+```{r 010-informal-stomach}
 # show what is stored in the variables
 x
 y
@@ -208,13 +212,13 @@ y
 - let your names be meaningful
 - let your names be consistent
 - avoid using existing function names (e.g. `mean`, `c`) and objects (e.g. `T`, `F`, `pi`)
-  - List of reserved words in R: https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words
+  - List of reserved words in R: [https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words](https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words)
 - avoid using dots
 - use the existing conventions of whatever project you are contributing to
 
 ## Basic data types in R
 
-```{r 010-Big Hot Cat}
+```{r 010-bubbly-bake}
 # logical (boolean)
 typeof(TRUE)
 # integer
@@ -228,14 +232,13 @@ typeof(3 + 2i)
 typeof("hello world")
 ```
 
-
 ## Working with different data types
 
 *Coercion and conversion*
 
 - R will always coerce (convert) an object to the least restrictive type
 
-```{r 010-Flannel Yellow}
+```{r 010-misty-earthworm}
 typeof(TRUE + 3L)
 typeof(TRUE + 3.0)
 typeof(TRUE + 3 + 0i)
@@ -243,7 +246,7 @@ typeof(TRUE + 3 + 0i)
 
 Guess the output type
 
-```{r 010-Elastic Python}
+```{r 010-impish-mealworm}
 # a "regular" number
 14
 # integer division
@@ -254,9 +257,10 @@ Guess the output type
 ceiling(pi)
 round(pi)
 ```
+
 How can we ensure the output type of an operation? Most of the time it's okay to let R worry about the *return* types. In other situations, there's the `as` command:
 
-```{r 010-Late Hammer}
+```{r 010-skinny-raccoon}
 as.integer(4.0)
 as.logical(4L) # any non-zero value is true
 as.complex(4)
@@ -265,7 +269,7 @@ as.double("3.14159")
 
 Careful, as not every value can be coerced to every other type, or no robust checks will be performed to ensure validity of a conversion:
 
-```{r 010-Avenue Serious}
+```{r 010-advanced-python}
 # converts to an integer via truncation
 as.integer(4.5)
 ```
@@ -274,7 +278,7 @@ as.integer(4.5)
 
 We can use the `is` command to ask R what the type of an object is:
 
-```{r 010-Rapid Weather}
+```{r 010-gaseous-sushi}
 is.integer(4L)
 is.double(3+2i)
 is.numeric(4)
@@ -284,7 +288,7 @@ is.numeric(4+2i)
 
 Sometimes a thing that looks like an integer is really a double:
 
-```{r 010-Steep Hook}
+```{r 010-cerulean-glasses}
 # actually a double
 x <- 4
 is.integer(x)
@@ -292,7 +296,7 @@ is.integer(x)
 
 How to check that a number is an integer:
 
-```{r 010-Endless Crayon}
+```{r 010-sticky-currants}
 as.integer(x) == x
 ```
 
@@ -300,7 +304,7 @@ as.integer(x) == x
 
 A factor *looks* like a string, but *acts* like an integer (most of the time).
 
-```{r 010-Hungry Roadrunner}
+```{r 010-basic-dinosaur}
 # most often used for categorical observations
 pets <- c("cat", "dog", "lizard", "raccoon")
 (pet_obs <- sample(pets, 20, TRUE))
@@ -312,7 +316,6 @@ as.integer(pet_fct)
 # can be converted to a character vector
 as.character(pet_fct)
 ```
-
 
 ## Overview of objects and data structures
 
@@ -334,7 +337,7 @@ For a full overview, see the [R documentation on basic types](https://cran.r-pro
 - all elements coerced to the least restrictive type
 - typically created using the *concatenate* command, `c()`
 
-```{r 010-Pure Kangaroo, results='hold'}
+```{r 010-valid-savory, results="hold"}
 # a few vectors
 c(4.5, 2, 3.8)
 1:4
@@ -345,7 +348,7 @@ LETTERS
 
 **Question:** What is meant by "least restrictive type"?
 
-```{r 010-Dead Laser}
+```{r 010-secret-tick}
 # mix of integer and logical
 c(TRUE, 5L, -2L, FALSE)
 # mix of integer and double
@@ -358,7 +361,7 @@ c("asdf", 6.12, pi, "3")
 
 We can access the elements of a vector by using brackets: `[]`. Note that R uses "one-based indexing", meaning that arrays start at $1$, not $0$.
 
-```{r 010-Massive Tungsten}
+```{r 010-fine-nosh}
 # accessing a single element from `letters`
 letters[4]
 # accessing multiple elements using a vector of indices
@@ -371,13 +374,12 @@ tail(letters, n = 1)
 letters[length(letters)]
 ```
 
-
 ### Matrices
 
 - A matrix in R is a vector with a `dim` *attribute*
 - It is stored in memory the same way as a vector is
 
-```{r 010-Scarlet Crayon}
+```{r 010-shamrock-roast}
 # creating a matrix using the `matrix()` function
 matrix(1:12, nrow = 3, ncol = 4)
 # filling a matrix with a single value
@@ -386,17 +388,16 @@ matrix("m", nrow = 5, ncol = 2)
 
 Matrices (and vectors and arrays) are stored in *column-major order*
 
-```{r 010-Gutsy Logbook}
+```{r 010-dearest-fried}
 # default: fills in down each column
 matrix(1:12, nrow = 3)
 # explicitly fill in accross rows first
 matrix(1:12, nrow = 3, byrow = TRUE)
 ```
 
-
 Elements of a matrix can either be accessed with row-column pairs, or with *linear indexing*
 
-```{r 010-Outstanding Flea}
+```{r 010-bruised-jimmies}
 # create a 3x5 matrix
 (M <- matrix(1:15, nrow = 3))
 # get the element at the second row and fourth column
@@ -407,14 +408,14 @@ M[8]
 
 You can create subsets of a matrix using a pair of vectors for indices.
 
-```{r 010-Morbid Obscure}
+```{r 010-cloudy-picnic}
 # get rows 1 and 3, and columns 2 and 4
 M[c(1, 3), c(2, 4)]
 ```
 
 A matrix can be turned back into a vector by removing its dimension attribute. In the same way, a matrix can be reshaped, or a vector can be turned into a matrix.
 
-```{r 010-Serpent Temporary}
+```{r 010-grubby-arachnid}
 # show the attributes of the matrix, M
 attributes(M)
 # get the `dim` attribute
@@ -432,7 +433,7 @@ M
 - An array is an extension of a matrix, having 2 or more dimensions
 - Arrays are created using the `array()` function or by setting the `dim` attribute of a vector
 
-```{r 010-Magenta Blue Tuba}
+```{r 010-muddy-savory}
 # one array
 (a <- array(1:(5*4*3), dim = c(5, 4, 3)))
 # show the attributes
@@ -444,19 +445,19 @@ attributes(a)
 - A list is a "generic vector"
 - Each element of a list can be *any* type of R object
 
-```{r 010-Outstanding Backpack}
+```{r 010-scrawny-nosh}
 (L <- list(a = 1, "d", formula(y ~ x), sublist = list(a = 1, b = 1:4, c = letters[3:7])))
 ```
 
 As seen above, lists can hold other lists, and elements can be named or referenced by index. This can become complicated to mentally parse as printed above, so the `str` command can come in handy.
 
-```{r 010-Tidy Boiling Creek}
+```{r 010-jumpy-pudding}
 str(L)
 ```
 
 Elements of a list can be accessed in three different ways.
 
-```{r 010-Rebel Pluto}
+```{r 010-witty-porpoise}
 # Using single bracket notation. Returns a list containing the object at this index.
 L[1]
 # Using the `$` selector. Returns the object at this index.
@@ -477,7 +478,7 @@ What are some of the key properties of a data frame?
 
 Accessing elements of a data frame is similar to lists *and* matrices.
 
-```{r 010-Butter Lucky}
+```{r 010-violet-daikon}
 # getting a single column using the `$` selector or `[[`
 mtcars$mpg # column "mpg"
 mtcars[["mpg"]] # column "mpg"
@@ -499,7 +500,7 @@ Common text files can be read using the `read-` set of functions
   - the other specialized function is `read.table()`
 - read general text files using `readLines()`
 
-```{r 010-Rough Tombstone}
+```{r 010-colorful-almond}
 # read in the sample csv file
 df <- read.csv("data/simple_csv.csv")
 df
@@ -513,9 +514,9 @@ More proprietary formats can be read in using a library
 
 ## Fitting a linear model
 
-R has built-in support for fitting [generalized] linear models, with support for numeric and factor variables.
+R has built-in support for fitting \[generalized\] linear models, with support for numeric and factor variables.
 
-```{r 010-Hungry Boomerang}
+```{r 010-radiant-mussels}
 # y ~ normal(3x + 2, 0.5)
 x <- rnorm(30)
 y <- rnorm(length(x), 3*x + 2, 0.5)
@@ -527,7 +528,7 @@ lm(y ~ 0 + x) # slope only model (no intercept)
 
 Can also fit a generalized linear model using (you guessed it) the `glm()` function.
 
-```{r 010-Swift Electrical}
+```{r 010-cheap-jelly}
 # logit(theta) = 3x + 2
 k <- rbinom(length(x), size = 1, prob = plogis(3*x+2))
 plot(k ~ x)
@@ -539,7 +540,7 @@ glm(k ~ 1 + x, family = binomial(link = "logit"))
 
 R has a method for summarizing vectors, data frames, and fitted models, and it is the `summary()` function.
 
-```{r 010-Skilled Navy Lama}
+```{r 010-husky-caribou}
 # summarize a numeric vector
 z <- rnorm(50)
 summary(z)
@@ -571,8 +572,3 @@ Other types of graphs include
 - `barplot()`
 - `boxplot()`
 - `stem()` for stem-and-leaf plot
-
-## R, compared
-
-*What is R best for*
-

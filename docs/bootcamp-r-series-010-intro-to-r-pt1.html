@@ -13,7 +13,7 @@
 
 <title>Introduction to R: Part One</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -401,9 +401,9 @@ $(document).ready(function () {
 <p>I say there are three types of numbers in R because R has different ways of working with different numbers</p>
 <table>
 <colgroup>
-<col width="14%" />
-<col width="66%" />
-<col width="18%" />
+<col width="11%" />
+<col width="74%" />
+<col width="15%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -491,9 +491,9 @@ $(document).ready(function () {
 <td align="left"><code>(5 &lt; 7) &amp;&amp; (7 &lt; 10) -&gt; TRUE</code></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>||</code></td>
-<td align="left">or (short-circuiting)</td>
-<td align="left"><code>(2 &gt; 7) || (2 &lt; 4) -&gt; TRUE</code></td>
+<td align="left">`</td>
+<td align="left"></td>
+<td align="left">`</td>
 </tr>
 <tr class="even">
 <td align="left"><code>&amp;</code></td>
@@ -501,9 +501,9 @@ $(document).ready(function () {
 <td align="left"><code>TRUE &amp; 2 &gt; c(1,2,3) -&gt; c(FALSE, FALSE, TRUE)</code></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>|</code></td>
+<td align="left">`</td>
+<td align="left">`</td>
 <td align="left">or (vectorized)</td>
-<td align="left"><code>FALSE | 2 &lt;= c(1,2,3) -&gt; c(FALSE, TRUE, TRUE)</code></td>
 </tr>
 </tbody>
 </table>
@@ -512,9 +512,9 @@ $(document).ready(function () {
 <h3>Other math functions</h3>
 <table>
 <colgroup>
-<col width="33%" />
-<col width="39%" />
-<col width="27%" />
+<col width="11%" />
+<col width="74%" />
+<col width="15%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -648,16 +648,20 @@ all.equal(0.3 - 0.1, 0.2)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <ul>
 <li>R uses 64 bit (double) precision for floating point numbers and 32 bit <em>signed</em> integers</li>
-<li><a href="https://en.wikipedia.org/wiki/IEEE_754" class="uri">https://en.wikipedia.org/wiki/IEEE_754</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic" class="uri">https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic</a></li>
+<li><a href="https://en.wikipedia.org/wiki/IEEE_754">https://en.wikipedia.org/wiki/IEEE_754</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic">https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic</a></li>
 </ul>
 </div>
 <div id="practice" class="section level3">
 <h3>Practice</h3>
 <p>The quadratic equation is used to find the roots of quadratic (2nd degree) polynomials. For a quadratic polynomial given by</p>
-<p><span class="math display">\[ax^2 + bx + c\]</span></p>
+<p><span class="math display">\[
+ax^2 + bx + c
+\]</span></p>
 <p>the roots are given by</p>
-<p><span class="math display">\[x_{1,2} = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}\]</span></p>
+<p><span class="math display">\[
+x_{1,2} = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}
+\]</span></p>
 <p>Find the roots of the following equations using the quadratic equation:</p>
 <ol style="list-style-type: lower-alpha">
 <li><span class="math inline">\(y = 2x^2 + 2x - 24\)</span></li>
@@ -706,7 +710,7 @@ x</code></pre>
 <li>let your names be consistent</li>
 <li>avoid using existing function names (e.g. <code>mean</code>, <code>c</code>) and objects (e.g. <code>T</code>, <code>F</code>, <code>pi</code>)
 <ul>
-<li>List of reserved words in R: <a href="https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words" class="uri">https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words</a></li>
+<li>List of reserved words in R: <a href="https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words">https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words</a></li>
 </ul></li>
 <li>avoid using dots</li>
 <li>use the existing conventions of whatever project you are contributing to</li>
@@ -799,24 +803,24 @@ is.integer(x)</code></pre>
 <pre class="r"><code># most often used for categorical observations
 pets &lt;- c(&quot;cat&quot;, &quot;dog&quot;, &quot;lizard&quot;, &quot;raccoon&quot;)
 (pet_obs &lt;- sample(pets, 20, TRUE))</code></pre>
-<pre><code>##  [1] &quot;raccoon&quot; &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;lizard&quot;  &quot;dog&quot;     &quot;dog&quot;    
-##  [8] &quot;lizard&quot;  &quot;dog&quot;     &quot;raccoon&quot; &quot;lizard&quot;  &quot;lizard&quot;  &quot;dog&quot;     &quot;dog&quot;    
-## [15] &quot;cat&quot;     &quot;raccoon&quot; &quot;cat&quot;     &quot;lizard&quot;  &quot;lizard&quot;  &quot;dog&quot;</code></pre>
+<pre><code>##  [1] &quot;cat&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;raccoon&quot;
+##  [8] &quot;dog&quot;     &quot;cat&quot;     &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;lizard&quot;  &quot;raccoon&quot;
+## [15] &quot;cat&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;lizard&quot;  &quot;cat&quot;</code></pre>
 <pre class="r"><code># Turn the character vector into a set of factors
 pet_fct &lt;- factor(pet_obs)
 pet_fct</code></pre>
-<pre><code>##  [1] raccoon lizard  dog     lizard  lizard  dog     dog     lizard  dog    
-## [10] raccoon lizard  lizard  dog     dog     cat     raccoon cat     lizard 
-## [19] lizard  dog    
+<pre><code>##  [1] cat     dog     cat     dog     cat     dog     raccoon dog     cat    
+## [10] lizard  dog     lizard  lizard  raccoon cat     dog     raccoon raccoon
+## [19] lizard  cat    
 ## Levels: cat dog lizard raccoon</code></pre>
 <pre class="r"><code># can be converted to an integer vector
 as.integer(pet_fct)</code></pre>
-<pre><code>##  [1] 4 3 2 3 3 2 2 3 2 4 3 3 2 2 1 4 1 3 3 2</code></pre>
+<pre><code>##  [1] 1 2 1 2 1 2 4 2 1 3 2 3 3 4 1 2 4 4 3 1</code></pre>
 <pre class="r"><code># can be converted to a character vector
 as.character(pet_fct)</code></pre>
-<pre><code>##  [1] &quot;raccoon&quot; &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;lizard&quot;  &quot;dog&quot;     &quot;dog&quot;    
-##  [8] &quot;lizard&quot;  &quot;dog&quot;     &quot;raccoon&quot; &quot;lizard&quot;  &quot;lizard&quot;  &quot;dog&quot;     &quot;dog&quot;    
-## [15] &quot;cat&quot;     &quot;raccoon&quot; &quot;cat&quot;     &quot;lizard&quot;  &quot;lizard&quot;  &quot;dog&quot;</code></pre>
+<pre><code>##  [1] &quot;cat&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;raccoon&quot;
+##  [8] &quot;dog&quot;     &quot;cat&quot;     &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;lizard&quot;  &quot;raccoon&quot;
+## [15] &quot;cat&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;lizard&quot;  &quot;cat&quot;</code></pre>
 </div>
 <div id="overview-of-objects-and-data-structures" class="section level2">
 <h2>Overview of objects and data structures</h2>
@@ -1197,12 +1201,12 @@ df</code></pre>
 </div>
 <div id="fitting-a-linear-model" class="section level2">
 <h2>Fitting a linear model</h2>
-<p>R has built-in support for fitting [generalized] linear models, with support for numeric and factor variables.</p>
+<p>R has built-in support for fitting <span class="math display">\[generalized\]</span> linear models, with support for numeric and factor variables.</p>
 <pre class="r"><code># y ~ normal(3x + 2, 0.5)
 x &lt;- rnorm(30)
 y &lt;- rnorm(length(x), 3*x + 2, 0.5)
 plot(y ~ x) # same as plot(x, y)</code></pre>
-<p><img src="bootcamp-r-series-010-intro-to-r-pt1_files/figure-html/010-Hungry%20Boomerang-1.png" width="672" /></p>
+<p><img src="bootcamp-r-series-010-intro-to-r-pt1_files/figure-html/010-radiant-mussels-1.png" width="672" /></p>
 <pre class="r"><code># fit a linear model
 lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 <pre><code>## 
@@ -1211,7 +1215,7 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       1.950        3.022</code></pre>
+##       2.090        2.684</code></pre>
 <pre class="r"><code>lm(y ~ 0 + x) # slope only model (no intercept)</code></pre>
 <pre><code>## 
 ## Call:
@@ -1219,12 +1223,12 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ##     x  
-## 3.349</code></pre>
+## 3.438</code></pre>
 <p>Can also fit a generalized linear model using (you guessed it) the <code>glm()</code> function.</p>
 <pre class="r"><code># logit(theta) = 3x + 2
 k &lt;- rbinom(length(x), size = 1, prob = plogis(3*x+2))
 plot(k ~ x)</code></pre>
-<p><img src="bootcamp-r-series-010-intro-to-r-pt1_files/figure-html/010-Swift%20Electrical-1.png" width="672" /></p>
+<p><img src="bootcamp-r-series-010-intro-to-r-pt1_files/figure-html/010-cheap-jelly-1.png" width="672" /></p>
 <pre class="r"><code># fit a generalized linear model with logit link
 glm(k ~ 1 + x, family = binomial(link = &quot;logit&quot;))</code></pre>
 <pre><code>## 
@@ -1232,11 +1236,11 @@ glm(k ~ 1 + x, family = binomial(link = &quot;logit&quot;))</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.780        2.899  
+##       2.149        5.518  
 ## 
 ## Degrees of Freedom: 29 Total (i.e. Null);  28 Residual
 ## Null Deviance:       30.02 
-## Residual Deviance: 12.65     AIC: 16.65</code></pre>
+## Residual Deviance: 9.64  AIC: 13.64</code></pre>
 </div>
 <div id="summarizing-data-frames-and-models" class="section level2">
 <h2>Summarizing data frames and models</h2>
@@ -1244,18 +1248,18 @@ glm(k ~ 1 + x, family = binomial(link = &quot;logit&quot;))</code></pre>
 <pre class="r"><code># summarize a numeric vector
 z &lt;- rnorm(50)
 summary(z)</code></pre>
-<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -1.91781 -0.72194  0.04591  0.12029  0.80660  3.01682</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -2.554959 -0.676866  0.105952  0.007596  0.860665  1.820991</code></pre>
 <pre class="r"><code># summarize a data frame
 df &lt;- data.frame(a = 1L:10L, b = rexp(10), c = factor(sample(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), 10, TRUE)))
 summary(df)</code></pre>
 <pre><code>##        a               b           c    
-##  Min.   : 1.00   Min.   :0.01288   a:2  
-##  1st Qu.: 3.25   1st Qu.:0.19843   b:5  
-##  Median : 5.50   Median :0.81435   c:3  
-##  Mean   : 5.50   Mean   :0.96022        
-##  3rd Qu.: 7.75   3rd Qu.:1.44348        
-##  Max.   :10.00   Max.   :3.06290</code></pre>
+##  Min.   : 1.00   Min.   :0.04032   a:2  
+##  1st Qu.: 3.25   1st Qu.:0.85268   b:2  
+##  Median : 5.50   Median :1.56305   c:6  
+##  Mean   : 5.50   Mean   :1.48530        
+##  3rd Qu.: 7.75   3rd Qu.:2.09411        
+##  Max.   :10.00   Max.   :2.98879</code></pre>
 <pre class="r"><code># summarize a linear model
 fit &lt;- lm(y ~ 1 + x)
 summary(fit)</code></pre>
@@ -1265,18 +1269,18 @@ summary(fit)</code></pre>
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -0.99761 -0.31807 -0.08051  0.27543  1.26509 
+## -1.10487 -0.44403 -0.06522  0.41328  1.01253 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  1.94995    0.10539   18.50   &lt;2e-16 ***
-## x            3.02208    0.08868   34.08   &lt;2e-16 ***
+## (Intercept)   2.0898     0.1034   20.21   &lt;2e-16 ***
+## x             2.6839     0.1120   23.97   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.5657 on 28 degrees of freedom
-## Multiple R-squared:  0.9765, Adjusted R-squared:  0.9756 
-## F-statistic:  1161 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.5339 on 28 degrees of freedom
+## Multiple R-squared:  0.9535, Adjusted R-squared:  0.9519 
+## F-statistic: 574.5 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Notice that it outputs differently for different input objects. This is because <code>summary()</code> is a <em>generic</em> function, meaning that it has multiple <em>methods</em> defined for different R objects, and packages can define their own behavior for their own types.</p>
 </div>
 <div id="producing-simple-plots" class="section level2">
@@ -1302,10 +1306,6 @@ summary(fit)</code></pre>
 <li><code>boxplot()</code></li>
 <li><code>stem()</code> for stem-and-leaf plot</li>
 </ul>
-</div>
-<div id="r-compared" class="section level2">
-<h2>R, compared</h2>
-<p><em>What is R best for</em></p>
 </div>
 
 

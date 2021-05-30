@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Introduction to R: Part Two</title>
+
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Nevada INBRE DSCore</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Upcoming</li>
+    <li>
+      <a href="bootcamp-r-series.html">R for Data Science</a>
+    </li>
+    <li class="dropdown-header">Previous</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R</li>
+    <li class="dropdown-header">Julia</li>
+    <li class="dropdown-header">Python</li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">
+    <span class="fas fa-address-book"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="https://github.com/NevadaINBRE">
+    <span class="fas fa-code-branch"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Introduction to R: Part Two</h1>
+
+</div>
+
+
+<div id="introductions-and-overview" class="section level2">
+<h2>Introductions and Overview</h2>
+</div>
+<div id="what-is-rstudio" class="section level2">
+<h2>What is RStudio</h2>
+<ul>
+<li>RStudio is an <em>integrated development environment</em> (IDE) for the R programming language</li>
+<li>You can create, open, and edit scripts and other text file types</li>
+<li>You can create and manage project files</li>
+<li>You can build libraries, documents, and other projects</li>
+<li>View plots, tables, web apps, and more</li>
+<li>Help documentation explorer</li>
+<li>Package manager</li>
+<li>Debugger</li>
+</ul>
+</div>
+<div id="opening-rstudio" class="section level2">
+<h2>Opening RStudio</h2>
+<div id="open-in-windows" class="section level3">
+<h3>Open in Windows</h3>
+<ul>
+<li>start menu (see video below)</li>
+<li>desktop shortcut</li>
+<li>task bar shortcut</li>
+</ul>
+<video width="100%" autoplay muted loop controls>
+<source src="media/vid/02-opening-rstudio-windows.webm" type="video/webm">
+</video>
+</div>
+<div id="open-in-linux" class="section level3">
+<h3>Open in Linux</h3>
+<ul>
+<li>application menu (see video below)</li>
+<li>dock shortcut</li>
+</ul>
+<video width="100%" autoplay muted loop controls>
+<source src="media/vid/02-opening-rstudio-ubuntu.webm" type="video/webm">
+</video>
+</div>
+</div>
+<div id="navigating-rstudio" class="section level2">
+<h2>Navigating RStudio</h2>
+<ul>
+<li>Four separate regions with individual <em>panes</em></li>
+<li>Main panes are
+<ul>
+<li>source editor</li>
+<li>console</li>
+<li>environment and history</li>
+<li>files, plots, packages, help, etc.</li>
+</ul></li>
+</ul>
+</div>
+<div id="creating-a-new-project" class="section level2">
+<h2>Creating a new project</h2>
+<video width="100%" autoplay muted loop controls>
+<source src="media/vid/02-creating-project.webm" type="video/webm">
+</video>
+<p>Why would we even bother with creating a new project folder/file?</p>
+<ul>
+<li>manages setting the working directory</li>
+<li>contributes to portable projects</li>
+<li>can specify project-specific settings</li>
+</ul>
+</div>
+<div id="writing-and-running-an-rscript" class="section level2">
+<h2>Writing and running an Rscript</h2>
+<p>Writing a script allows one to re-use and re-write code. It means that you can also share your code, keep track of changes, and string together more complex commands to carry out an analysis.</p>
+<ol style="list-style-type: decimal">
+<li>Create a new file (<code>ctrl+shift+N</code>)</li>
+<li>Type in an R command</li>
+</ol>
+<p>You can run the entire script at once using the “source” button (<code>ctrl+shift+S</code> or <code>ctrl+shift+enter</code>), or you can run line-by-line (<code>ctrl+enter</code>).</p>
+</div>
+<div id="control-flow" class="section level2">
+<h2>Control flow</h2>
+<p>Control flow statement is a statement that results in a choice being made as to which of two or more paths to follow.</p>
+<div id="conditionals" class="section level3">
+<h3>Conditionals</h3>
+<p>The simplest control flow is the <code>if-else</code> kind.</p>
+<pre class="r"><code># An if statement can stand alone
+if (7 &gt; 3) {
+  cat(&quot;hello from inside the &#39;if&#39; block\n&quot;)
+}</code></pre>
+<pre><code>## hello from inside the &#39;if&#39; block</code></pre>
+<pre class="r"><code># You can have an if and an else
+do_first_condition &lt;- FALSE
+if (do_first_condition) {
+  cat(&quot;This shouldn&#39;t print\n&quot;)
+} else {
+  cat(&quot;This is the fallback option\n&quot;)
+}</code></pre>
+<pre><code>## This is the fallback option</code></pre>
+<pre class="r"><code># If, else if, else
+x &lt;- 4
+if (x &lt; 0) {
+  cat(x, &quot; is less than 0\n&quot;)
+} else if (isTRUE(all.equal(x, 0))) {
+  cat(x, &quot; is equal to 0\n&quot;)
+} else {
+  cat(x, &quot; is greater than 0\n&quot;) # is this true? ;)
+}</code></pre>
+<pre><code>## 4  is greater than 0</code></pre>
+<pre class="r"><code># An `else` block is not required
+if (FALSE) {
+  cat(&quot;This won&#39;t print\n&quot;)
+} else if (7 &lt; 4) {
+  cat(&quot;Neither will this\n&quot;)
+}</code></pre>
+</div>
+<div id="loops" class="section level3">
+<h3>Loops</h3>
+<p>There are two types of loops (technically one, but practically two), and they are the <code>while</code>-loop and the <code>for</code>-loop.</p>
+<p><code>while</code>-loop</p>
+<pre class="r"><code>some_condition_is_true &lt;- TRUE
+some_counter &lt;- 0
+number_of_iterations &lt;- 12
+
+while (some_condition_is_true) {
+  # do stuff
+  cat(&quot;This is iteration:\t&quot;, some_counter, &quot;\n&quot;)
+  
+  if (some_counter == 7) {
+    some_condition_is_true &lt;- FALSE
+  }
+  
+  some_counter &lt;- some_counter + 1
+}</code></pre>
+<pre><code>## This is iteration:    0 
+## This is iteration:    1 
+## This is iteration:    2 
+## This is iteration:    3 
+## This is iteration:    4 
+## This is iteration:    5 
+## This is iteration:    6 
+## This is iteration:    7</code></pre>
+<p>We can also further refine the behavior of a loop with the <code>next</code> and <code>break</code> commands.</p>
+<pre class="r"><code># Skip if a number is divisible by 7
+# Print &quot;fizz&quot; if a number is divisible by 3
+# Print &quot;buzz&quot; if a number is divisible by 5
+# end the loop if the number reaches 23
+number &lt;- 0
+while (TRUE) {
+  number &lt;- number + 1
+  
+  if (number == 23) {
+    break
+  }
+
+  if (number %% 7 == 0) {
+    next
+  } else if (number %% 15 == 0) {
+    print(&quot;fizzbuzz&quot;)
+  } else if (number %% 3 == 0) {
+    print(&quot;fizz&quot;)
+  } else if (number %% 5 == 0) {
+    print(&quot;buzz&quot;)
+  } else {
+    print(number)
+  }
+  
+}</code></pre>
+<pre><code>## [1] 1
+## [1] 2
+## [1] &quot;fizz&quot;
+## [1] 4
+## [1] &quot;buzz&quot;
+## [1] &quot;fizz&quot;
+## [1] 8
+## [1] &quot;fizz&quot;
+## [1] &quot;buzz&quot;
+## [1] 11
+## [1] &quot;fizz&quot;
+## [1] 13
+## [1] &quot;fizzbuzz&quot;
+## [1] 16
+## [1] 17
+## [1] &quot;fizz&quot;
+## [1] 19
+## [1] &quot;buzz&quot;
+## [1] 22</code></pre>
+<p>Please note, the above code is a poor implementation for the <a href="https://www.tomdalling.com/blog/software-design/fizzbuzz-in-too-much-detail/">fizzbuzz</a> test.</p>
+<p><code>for</code>-loop</p>
+<p>When we know ahead of time how many iterations we are going to do, we can instead use a <code>for</code>-loop which will take care of incrementing for us. We can also use a for-loop to <em>iterate</em> over elements in a vector.</p>
+<pre class="r"><code>x &lt;- 3:7
+# print the number doubled
+# note that the alias for each element in &#39;x&#39; can be any variable name
+for (some_alias_for_element in x) {
+  print(some_alias_for_element * 2)
+}</code></pre>
+<pre><code>## [1] 6
+## [1] 8
+## [1] 10
+## [1] 12
+## [1] 14</code></pre>
+</div>
+<div id="switches" class="section level3">
+<h3>Switches</h3>
+<p>A <code>switch</code> statement is a compact way to find a match over multiple conditions.</p>
+<pre class="r"><code>x &lt;- rnorm(n = 30, mean = pi, sd = 0.4)
+stat &lt;- &quot;mean&quot;
+switch (stat,
+  mean = mean(x),
+  sd = sd(x),
+  var = var(x),
+  round = round(x, 2),
+  &quot;Default option: no match found&quot;
+)</code></pre>
+<pre><code>## [1] 3.160278</code></pre>
+</div>
+</div>
+<div id="the--apply-family-of-functions" class="section level2">
+<h2>The -apply family of functions</h2>
+<ul>
+<li><code>apply()</code>
+<ul>
+<li>generic</li>
+<li>can be used on matrices, data frames, and arrays</li>
+</ul></li>
+<li><code>lapply()</code>
+<ul>
+<li>takes a list, vector, or data frame</li>
+<li>returns a list</li>
+</ul></li>
+<li><code>sapply()</code>
+<ul>
+<li>“simplified” apply</li>
+<li>return type depends on input</li>
+</ul></li>
+<li><code>tapply()</code>
+<ul>
+<li>table apply</li>
+<li>apply a function to a table grouped by some index</li>
+<li>useful for e.g. counting number of rows for each factor level</li>
+</ul></li>
+<li><code>vapply()</code>
+<ul>
+<li>vectorized apply</li>
+<li>very strict about the input and output type</li>
+<li>useful to ensure a specific return type</li>
+</ul></li>
+<li><code>rapply()</code>
+<ul>
+<li>recursive <code>lapply</code></li>
+</ul></li>
+<li><code>replicate()</code>
+<ul>
+<li>a simplified wrapper for <code>sapply</code></li>
+<li>replicates an expression <code>n</code> times</li>
+<li>useful for more complex random sampling</li>
+</ul></li>
+</ul>
+</div>
+<div id="writing-functions" class="section level2">
+<h2>Writing functions</h2>
+<ul>
+<li>We’ve already seen some functions like math functions</li>
+<li>functions are necessary to write flexible and reusable code</li>
+<li>rule of thumb: if you copy and paste a block of code more than once, turn it into a function
+<ul>
+<li>this applies to making plots as well</li>
+</ul></li>
+<li>functions can have arguments
+<ul>
+<li>positional arguments</li>
+<li>optional arguments</li>
+<li>named arguments</li>
+</ul></li>
+</ul>
+<p>The Huber loss function (or just Huber function, for short) is defined as:</p>
+<p><span class="math display">\[
+\psi(x) = \begin{cases}
+x^2 &amp; \text{if } |x| \leq 1 \\
+2|x| - 1 &amp; \text{if } |x| &gt; 1
+\end{cases}
+\]</span></p>
+<pre class="r"><code># write a function `huber()` that takes as an input a number, x,
+# and returns the Huber value
+huber &lt;- function(x) {
+  if (abs(x) &lt;= 1) {
+    x^2
+  } else {
+    2*abs(x) - 1
+  }
+}</code></pre>
+<p>The Huber function can be modified so that the transition from quadratic to linear happens at an arbitrary cutoff value <span class="math inline">\(a\)</span>, as in:</p>
+<p><span class="math display">\[
+\psi_a(x) = \begin{cases}
+x^2 &amp; \text{if } |x| \leq a \\
+2a|x| - a^2 &amp; \text{if } |x| &gt; a
+\end{cases}
+\]</span></p>
+<p>Starting with the code above, update the <code>huber()</code> function so that it takes two arguments: <span class="math inline">\(x\)</span>, a number at which to evaluate the loss, and <span class="math inline">\(a\)</span>, a number representing the cutoff value.</p>
+<p>It should now return <span class="math inline">\(\psi_a(x)\)</span>, as defined above. Check that <code>huber(3, 2)</code> returns 8, and <code>huber(3, 4)</code> returns 9.</p>
+<pre class="r"><code>huber &lt;- function(x, a) {
+  if (abs(x) &lt;= a) {
+    x^2
+  } else {
+    2 * a * abs(x) - a^2
+  }
+}
+
+huber(3, 2)</code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>huber(3, 4)</code></pre>
+<pre><code>## [1] 9</code></pre>
+<p>Update the <code>huber()</code> function so that the default value of the cutoff <span class="math inline">\(a\)</span> is 1. Check that <code>huber(3)</code> returns 5.</p>
+<pre class="r"><code>huber &lt;- function(x, a = 1) {
+  if (abs(x) &lt;= a) {
+    x^2
+  } else {
+    2 * a * abs(x) - a^2
+  }
+}
+
+huber(3)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<p>Check that <code>huber(a=1, x=3)</code> returns 5. Check that <code>huber(1, 3)</code> returns 1. Why are these different?</p>
+<pre class="r"><code>huber(a = 1, x = 3)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>huber(1, 3)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>Finally, we can <em>vectorize</em> this function over a set of inputs in two different ways:</p>
+<pre class="r"><code># ifelse()
+huber_ifelse &lt;- function(x, a) {
+  ifelse(abs(x) &lt;= a, x^2, 2*a*abs(x) - a^2)
+}
+# Vectorize()
+huber_vec &lt;- Vectorize(huber, vectorize.args = &quot;x&quot;, USE.NAMES = TRUE)</code></pre>
+</div>
+<div id="working-with-libraries" class="section level2">
+<h2>Working with libraries</h2>
+<p>On the subject of code reuse, we can stand on the shoulders of giants (or other researchers) and use the code that they’ve decided to share on CRAN or GitHub (or Bioconductor, or …). We use their code through something called a <em>library</em> or <em>package</em>.</p>
+<pre class="r"><code># load the `readxl` package using the `library()` function
+library(readxl)</code></pre>
+<p>Sometimes two packages will export two different functions by the same name. When this happens, we get what is called a <em>namespace</em> conflict. In those cases (and in general), it is best to be explicit about which package’s function you are using:</p>
+<pre class="r"><code># load the `dplyr` package and observe the &#39;onload&#39; message
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<ul>
+<li>It says that it’s masked the object <code>filter</code> from <code>package:stats</code></li>
+<li><code>stats</code> is a default R library that is available on startup</li>
+<li><code>dplyr</code> also exports an object called <code>filter</code> and overwrites it in the <em>namespace</em></li>
+</ul>
+<pre class="r"><code># This should work for time series
+x &lt;- 1:100
+filter(x, rep(1, 3))</code></pre>
+<pre><code>## Error in UseMethod(&quot;filter&quot;): no applicable method for &#39;filter&#39; applied to an object of class &quot;c(&#39;integer&#39;, &#39;numeric&#39;)&quot;</code></pre>
+<pre class="r"><code># fix the above error by being explicit about the namespace
+stats::filter(x, rep(1, 3))</code></pre>
+<pre><code>## Time Series:
+## Start = 1 
+## End = 100 
+## Frequency = 1 
+##   [1]  NA   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54
+##  [19]  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 102 105 108
+##  [37] 111 114 117 120 123 126 129 132 135 138 141 144 147 150 153 156 159 162
+##  [55] 165 168 171 174 177 180 183 186 189 192 195 198 201 204 207 210 213 216
+##  [73] 219 222 225 228 231 234 237 240 243 246 249 252 255 258 261 264 267 270
+##  [91] 273 276 279 282 285 288 291 294 297  NA</code></pre>
+</div>
+<div id="best-practices-and-style" class="section level2">
+<h2>Best practices and style</h2>
+<p>Take some time to read through the first three sections of the <a href="https://style.tidyverse.org/">Tidyverse Style Guide</a>. The developers of RStudio also develop a suite of packages called the Tidyverse, and they use this style guide to make code more readable and uniform.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
