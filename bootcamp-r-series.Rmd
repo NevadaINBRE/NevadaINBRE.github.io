@@ -211,6 +211,10 @@ Participants should know:
 - basic git or a git GUI
 - basic [markdown syntax](https://www.markdownguide.org/cheat-sheet/)
 
+#### Session Notes
+
+[Click here for the session notes](bootcamp-r-series-030-reproducible.html)
+
 <a href='#schedule' class='top'>back to top</a>
 
 ### Tidy R {#tidy}
