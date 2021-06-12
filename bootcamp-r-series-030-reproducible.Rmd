@@ -1,4 +1,8 @@
-# Reproducible Data Science
+---
+title: "Reproducible Data Science"
+output:
+  html_document: default
+---
 
 ## Introductions and Overview
 

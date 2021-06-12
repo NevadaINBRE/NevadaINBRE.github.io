@@ -239,6 +239,10 @@ Participants should know:
 - how to navigate RStudio
 - how to access the help documentation in R
 
+#### Session Notes
+
+[Click here for the session notes](bootcamp-r-series-040-tidy.html)
+
 <a href='#schedule' class='top'>back to top</a>
 
 ### Producing Clean Documents, Graphs, and Tables {#docs}

@@ -1,0 +1,3635 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Tidy R</title>
+
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Nevada INBRE DSCore</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Upcoming</li>
+    <li>
+      <a href="bootcamp-r-series.html">R for Data Science</a>
+    </li>
+    <li class="dropdown-header">Previous</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R</li>
+    <li class="dropdown-header">Julia</li>
+    <li class="dropdown-header">Python</li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">
+    <span class="fas fa-address-book"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="https://github.com/NevadaINBRE">
+    <span class="fas fa-code-branch"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Tidy R</h1>
+
+</div>
+
+
+<style type="text/css">
+table {
+   margin: auto; 
+   border-top: 1px solid #666; 
+   border-bottom: 1px solid #666; 
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+tr:nth-child(even) { background: #eee; }
+</style>
+<div id="introductions-and-overview" class="section level2">
+<h2>Introductions and Overview</h2>
+<p>A majority of this workshop is based on the <a href="https://vita.had.co.nz/papers/tidy-data.pdf">Tidy Data</a> paper by Hadley Wickham and the <a href="https://r4ds.had.co.nz/tidy-data.html">corresponding chapter</a> in the <a href="https://r4ds.had.co.nz/">R For Data Science</a> e-book. I highly recommend reading both the paper and the e-book to get a deeper understanding of using R and tidy data.</p>
+</div>
+<div id="tidy-data" class="section level2">
+<h2>Tidy Data</h2>
+<p>Tidy data is a set of definitions and guidelines to organize data by in order to make it easier to facilitate data analysis. Data can be organized in many different ways, and it may seem like there is either no “best” way to arrange data. Take the following imaginary data. Table @ref(tab:040-imaginary-data-1) has two columns and three rows in a commonly seen format:</p>
+<table>
+<caption>
+Each row has patient data
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Treatment A
+</th>
+<th style="text-align:right;">
+Treatment B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+John Smith
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jane Doe
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mary Johnson
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<p>The same data can also be presented as in table @ref(tab:040-imaginary-data-2), this time a table with three columns and two rows (a transposition of the first table). Neither is more correct than the other, but necessity may dictate that one is more easy to work with than the other.</p>
+<table>
+<caption>
+Each row is the treatment data
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+John Smith
+</th>
+<th style="text-align:right;">
+Jane Doe
+</th>
+<th style="text-align:right;">
+Mary Johnson
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Treatment A
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Treatment B
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<p>Tidy data defines a few terms to “describe the underlying semantics … of the values displayed in [a] table.”</p>
+<ul>
+<li><strong>Values</strong>
+<ul>
+<li>A single element of a data set</li>
+<li>Every value belongs to a variable and an observation</li>
+</ul></li>
+<li><strong>Variables</strong>
+<ul>
+<li>A collection of all values that measure the same thing</li>
+</ul></li>
+<li><strong>Observation</strong>
+<ul>
+<li>Contains all values measured on the same unit</li>
+</ul></li>
+</ul>
+<p>Consider now the same imaginary data as above, but now in a tidy format:</p>
+<table>
+<caption>
+Each row is an observation, and each column is a variable.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:left;">
+Treatment
+</th>
+<th style="text-align:right;">
+Outcome
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+John Smith
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+John Smith
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jane Doe
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jane Doe
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mary Johnson
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mary Johnson
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<p>In <strong>tidy data</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Each variable forms a column</li>
+<li>Each observation forms a row</li>
+<li>Each type of observational unit forms a table</li>
+</ol>
+<p>Tidy data is now well-defined, and messy data is data that is in any other format. Messy data is not useless, though, and certain analyses and operations require data to be in a format other than tidy. But Tidy data can serve as a launching point (or target) for cleaning, plotting, and analyzing a new data set.</p>
+</div>
+<div id="tidying-messy-data" class="section level2">
+<h2>Tidying Messy Data</h2>
+<p>Five most common problems of messy data sets:</p>
+<ol style="list-style-type: decimal">
+<li>Column headers are values, not variable names</li>
+<li>Multiple variables are stored in one column</li>
+<li>Variable names are stored in both rows and columns</li>
+<li>Multiple types of observational units are stored in the same variable</li>
+<li>A single observational unit is stored in multiple tables</li>
+</ol>
+<p>A small set of tools can be used to clean most of the problems of messy data:</p>
+<ol style="list-style-type: decimal">
+<li>Melting (pivot longer)</li>
+<li>String manipulation (splitting)</li>
+<li>Casting (pivot wider)</li>
+</ol>
+<div id="data-in-the-column-headers" class="section level3">
+<h3>Data in the column headers</h3>
+<p><strong>Messy</strong></p>
+<pre><code>## re-encoding from CP1252</code></pre>
+<table>
+<caption>
+Column header with variables
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+religion
+</th>
+<th style="text-align:right;">
+&lt;$10k
+</th>
+<th style="text-align:right;">
+$10-20k
+</th>
+<th style="text-align:right;">
+$20-30k
+</th>
+<th style="text-align:right;">
+$30-40k
+</th>
+<th style="text-align:right;">
+$40-50k
+</th>
+<th style="text-align:right;">
+$50-75k
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+137
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Atheist
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buddhist
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+418
+</td>
+<td style="text-align:right;">
+617
+</td>
+<td style="text-align:right;">
+732
+</td>
+<td style="text-align:right;">
+670
+</td>
+<td style="text-align:right;">
+638
+</td>
+<td style="text-align:right;">
+1116
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Don’t know/refused
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Evangelical Prot
+</td>
+<td style="text-align:right;">
+575
+</td>
+<td style="text-align:right;">
+869
+</td>
+<td style="text-align:right;">
+1064
+</td>
+<td style="text-align:right;">
+982
+</td>
+<td style="text-align:right;">
+881
+</td>
+<td style="text-align:right;">
+1486
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hindu
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Historically Black Prot
+</td>
+<td style="text-align:right;">
+228
+</td>
+<td style="text-align:right;">
+244
+</td>
+<td style="text-align:right;">
+236
+</td>
+<td style="text-align:right;">
+238
+</td>
+<td style="text-align:right;">
+197
+</td>
+<td style="text-align:right;">
+223
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jehovah’s Witness
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jewish
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+95
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tidy</strong></p>
+<table>
+<caption>
+Pew data in a tidy format
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+religion
+</th>
+<th style="text-align:left;">
+income
+</th>
+<th style="text-align:right;">
+freq
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+&lt;$10k
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+$10-20k
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+$20-30k
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+$30-40k
+</td>
+<td style="text-align:right;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+$40-50k
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+$50-75k
+</td>
+<td style="text-align:right;">
+137
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+$75-100k
+</td>
+<td style="text-align:right;">
+122
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+$100-150k
+</td>
+<td style="text-align:right;">
+109
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+&gt;150k
+</td>
+<td style="text-align:right;">
+84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agnostic
+</td>
+<td style="text-align:left;">
+Don’t know/refused
+</td>
+<td style="text-align:right;">
+96
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="multiple-variables-in-one-column" class="section level3">
+<h3>Multiple variables in one column</h3>
+<p><strong>Messy</strong></p>
+<table>
+<caption>
+Multiple data in individual columns
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+m014
+</th>
+<th style="text-align:right;">
+m1524
+</th>
+<th style="text-align:right;">
+m2534
+</th>
+<th style="text-align:right;">
+m3544
+</th>
+<th style="text-align:right;">
+m4554
+</th>
+<th style="text-align:right;">
+m5564
+</th>
+<th style="text-align:right;">
+m65
+</th>
+<th style="text-align:right;">
+mu
+</th>
+<th style="text-align:right;">
+f014
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AD
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AE
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+228
+</td>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:right;">
+149
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AG
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AL
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AM
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+152
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AN
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AO
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+186
+</td>
+<td style="text-align:right;">
+999
+</td>
+<td style="text-align:right;">
+1003
+</td>
+<td style="text-align:right;">
+912
+</td>
+<td style="text-align:right;">
+482
+</td>
+<td style="text-align:right;">
+312
+</td>
+<td style="text-align:right;">
+194
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+247
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AR
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+278
+</td>
+<td style="text-align:right;">
+594
+</td>
+<td style="text-align:right;">
+402
+</td>
+<td style="text-align:right;">
+419
+</td>
+<td style="text-align:right;">
+368
+</td>
+<td style="text-align:right;">
+330
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+121
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AS
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tidy</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:left;">
+age
+</th>
+<th style="text-align:right;">
+cases
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AD
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+0-14
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AD
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+15-24
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AD
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+25-34
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AD
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+35-44
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AD
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+45-54
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AD
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+55-64
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AD
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+65+
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AE
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+0-14
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AE
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+15-24
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AE
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+25-34
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="variable-names-in-both-rows-and-columns" class="section level3">
+<h3>Variable names in both rows and columns</h3>
+<p><strong>Messy</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+id
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+month
+</th>
+<th style="text-align:left;">
+element
+</th>
+<th style="text-align:right;">
+d1
+</th>
+<th style="text-align:right;">
+d2
+</th>
+<th style="text-align:right;">
+d3
+</th>
+<th style="text-align:right;">
+d4
+</th>
+<th style="text-align:right;">
+d5
+</th>
+<th style="text-align:right;">
+d6
+</th>
+<th style="text-align:right;">
+d7
+</th>
+<th style="text-align:right;">
+d8
+</th>
+<th style="text-align:right;">
+d9
+</th>
+<th style="text-align:right;">
+d10
+</th>
+<th style="text-align:right;">
+d11
+</th>
+<th style="text-align:right;">
+d12
+</th>
+<th style="text-align:right;">
+d13
+</th>
+<th style="text-align:right;">
+d14
+</th>
+<th style="text-align:right;">
+d15
+</th>
+<th style="text-align:right;">
+d16
+</th>
+<th style="text-align:right;">
+d17
+</th>
+<th style="text-align:right;">
+d18
+</th>
+<th style="text-align:right;">
+d19
+</th>
+<th style="text-align:right;">
+d20
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+27.3
+</td>
+<td style="text-align:right;">
+24.1
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+29.7
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+13.4
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+32.1
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+34.5
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+31.1
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+14.2
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+16.8
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+17.6
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+<td style="text-align:right;">
+—
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tidy</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+id
+</th>
+<th style="text-align:left;">
+date
+</th>
+<th style="text-align:right;">
+tmax
+</th>
+<th style="text-align:right;">
+tmin
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-01-30
+</td>
+<td style="text-align:right;">
+27.8
+</td>
+<td style="text-align:right;">
+14.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-02
+</td>
+<td style="text-align:right;">
+27.3
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-03
+</td>
+<td style="text-align:right;">
+24.1
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-11
+</td>
+<td style="text-align:right;">
+29.7
+</td>
+<td style="text-align:right;">
+13.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-23
+</td>
+<td style="text-align:right;">
+29.9
+</td>
+<td style="text-align:right;">
+10.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-03-05
+</td>
+<td style="text-align:right;">
+32.1
+</td>
+<td style="text-align:right;">
+14.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-03-10
+</td>
+<td style="text-align:right;">
+34.5
+</td>
+<td style="text-align:right;">
+16.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-03-16
+</td>
+<td style="text-align:right;">
+31.1
+</td>
+<td style="text-align:right;">
+17.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-04-27
+</td>
+<td style="text-align:right;">
+36.3
+</td>
+<td style="text-align:right;">
+16.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-05-27
+</td>
+<td style="text-align:right;">
+33.2
+</td>
+<td style="text-align:right;">
+18.2
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="multiple-types-of-observational-units-are-stored-in-the-same-variable" class="section level3">
+<h3>Multiple types of observational units are stored in the same variable</h3>
+<p><strong>Messy</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:left;">
+artist
+</th>
+<th style="text-align:left;">
+track
+</th>
+<th style="text-align:right;">
+time
+</th>
+<th style="text-align:left;">
+date.entered
+</th>
+<th style="text-align:right;">
+wk1
+</th>
+<th style="text-align:right;">
+wk2
+</th>
+<th style="text-align:right;">
+wk3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2 Pac
+</td>
+<td style="text-align:left;">
+Baby Don’t Cry
+</td>
+<td style="text-align:right;">
+4M 22S
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+72
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2Ge+her
+</td>
+<td style="text-align:left;">
+The Hardest Part Of Breaking Up
+</td>
+<td style="text-align:right;">
+3M 15S
+</td>
+<td style="text-align:left;">
+2000-09-02
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+3 Doors Down
+</td>
+<td style="text-align:left;">
+Kryptonite
+</td>
+<td style="text-align:right;">
+3M 53S
+</td>
+<td style="text-align:left;">
+2000-04-08
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+3 Doors Down
+</td>
+<td style="text-align:left;">
+Loser
+</td>
+<td style="text-align:right;">
+4M 24S
+</td>
+<td style="text-align:left;">
+2000-10-21
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+72
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+504 Boyz
+</td>
+<td style="text-align:left;">
+Wobble Wobble
+</td>
+<td style="text-align:right;">
+3M 35S
+</td>
+<td style="text-align:left;">
+2000-04-15
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+98?
+</td>
+<td style="text-align:left;">
+Give Me Just One Night
+</td>
+<td style="text-align:right;">
+3M 24S
+</td>
+<td style="text-align:left;">
+2000-08-19
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+A*Teens
+</td>
+<td style="text-align:left;">
+Dancing Queen
+</td>
+<td style="text-align:right;">
+3M 44S
+</td>
+<td style="text-align:left;">
+2000-07-08
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+96
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+Aaliyah
+</td>
+<td style="text-align:left;">
+I Don’t Wanna
+</td>
+<td style="text-align:right;">
+4M 15S
+</td>
+<td style="text-align:left;">
+2000-01-29
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+Aaliyah
+</td>
+<td style="text-align:left;">
+Try Again
+</td>
+<td style="text-align:right;">
+4M 3S
+</td>
+<td style="text-align:left;">
+2000-03-18
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+Adams, Yolanda
+</td>
+<td style="text-align:left;">
+Open My Heart
+</td>
+<td style="text-align:right;">
+5M 30S
+</td>
+<td style="text-align:left;">
+2000-08-26
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+74
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Half Tidy</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:left;">
+artist
+</th>
+<th style="text-align:left;">
+track
+</th>
+<th style="text-align:right;">
+time
+</th>
+<th style="text-align:left;">
+date.entered
+</th>
+<th style="text-align:right;">
+week
+</th>
+<th style="text-align:right;">
+rank
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2 Pac
+</td>
+<td style="text-align:left;">
+Baby Don’t Cry
+</td>
+<td style="text-align:right;">
+4M 22S
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2 Pac
+</td>
+<td style="text-align:left;">
+Baby Don’t Cry
+</td>
+<td style="text-align:right;">
+4M 22S
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+82
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2 Pac
+</td>
+<td style="text-align:left;">
+Baby Don’t Cry
+</td>
+<td style="text-align:right;">
+4M 22S
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+72
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2 Pac
+</td>
+<td style="text-align:left;">
+Baby Don’t Cry
+</td>
+<td style="text-align:right;">
+4M 22S
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2 Pac
+</td>
+<td style="text-align:left;">
+Baby Don’t Cry
+</td>
+<td style="text-align:right;">
+4M 22S
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2 Pac
+</td>
+<td style="text-align:left;">
+Baby Don’t Cry
+</td>
+<td style="text-align:right;">
+4M 22S
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+94
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2 Pac
+</td>
+<td style="text-align:left;">
+Baby Don’t Cry
+</td>
+<td style="text-align:right;">
+4M 22S
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+99
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2Ge+her
+</td>
+<td style="text-align:left;">
+The Hardest Part Of Breaking Up
+</td>
+<td style="text-align:right;">
+3M 15S
+</td>
+<td style="text-align:left;">
+2000-09-02
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2Ge+her
+</td>
+<td style="text-align:left;">
+The Hardest Part Of Breaking Up
+</td>
+<td style="text-align:right;">
+3M 15S
+</td>
+<td style="text-align:left;">
+2000-09-02
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+2Ge+her
+</td>
+<td style="text-align:left;">
+The Hardest Part Of Breaking Up
+</td>
+<td style="text-align:right;">
+3M 15S
+</td>
+<td style="text-align:left;">
+2000-09-02
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+92
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tidy</strong></p>
+<pre><code>## Joining, by = c(&quot;artist&quot;, &quot;track&quot;, &quot;time&quot;)</code></pre>
+<table class="kable_wrapper">
+<tbody>
+<tr>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:left;">
+artist
+</th>
+<th style="text-align:left;">
+track
+</th>
+<th style="text-align:right;">
+time
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2 Pac
+</td>
+<td style="text-align:left;">
+Baby Don’t Cry
+</td>
+<td style="text-align:right;">
+4M 22S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+2Ge+her
+</td>
+<td style="text-align:left;">
+The Hardest Part Of Breaking Up
+</td>
+<td style="text-align:right;">
+3M 15S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+3 Doors Down
+</td>
+<td style="text-align:left;">
+Kryptonite
+</td>
+<td style="text-align:right;">
+3M 53S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+3 Doors Down
+</td>
+<td style="text-align:left;">
+Loser
+</td>
+<td style="text-align:right;">
+4M 24S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+504 Boyz
+</td>
+<td style="text-align:left;">
+Wobble Wobble
+</td>
+<td style="text-align:right;">
+3M 35S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+98?
+</td>
+<td style="text-align:left;">
+Give Me Just One Night
+</td>
+<td style="text-align:right;">
+3M 24S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+A*Teens
+</td>
+<td style="text-align:left;">
+Dancing Queen
+</td>
+<td style="text-align:right;">
+3M 44S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Aaliyah
+</td>
+<td style="text-align:left;">
+I Don’t Wanna
+</td>
+<td style="text-align:right;">
+4M 15S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Aaliyah
+</td>
+<td style="text-align:left;">
+Try Again
+</td>
+<td style="text-align:right;">
+4M 3S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Adams, Yolanda
+</td>
+<td style="text-align:left;">
+Open My Heart
+</td>
+<td style="text-align:right;">
+5M 30S
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:left;">
+date.entered
+</th>
+<th style="text-align:right;">
+rank
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+82
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+72
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+94
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2000-02-26
+</td>
+<td style="text-align:right;">
+99
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+2000-09-02
+</td>
+<td style="text-align:right;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+2000-09-02
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+2000-09-02
+</td>
+<td style="text-align:right;">
+92
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="a-single-observational-unit-is-stored-in-multiple-tables" class="section level3">
+<h3>A single observational unit is stored in multiple tables</h3>
+<p>It is common to find data values for individual observational units spread out over multiple tables or files. An example is the US census data, where each data set is split up by the year the census was conducted (e.g. <code>census_2020</code>, <code>census_2010</code>, etc.).</p>
+</div>
+</div>
+<div id="formatting-to-tidy-data" class="section level2">
+<h2>Formatting to Tidy Data</h2>
+<div id="meltingpivoting-longerstacking" class="section level3">
+<h3>Melting/Pivoting Longer/Stacking</h3>
+<pre class="r"><code># cases
+table4a %&gt;%
+  pivot_longer(cols = `1999`:`2000`,
+               names_to = &quot;year&quot;,
+               values_to = &quot;cases&quot;)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   country     year   cases
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
+## 1 Afghanistan 1999     745
+## 2 Afghanistan 2000    2666
+## 3 Brazil      1999   37737
+## 4 Brazil      2000   80488
+## 5 China       1999  212258
+## 6 China       2000  213766</code></pre>
+<pre class="r"><code># population
+table4b %&gt;%
+  pivot_longer(cols = `1999`:`2000`,
+               names_to = &quot;year&quot;,
+               values_to = &quot;population&quot;)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   country     year  population
+##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;
+## 1 Afghanistan 1999    19987071
+## 2 Afghanistan 2000    20595360
+## 3 Brazil      1999   172006362
+## 4 Brazil      2000   174504898
+## 5 China       1999  1272915272
+## 6 China       2000  1280428583</code></pre>
+</div>
+<div id="joins" class="section level3">
+<h3>Joins</h3>
+<pre class="r"><code>tidy4a &lt;- table4a %&gt;%
+  pivot_longer(cols = `1999`:`2000`,
+               names_to = &quot;year&quot;,
+               values_to = &quot;cases&quot;)
+# population
+tidy4b &lt;- table4b %&gt;%
+  pivot_longer(cols = `1999`:`2000`,
+               names_to = &quot;year&quot;,
+               values_to = &quot;population&quot;)
+
+# join
+left_join(tidy4a, tidy4b)</code></pre>
+<pre><code>## Joining, by = c(&quot;country&quot;, &quot;year&quot;)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   country     year   cases population
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;      &lt;int&gt;
+## 1 Afghanistan 1999     745   19987071
+## 2 Afghanistan 2000    2666   20595360
+## 3 Brazil      1999   37737  172006362
+## 4 Brazil      2000   80488  174504898
+## 5 China       1999  212258 1272915272
+## 6 China       2000  213766 1280428583</code></pre>
+<p>See the <a href="https://www.rstudio.com/resources/cheatsheets/">dplyr cheatsheet</a> for a more visual depiction for the various types of joins.</p>
+<ul>
+<li><code>bind_rows()</code> (Base equivalent is <code>rbind()</code>)</li>
+<li><code>bind_cols()</code> (Base equivalent is <code>cbind()</code>)</li>
+<li><code>left_join()</code>, <code>right_join()</code></li>
+<li><code>full_join()</code>, <code>inner_join()</code></li>
+</ul>
+</div>
+<div id="castingpivoting-widerunstacking" class="section level3">
+<h3>Casting/Pivoting Wider/Unstacking</h3>
+<pre class="r"><code>table2 %&gt;%
+  pivot_wider(id_cols = c(country, year),
+              names_from = type,
+              values_from = count)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   country      year  cases population
+##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+## 1 Afghanistan  1999    745   19987071
+## 2 Afghanistan  2000   2666   20595360
+## 3 Brazil       1999  37737  172006362
+## 4 Brazil       2000  80488  174504898
+## 5 China        1999 212258 1272915272
+## 6 China        2000 213766 1280428583</code></pre>
+</div>
+<div id="string-manipulation" class="section level3">
+<h3>String Manipulation</h3>
+<p><code>separate()</code> (the opposite is <code>unite()</code>)</p>
+<pre class="r"><code>table3 %&gt;%
+  separate(col = rate, 
+           into = c(&quot;cases&quot;, &quot;population&quot;))</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   country      year cases  population
+##   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     
+## 1 Afghanistan  1999 745    19987071  
+## 2 Afghanistan  2000 2666   20595360  
+## 3 Brazil       1999 37737  172006362 
+## 4 Brazil       2000 80488  174504898 
+## 5 China        1999 212258 1272915272
+## 6 China        2000 213766 1280428583</code></pre>
+<p><code>package:stringr</code></p>
+<p>The <code>stringr</code> package is a collection of consistent functions that make operations on strings easier. It is largely a wrapper for the <code>stringi</code> package.</p>
+<pre class="r"><code>ls(&quot;package:stringr&quot;)</code></pre>
+<pre><code>##  [1] &quot;%&gt;%&quot;             &quot;boundary&quot;        &quot;coll&quot;            &quot;fixed&quot;          
+##  [5] &quot;fruit&quot;           &quot;invert_match&quot;    &quot;regex&quot;           &quot;sentences&quot;      
+##  [9] &quot;str_c&quot;           &quot;str_conv&quot;        &quot;str_count&quot;       &quot;str_detect&quot;     
+## [13] &quot;str_dup&quot;         &quot;str_ends&quot;        &quot;str_extract&quot;     &quot;str_extract_all&quot;
+## [17] &quot;str_flatten&quot;     &quot;str_glue&quot;        &quot;str_glue_data&quot;   &quot;str_interp&quot;     
+## [21] &quot;str_length&quot;      &quot;str_locate&quot;      &quot;str_locate_all&quot;  &quot;str_match&quot;      
+## [25] &quot;str_match_all&quot;   &quot;str_order&quot;       &quot;str_pad&quot;         &quot;str_remove&quot;     
+## [29] &quot;str_remove_all&quot;  &quot;str_replace&quot;     &quot;str_replace_all&quot; &quot;str_replace_na&quot; 
+## [33] &quot;str_sort&quot;        &quot;str_split&quot;       &quot;str_split_fixed&quot; &quot;str_squish&quot;     
+## [37] &quot;str_starts&quot;      &quot;str_sub&quot;         &quot;str_sub&lt;-&quot;       &quot;str_subset&quot;     
+## [41] &quot;str_to_lower&quot;    &quot;str_to_sentence&quot; &quot;str_to_title&quot;    &quot;str_to_upper&quot;   
+## [45] &quot;str_trim&quot;        &quot;str_trunc&quot;       &quot;str_view&quot;        &quot;str_view_all&quot;   
+## [49] &quot;str_which&quot;       &quot;str_wrap&quot;        &quot;word&quot;            &quot;words&quot;</code></pre>
+</div>
+</div>
+<div id="manipulating-tidy-data" class="section level2">
+<h2>Manipulating Tidy Data</h2>
+<p>Select, transform, summarize</p>
+<div id="group-by-and-summarize" class="section level3">
+<h3>Group by and Summarize</h3>
+<pre class="r"><code>library(gapminder)
+glimpse(gapminder)</code></pre>
+<pre><code>## Rows: 1,704
+## Columns: 6
+## $ country   &lt;fct&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, …
+## $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …
+## $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …
+## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…
+## $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…
+## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …</code></pre>
+<pre class="r"><code>gapminder %&gt;%
+  filter(year &gt; 1960) %&gt;%
+  group_by(continent) %&gt;%
+  summarise(avg_life_exp = mean(lifeExp)) %&gt;%
+  arrange(desc(avg_life_exp))</code></pre>
+<pre><code>## # A tibble: 5 x 2
+##   continent avg_life_exp
+##   &lt;fct&gt;            &lt;dbl&gt;
+## 1 Oceania           75.2
+## 2 Europe            73.2
+## 3 Americas          66.7
+## 4 Asia              62.5
+## 5 Africa            50.6</code></pre>
+</div>
+</div>
+<div id="minimizing-repetition" class="section level2">
+<h2>Minimizing Repetition</h2>
+<div id="packagepurrr" class="section level3">
+<h3><code>package:purrr</code></h3>
+<p><code>purrr</code>: part of the tidyverse, the basic function <code>map()</code> is very similar to the <code>apply</code> family of functions</p>
+<ul>
+<li>The goal is to minimize repetition, while maximizing replication</li>
+<li>Keep your code D.R.Y.</li>
+</ul>
+<p>The basic arguments for <code>map()</code> are:</p>
+<ul>
+<li><code>.x</code>: A list or vector</li>
+<li><code>.f</code>: A function or formula</li>
+</ul>
+<pre class="r"><code>df &lt;- tibble(
+  a = rnorm(10),
+  b = rnorm(10),
+  c = rnorm(10),
+  d = rnorm(10)
+)
+# notice you do not need the () after the function as you would if executing from consol
+map(df, mean)</code></pre>
+<pre><code>## $a
+## [1] 0.3805331
+## 
+## $b
+## [1] -0.3561957
+## 
+## $c
+## [1] -0.3041442
+## 
+## $d
+## [1] 0.09807487</code></pre>
+<pre class="r"><code># can pipe it an input to make the process even easier
+df %&gt;% map(mean)</code></pre>
+<pre><code>## $a
+## [1] 0.3805331
+## 
+## $b
+## [1] -0.3561957
+## 
+## $c
+## [1] -0.3041442
+## 
+## $d
+## [1] 0.09807487</code></pre>
+<p>You may have noticed that the output format is not necessarily in the format that we might expect. The <code>map()</code> function always outputs a list.</p>
+<p>There are helper functions that are explicit about the return types of a map function: <code>map_lgl()</code>, <code>map_int()</code>, <code>map_dbl()</code> and <code>map_chr()</code> return an atomic vector of the indicated type (or die trying).</p>
+<pre class="r"><code># Should return a numerical vector rather than a list
+map_dbl(df, mean)</code></pre>
+<pre><code>##           a           b           c           d 
+##  0.38053307 -0.35619568 -0.30414417  0.09807487</code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
