@@ -269,6 +269,10 @@ Participants should know:
 - some LaTex or mathjax
 - how to search for additional information
 
+#### Session Notes
+
+[Click here for the session notes](bootcamp-r-series-050-documents.html)
+
 <a href='#schedule' class='top'>back to top</a>
 
 ## Acknowledgements

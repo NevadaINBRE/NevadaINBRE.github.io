@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Creating Polished Documents</title>
+
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Nevada INBRE DSCore</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Upcoming</li>
+    <li>
+      <a href="bootcamp-r-series.html">R for Data Science</a>
+    </li>
+    <li class="dropdown-header">Previous</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R</li>
+    <li class="dropdown-header">Julia</li>
+    <li class="dropdown-header">Python</li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">
+    <span class="fa fa-address-book"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="https://github.com/NevadaINBRE">
+    <span class="fa fa-code-branch"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Creating Polished Documents</h1>
+
+</div>
+
+
+<p>Today’s workshop was mostly a high level overview of using the <code>ggplot2</code> and <code>kableExtra</code> packages to produce clean looking graphs and tables. These tables can then be rendered within an R Markdown document and shared in various formats.</p>
+<div id="professional-plots-using-ggplot2" class="section level2">
+<h2>Professional Plots using ggplot2</h2>
+<p>The <code>ggplot2</code> package is a graphing library based on the <em>grammar of graphics</em> (gg) and part of the <code>tidyverse</code> collection of packages. The grammar of graphics is a way to build up a plot by mapping variable to a <em>aesthetics</em> such as points, lines, colors, facets, scales, etc.</p>
+<p>Here is one example of incrementally building a plot:</p>
+<pre class="r"><code># Creates an empty plot
+iris %&gt;%
+  ggplot()</code></pre>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code># Mapping variables to the x and y axes
+iris %&gt;%
+  ggplot(aes(x = Petal.Length, y = Petal.Width))</code></pre>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<pre class="r"><code># Adding a geometry layer (geom_)
+iris %&gt;%
+  ggplot(aes(x = Petal.Length, y = Petal.Width)) +
+  geom_point()</code></pre>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<pre class="r"><code># Mapping the species variable to the point color
+iris %&gt;%
+  ggplot(aes(x = Petal.Length, y = Petal.Width, color = Species)) +
+  geom_point()</code></pre>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-4.png" width="672" /></p>
+<pre class="r"><code># Adding in extras to make a professional-looking graphic
+iris %&gt;%
+  ggplot(aes(x = Petal.Length, y = Petal.Width, color = Species)) +
+  geom_point(size = 3) +
+  scale_color_viridis_d() +
+  labs(title = &quot;Iris Flower Species&quot;,
+       subtitle = &quot;Petal width v. length&quot;,
+       x = &quot;Length (cm)&quot;,
+       y = &quot;Width (cm)&quot;) +
+  theme_bw()</code></pre>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-5.png" width="672" /></p>
+<div id="list-of-resources" class="section level3">
+<h3>List of Resources</h3>
+<p>There is so much that can be done with <code>ggplot2</code> and supporting libraries. Here are some resources to get started and extend to your graphing needs:</p>
+<ul>
+<li><a href="https://r4ds.had.co.nz/data-visualisation.html">R for data science</a> chapter on visualization</li>
+<li><a href="https://www.r-graph-gallery.com/">The R Graph Gallery</a></li>
+<li><a href="https://github.com/sinhrks/ggfortify">ggfortify</a> to “to visualize statistical result of popular R packages”</li>
+<li><a href="http://ggobi.github.io/ggally/">GGally</a> “extends ggplot2 by adding several functions to reduce the complexity of combining geoms with transformed data”</li>
+<li><a href="https://ggforce.data-imaginist.com/">ggforce</a> “is a package aimed at providing missing functionality to ggplot2”</li>
+<li><a href="https://patchwork.data-imaginist.com/">patchwork</a> “to make it ridiculously simple to combine separate ggplots into the same graphic”</li>
+<li><a href="https://gganimate.com/">gganimate</a> “to include the description of animation”</li>
+</ul>
+</div>
+</div>
+<div id="pretty-looking-tables-with-kable" class="section level2">
+<h2>Pretty Looking Tables with <code>kable</code></h2>
+<p>Printing a data frame to the screen can be ugly and uninspiring:</p>
+<pre class="r"><code>gapminder %&gt;%
+  head(10)</code></pre>
+<pre><code>## # A tibble: 10 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.</code></pre>
+<p>We can prepare this same data frame for publication by passing it through the <code>kable</code> function (provided by <code>knitr</code> and rexported by <code>kableExtra</code>) and the <code>kable_styling</code> function (provided by <code>kableExtra</code>):</p>
+<pre class="r"><code>gapminder %&gt;%
+  head(10) %&gt;%
+  kable(digits = 2) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))</code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:left;">
+continent
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+lifeExp
+</th>
+<th style="text-align:right;">
+pop
+</th>
+<th style="text-align:right;">
+gdpPercap
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1952
+</td>
+<td style="text-align:right;">
+28.80
+</td>
+<td style="text-align:right;">
+8425333
+</td>
+<td style="text-align:right;">
+779.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1957
+</td>
+<td style="text-align:right;">
+30.33
+</td>
+<td style="text-align:right;">
+9240934
+</td>
+<td style="text-align:right;">
+820.85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1962
+</td>
+<td style="text-align:right;">
+32.00
+</td>
+<td style="text-align:right;">
+10267083
+</td>
+<td style="text-align:right;">
+853.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1967
+</td>
+<td style="text-align:right;">
+34.02
+</td>
+<td style="text-align:right;">
+11537966
+</td>
+<td style="text-align:right;">
+836.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1972
+</td>
+<td style="text-align:right;">
+36.09
+</td>
+<td style="text-align:right;">
+13079460
+</td>
+<td style="text-align:right;">
+739.98
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1977
+</td>
+<td style="text-align:right;">
+38.44
+</td>
+<td style="text-align:right;">
+14880372
+</td>
+<td style="text-align:right;">
+786.11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1982
+</td>
+<td style="text-align:right;">
+39.85
+</td>
+<td style="text-align:right;">
+12881816
+</td>
+<td style="text-align:right;">
+978.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1987
+</td>
+<td style="text-align:right;">
+40.82
+</td>
+<td style="text-align:right;">
+13867957
+</td>
+<td style="text-align:right;">
+852.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:right;">
+41.67
+</td>
+<td style="text-align:right;">
+16317921
+</td>
+<td style="text-align:right;">
+649.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+1997
+</td>
+<td style="text-align:right;">
+41.76
+</td>
+<td style="text-align:right;">
+22227415
+</td>
+<td style="text-align:right;">
+635.34
+</td>
+</tr>
+</tbody>
+</table>
+<p>Here’s an example that would be good for PDF output:</p>
+<pre class="r"><code># NOT RUN
+gapminder %&gt;%
+  filter(year &gt; 1990) %&gt;%
+  rename(Continent = continent, Year = year) %&gt;%
+  group_by(Continent, Year) %&gt;%
+  summarise(`Average Life Expectancy` = mean(lifeExp)) %&gt;%
+  kable(format = &quot;latex&quot;, digits = 2) %&gt;%
+  kable_styling(latex_options = c(&quot;striped&quot;, &quot;hold_position&quot;)) %&gt;%
+  collapse_rows(columns = c(1, 2))</code></pre>
+<div id="list-of-resources-1" class="section level3">
+<h3>List of Resources</h3>
+<ul>
+<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">R Markdown cookbook</a> chapter on kable</li>
+<li><a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra vignette</a></li>
+</ul>
+</div>
+</div>
+<div id="all-the-documents" class="section level2">
+<h2>All the Documents</h2>
+<p>Finally your pretty looking graphs and tables need a place to be proudly displayed. R Markdown is the solution! R Markdown is a document format the can mix R code and Markdown text formatting, as well as support for a few extra features such as directly embedding HTML, LaTeX, and Mathjax (for math typesetting).</p>
+<p>The use cases for R Markdown are endless, and it would be impossible and an exercise in futility to try and go over all the possibilities. Instead we provide a list of the possible documents that can be created with R Markdown, and the resources for getting more help.</p>
+<div id="document-formats" class="section level3">
+<h3>Document Formats</h3>
+<ul>
+<li>Simple HTML page</li>
+<li>PDF Document</li>
+<li>Slide shows via <a href="">ioslides</a></li>
+<li>HTML Book via <a href="https://bookdown.org/home/">bookdown</a></li>
+<li>Posters via <a href="https://github.com/brentthorne/posterdown">posterdown</a></li>
+<li>Common journal article templates via <a href="https://github.com/rstudio/rticles">rticles</a></li>
+<li>Blog format websites via <a href="https://bookdown.org/yihui/blogdown/">blogdown</a></li>
+<li>Beautiful package documentation websites via <a href="https://pkgdown.r-lib.org/">pkgdown</a></li>
+</ul>
+</div>
+<div id="list-of-resources-2" class="section level3">
+<h3>List of Resources</h3>
+<ul>
+<li><a href="https://yihui.org/knitr/options/">knitr options</a>
+<ul>
+<li>An overview of all the knitr chunk options</li>
+</ul></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a>
+<ul>
+<li>A detailed reference on the built-in R Markdown output formats of the rmarkdown package, as well as several other extension packages</li>
+</ul></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown Cookbook</a>
+<ul>
+<li>Provides more practical and relatively short examples to show the interesting and useful usage of R Markdown</li>
+</ul></li>
+<li><a href="https://bookdown.org/yihui/bookdown/">Authoring Books and Technical Documents with R Markdown</a>
+<ul>
+<li>The general guide to working with bookdown</li>
+</ul></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown Reference Guide</a></li>
+<li><a href="https://rmarkdown.rstudio.com/index.html">R Markdown from RStudio</a></li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
