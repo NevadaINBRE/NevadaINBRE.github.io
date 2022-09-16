@@ -10,7 +10,7 @@ navbar:
     - text: "Workshops"
       menu:
         - text: "Upcoming"
-        - text: "Supervised Machine Learning"
+        - text: "Python for ML"
           href: bootcamp-supervised-ml-juli.html
         - text: "Previous"
         - text: "R for Data Science"
