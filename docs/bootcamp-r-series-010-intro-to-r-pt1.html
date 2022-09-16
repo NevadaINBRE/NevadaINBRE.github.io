@@ -13,8 +13,8 @@
 
 <title>Introduction to R: Part One</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -62,6 +62,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -82,6 +83,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +143,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +242,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -251,7 +259,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Workshops
      
     <span class="caret"></span>
@@ -259,13 +267,16 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
     <li>
-      <a href="bootcamp-r-series.html">R for Data Science</a>
+      <a href="bootcamp-supervised-ml-juli.html">Supervised Machine Learning</a>
     </li>
     <li class="dropdown-header">Previous</li>
+    <li>
+      <a href="bootcamp-r-series.html">R for Data Science</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -305,16 +316,26 @@ $(document).ready(function () {
 </div>
 
 
-<p>To learn everything there is to know about R, <a href="https://cran.r-project.org/doc/manuals/R-lang.html">read the docs</a>. To learn just enough to be dangerous, follow along :)</p>
+<p>To learn everything there is to know about R, <a
+href="https://cran.r-project.org/doc/manuals/R-lang.html">read the
+docs</a>. To learn just enough to be dangerous, follow along :)</p>
 <div id="introductions-and-overview" class="section level2">
 <h2>Introductions and Overview</h2>
-<p>This workshop serves as a gentle introduction to programming with R, with a focus on application to data science and research. We will cover the basics of R, such as using the command line as a calculator, working with variables, simple data structures, and data types. We will show how to load data sets into R, and how to summarize data with statistics and plots. At the end we will also discuss some considerations when choosing R over other programming languages like Python or SPSS.</p>
+<p>This workshop serves as a gentle introduction to programming with R,
+with a focus on application to data science and research. We will cover
+the basics of R, such as using the command line as a calculator, working
+with variables, simple data structures, and data types. We will show how
+to load data sets into R, and how to summarize data with statistics and
+plots. At the end we will also discuss some considerations when choosing
+R over other programming languages like Python or SPSS.</p>
 </div>
 <div id="opening-the-r-command-line" class="section level2">
 <h2>Opening the R command line</h2>
 <ul>
-<li>The R command line interface (CLI) is a simple interface for entering R commands</li>
-<li>A <em>command</em> is a way of giving the computer some information and having it perform a task</li>
+<li>The R command line interface (CLI) is a simple interface for
+entering R commands</li>
+<li>A <em>command</em> is a way of giving the computer some information
+and having it perform a task</li>
 </ul>
 <div id="open-in-windows" class="section level3">
 <h3>Open in Windows</h3>
@@ -398,7 +419,8 @@ $(document).ready(function () {
 </div>
 <div id="three-basic-types-of-numbers" class="section level3">
 <h3>Three basic types of numbers</h3>
-<p>I say there are three types of numbers in R because R has different ways of working with different numbers</p>
+<p>I say there are three types of numbers in R because R has different
+ways of working with different numbers</p>
 <table>
 <colgroup>
 <col width="11%" />
@@ -420,17 +442,22 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td align="left">Decimal</td>
-<td align="left">Any number, positive or negative, with a fractional part</td>
+<td align="left">Any number, positive or negative, with a fractional
+part</td>
 <td align="left"><code>3.1, pi, 4.0</code></td>
 </tr>
 <tr class="odd">
 <td align="left">Complex</td>
-<td align="left">A real decimal number with an imaginary decimal part</td>
+<td align="left">A real decimal number with an imaginary decimal
+part</td>
 <td align="left"><code>-2.1+5i</code></td>
 </tr>
 </tbody>
 </table>
-<p>Notice that the integers have an <code>L</code> at the end. This is to explicitly tell R to represent a number as a [<a href="https://en.wikipedia.org/wiki/Integer_(computer_science)#Long_integer">long</a>] integer, rather than a double (decimal) number.</p>
+<p>Notice that the integers have an <code>L</code> at the end. This is
+to explicitly tell R to represent a number as a [<a
+href="https://en.wikipedia.org/wiki/Integer_(computer_science)#Long_integer">long</a>]
+integer, rather than a double (decimal) number.</p>
 <pre class="r"><code>is.integer(4)  # FALSE</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <pre class="r"><code>is.double(4)   # TRUE</code></pre>
@@ -440,8 +467,14 @@ $(document).ready(function () {
 </div>
 <div id="logical-operators" class="section level3">
 <h3>Logical operators</h3>
-<p>Logical operators test for a condition. They ask a question, and the answer is either <code>TRUE</code> or <code>FALSE</code>.</p>
+<p>Logical operators test for a condition. They ask a question, and the
+answer is either <code>TRUE</code> or <code>FALSE</code>.</p>
 <table>
+<colgroup>
+<col width="11%" />
+<col width="74%" />
+<col width="15%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Operator</th>
@@ -488,7 +521,8 @@ $(document).ready(function () {
 <tr class="even">
 <td align="left"><code>&amp;&amp;</code></td>
 <td align="left">and (short-circuiting)</td>
-<td align="left"><code>(5 &lt; 7) &amp;&amp; (7 &lt; 10) -&gt; TRUE</code></td>
+<td
+align="left"><code>(5 &lt; 7) &amp;&amp; (7 &lt; 10) -&gt; TRUE</code></td>
 </tr>
 <tr class="odd">
 <td align="left">`</td>
@@ -498,7 +532,8 @@ $(document).ready(function () {
 <tr class="even">
 <td align="left"><code>&amp;</code></td>
 <td align="left">and (vectorized)</td>
-<td align="left"><code>TRUE &amp; 2 &gt; c(1,2,3) -&gt; c(FALSE, FALSE, TRUE)</code></td>
+<td
+align="left"><code>TRUE &amp; 2 &gt; c(1,2,3) -&gt; c(FALSE, FALSE, TRUE)</code></td>
 </tr>
 <tr class="odd">
 <td align="left">`</td>
@@ -541,27 +576,32 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td align="left"><code>log</code></td>
-<td align="left">logarithm of a number (base is the natural number <span class="math inline">\(e\)</span> by default)</td>
+<td align="left">logarithm of a number (base is the natural number <span
+class="math inline">\(e\)</span> by default)</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>log10</code></td>
-<td align="left">base 10 logarithm of a number (see also <code>log2</code>, <code>log1p</code>, <code>logb</code>)</td>
+<td align="left">base 10 logarithm of a number (see also
+<code>log2</code>, <code>log1p</code>, <code>logb</code>)</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="left"><code>sin</code>, <code>cos</code>, <code>tan</code></td>
+<td align="left"><code>sin</code>, <code>cos</code>,
+<code>tan</code></td>
 <td align="left">basic trigonometric functions (radians by default)</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>asin</code>, <code>acos</code>, <code>atan</code></td>
+<td align="left"><code>asin</code>, <code>acos</code>,
+<code>atan</code></td>
 <td align="left">inverse trigonometric functions</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left"><code>sinh</code>, <code>asinh</code>, etc.</td>
-<td align="left">hyperbolic and inverse hyperbolic trigonometric functions</td>
+<td align="left">hyperbolic and inverse hyperbolic trigonometric
+functions</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
@@ -576,17 +616,20 @@ $(document).ready(function () {
 </tr>
 <tr class="odd">
 <td align="left"><code>round</code></td>
-<td align="left">rounds a number to a specified number of digits (round to even by default)</td>
+<td align="left">rounds a number to a specified number of digits (round
+to even by default)</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left"><code>trunc</code></td>
 <td align="left">strips the decimal part from a number</td>
-<td align="left"><code>trunc(2.1) -&gt; 2</code>, <code>trunc(2.9) -&gt; 2</code></td>
+<td align="left"><code>trunc(2.1) -&gt; 2</code>,
+<code>trunc(2.9) -&gt; 2</code></td>
 </tr>
 </tbody>
 </table>
-<p>Also note, all <em>infix</em> operations can be used with <em>prefix</em> notation:</p>
+<p>Also note, all <em>infix</em> operations can be used with
+<em>prefix</em> notation:</p>
 <pre class="r"><code>3 + 4 # infix</code></pre>
 <pre><code>## [1] 7</code></pre>
 <pre class="r"><code>`+`(3, 4) # prefix</code></pre>
@@ -595,6 +638,11 @@ $(document).ready(function () {
 <div id="built-in-constants-and-other-values" class="section level3">
 <h3>Built-in constants and other values</h3>
 <table>
+<colgroup>
+<col width="13%" />
+<col width="65%" />
+<col width="20%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Keyword</th>
@@ -615,7 +663,8 @@ $(document).ready(function () {
 </tr>
 <tr class="odd">
 <td align="left"><code>NaN</code></td>
-<td align="left"><strong>N</strong>ot <strong>a</strong> <strong>N</strong>umber</td>
+<td align="left"><strong>N</strong>ot <strong>a</strong>
+<strong>N</strong>umber</td>
 <td align="left"><code>0 / 0 -&gt; NaN</code></td>
 </tr>
 <tr class="even">
@@ -630,12 +679,17 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td align="left"><code>pi</code></td>
-<td align="left">The ratio of a circle’s circumference to its diameter</td>
+<td align="left">The ratio of a circle’s circumference to its
+diameter</td>
 <td align="left"><code>3.14159...</code></td>
 </tr>
 </tbody>
 </table>
-<p>The <em>Institute of Electrical and Electronics Engineers</em> (IEEE, “eye-triple-ee”) sets many of the standards for computer protocol, including how <em>floating point</em> numbers behave. A floating point number is the computer representation of a real number, but due to finite precision, there are some inconsistencies:</p>
+<p>The <em>Institute of Electrical and Electronics Engineers</em> (IEEE,
+“eye-triple-ee”) sets many of the standards for computer protocol,
+including how <em>floating point</em> numbers behave. A floating point
+number is the computer representation of a real number, but due to
+finite precision, there are some inconsistencies:</p>
 <pre class="r"><code>0.3 - 0.1 # should be 0.2</code></pre>
 <pre><code>## [1] 0.2</code></pre>
 <pre class="r"><code>(0.3 - 0.1) == 0.2 # should be true</code></pre>
@@ -647,14 +701,18 @@ print(0.3-0.1, digits = 20)</code></pre>
 all.equal(0.3 - 0.1, 0.2)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <ul>
-<li>R uses 64 bit (double) precision for floating point numbers and 32 bit <em>signed</em> integers</li>
-<li><a href="https://en.wikipedia.org/wiki/IEEE_754">https://en.wikipedia.org/wiki/IEEE_754</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic">https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic</a></li>
+<li>R uses 64 bit (double) precision for floating point numbers and 32
+bit <em>signed</em> integers</li>
+<li><a
+href="https://en.wikipedia.org/wiki/IEEE_754">https://en.wikipedia.org/wiki/IEEE_754</a></li>
+<li><a
+href="https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic">https://en.wikipedia.org/wiki/Division_by_zero#Computer_arithmetic</a></li>
 </ul>
 </div>
 <div id="practice" class="section level3">
 <h3>Practice</h3>
-<p>The quadratic equation is used to find the roots of quadratic (2nd degree) polynomials. For a quadratic polynomial given by</p>
+<p>The quadratic equation is used to find the roots of quadratic (2nd
+degree) polynomials. For a quadratic polynomial given by</p>
 <p><span class="math display">\[
 ax^2 + bx + c
 \]</span></p>
@@ -662,7 +720,8 @@ ax^2 + bx + c
 <p><span class="math display">\[
 x_{1,2} = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}
 \]</span></p>
-<p>Find the roots of the following equations using the quadratic equation:</p>
+<p>Find the roots of the following equations using the quadratic
+equation:</p>
 <ol style="list-style-type: lower-alpha">
 <li><span class="math inline">\(y = 2x^2 + 2x - 24\)</span></li>
 <li><span class="math inline">\(y = 4x^2 + 9\)</span></li>
@@ -672,7 +731,8 @@ x_{1,2} = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}
 </div>
 <div id="accessing-the-built-in-docs" class="section level2">
 <h2>Accessing the built-in docs</h2>
-<p>Most if not all functions in R have useful help documentation that can be accessed directly within the R console.</p>
+<p>Most if not all functions in R have useful help documentation that
+can be accessed directly within the R console.</p>
 <pre class="r"><code>&gt; help(sum)
 
 &gt; ?sum
@@ -682,22 +742,26 @@ x_{1,2} = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}
 <div id="working-with-variables" class="section level2">
 <h2>Working with variables</h2>
 <ul>
-<li>Let you store a number or other object in the <em>environment</em> list</li>
+<li>Let you store a number or other object in the <em>environment</em>
+list</li>
 <li>Similar to “memory recall” of a calculator, but better</li>
 </ul>
-<p>To create a new variable, we can use <em>left</em> or <em>right</em> assignment:</p>
+<p>To create a new variable, we can use <em>left</em> or <em>right</em>
+assignment:</p>
 <pre class="r"><code># left assignment
 x &lt;- 10
 # right assignment
 &quot;some string&quot; -&gt; y</code></pre>
 <ul>
-<li>You can use an “equal sign” for assignment, but it is discouraged</li>
+<li>You can use an “equal sign” for assignment, but it is
+discouraged</li>
 </ul>
 <p>To list all variables in the session (environment), do:</p>
 <pre class="r"><code># list all variables in the environment
 ls()</code></pre>
 <pre><code>## [1] &quot;x&quot; &quot;y&quot;</code></pre>
-<p>We can see what is stored in those variables by typing them into the console:</p>
+<p>We can see what is stored in those variables by typing them into the
+console:</p>
 <pre class="r"><code># show what is stored in the variables
 x</code></pre>
 <pre><code>## [1] 10</code></pre>
@@ -705,15 +769,21 @@ x</code></pre>
 <pre><code>## [1] &quot;some string&quot;</code></pre>
 <p><strong>Good variable naming conventions (in R)</strong></p>
 <ul>
-<li>See the <a href="https://style.tidyverse.org/syntax.html#object-names">tidyverse style guide</a> for a full rundown of object naming</li>
+<li>See the <a
+href="https://style.tidyverse.org/syntax.html#object-names">tidyverse
+style guide</a> for a full rundown of object naming</li>
 <li>let your names be meaningful</li>
 <li>let your names be consistent</li>
-<li>avoid using existing function names (e.g. <code>mean</code>, <code>c</code>) and objects (e.g. <code>T</code>, <code>F</code>, <code>pi</code>)
+<li>avoid using existing function names (e.g. <code>mean</code>,
+<code>c</code>) and objects (e.g. <code>T</code>, <code>F</code>,
+<code>pi</code>)
 <ul>
-<li>List of reserved words in R: <a href="https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words">https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words</a></li>
+<li>List of reserved words in R: <a
+href="https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words">https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words</a></li>
 </ul></li>
 <li>avoid using dots</li>
-<li>use the existing conventions of whatever project you are contributing to</li>
+<li>use the existing conventions of whatever project you are
+contributing to</li>
 </ul>
 </div>
 <div id="basic-data-types-in-r" class="section level2">
@@ -740,7 +810,8 @@ typeof(&quot;hello world&quot;)</code></pre>
 <h2>Working with different data types</h2>
 <p><em>Coercion and conversion</em></p>
 <ul>
-<li>R will always coerce (convert) an object to the least restrictive type</li>
+<li>R will always coerce (convert) an object to the least restrictive
+type</li>
 </ul>
 <pre class="r"><code>typeof(TRUE + 3L)</code></pre>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
@@ -763,7 +834,9 @@ ceiling(pi)</code></pre>
 <pre><code>## [1] 4</code></pre>
 <pre class="r"><code>round(pi)</code></pre>
 <pre><code>## [1] 3</code></pre>
-<p>How can we ensure the output type of an operation? Most of the time it’s okay to let R worry about the <em>return</em> types. In other situations, there’s the <code>as</code> command:</p>
+<p>How can we ensure the output type of an operation? Most of the time
+it’s okay to let R worry about the <em>return</em> types. In other
+situations, there’s the <code>as</code> command:</p>
 <pre class="r"><code>as.integer(4.0)</code></pre>
 <pre><code>## [1] 4</code></pre>
 <pre class="r"><code>as.logical(4L) # any non-zero value is true</code></pre>
@@ -772,12 +845,14 @@ ceiling(pi)</code></pre>
 <pre><code>## [1] 4+0i</code></pre>
 <pre class="r"><code>as.double(&quot;3.14159&quot;)</code></pre>
 <pre><code>## [1] 3.14159</code></pre>
-<p>Careful, as not every value can be coerced to every other type, or no robust checks will be performed to ensure validity of a conversion:</p>
+<p>Careful, as not every value can be coerced to every other type, or no
+robust checks will be performed to ensure validity of a conversion:</p>
 <pre class="r"><code># converts to an integer via truncation
 as.integer(4.5)</code></pre>
 <pre><code>## [1] 4</code></pre>
 <p><em>Testing for types</em></p>
-<p>We can use the <code>is</code> command to ask R what the type of an object is:</p>
+<p>We can use the <code>is</code> command to ask R what the type of an
+object is:</p>
 <pre class="r"><code>is.integer(4L)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>is.double(3+2i)</code></pre>
@@ -799,32 +874,36 @@ is.integer(x)</code></pre>
 </div>
 <div id="special-data-type-factors" class="section level2">
 <h2>Special data type: Factors</h2>
-<p>A factor <em>looks</em> like a string, but <em>acts</em> like an integer (most of the time).</p>
+<p>A factor <em>looks</em> like a string, but <em>acts</em> like an
+integer (most of the time).</p>
 <pre class="r"><code># most often used for categorical observations
 pets &lt;- c(&quot;cat&quot;, &quot;dog&quot;, &quot;lizard&quot;, &quot;raccoon&quot;)
 (pet_obs &lt;- sample(pets, 20, TRUE))</code></pre>
-<pre><code>##  [1] &quot;raccoon&quot; &quot;raccoon&quot; &quot;dog&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;cat&quot;     &quot;cat&quot;    
-##  [8] &quot;dog&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;dog&quot;     &quot;cat&quot;     &quot;cat&quot;     &quot;lizard&quot; 
-## [15] &quot;cat&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;cat&quot;     &quot;lizard&quot;  &quot;raccoon&quot;</code></pre>
+<pre><code>##  [1] &quot;lizard&quot;  &quot;raccoon&quot; &quot;raccoon&quot; &quot;cat&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;raccoon&quot;
+##  [8] &quot;dog&quot;     &quot;raccoon&quot; &quot;lizard&quot;  &quot;raccoon&quot; &quot;lizard&quot;  &quot;dog&quot;     &quot;cat&quot;    
+## [15] &quot;cat&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;dog&quot;</code></pre>
 <pre class="r"><code># Turn the character vector into a set of factors
 pet_fct &lt;- factor(pet_obs)
 pet_fct</code></pre>
-<pre><code>##  [1] raccoon raccoon dog     dog     raccoon cat     cat     dog     dog    
-## [10] raccoon dog     cat     cat     lizard  cat     raccoon raccoon cat    
-## [19] lizard  raccoon
+<pre><code>##  [1] lizard  raccoon raccoon cat     dog     raccoon raccoon dog     raccoon
+## [10] lizard  raccoon lizard  dog     cat     cat     cat     dog     dog    
+## [19] cat     dog    
 ## Levels: cat dog lizard raccoon</code></pre>
 <pre class="r"><code># can be converted to an integer vector
 as.integer(pet_fct)</code></pre>
-<pre><code>##  [1] 4 4 2 2 4 1 1 2 2 4 2 1 1 3 1 4 4 1 3 4</code></pre>
+<pre><code>##  [1] 3 4 4 1 2 4 4 2 4 3 4 3 2 1 1 1 2 2 1 2</code></pre>
 <pre class="r"><code># can be converted to a character vector
 as.character(pet_fct)</code></pre>
-<pre><code>##  [1] &quot;raccoon&quot; &quot;raccoon&quot; &quot;dog&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;cat&quot;     &quot;cat&quot;    
-##  [8] &quot;dog&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;dog&quot;     &quot;cat&quot;     &quot;cat&quot;     &quot;lizard&quot; 
-## [15] &quot;cat&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;cat&quot;     &quot;lizard&quot;  &quot;raccoon&quot;</code></pre>
+<pre><code>##  [1] &quot;lizard&quot;  &quot;raccoon&quot; &quot;raccoon&quot; &quot;cat&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;raccoon&quot;
+##  [8] &quot;dog&quot;     &quot;raccoon&quot; &quot;lizard&quot;  &quot;raccoon&quot; &quot;lizard&quot;  &quot;dog&quot;     &quot;cat&quot;    
+## [15] &quot;cat&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;dog&quot;</code></pre>
 </div>
-<div id="overview-of-objects-and-data-structures" class="section level2">
+<div id="overview-of-objects-and-data-structures"
+class="section level2">
 <h2>Overview of objects and data structures</h2>
-<p>For a full overview, see the <a href="https://cran.r-project.org/doc/manuals/R-lang.html#Basic-types">R documentation on basic types</a>.</p>
+<p>For a full overview, see the <a
+href="https://cran.r-project.org/doc/manuals/R-lang.html#Basic-types">R
+documentation on basic types</a>.</p>
 <ul>
 <li>Vectors</li>
 <li>Matrices and Arrays</li>
@@ -836,7 +915,8 @@ as.character(pet_fct)</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="working-with-vectors-matrices-and-arrays" class="section level2">
+<div id="working-with-vectors-matrices-and-arrays"
+class="section level2">
 <h2>Working with vectors, matrices, and arrays</h2>
 <div id="vectors" class="section level3">
 <h3>Vectors</h3>
@@ -844,7 +924,8 @@ as.character(pet_fct)</code></pre>
 <li>a <em>vector</em> is a collection of <em>same-type</em> objects</li>
 <li>aka an <em>atomic</em> vector</li>
 <li>all elements coerced to the least restrictive type</li>
-<li>typically created using the <em>concatenate</em> command, <code>c()</code></li>
+<li>typically created using the <em>concatenate</em> command,
+<code>c()</code></li>
 </ul>
 <pre class="r"><code># a few vectors
 c(4.5, 2, 3.8)
@@ -858,7 +939,8 @@ LETTERS</code></pre>
 ## [1] 0.1 0.5 0.9
 ##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot;
 ## [20] &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
-<p><strong>Question:</strong> What is meant by “least restrictive type”?</p>
+<p><strong>Question:</strong> What is meant by “least restrictive
+type”?</p>
 <pre class="r"><code># mix of integer and logical
 c(TRUE, 5L, -2L, FALSE)</code></pre>
 <pre><code>## [1]  1  5 -2  0</code></pre>
@@ -871,7 +953,10 @@ c(pi, -2+7i, 6.9, -3.5i)</code></pre>
 <pre class="r"><code># mix of double and character
 c(&quot;asdf&quot;, 6.12, pi, &quot;3&quot;)</code></pre>
 <pre><code>## [1] &quot;asdf&quot;             &quot;6.12&quot;             &quot;3.14159265358979&quot; &quot;3&quot;</code></pre>
-<p>We can access the elements of a vector by using brackets: <code>[]</code>. Note that R uses “one-based indexing”, meaning that arrays start at <span class="math inline">\(1\)</span>, not <span class="math inline">\(0\)</span>.</p>
+<p>We can access the elements of a vector by using brackets:
+<code>[]</code>. Note that R uses “one-based indexing”, meaning that
+arrays start at <span class="math inline">\(1\)</span>, not <span
+class="math inline">\(0\)</span>.</p>
 <pre class="r"><code># accessing a single element from `letters`
 letters[4]</code></pre>
 <pre><code>## [1] &quot;d&quot;</code></pre>
@@ -891,7 +976,8 @@ tail(letters, n = 1)</code></pre>
 <div id="matrices" class="section level3">
 <h3>Matrices</h3>
 <ul>
-<li>A matrix in R is a vector with a <code>dim</code> <em>attribute</em></li>
+<li>A matrix in R is a vector with a <code>dim</code>
+<em>attribute</em></li>
 <li>It is stored in memory the same way as a vector is</li>
 </ul>
 <pre class="r"><code># creating a matrix using the `matrix()` function
@@ -908,7 +994,8 @@ matrix(&quot;m&quot;, nrow = 5, ncol = 2)</code></pre>
 ## [3,] &quot;m&quot;  &quot;m&quot; 
 ## [4,] &quot;m&quot;  &quot;m&quot; 
 ## [5,] &quot;m&quot;  &quot;m&quot;</code></pre>
-<p>Matrices (and vectors and arrays) are stored in <em>column-major order</em></p>
+<p>Matrices (and vectors and arrays) are stored in <em>column-major
+order</em></p>
 <pre class="r"><code># default: fills in down each column
 matrix(1:12, nrow = 3)</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
@@ -921,7 +1008,8 @@ matrix(1:12, nrow = 3, byrow = TRUE)</code></pre>
 ## [1,]    1    2    3    4
 ## [2,]    5    6    7    8
 ## [3,]    9   10   11   12</code></pre>
-<p>Elements of a matrix can either be accessed with row-column pairs, or with <em>linear indexing</em></p>
+<p>Elements of a matrix can either be accessed with row-column pairs, or
+with <em>linear indexing</em></p>
 <pre class="r"><code># create a 3x5 matrix
 (M &lt;- matrix(1:15, nrow = 3))</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
@@ -934,13 +1022,16 @@ M[2, 4]</code></pre>
 <pre class="r"><code># get the 8th element in memory
 M[8]</code></pre>
 <pre><code>## [1] 8</code></pre>
-<p>You can create subsets of a matrix using a pair of vectors for indices.</p>
+<p>You can create subsets of a matrix using a pair of vectors for
+indices.</p>
 <pre class="r"><code># get rows 1 and 3, and columns 2 and 4
 M[c(1, 3), c(2, 4)]</code></pre>
 <pre><code>##      [,1] [,2]
 ## [1,]    4   10
 ## [2,]    6   12</code></pre>
-<p>A matrix can be turned back into a vector by removing its dimension attribute. In the same way, a matrix can be reshaped, or a vector can be turned into a matrix.</p>
+<p>A matrix can be turned back into a vector by removing its dimension
+attribute. In the same way, a matrix can be reshaped, or a vector can be
+turned into a matrix.</p>
 <pre class="r"><code># show the attributes of the matrix, M
 attributes(M)</code></pre>
 <pre><code>## $dim
@@ -965,8 +1056,10 @@ M</code></pre>
 <div id="arrays" class="section level3">
 <h3>Arrays</h3>
 <ul>
-<li>An array is an extension of a matrix, having 2 or more dimensions</li>
-<li>Arrays are created using the <code>array()</code> function or by setting the <code>dim</code> attribute of a vector</li>
+<li>An array is an extension of a matrix, having 2 or more
+dimensions</li>
+<li>Arrays are created using the <code>array()</code> function or by
+setting the <code>dim</code> attribute of a vector</li>
 </ul>
 <pre class="r"><code># one array
 (a &lt;- array(1:(5*4*3), dim = c(5, 4, 3)))</code></pre>
@@ -1027,7 +1120,9 @@ attributes(a)</code></pre>
 ## 
 ## $sublist$c
 ## [1] &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot;</code></pre>
-<p>As seen above, lists can hold other lists, and elements can be named or referenced by index. This can become complicated to mentally parse as printed above, so the <code>str</code> command can come in handy.</p>
+<p>As seen above, lists can hold other lists, and elements can be named
+or referenced by index. This can become complicated to mentally parse as
+printed above, so the <code>str</code> command can come in handy.</p>
 <pre class="r"><code>str(L)</code></pre>
 <pre><code>## List of 4
 ##  $ a      : num 1
@@ -1055,11 +1150,14 @@ L[[1]]</code></pre>
 <p>What are some of the key properties of a data frame?</p>
 <ul>
 <li>Two dimensional (tabular)</li>
-<li>Can be a mix of numeric, logical, and character (and more) types</li>
+<li>Can be a mix of numeric, logical, and character (and more)
+types</li>
 <li>All columns are the same length</li>
 </ul>
-<p><em>A data frame is essentially a list with a few extra restrictions</em></p>
-<p>Accessing elements of a data frame is similar to lists <em>and</em> matrices.</p>
+<p><em>A data frame is essentially a list with a few extra
+restrictions</em></p>
+<p>Accessing elements of a data frame is similar to lists <em>and</em>
+matrices.</p>
 <pre class="r"><code># getting a single column using the `$` selector or `[[`
 mtcars$mpg # column &quot;mpg&quot;</code></pre>
 <pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
@@ -1147,7 +1245,8 @@ mtcars$disp[1] # row 1, col 3 (&quot;disp&quot;)</code></pre>
 </div>
 <div id="reading-data-from-a-file" class="section level2">
 <h2>Reading data from a file</h2>
-<p>Common text files can be read using the <code>read-</code> set of functions</p>
+<p>Common text files can be read using the <code>read-</code> set of
+functions</p>
 <ul>
 <li>read comma separated values (CSV) files with <code>read.csv()</code>
 <ul>
@@ -1194,14 +1293,17 @@ df</code></pre>
 ## 32          Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 <p>More proprietary formats can be read in using a library</p>
 <ul>
-<li><code>readr</code> for the tidyverse version of <code>read-</code> functions</li>
+<li><code>readr</code> for the tidyverse version of <code>read-</code>
+functions</li>
 <li><code>readxl</code> for Excel spreadsheets</li>
 <li><code>R.matlab</code> for Matlab files</li>
 </ul>
 </div>
 <div id="fitting-a-linear-model" class="section level2">
 <h2>Fitting a linear model</h2>
-<p>R has built-in support for fitting <span class="math display">\[generalized\]</span> linear models, with support for numeric and factor variables.</p>
+<p>R has built-in support for fitting <span
+class="math display">\[generalized\]</span> linear models, with support
+for numeric and factor variables.</p>
 <pre class="r"><code># y ~ normal(3x + 2, 0.5)
 x &lt;- rnorm(30)
 y &lt;- rnorm(length(x), 3*x + 2, 0.5)
@@ -1215,7 +1317,7 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       1.853        2.907</code></pre>
+##       2.050        2.891</code></pre>
 <pre class="r"><code>lm(y ~ 0 + x) # slope only model (no intercept)</code></pre>
 <pre><code>## 
 ## Call:
@@ -1223,8 +1325,9 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ##     x  
-## 2.851</code></pre>
-<p>Can also fit a generalized linear model using (you guessed it) the <code>glm()</code> function.</p>
+## 3.453</code></pre>
+<p>Can also fit a generalized linear model using (you guessed it) the
+<code>glm()</code> function.</p>
 <pre class="r"><code># logit(theta) = 3x + 2
 k &lt;- rbinom(length(x), size = 1, prob = plogis(3*x+2))
 plot(k ~ x)</code></pre>
@@ -1236,30 +1339,31 @@ glm(k ~ 1 + x, family = binomial(link = &quot;logit&quot;))</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.094        3.151  
+##       1.587        1.864  
 ## 
 ## Degrees of Freedom: 29 Total (i.e. Null);  28 Residual
-## Null Deviance:       34.79 
-## Residual Deviance: 18.18     AIC: 22.18</code></pre>
+## Null Deviance:       30.02 
+## Residual Deviance: 23.85     AIC: 27.85</code></pre>
 </div>
 <div id="summarizing-data-frames-and-models" class="section level2">
 <h2>Summarizing data frames and models</h2>
-<p>R has a method for summarizing vectors, data frames, and fitted models, and it is the <code>summary()</code> function.</p>
+<p>R has a method for summarizing vectors, data frames, and fitted
+models, and it is the <code>summary()</code> function.</p>
 <pre class="r"><code># summarize a numeric vector
 z &lt;- rnorm(50)
 summary(z)</code></pre>
-<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.63568 -0.62090 -0.02753 -0.07735  0.51907  2.69890</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -2.3487 -0.5865  0.1433  0.0353  0.6193  1.7653</code></pre>
 <pre class="r"><code># summarize a data frame
 df &lt;- data.frame(a = 1L:10L, b = rexp(10), c = factor(sample(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), 10, TRUE)))
 summary(df)</code></pre>
 <pre><code>##        a               b           c    
-##  Min.   : 1.00   Min.   :0.01555   a:4  
-##  1st Qu.: 3.25   1st Qu.:0.19769   b:4  
-##  Median : 5.50   Median :0.35573   c:2  
-##  Mean   : 5.50   Mean   :0.44099        
-##  3rd Qu.: 7.75   3rd Qu.:0.53076        
-##  Max.   :10.00   Max.   :1.10038</code></pre>
+##  Min.   : 1.00   Min.   :0.01962   a:2  
+##  1st Qu.: 3.25   1st Qu.:0.54410   b:4  
+##  Median : 5.50   Median :1.49812   c:4  
+##  Mean   : 5.50   Mean   :2.00013        
+##  3rd Qu.: 7.75   3rd Qu.:2.42469        
+##  Max.   :10.00   Max.   :6.52501</code></pre>
 <pre class="r"><code># summarize a linear model
 fit &lt;- lm(y ~ 1 + x)
 summary(fit)</code></pre>
@@ -1269,19 +1373,23 @@ summary(fit)</code></pre>
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -0.74398 -0.28817  0.00744  0.30287  0.98425 
+## -1.01636 -0.22344 -0.08046  0.37381  0.90400 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  1.85344    0.08339   22.23   &lt;2e-16 ***
-## x            2.90670    0.09077   32.02   &lt;2e-16 ***
+## (Intercept)  2.05046    0.08982   22.83   &lt;2e-16 ***
+## x            2.89064    0.10474   27.60   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.4566 on 28 degrees of freedom
-## Multiple R-squared:  0.9734, Adjusted R-squared:  0.9725 
-## F-statistic:  1026 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Notice that it outputs differently for different input objects. This is because <code>summary()</code> is a <em>generic</em> function, meaning that it has multiple <em>methods</em> defined for different R objects, and packages can define their own behavior for their own types.</p>
+## Residual standard error: 0.4781 on 28 degrees of freedom
+## Multiple R-squared:  0.9645, Adjusted R-squared:  0.9633 
+## F-statistic: 761.6 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Notice that it outputs differently for different input objects. This
+is because <code>summary()</code> is a <em>generic</em> function,
+meaning that it has multiple <em>methods</em> defined for different R
+objects, and packages can define their own behavior for their own
+types.</p>
 </div>
 <div id="producing-simple-plots" class="section level2">
 <h2>Producing simple plots</h2>

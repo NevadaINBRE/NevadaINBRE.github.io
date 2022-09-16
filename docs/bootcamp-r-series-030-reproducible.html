@@ -13,8 +13,8 @@
 
 <title>Reproducible Data Science</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -62,6 +62,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -82,6 +83,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +143,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +242,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -251,7 +259,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Workshops
      
     <span class="caret"></span>
@@ -259,13 +267,16 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
     <li>
-      <a href="bootcamp-r-series.html">R for Data Science</a>
+      <a href="bootcamp-supervised-ml-juli.html">Supervised Machine Learning</a>
     </li>
     <li class="dropdown-header">Previous</li>
+    <li>
+      <a href="bootcamp-r-series.html">R for Data Science</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -311,7 +322,8 @@ $(document).ready(function () {
 <div id="examples-of-bad-habits" class="section level2">
 <h2>Examples of bad habits</h2>
 <ul>
-<li>Having files, data, code, and documentation all scattered in different locations</li>
+<li>Having files, data, code, and documentation all scattered in
+different locations</li>
 <li>Using excel to store, modify, and visualize data</li>
 <li>Doing version control by copying and renaming files</li>
 <li>Not documenting or commenting code</li>
@@ -320,36 +332,91 @@ $(document).ready(function () {
 <div id="a-few-scenarios" class="section level2">
 <h2>A few scenarios</h2>
 <blockquote>
-<p>You have data saved in an excel sheet, and proceed to open it up, create some new columns using excel functions, remove various rows, and fill in missing values with zeros. A few weeks later, the criteria for missing values changes. You can’t remember which zeros were genuine, and which were originally missing. Furthermore, the removed rows are acutally necessary and they’re gone! Hopefully the originally collected data is somewhere and unmodified.</p>
+<p>You have data saved in an excel sheet, and proceed to open it up,
+create some new columns using excel functions, remove various rows, and
+fill in missing values with zeros. A few weeks later, the criteria for
+missing values changes. You can’t remember which zeros were genuine, and
+which were originally missing. Furthermore, the removed rows are
+acutally necessary and they’re gone! Hopefully the originally collected
+data is somewhere and unmodified.</p>
 </blockquote>
-<p><em>Problem</em>: there is no good way to track the changes that have been made to an excel sheet.</p>
-<p><em>Solution</em>: treat data as immutable, and use scripts to make procedural changes to the data.</p>
+<p><em>Problem</em>: there is no good way to track the changes that have
+been made to an excel sheet.</p>
+<p><em>Solution</em>: treat data as immutable, and use scripts to make
+procedural changes to the data.</p>
 <blockquote>
-<p>You decide that doing everything in excel is a bad idea, and instead write a script to process the data. You know it’s good to keep backups of files, so every time your script changes, you save it as a new file. You now have <code>process_data.R</code>, <code>process_data2.R</code>, <code>process_data_new.R</code>, and <code>process_data_20210505.R</code> as files. You send the code to a friend to review, and they send you back <code>process_data_20210507.R</code> as their modified version. Two months later you come back to these files because you can reuse some of the code, but you’re not sure which one is the most up to date. You spend the rest of the day reading through the code of each file looking for differences.</p>
+<p>You decide that doing everything in excel is a bad idea, and instead
+write a script to process the data. You know it’s good to keep backups
+of files, so every time your script changes, you save it as a new file.
+You now have <code>process_data.R</code>, <code>process_data2.R</code>,
+<code>process_data_new.R</code>, and
+<code>process_data_20210505.R</code> as files. You send the code to a
+friend to review, and they send you back
+<code>process_data_20210507.R</code> as their modified version. Two
+months later you come back to these files because you can reuse some of
+the code, but you’re not sure which one is the most up to date. You
+spend the rest of the day reading through the code of each file looking
+for differences.</p>
 </blockquote>
-<p><em>Problem</em>: duplicating files can lead to confusion, and changes are not tracked over time.</p>
-<p><em>Solution</em>: utilize a source control management system (like Git or SVM) to always have access to past versions and keep track of the most recent version.</p>
+<p><em>Problem</em>: duplicating files can lead to confusion, and
+changes are not tracked over time.</p>
+<p><em>Solution</em>: utilize a source control management system (like
+Git or SVM) to always have access to past versions and keep track of the
+most recent version.</p>
 <blockquote>
-<p>You have a research project that requires data downloaded from the internet. It’s pretty large, so you download it once and leave it in your downloads folder as <code>data.txt</code>. You also have some common functions that you reuse for other projects in your documents folder. Your code references the data and other scripts using absolute file paths (e.g. <code>/home/Hogarth/Documents/code/model_fitting.R</code> and <code>/home/Hogarth/Downloads/data.txt</code>). You want to share this project with a classmate, but when you send the files, the code no longer works for them.</p>
+<p>You have a research project that requires data downloaded from the
+internet. It’s pretty large, so you download it once and leave it in
+your downloads folder as <code>data.txt</code>. You also have some
+common functions that you reuse for other projects in your documents
+folder. Your code references the data and other scripts using absolute
+file paths
+(e.g. <code>/home/Hogarth/Documents/code/model_fitting.R</code> and
+<code>/home/Hogarth/Downloads/data.txt</code>). You want to share this
+project with a classmate, but when you send the files, the code no
+longer works for them.</p>
 </blockquote>
-<p><em>Problems</em>: the project is not self-contained, and absolute file paths make it harder to run code on another PC.</p>
-<p><em>Solution</em>: create a project directory (and project file if possible) and keep it self contained. Large data sets can be stored on a separate website and downloaded with a script. Reused code should be accessible (e.g. in a GitHub repository).</p>
+<p><em>Problems</em>: the project is not self-contained, and absolute
+file paths make it harder to run code on another PC.</p>
+<p><em>Solution</em>: create a project directory (and project file if
+possible) and keep it self contained. Large data sets can be stored on a
+separate website and downloaded with a script. Reused code should be
+accessible (e.g. in a GitHub repository).</p>
 <p><strong>A worst case scenario</strong></p>
-<p>From <em><a href="https://towardsdatascience.com/creating-reproducible-data-science-projects-1fa446369386">Towards Data Science</a></em>:</p>
+<p>From <em><a
+href="https://towardsdatascience.com/creating-reproducible-data-science-projects-1fa446369386">Towards
+Data Science</a></em>:</p>
 <blockquote>
-<p>Imagine you completed a one-off analysis a few months ago, creating a fairly complex data pipeline, machine learning model, and visualizations. Fast forward to today and you have Emily, a senior executive at your company, asking you to reuse that work to help solve a similar, time-critical business problem. She looks stressed.</p>
+<p>Imagine you completed a one-off analysis a few months ago, creating a
+fairly complex data pipeline, machine learning model, and
+visualizations. Fast forward to today and you have Emily, a senior
+executive at your company, asking you to reuse that work to help solve a
+similar, time-critical business problem. She looks stressed.</p>
 </blockquote>
 <blockquote>
-<p>Now if only you could remember which copy of your model was the correct one; if you could make sense of the spaghetti code scattered throughout your Jupyter Notebooks, each with helpful names such as Untitled_1 and Untitled_2; what did the <code>data_process</code> function do and why are there six slightly different versions of it? If only there was some documentation!</p>
+<p>Now if only you could remember which copy of your model was the
+correct one; if you could make sense of the spaghetti code scattered
+throughout your Jupyter Notebooks, each with helpful names such as
+Untitled_1 and Untitled_2; what did the <code>data_process</code>
+function do and why are there six slightly different versions of it? If
+only there was some documentation!</p>
 </blockquote>
 <blockquote>
-<p>“No problem!” you assure her, and after a few sleepless nights, during which you had to reverse engineer the entire codebase, the analysis is ready. Emily looks impressed, that promotion you’ve been waiting for might finally happen.</p>
+<p>“No problem!” you assure her, and after a few sleepless nights,
+during which you had to reverse engineer the entire codebase, the
+analysis is ready. Emily looks impressed, that promotion you’ve been
+waiting for might finally happen.</p>
 </blockquote>
 <blockquote>
-<p>The next day Emily is back from presenting your findings. She’s not happy – apparently there were mistakes in the analysis caused by simple coding errors that could have cost the company millions. If only you had run some tests! You apologise as she walks away muttering under her breath, you sit there and wonder if maybe you should pack up your desk before you head home for the night.</p>
+<p>The next day Emily is back from presenting your findings. She’s not
+happy – apparently there were mistakes in the analysis caused by simple
+coding errors that could have cost the company millions. If only you had
+run some tests! You apologise as she walks away muttering under her
+breath, you sit there and wonder if maybe you should pack up your desk
+before you head home for the night.</p>
 </blockquote>
 </div>
-<div id="principles-of-reproducible-data-science" class="section level2">
+<div id="principles-of-reproducible-data-science"
+class="section level2">
 <h2>Principles of reproducible data science</h2>
 <ul>
 <li>Keeping to a common project structure</li>
@@ -364,27 +431,47 @@ $(document).ready(function () {
 <div id="organizing-a-new-project" class="section level2">
 <h2>Organizing a new project</h2>
 <ul>
-<li>Let’s walk through an example of setting up a new data science project in R (and maybe Python)</li>
+<li>Let’s walk through an example of setting up a new data science
+project in R (and maybe Python)</li>
 <li>We will be using RStudio for R
 <ul>
 <li>We will be using Visual Studio Code for Python</li>
-<li>Julia and other languages with no designated IDE can likely use the same general template as Python</li>
-<li>Visual Studio Code has support for many languages, and has an integrated terminal to run code</li>
+<li>Julia and other languages with no designated IDE can likely use the
+same general template as Python</li>
+<li>Visual Studio Code has support for many languages, and has an
+integrated terminal to run code</li>
 </ul></li>
 </ul>
 <div id="setting-up-version-control" class="section level3">
 <h3>Setting up version control</h3>
-<p>It is important to first decide on the source control management system that you will be using. Cloud storage services like Google Drive, OneDrive, Box, and dropbox usually offer a limited form of version history. This can be used as a <em>minimum</em> form of backup and version control. A more powerful and flexible solution is to learn a source control management (SCM) system such as Git or SVM. Services like GitHub, GitLab, and Bitbucket use Git to host <em>repositories</em>, or projects that others can view or contribute to.</p>
-<p>When starting a new project using SCM, it is often easier to first create the <em>repo</em> (short for repository) on GitHub (or whichever service you decide to use), <em>clone</em> the repo (download to your PC), and then begin adding files. For beginners, it is also easier to use a git graphic user interface (GUI). Git relies on terminal commands, but a GUI can lower the barrier to entry for those less confident with using a terminal. Common GUI applications are:</p>
+<p>It is important to first decide on the source control management
+system that you will be using. Cloud storage services like Google Drive,
+OneDrive, Box, and dropbox usually offer a limited form of version
+history. This can be used as a <em>minimum</em> form of backup and
+version control. A more powerful and flexible solution is to learn a
+source control management (SCM) system such as Git or SVM. Services like
+GitHub, GitLab, and Bitbucket use Git to host <em>repositories</em>, or
+projects that others can view or contribute to.</p>
+<p>When starting a new project using SCM, it is often easier to first
+create the <em>repo</em> (short for repository) on GitHub (or whichever
+service you decide to use), <em>clone</em> the repo (download to your
+PC), and then begin adding files. For beginners, it is also easier to
+use a git graphic user interface (GUI). Git relies on terminal commands,
+but a GUI can lower the barrier to entry for those less confident with
+using a terminal. Common GUI applications are:</p>
 <ul>
-<li>GitKraken [cross-platform] [free and pro versions] [my personal choice]
+<li>GitKraken [cross-platform] [free and pro versions] [my personal
+choice]
 <ul>
 <li>free version only allows for public repos</li>
 </ul></li>
 <li>GitHub Desktop [Windows, Mac] [free]</li>
 <li>Sourcetree [Windows, Mac] [free]</li>
 </ul>
-<p>For simple projects with only a couple of contributors, a GUI application can work fine. For more complex projects with many contributors, it is recommended to become familiar with using git in a terminal (command line interface – CLI).</p>
+<p>For simple projects with only a couple of contributors, a GUI
+application can work fine. For more complex projects with many
+contributors, it is recommended to become familiar with using git in a
+terminal (command line interface – CLI).</p>
 <div id="creating-a-github-repository" class="section level4">
 <h4>Creating a GitHub Repository</h4>
 <p><em>It is assumed that you have created a GitHub account.</em></p>
@@ -392,7 +479,8 @@ $(document).ready(function () {
 <li>Open <a href="https://github.com/">GitHub.com</a></li>
 <li>Start creating a new repo
 <ul>
-<li>There is a “new” button on the left and a “+” button at the top right</li>
+<li>There is a “new” button on the left and a “+” button at the top
+right</li>
 </ul></li>
 <li>Choose a project (repository) name (no spaces)</li>
 <li>Make it public or private
@@ -401,9 +489,15 @@ $(document).ready(function () {
 </ul></li>
 <li>Optional
 <ul>
-<li><code>README.md</code> is a special file that gets rendered in Markdown and is displayed to anyone who may view your repo (<a href="https://github.com/tidyverse/dplyr#readme">see here</a> for an example)</li>
-<li><code>.gitignore</code> is a file recognized by git that allows you to optionally ignore (not keep track of) files that match a specified pattern (e.g. a folder name or path, log files, etc.)</li>
-<li>Choose a license so that others know what they can and cannot do with your work</li>
+<li><code>README.md</code> is a special file that gets rendered in
+Markdown and is displayed to anyone who may view your repo (<a
+href="https://github.com/tidyverse/dplyr#readme">see here</a> for an
+example)</li>
+<li><code>.gitignore</code> is a file recognized by git that allows you
+to optionally ignore (not keep track of) files that match a specified
+pattern (e.g. a folder name or path, log files, etc.)</li>
+<li>Choose a license so that others know what they can and cannot do
+with your work</li>
 </ul></li>
 </ul>
 <video width="100%" autoplay muted loop controls>
@@ -414,41 +508,62 @@ $(document).ready(function () {
 <h4>Cloning a GitHub Repository</h4>
 <ul>
 <li>Download and install the GitHub Desktop app</li>
-<li>Select the “Clone a Repository” button and browse to the newly created repo</li>
-<li>Select a download location (recommend creating a Projects folder)</li>
+<li>Select the “Clone a Repository” button and browse to the newly
+created repo</li>
+<li>Select a download location (recommend creating a Projects
+folder)</li>
 </ul>
 <video width="100%" autoplay muted loop controls>
 <source src="media/vid/03-cloning-github-repo.webm" type="video/webm">
 </video>
-<p>“Cloning” essentially means that you are downloading the repository to your <em>local machine</em> from the <em>remote host</em>.</p>
+<p>“Cloning” essentially means that you are downloading the repository
+to your <em>local machine</em> from the <em>remote host</em>.</p>
 </div>
 <div id="other-resources" class="section level4">
 <h4>Other resources</h4>
 <ul>
-<li><a href="https://git-scm.com/">git</a> (the underlying SCM software)</li>
+<li><a href="https://git-scm.com/">git</a> (the underlying SCM
+software)</li>
 <li><a href="https://github.com/">GitHub</a> (repo host)</li>
 <li><a href="https://about.gitlab.com/">GitLab</a> (repo host)</li>
 <li><a href="https://bitbucket.org/product">Bitbucket</a> (repo host)
 <ul>
 <li>Part of the Atlassian group (Trello, Jira, Sourcetree)</li>
 </ul></li>
-<li><a href="https://sethrobertson.github.io/GitBestPractices/">git best practices</a> (reference)</li>
-<li><a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a> branching model (reference)</li>
-<li><a href="https://choosealicense.com/">Choose a license</a> explanation of various common software licenses</li>
+<li><a href="https://sethrobertson.github.io/GitBestPractices/">git best
+practices</a> (reference)</li>
+<li><a
+href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">GitFlow</a>
+branching model (reference)</li>
+<li><a href="https://choosealicense.com/">Choose a license</a>
+explanation of various common software licenses</li>
 </ul>
 </div>
 </div>
-<div id="start-thinking-about-a-project-oriented-workflow" class="section level3">
+<div id="start-thinking-about-a-project-oriented-workflow"
+class="section level3">
 <h3>Start thinking about a project-oriented workflow</h3>
-<p>In a “project-oriented” workflow, your IDE can manage the project by automatically setting the working directory whenever the project is opened. In RStudio, this is done with an R Project file (<code>.Rproj</code>).</p>
-<p>By letting your IDE manage the project and the working directory, you can set relative file paths ensuring that everything will work even if the project is opened on another computer. In general, the working directory should be the top level project directory, and all paths should be relative to that.</p>
-<p>In the video below, we create a new project from the repository that we cloned earlier.</p>
+<p>In a “project-oriented” workflow, your IDE can manage the project by
+automatically setting the working directory whenever the project is
+opened. In RStudio, this is done with an R Project file
+(<code>.Rproj</code>).</p>
+<p>By letting your IDE manage the project and the working directory, you
+can set relative file paths ensuring that everything will work even if
+the project is opened on another computer. In general, the working
+directory should be the top level project directory, and all paths
+should be relative to that.</p>
+<p>In the video below, we create a new project from the repository that
+we cloned earlier.</p>
 <video width="100%" autoplay muted loop controls>
 <source src="media/vid/03-creating-project-from-folder.webm" type="video/webm">
 </video>
 <div id="optional-set-up-a-virtual-environment" class="section level4">
 <h4>(Optional) Set up a virtual environment</h4>
-<p>A virtual environment is a fancy way to describe a system of managing package versions and other dependencies. In R, there is a library called <code>renv</code> that can keep track of libraries installed and used in a project, and can restore the packages when the project is opened on a different computer. This can greatly contribute to reproducibility.</p>
+<p>A virtual environment is a fancy way to describe a system of managing
+package versions and other dependencies. In R, there is a library called
+<code>renv</code> that can keep track of libraries installed and used in
+a project, and can restore the packages when the project is opened on a
+different computer. This can greatly contribute to reproducibility.</p>
 <video width="100%" autoplay muted loop controls>
 <source src="media/vid/03-using-renv.webm" type="video/webm">
 </video>
@@ -456,16 +571,23 @@ $(document).ready(function () {
 <div id="other-resources-1" class="section level4">
 <h4>Other resources</h4>
 <ul>
-<li><a href="https://rstats.wtf/project-oriented-workflow.html">What They Forgot to Teach you About R</a></li>
-<li><a href="https://stat545.com/r-basics.html">R basics and workflows</a></li>
-<li><a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">tidyverse: Project-oriented workflow</a></li>
-<li><a href="https://community.rstudio.com/t/project-oriented-workflow-setwd-rm-list-ls-and-computer-fires/3549/2">RStudio community: Project-oriented workflow</a></li>
+<li><a href="https://rstats.wtf/project-oriented-workflow.html">What
+They Forgot to Teach you About R</a></li>
+<li><a href="https://stat545.com/r-basics.html">R basics and
+workflows</a></li>
+<li><a
+href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">tidyverse:
+Project-oriented workflow</a></li>
+<li><a
+href="https://community.rstudio.com/t/project-oriented-workflow-setwd-rm-list-ls-and-computer-fires/3549/2">RStudio
+community: Project-oriented workflow</a></li>
 </ul>
 </div>
 </div>
 <div id="create-the-project-structure" class="section level3">
 <h3>Create the project structure</h3>
-<p>When all project folders are organized in the same way, the time spent searching for files is greatly reduced.</p>
+<p>When all project folders are organized in the same way, the time
+spent searching for files is greatly reduced.</p>
 <pre><code>├── LICENSE
 ├── README.md      &lt;- The top-level README for developers using this project.
 ├── data           
@@ -494,7 +616,10 @@ $(document).ready(function () {
 </div>
 <div id="committing-changes-to-github" class="section level3">
 <h3>Committing Changes to GitHub</h3>
-<p>When you create new files and folders in your github project, they are not automatically tracked. Files need to be “staged” and then “committed”. Finally, commits need to be “pushed” to the remote location (GitHub) in order to be backed up.</p>
+<p>When you create new files and folders in your github project, they
+are not automatically tracked. Files need to be “staged” and then
+“committed”. Finally, commits need to be “pushed” to the remote location
+(GitHub) in order to be backed up.</p>
 <p>This leads to a simple workflow:</p>
 <ol style="list-style-type: decimal">
 <li>write code, add files, etc.</li>
@@ -503,7 +628,9 @@ $(document).ready(function () {
 <li>repeat steps 1-3 throughout the day</li>
 <li>push the changes to remote</li>
 </ol>
-<p>It’s a good idea to commit early and commit often. Git works by tracking the <em>differences</em> between commits, so there’s no need to worry about having too many commits that take up a lot of memory.</p>
+<p>It’s a good idea to commit early and commit often. Git works by
+tracking the <em>differences</em> between commits, so there’s no need to
+worry about having too many commits that take up a lot of memory.</p>
 <video width="100%" autoplay muted loop controls>
 <source src="media/vid/03-committing-changes.webm" type="video/webm">
 </video>
@@ -522,20 +649,33 @@ $(document).ready(function () {
 <div id="writing-human-readable-code" class="section level3">
 <h3>Writing human-readable code</h3>
 <blockquote>
-<p>Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it. – Brian Kernighan</p>
+<p>Debugging is twice as hard as writing the code in the first place.
+Therefore, if you write the code as cleverly as possible, you are, by
+definition, not smart enough to debug it. – Brian Kernighan</p>
 </blockquote>
 </div>
 <div id="writing-comments" class="section level3">
 <h3>Writing comments</h3>
-<p>In a perfect world, code should be self-documenting. For example, the following code should be (relatively) easy to reason about:</p>
+<p>In a perfect world, code should be self-documenting. For example, the
+following code should be (relatively) easy to reason about:</p>
 <pre class="r"><code>df_raw   &lt;- read_raw_temperature_data(&quot;path/to/file.txt&quot;)
 df_clean &lt;- parse_raw_temperature_data(df_raw)
 
 write.csv(df_clean, file = &quot;data/processed/temperature_2020.csv&quot;)
 
 p &lt;- plot_temperature_by_month(df_clean)</code></pre>
-<p>The specifics of what each function is doing is hidden from us, the reader, but it’s clear that this program reads in raw data, cleans it up in some way, writes the clean data back to a new file, and then produces a plot. No comments are required in this code.</p>
-<p>However, sometimes comments are necessary to further explain the reasoning behind code. For example, a perfect power number is an integer that can be written in the form of <span class="math inline">\(a^b = m\)</span> where <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(m\)</span> are integers, and <span class="math inline">\(b \ge 2\)</span>. Here is a function that checks if a number is a perfect power:</p>
+<p>The specifics of what each function is doing is hidden from us, the
+reader, but it’s clear that this program reads in raw data, cleans it up
+in some way, writes the clean data back to a new file, and then produces
+a plot. No comments are required in this code.</p>
+<p>However, sometimes comments are necessary to further explain the
+reasoning behind code. For example, a perfect power number is an integer
+that can be written in the form of <span class="math inline">\(a^b =
+m\)</span> where <span class="math inline">\(a\)</span>, <span
+class="math inline">\(b\)</span>, and <span
+class="math inline">\(m\)</span> are integers, and <span
+class="math inline">\(b \ge 2\)</span>. Here is a function that checks
+if a number is a perfect power:</p>
 <pre class="r"><code>is_perfect_power &lt;- function(n) {
   p &lt;- numbers::primeFactors(n)
   e &lt;- table(p)
@@ -558,23 +698,48 @@ is_perfect_power(81)  # 3^4</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <pre class="r"><code>is_perfect_power(144) # 2^4*3^2 -&gt; 2^2*2^2*3^2</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<p>As it is, it is difficult to understand what it is doing or why it is doing it. Let’s break down the logic. If <span class="math inline">\(m\)</span> is a perfect power, then it can be written as <span class="math inline">\(a^b\)</span>. If <span class="math inline">\(a\)</span> is not prime, then it can further be written as <span class="math inline">\((f \cdot g)^b \Rightarrow f^b \cdot g^b\)</span>. We can keep breaking down <span class="math inline">\(a\)</span> into its prime factors, and each prime factor will have an exponent associated with it (number of times the prime factor is present). For example,</p>
-<p><span class="math display">\[48 \rightarrow 6\cdot 8 \rightarrow 2 \cdot 3 \cdot 2 \cdot 2 \cdot 2 \rightarrow 2^4 \cdot 3^1\]</span></p>
+<p>As it is, it is difficult to understand what it is doing or why it is
+doing it. Let’s break down the logic. If <span
+class="math inline">\(m\)</span> is a perfect power, then it can be
+written as <span class="math inline">\(a^b\)</span>. If <span
+class="math inline">\(a\)</span> is not prime, then it can further be
+written as <span class="math inline">\((f \cdot g)^b \Rightarrow f^b
+\cdot g^b\)</span>. We can keep breaking down <span
+class="math inline">\(a\)</span> into its prime factors, and each prime
+factor will have an exponent associated with it (number of times the
+prime factor is present). For example,</p>
+<p><span class="math display">\[48 \rightarrow 6\cdot 8 \rightarrow 2
+\cdot 3 \cdot 2 \cdot 2 \cdot 2 \rightarrow 2^4 \cdot 3^1\]</span></p>
 <pre class="r"><code>numbers::primeFactors(48)</code></pre>
 <pre><code>## [1] 2 2 2 2 3</code></pre>
 <pre class="r"><code>table(numbers::primeFactors(48))</code></pre>
 <pre><code>## 
 ## 2 3 
 ## 4 1</code></pre>
-<p>So we see that the first two lines in the function are computing the prime factors, and then counting each prime (getting the exponents).</p>
-<p>The first test checks to see if there is only one prime factor of the number (like the number 27). If so, then check to see if the exponent is greater than or equal to 2 (see the definition of perfect power above). In this case, the number must be a perfect power, and we can return <code>TRUE</code>.</p>
-<p>The second test then checks to see if all the exponents are greater than or equal to 2. If not, then we can eliminate the given number as a possible perfect power.</p>
-<p>The final check is tricky. If the greatest common divisor between two (or more) numbers is 1, then they are relatively prime (share no common factor). In this case, the number cannot be written as a perfect power. Take 144 as an example.</p>
-<p><span class="math display">\[144 \rightarrow 2^4 \cdot 3^2\]</span></p>
-<p>The exponents are not all the same, but the GCD of 4 and 2 is 2, so the number can be written as</p>
-<p><span class="math display">\[2^2 \cdot 2^2 \cdot 3^2 \rightarrow (2\cdot 2\cdot 3)^2 \rightarrow 12^2\]</span></p>
-<p>which we can then see is a perfect power. We cannot do this same process if the GCD is 1.</p>
-<p>Let’s now add some comments to the function to make it more understandable:</p>
+<p>So we see that the first two lines in the function are computing the
+prime factors, and then counting each prime (getting the exponents).</p>
+<p>The first test checks to see if there is only one prime factor of the
+number (like the number 27). If so, then check to see if the exponent is
+greater than or equal to 2 (see the definition of perfect power above).
+In this case, the number must be a perfect power, and we can return
+<code>TRUE</code>.</p>
+<p>The second test then checks to see if all the exponents are greater
+than or equal to 2. If not, then we can eliminate the given number as a
+possible perfect power.</p>
+<p>The final check is tricky. If the greatest common divisor between two
+(or more) numbers is 1, then they are relatively prime (share no common
+factor). In this case, the number cannot be written as a perfect power.
+Take 144 as an example.</p>
+<p><span class="math display">\[144 \rightarrow 2^4 \cdot
+3^2\]</span></p>
+<p>The exponents are not all the same, but the GCD of 4 and 2 is 2, so
+the number can be written as</p>
+<p><span class="math display">\[2^2 \cdot 2^2 \cdot 3^2 \rightarrow
+(2\cdot 2\cdot 3)^2 \rightarrow 12^2\]</span></p>
+<p>which we can then see is a perfect power. We cannot do this same
+process if the GCD is 1.</p>
+<p>Let’s now add some comments to the function to make it more
+understandable:</p>
 <pre class="r"><code># a perfect power is a number that can be written as `a^b` where `a` and `b` are positive
 # integers and `b &gt;= 2`
 is_perfect_power &lt;- function(n) {
@@ -602,10 +767,17 @@ is_perfect_power &lt;- function(n) {
   # if we&#39;ve made it to here, then by process of elimination the number is a perfect power
   TRUE
 }</code></pre>
-<p>At this point, our function now has more comments than code, which means that we may be better off writing a longer description above the function and cutting out some of examples in the code. The main idea is that your future self should be able to come and read the code you’ve written and understand what is being done and why.</p>
+<p>At this point, our function now has more comments than code, which
+means that we may be better off writing a longer description above the
+function and cutting out some of examples in the code. The main idea is
+that your future self should be able to come and read the code you’ve
+written and understand what is being done and why.</p>
 <p>From the Tidyverse style guide:</p>
 <blockquote>
-<p>In data analysis code, use comments to record important findings and analysis decisions. If you need comments to explain what your code is doing, consider rewriting your code to be clearer. If you discover that you have more comments than code, consider switching to R Markdown.</p>
+<p>In data analysis code, use comments to record important findings and
+analysis decisions. If you need comments to explain what your code is
+doing, consider rewriting your code to be clearer. If you discover that
+you have more comments than code, consider switching to R Markdown.</p>
 </blockquote>
 </div>
 </div>
@@ -629,8 +801,12 @@ is_perfect_power &lt;- function(n) {
 <li><a href="http://fable.tidyverts.org/">fable</a>
 <ul>
 <li>used for time series modeling and analysis</li>
-<li>has an associated online book: <a href="https://otexts.com/fpp3/">Forecasting: Principles and Practice</a></li>
-<li>replaces the older <a href="https://pkg.robjhyndman.com/forecast/">forecast</a> library (fpp2)</li>
+<li>has an associated online book: <a
+href="https://otexts.com/fpp3/">Forecasting: Principles and
+Practice</a></li>
+<li>replaces the older <a
+href="https://pkg.robjhyndman.com/forecast/">forecast</a> library
+(fpp2)</li>
 </ul></li>
 <li><a href="https://cran.r-project.org/web/packages/zoo/">zoo</a>
 <ul>
@@ -638,21 +814,27 @@ is_perfect_power &lt;- function(n) {
 </ul></li>
 <li><a href="https://topepo.github.io/caret/">caret</a>
 <ul>
-<li>a set of functions that attempt to streamline the process for creating predictive models</li>
+<li>a set of functions that attempt to streamline the process for
+creating predictive models</li>
 </ul></li>
-<li><a href="https://mc-stan.org/rstanarm/">rstanarm</a> and <a href="https://mc-stan.org/rstan/">rstan</a>
+<li><a href="https://mc-stan.org/rstanarm/">rstanarm</a> and <a
+href="https://mc-stan.org/rstan/">rstan</a>
 <ul>
 <li>comprehensive Bayesian modeling and inference</li>
-<li>visualization packages like <a href="https://mc-stan.org/bayesplot/">bayesplot</a></li>
+<li>visualization packages like <a
+href="https://mc-stan.org/bayesplot/">bayesplot</a></li>
 <li>cross validation via <a href="https://mc-stan.org/loo/">loo</a></li>
 </ul></li>
 <li>rmarkdown, knitr, bookdown, posterdown, …
 <ul>
-<li>packages for creating elegant reports, slides, posters, and more using R and Markdown</li>
+<li>packages for creating elegant reports, slides, posters, and more
+using R and Markdown</li>
 <li>kableExtra: for creating pretty tables</li>
 <li>patchwork: for arranging ggplots</li>
 </ul></li>
-<li><a href="https://www.computerworld.com/article/2921176/great-r-packages-for-data-import-wrangling-visualization.html">Great R packages for data import, wrangling and visualization</a></li>
+<li><a
+href="https://www.computerworld.com/article/2921176/great-r-packages-for-data-import-wrangling-visualization.html">Great
+R packages for data import, wrangling and visualization</a></li>
 </ul>
 </div>
 </div>
@@ -663,24 +845,42 @@ is_perfect_power &lt;- function(n) {
 <p>[example given during lecture using psychometric data]</p>
 <div id="large-file-storage" class="section level3">
 <h3>Large File Storage</h3>
-<p>github is great at tracking changes made to code and documents, but what if that code produces large image or video files? Or you have massive Illumina datasets that you canot store on github?</p>
+<p>github is great at tracking changes made to code and documents, but
+what if that code produces large image or video files? Or you have
+massive Illumina datasets that you canot store on github?</p>
 <ul>
-<li>Git Large File Storage Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.</li>
+<li>Git Large File Storage Git Large File Storage (LFS) replaces large
+files such as audio samples, videos, datasets, and graphics with text
+pointers inside Git, while storing the file contents on a remote server
+like GitHub.com or GitHub Enterprise.</li>
 </ul>
-<p>If you have git, using their large file storage works very similarly. First, set up your account to use LFS by running (from the command line):</p>
+<p>If you have git, using their large file storage works very similarly.
+First, set up your account to use LFS by running (from the command
+line):</p>
 <pre class="bash"><code>git lfs install</code></pre>
-<p>In each Git repository where you want to use Git LFS, select the file types you’d like Git LFS to manage (or directly edit your .gitattributes). You can configure additional file extensions at anytime.</p>
+<p>In each Git repository where you want to use Git LFS, select the file
+types you’d like Git LFS to manage (or directly edit your
+.gitattributes). You can configure additional file extensions at
+anytime.</p>
 <pre class="bash"><code>git lfs track &quot;*.psd&quot;
 # make sure .gitattributes is tracked
 git add .gitattributes</code></pre>
-<p>Note: That defining the file types Git LFS should track will not, by itself, convert any pre-existing files to Git LFS, such as files on other branches or in your prior commit history</p>
+<p>Note: That defining the file types Git LFS should track will not, by
+itself, convert any pre-existing files to Git LFS, such as files on
+other branches or in your prior commit history</p>
 <p>Now, just commit and push to github as you normally would:</p>
 <pre class="bash"><code>git add file.psd
 git commit -m &quot;Add design file&quot;
 git push origin main</code></pre>
 <p><strong>Box</strong></p>
-<p>If you have a UNR email address, you automatically have box storage that is available to you. Box is great for storing all of your files in one place, and does actively track changes made to your files that can easily be reversed by you or someone that you have shared the directory with.</p>
-<p>This type of storage can reliably track any changes that have been made to your large files over the course of your project and helps in avoiding a directory that looks like: gif_v1, gif_v2, gif_v3, etc.</p>
+<p>If you have a UNR email address, you automatically have box storage
+that is available to you. Box is great for storing all of your files in
+one place, and does actively track changes made to your files that can
+easily be reversed by you or someone that you have shared the directory
+with.</p>
+<p>This type of storage can reliably track any changes that have been
+made to your large files over the course of your project and helps in
+avoiding a directory that looks like: gif_v1, gif_v2, gif_v3, etc.</p>
 </div>
 </div>
 <div id="dynamic-documents-and-reports" class="section level2">
@@ -692,7 +892,9 @@ git push origin main</code></pre>
 <div id="r-markdown-presentations" class="section level3">
 <h3>R Markdown Presentations</h3>
 <ul>
-<li><a href="https://github.com/adknudson/UNR-Masters-Thesis/blob/master/presentation/defense_presentation.Rmd" class="uri">https://github.com/adknudson/UNR-Masters-Thesis/blob/master/presentation/defense_presentation.Rmd</a></li>
+<li><a
+href="https://github.com/adknudson/UNR-Masters-Thesis/blob/master/presentation/defense_presentation.Rmd"
+class="uri">https://github.com/adknudson/UNR-Masters-Thesis/blob/master/presentation/defense_presentation.Rmd</a></li>
 </ul>
 </div>
 <div id="bookdown" class="section level3">
@@ -707,7 +909,8 @@ git push origin main</code></pre>
 <h3>Posterdown</h3>
 <p>[in session example]</p>
 <ul>
-<li><a href="https://github.com/adknudson/tramm" class="uri">https://github.com/adknudson/tramm</a></li>
+<li><a href="https://github.com/adknudson/tramm"
+class="uri">https://github.com/adknudson/tramm</a></li>
 </ul>
 </div>
 </div>

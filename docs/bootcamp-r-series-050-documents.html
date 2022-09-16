@@ -13,8 +13,8 @@
 
 <title>Creating Polished Documents</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -64,6 +64,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -84,6 +85,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -141,11 +145,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -236,7 +244,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -253,7 +261,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Workshops
      
     <span class="caret"></span>
@@ -261,13 +269,16 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
     <li>
-      <a href="bootcamp-r-series.html">R for Data Science</a>
+      <a href="bootcamp-supervised-ml-juli.html">Supervised Machine Learning</a>
     </li>
     <li class="dropdown-header">Previous</li>
+    <li>
+      <a href="bootcamp-r-series.html">R for Data Science</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -307,10 +318,17 @@ $(document).ready(function () {
 </div>
 
 
-<p>Today’s workshop was mostly a high level overview of using the <code>ggplot2</code> and <code>kableExtra</code> packages to produce clean looking graphs and tables. These tables can then be rendered within an R Markdown document and shared in various formats.</p>
+<p>Today’s workshop was mostly a high level overview of using the
+<code>ggplot2</code> and <code>kableExtra</code> packages to produce
+clean looking graphs and tables. These tables can then be rendered
+within an R Markdown document and shared in various formats.</p>
 <div id="professional-plots-using-ggplot2" class="section level2">
 <h2>Professional Plots using ggplot2</h2>
-<p>The <code>ggplot2</code> package is a graphing library based on the <em>grammar of graphics</em> (gg) and part of the <code>tidyverse</code> collection of packages. The grammar of graphics is a way to build up a plot by mapping variable to a <em>aesthetics</em> such as points, lines, colors, facets, scales, etc.</p>
+<p>The <code>ggplot2</code> package is a graphing library based on the
+<em>grammar of graphics</em> (gg) and part of the <code>tidyverse</code>
+collection of packages. The grammar of graphics is a way to build up a
+plot by mapping variable to a <em>aesthetics</em> such as points, lines,
+colors, facets, scales, etc.</p>
 <p>Here is one example of incrementally building a plot:</p>
 <pre class="r"><code># Creates an empty plot
 iris %&gt;%
@@ -343,15 +361,26 @@ iris %&gt;%
 <p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-5.png" width="672" /></p>
 <div id="list-of-resources" class="section level3">
 <h3>List of Resources</h3>
-<p>There is so much that can be done with <code>ggplot2</code> and supporting libraries. Here are some resources to get started and extend to your graphing needs:</p>
+<p>There is so much that can be done with <code>ggplot2</code> and
+supporting libraries. Here are some resources to get started and extend
+to your graphing needs:</p>
 <ul>
-<li><a href="https://r4ds.had.co.nz/data-visualisation.html">R for data science</a> chapter on visualization</li>
-<li><a href="https://www.r-graph-gallery.com/">The R Graph Gallery</a></li>
-<li><a href="https://github.com/sinhrks/ggfortify">ggfortify</a> to “to visualize statistical result of popular R packages”</li>
-<li><a href="http://ggobi.github.io/ggally/">GGally</a> “extends ggplot2 by adding several functions to reduce the complexity of combining geoms with transformed data”</li>
-<li><a href="https://ggforce.data-imaginist.com/">ggforce</a> “is a package aimed at providing missing functionality to ggplot2”</li>
-<li><a href="https://patchwork.data-imaginist.com/">patchwork</a> “to make it ridiculously simple to combine separate ggplots into the same graphic”</li>
-<li><a href="https://gganimate.com/">gganimate</a> “to include the description of animation”</li>
+<li><a href="https://r4ds.had.co.nz/data-visualisation.html">R for data
+science</a> chapter on visualization</li>
+<li><a href="https://www.r-graph-gallery.com/">The R Graph
+Gallery</a></li>
+<li><a href="https://github.com/sinhrks/ggfortify">ggfortify</a> to “to
+visualize statistical result of popular R packages”</li>
+<li><a href="http://ggobi.github.io/ggally/">GGally</a> “extends ggplot2
+by adding several functions to reduce the complexity of combining geoms
+with transformed data”</li>
+<li><a href="https://ggforce.data-imaginist.com/">ggforce</a> “is a
+package aimed at providing missing functionality to ggplot2”</li>
+<li><a href="https://patchwork.data-imaginist.com/">patchwork</a> “to
+make it ridiculously simple to combine separate ggplots into the same
+graphic”</li>
+<li><a href="https://gganimate.com/">gganimate</a> “to include the
+description of animation”</li>
 </ul>
 </div>
 </div>
@@ -360,7 +389,7 @@ iris %&gt;%
 <p>Printing a data frame to the screen can be ugly and uninspiring:</p>
 <pre class="r"><code>gapminder %&gt;%
   head(10)</code></pre>
-<pre><code>## # A tibble: 10 x 6
+<pre><code>## # A tibble: 10 × 6
 ##    country     continent  year lifeExp      pop gdpPercap
 ##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
 ##  1 Afghanistan Asia       1952    28.8  8425333      779.
@@ -373,7 +402,11 @@ iris %&gt;%
 ##  8 Afghanistan Asia       1987    40.8 13867957      852.
 ##  9 Afghanistan Asia       1992    41.7 16317921      649.
 ## 10 Afghanistan Asia       1997    41.8 22227415      635.</code></pre>
-<p>We can prepare this same data frame for publication by passing it through the <code>kable</code> function (provided by <code>knitr</code> and rexported by <code>kableExtra</code>) and the <code>kable_styling</code> function (provided by <code>kableExtra</code>):</p>
+<p>We can prepare this same data frame for publication by passing it
+through the <code>kable</code> function (provided by <code>knitr</code>
+and rexported by <code>kableExtra</code>) and the
+<code>kable_styling</code> function (provided by
+<code>kableExtra</code>):</p>
 <pre class="r"><code>gapminder %&gt;%
   head(10) %&gt;%
   kable(digits = 2) %&gt;%
@@ -617,15 +650,25 @@ gapminder %&gt;%
 <div id="list-of-resources-1" class="section level3">
 <h3>List of Resources</h3>
 <ul>
-<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">R Markdown cookbook</a> chapter on kable</li>
-<li><a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra vignette</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">R
+Markdown cookbook</a> chapter on kable</li>
+<li><a
+href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra
+vignette</a></li>
 </ul>
 </div>
 </div>
 <div id="all-the-documents" class="section level2">
 <h2>All the Documents</h2>
-<p>Finally your pretty looking graphs and tables need a place to be proudly displayed. R Markdown is the solution! R Markdown is a document format the can mix R code and Markdown text formatting, as well as support for a few extra features such as directly embedding HTML, LaTeX, and Mathjax (for math typesetting).</p>
-<p>The use cases for R Markdown are endless, and it would be impossible and an exercise in futility to try and go over all the possibilities. Instead we provide a list of the possible documents that can be created with R Markdown, and the resources for getting more help.</p>
+<p>Finally your pretty looking graphs and tables need a place to be
+proudly displayed. R Markdown is the solution! R Markdown is a document
+format the can mix R code and Markdown text formatting, as well as
+support for a few extra features such as directly embedding HTML, LaTeX,
+and Mathjax (for math typesetting).</p>
+<p>The use cases for R Markdown are endless, and it would be impossible
+and an exercise in futility to try and go over all the possibilities.
+Instead we provide a list of the possible documents that can be created
+with R Markdown, and the resources for getting more help.</p>
 <div id="document-formats" class="section level3">
 <h3>Document Formats</h3>
 <ul>
@@ -633,10 +676,14 @@ gapminder %&gt;%
 <li>PDF Document</li>
 <li>Slide shows via <a href="">ioslides</a></li>
 <li>HTML Book via <a href="https://bookdown.org/home/">bookdown</a></li>
-<li>Posters via <a href="https://github.com/brentthorne/posterdown">posterdown</a></li>
-<li>Common journal article templates via <a href="https://github.com/rstudio/rticles">rticles</a></li>
-<li>Blog format websites via <a href="https://bookdown.org/yihui/blogdown/">blogdown</a></li>
-<li>Beautiful package documentation websites via <a href="https://pkgdown.r-lib.org/">pkgdown</a></li>
+<li>Posters via <a
+href="https://github.com/brentthorne/posterdown">posterdown</a></li>
+<li>Common journal article templates via <a
+href="https://github.com/rstudio/rticles">rticles</a></li>
+<li>Blog format websites via <a
+href="https://bookdown.org/yihui/blogdown/">blogdown</a></li>
+<li>Beautiful package documentation websites via <a
+href="https://pkgdown.r-lib.org/">pkgdown</a></li>
 </ul>
 </div>
 <div id="list-of-resources-2" class="section level3">
@@ -646,20 +693,28 @@ gapminder %&gt;%
 <ul>
 <li>An overview of all the knitr chunk options</li>
 </ul></li>
-<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a>
+<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The
+Definitive Guide</a>
 <ul>
-<li>A detailed reference on the built-in R Markdown output formats of the rmarkdown package, as well as several other extension packages</li>
+<li>A detailed reference on the built-in R Markdown output formats of
+the rmarkdown package, as well as several other extension packages</li>
 </ul></li>
-<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown Cookbook</a>
+<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown
+Cookbook</a>
 <ul>
-<li>Provides more practical and relatively short examples to show the interesting and useful usage of R Markdown</li>
+<li>Provides more practical and relatively short examples to show the
+interesting and useful usage of R Markdown</li>
 </ul></li>
-<li><a href="https://bookdown.org/yihui/bookdown/">Authoring Books and Technical Documents with R Markdown</a>
+<li><a href="https://bookdown.org/yihui/bookdown/">Authoring Books and
+Technical Documents with R Markdown</a>
 <ul>
 <li>The general guide to working with bookdown</li>
 </ul></li>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown Reference Guide</a></li>
-<li><a href="https://rmarkdown.rstudio.com/index.html">R Markdown from RStudio</a></li>
+<li><a
+href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R
+Markdown Reference Guide</a></li>
+<li><a href="https://rmarkdown.rstudio.com/index.html">R Markdown from
+RStudio</a></li>
 </ul>
 </div>
 </div>

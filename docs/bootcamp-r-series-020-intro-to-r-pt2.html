@@ -13,8 +13,8 @@
 
 <title>Introduction to R: Part Two</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -62,6 +62,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -82,6 +83,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +143,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +242,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -251,7 +259,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Workshops
      
     <span class="caret"></span>
@@ -259,13 +267,16 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
     <li>
-      <a href="bootcamp-r-series.html">R for Data Science</a>
+      <a href="bootcamp-supervised-ml-juli.html">Supervised Machine Learning</a>
     </li>
     <li class="dropdown-header">Previous</li>
+    <li>
+      <a href="bootcamp-r-series.html">R for Data Science</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -311,8 +322,10 @@ $(document).ready(function () {
 <div id="what-is-rstudio" class="section level2">
 <h2>What is RStudio</h2>
 <ul>
-<li>RStudio is an <em>integrated development environment</em> (IDE) for the R programming language</li>
-<li>You can create, open, and edit scripts and other text file types</li>
+<li>RStudio is an <em>integrated development environment</em> (IDE) for
+the R programming language</li>
+<li>You can create, open, and edit scripts and other text file
+types</li>
 <li>You can create and manage project files</li>
 <li>You can build libraries, documents, and other projects</li>
 <li>View plots, tables, web apps, and more</li>
@@ -372,16 +385,21 @@ $(document).ready(function () {
 </div>
 <div id="writing-and-running-an-rscript" class="section level2">
 <h2>Writing and running an Rscript</h2>
-<p>Writing a script allows one to re-use and re-write code. It means that you can also share your code, keep track of changes, and string together more complex commands to carry out an analysis.</p>
+<p>Writing a script allows one to re-use and re-write code. It means
+that you can also share your code, keep track of changes, and string
+together more complex commands to carry out an analysis.</p>
 <ol style="list-style-type: decimal">
 <li>Create a new file (<code>ctrl+shift+N</code>)</li>
 <li>Type in an R command</li>
 </ol>
-<p>You can run the entire script at once using the “source” button (<code>ctrl+shift+S</code> or <code>ctrl+shift+enter</code>), or you can run line-by-line (<code>ctrl+enter</code>).</p>
+<p>You can run the entire script at once using the “source” button
+(<code>ctrl+shift+S</code> or <code>ctrl+shift+enter</code>), or you can
+run line-by-line (<code>ctrl+enter</code>).</p>
 </div>
 <div id="control-flow" class="section level2">
 <h2>Control flow</h2>
-<p>Control flow statement is a statement that results in a choice being made as to which of two or more paths to follow.</p>
+<p>Control flow statement is a statement that results in a choice being
+made as to which of two or more paths to follow.</p>
 <div id="conditionals" class="section level3">
 <h3>Conditionals</h3>
 <p>The simplest control flow is the <code>if-else</code> kind.</p>
@@ -417,7 +435,9 @@ if (FALSE) {
 </div>
 <div id="loops" class="section level3">
 <h3>Loops</h3>
-<p>There are two types of loops (technically one, but practically two), and they are the <code>while</code>-loop and the <code>for</code>-loop.</p>
+<p>There are two types of loops (technically one, but practically two),
+and they are the <code>while</code>-loop and the
+<code>for</code>-loop.</p>
 <p><code>while</code>-loop</p>
 <pre class="r"><code>some_condition_is_true &lt;- TRUE
 some_counter &lt;- 0
@@ -441,7 +461,8 @@ while (some_condition_is_true) {
 ## This is iteration:    5 
 ## This is iteration:    6 
 ## This is iteration:    7</code></pre>
-<p>We can also further refine the behavior of a loop with the <code>next</code> and <code>break</code> commands.</p>
+<p>We can also further refine the behavior of a loop with the
+<code>next</code> and <code>break</code> commands.</p>
 <pre class="r"><code># Skip if a number is divisible by 7
 # Print &quot;fizz&quot; if a number is divisible by 3
 # Print &quot;buzz&quot; if a number is divisible by 5
@@ -486,9 +507,14 @@ while (TRUE) {
 ## [1] 19
 ## [1] &quot;buzz&quot;
 ## [1] 22</code></pre>
-<p>Please note, the above code is a poor implementation for the <a href="https://www.tomdalling.com/blog/software-design/fizzbuzz-in-too-much-detail/">fizzbuzz</a> test.</p>
+<p>Please note, the above code is a poor implementation for the <a
+href="https://www.tomdalling.com/blog/software-design/fizzbuzz-in-too-much-detail/">fizzbuzz</a>
+test.</p>
 <p><code>for</code>-loop</p>
-<p>When we know ahead of time how many iterations we are going to do, we can instead use a <code>for</code>-loop which will take care of incrementing for us. We can also use a for-loop to <em>iterate</em> over elements in a vector.</p>
+<p>When we know ahead of time how many iterations we are going to do, we
+can instead use a <code>for</code>-loop which will take care of
+incrementing for us. We can also use a for-loop to <em>iterate</em> over
+elements in a vector.</p>
 <pre class="r"><code>x &lt;- 3:7
 # print the number doubled
 # note that the alias for each element in &#39;x&#39; can be any variable name
@@ -503,7 +529,8 @@ for (some_alias_for_element in x) {
 </div>
 <div id="switches" class="section level3">
 <h3>Switches</h3>
-<p>A <code>switch</code> statement is a compact way to find a match over multiple conditions.</p>
+<p>A <code>switch</code> statement is a compact way to find a match over
+multiple conditions.</p>
 <pre class="r"><code>x &lt;- rnorm(n = 30, mean = pi, sd = 0.4)
 stat &lt;- &quot;mean&quot;
 switch (stat,
@@ -513,7 +540,7 @@ switch (stat,
   round = round(x, 2),
   &quot;Default option: no match found&quot;
 )</code></pre>
-<pre><code>## [1] 3.113938</code></pre>
+<pre><code>## [1] 3.20212</code></pre>
 </div>
 </div>
 <div id="the--apply-family-of-functions" class="section level2">
@@ -563,7 +590,8 @@ switch (stat,
 <ul>
 <li>We’ve already seen some functions like math functions</li>
 <li>functions are necessary to write flexible and reusable code</li>
-<li>rule of thumb: if you copy and paste a block of code more than once, turn it into a function
+<li>rule of thumb: if you copy and paste a block of code more than once,
+turn it into a function
 <ul>
 <li>this applies to making plots as well</li>
 </ul></li>
@@ -574,7 +602,8 @@ switch (stat,
 <li>named arguments</li>
 </ul></li>
 </ul>
-<p>The Huber loss function (or just Huber function, for short) is defined as:</p>
+<p>The Huber loss function (or just Huber function, for short) is
+defined as:</p>
 <p><span class="math display">\[
 \psi(x) = \begin{cases}
 x^2 &amp; \text{if } |x| \leq 1 \\
@@ -590,15 +619,23 @@ huber &lt;- function(x) {
     2*abs(x) - 1
   }
 }</code></pre>
-<p>The Huber function can be modified so that the transition from quadratic to linear happens at an arbitrary cutoff value <span class="math inline">\(a\)</span>, as in:</p>
+<p>The Huber function can be modified so that the transition from
+quadratic to linear happens at an arbitrary cutoff value <span
+class="math inline">\(a\)</span>, as in:</p>
 <p><span class="math display">\[
 \psi_a(x) = \begin{cases}
 x^2 &amp; \text{if } |x| \leq a \\
 2a|x| - a^2 &amp; \text{if } |x| &gt; a
 \end{cases}
 \]</span></p>
-<p>Starting with the code above, update the <code>huber()</code> function so that it takes two arguments: <span class="math inline">\(x\)</span>, a number at which to evaluate the loss, and <span class="math inline">\(a\)</span>, a number representing the cutoff value.</p>
-<p>It should now return <span class="math inline">\(\psi_a(x)\)</span>, as defined above. Check that <code>huber(3, 2)</code> returns 8, and <code>huber(3, 4)</code> returns 9.</p>
+<p>Starting with the code above, update the <code>huber()</code>
+function so that it takes two arguments: <span
+class="math inline">\(x\)</span>, a number at which to evaluate the
+loss, and <span class="math inline">\(a\)</span>, a number representing
+the cutoff value.</p>
+<p>It should now return <span class="math inline">\(\psi_a(x)\)</span>,
+as defined above. Check that <code>huber(3, 2)</code> returns 8, and
+<code>huber(3, 4)</code> returns 9.</p>
 <pre class="r"><code>huber &lt;- function(x, a) {
   if (abs(x) &lt;= a) {
     x^2
@@ -611,7 +648,9 @@ huber(3, 2)</code></pre>
 <pre><code>## [1] 8</code></pre>
 <pre class="r"><code>huber(3, 4)</code></pre>
 <pre><code>## [1] 9</code></pre>
-<p>Update the <code>huber()</code> function so that the default value of the cutoff <span class="math inline">\(a\)</span> is 1. Check that <code>huber(3)</code> returns 5.</p>
+<p>Update the <code>huber()</code> function so that the default value of
+the cutoff <span class="math inline">\(a\)</span> is 1. Check that
+<code>huber(3)</code> returns 5.</p>
 <pre class="r"><code>huber &lt;- function(x, a = 1) {
   if (abs(x) &lt;= a) {
     x^2
@@ -622,12 +661,14 @@ huber(3, 2)</code></pre>
 
 huber(3)</code></pre>
 <pre><code>## [1] 5</code></pre>
-<p>Check that <code>huber(a=1, x=3)</code> returns 5. Check that <code>huber(1, 3)</code> returns 1. Why are these different?</p>
+<p>Check that <code>huber(a=1, x=3)</code> returns 5. Check that
+<code>huber(1, 3)</code> returns 1. Why are these different?</p>
 <pre class="r"><code>huber(a = 1, x = 3)</code></pre>
 <pre><code>## [1] 5</code></pre>
 <pre class="r"><code>huber(1, 3)</code></pre>
 <pre><code>## [1] 1</code></pre>
-<p>Finally, we can <em>vectorize</em> this function over a set of inputs in two different ways:</p>
+<p>Finally, we can <em>vectorize</em> this function over a set of inputs
+in two different ways:</p>
 <pre class="r"><code># ifelse()
 huber_ifelse &lt;- function(x, a) {
   ifelse(abs(x) &lt;= a, x^2, 2*a*abs(x) - a^2)
@@ -637,10 +678,16 @@ huber_vec &lt;- Vectorize(huber, vectorize.args = &quot;x&quot;, USE.NAMES = TRU
 </div>
 <div id="working-with-libraries" class="section level2">
 <h2>Working with libraries</h2>
-<p>On the subject of code reuse, we can stand on the shoulders of giants (or other researchers) and use the code that they’ve decided to share on CRAN or GitHub (or Bioconductor, or …). We use their code through something called a <em>library</em> or <em>package</em>.</p>
+<p>On the subject of code reuse, we can stand on the shoulders of giants
+(or other researchers) and use the code that they’ve decided to share on
+CRAN or GitHub (or Bioconductor, or …). We use their code through
+something called a <em>library</em> or <em>package</em>.</p>
 <pre class="r"><code># load the `readxl` package using the `library()` function
 library(readxl)</code></pre>
-<p>Sometimes two packages will export two different functions by the same name. When this happens, we get what is called a <em>namespace</em> conflict. In those cases (and in general), it is best to be explicit about which package’s function you are using:</p>
+<p>Sometimes two packages will export two different functions by the
+same name. When this happens, we get what is called a <em>namespace</em>
+conflict. In those cases (and in general), it is best to be explicit
+about which package’s function you are using:</p>
 <pre class="r"><code># load the `dplyr` package and observe the &#39;onload&#39; message
 library(dplyr)</code></pre>
 <pre><code>## 
@@ -652,9 +699,12 @@ library(dplyr)</code></pre>
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <ul>
-<li>It says that it’s masked the object <code>filter</code> from <code>package:stats</code></li>
-<li><code>stats</code> is a default R library that is available on startup</li>
-<li><code>dplyr</code> also exports an object called <code>filter</code> and overwrites it in the <em>namespace</em></li>
+<li>It says that it’s masked the object <code>filter</code> from
+<code>package:stats</code></li>
+<li><code>stats</code> is a default R library that is available on
+startup</li>
+<li><code>dplyr</code> also exports an object called <code>filter</code>
+and overwrites it in the <em>namespace</em></li>
 </ul>
 <pre class="r"><code># This should work for time series
 x &lt;- 1:100
@@ -675,7 +725,11 @@ stats::filter(x, rep(1, 3))</code></pre>
 </div>
 <div id="best-practices-and-style" class="section level2">
 <h2>Best practices and style</h2>
-<p>Take some time to read through the first three sections of the <a href="https://style.tidyverse.org/">Tidyverse Style Guide</a>. The developers of RStudio also develop a suite of packages called the Tidyverse, and they use this style guide to make code more readable and uniform.</p>
+<p>Take some time to read through the first three sections of the <a
+href="https://style.tidyverse.org/">Tidyverse Style Guide</a>. The
+developers of RStudio also develop a suite of packages called the
+Tidyverse, and they use this style guide to make code more readable and
+uniform.</p>
 </div>
 
 

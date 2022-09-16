@@ -13,8 +13,8 @@
 
 <title>Tidy R</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -62,6 +62,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -82,6 +83,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +143,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +242,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -251,7 +259,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Workshops
      
     <span class="caret"></span>
@@ -259,13 +267,16 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
     <li>
-      <a href="bootcamp-r-series.html">R for Data Science</a>
+      <a href="bootcamp-supervised-ml-juli.html">Supervised Machine Learning</a>
     </li>
     <li class="dropdown-header">Previous</li>
+    <li>
+      <a href="bootcamp-r-series.html">R for Data Science</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -317,11 +328,22 @@ tr:nth-child(even) { background: #eee; }
 </style>
 <div id="introductions-and-overview" class="section level2">
 <h2>Introductions and Overview</h2>
-<p>A majority of this workshop is based on the <a href="https://vita.had.co.nz/papers/tidy-data.pdf">Tidy Data</a> paper by Hadley Wickham and the <a href="https://r4ds.had.co.nz/tidy-data.html">corresponding chapter</a> in the <a href="https://r4ds.had.co.nz/">R For Data Science</a> e-book. I highly recommend reading both the paper and the e-book to get a deeper understanding of using R and tidy data.</p>
+<p>A majority of this workshop is based on the <a
+href="https://vita.had.co.nz/papers/tidy-data.pdf">Tidy Data</a> paper
+by Hadley Wickham and the <a
+href="https://r4ds.had.co.nz/tidy-data.html">corresponding chapter</a>
+in the <a href="https://r4ds.had.co.nz/">R For Data Science</a> e-book.
+I highly recommend reading both the paper and the e-book to get a deeper
+understanding of using R and tidy data.</p>
 </div>
 <div id="tidy-data" class="section level2">
 <h2>Tidy Data</h2>
-<p>Tidy data is a set of definitions and guidelines to organize data by in order to make it easier to facilitate data analysis. Data can be organized in many different ways, and it may seem like there is either no “best” way to arrange data. Take the following imaginary data. Table @ref(tab:040-imaginary-data-1) has two columns and three rows in a commonly seen format:</p>
+<p>Tidy data is a set of definitions and guidelines to organize data by
+in order to make it easier to facilitate data analysis. Data can be
+organized in many different ways, and it may seem like there is either
+no “best” way to arrange data. Take the following imaginary data. Table
+@ref(tab:040-imaginary-data-1) has two columns and three rows in a
+commonly seen format:</p>
 <table>
 <caption>
 Each row has patient data
@@ -374,7 +396,11 @@ Mary Johnson
 </tr>
 </tbody>
 </table>
-<p>The same data can also be presented as in table @ref(tab:040-imaginary-data-2), this time a table with three columns and two rows (a transposition of the first table). Neither is more correct than the other, but necessity may dictate that one is more easy to work with than the other.</p>
+<p>The same data can also be presented as in table
+@ref(tab:040-imaginary-data-2), this time a table with three columns and
+two rows (a transposition of the first table). Neither is more correct
+than the other, but necessity may dictate that one is more easy to work
+with than the other.</p>
 <table>
 <caption>
 Each row is the treatment data
@@ -425,7 +451,8 @@ Treatment B
 </tr>
 </tbody>
 </table>
-<p>Tidy data defines a few terms to “describe the underlying semantics … of the values displayed in [a] table.”</p>
+<p>Tidy data defines a few terms to “describe the underlying semantics …
+of the values displayed in [a] table.”</p>
 <ul>
 <li><strong>Values</strong>
 <ul>
@@ -441,7 +468,8 @@ Treatment B
 <li>Contains all values measured on the same unit</li>
 </ul></li>
 </ul>
-<p>Consider now the same imaginary data as above, but now in a tidy format:</p>
+<p>Consider now the same imaginary data as above, but now in a tidy
+format:</p>
 <table>
 <caption>
 Each row is an observation, and each column is a variable.
@@ -534,7 +562,11 @@ B
 <li>Each observation forms a row</li>
 <li>Each type of observational unit forms a table</li>
 </ol>
-<p>Tidy data is now well-defined, and messy data is data that is in any other format. Messy data is not useless, though, and certain analyses and operations require data to be in a format other than tidy. But Tidy data can serve as a launching point (or target) for cleaning, plotting, and analyzing a new data set.</p>
+<p>Tidy data is now well-defined, and messy data is data that is in any
+other format. Messy data is not useless, though, and certain analyses
+and operations require data to be in a format other than tidy. But Tidy
+data can serve as a launching point (or target) for cleaning, plotting,
+and analyzing a new data set.</p>
 </div>
 <div id="tidying-messy-data" class="section level2">
 <h2>Tidying Messy Data</h2>
@@ -543,10 +575,12 @@ B
 <li>Column headers are values, not variable names</li>
 <li>Multiple variables are stored in one column</li>
 <li>Variable names are stored in both rows and columns</li>
-<li>Multiple types of observational units are stored in the same variable</li>
+<li>Multiple types of observational units are stored in the same
+variable</li>
 <li>A single observational unit is stored in multiple tables</li>
 </ol>
-<p>A small set of tools can be used to clean most of the problems of messy data:</p>
+<p>A small set of tools can be used to clean most of the problems of
+messy data:</p>
 <ol style="list-style-type: decimal">
 <li>Melting (pivot longer)</li>
 <li>String manipulation (splitting)</li>
@@ -1542,7 +1576,8 @@ f
 </tbody>
 </table>
 </div>
-<div id="variable-names-in-both-rows-and-columns" class="section level3">
+<div id="variable-names-in-both-rows-and-columns"
+class="section level3">
 <h3>Variable names in both rows and columns</h3>
 <p><strong>Messy</strong></p>
 <table>
@@ -2527,8 +2562,11 @@ MX17004
 </tbody>
 </table>
 </div>
-<div id="multiple-types-of-observational-units-are-stored-in-the-same-variable" class="section level3">
-<h3>Multiple types of observational units are stored in the same variable</h3>
+<div
+id="multiple-types-of-observational-units-are-stored-in-the-same-variable"
+class="section level3">
+<h3>Multiple types of observational units are stored in the same
+variable</h3>
 <p><strong>Messy</strong></p>
 <table>
 <thead>
@@ -2695,7 +2733,7 @@ Wobble Wobble
 2000
 </td>
 <td style="text-align:left;">
-98?
+98^0
 </td>
 <td style="text-align:left;">
 Give Me Just One Night
@@ -3181,7 +3219,7 @@ Wobble Wobble
 6
 </td>
 <td style="text-align:left;">
-98?
+98^0
 </td>
 <td style="text-align:left;">
 Give Me Just One Night
@@ -3382,9 +3420,14 @@ rank
 </tbody>
 </table>
 </div>
-<div id="a-single-observational-unit-is-stored-in-multiple-tables" class="section level3">
+<div id="a-single-observational-unit-is-stored-in-multiple-tables"
+class="section level3">
 <h3>A single observational unit is stored in multiple tables</h3>
-<p>It is common to find data values for individual observational units spread out over multiple tables or files. An example is the US census data, where each data set is split up by the year the census was conducted (e.g. <code>census_2020</code>, <code>census_2010</code>, etc.).</p>
+<p>It is common to find data values for individual observational units
+spread out over multiple tables or files. An example is the US census
+data, where each data set is split up by the year the census was
+conducted (e.g. <code>census_2020</code>, <code>census_2010</code>,
+etc.).</p>
 </div>
 </div>
 <div id="formatting-to-tidy-data" class="section level2">
@@ -3396,7 +3439,7 @@ table4a %&gt;%
   pivot_longer(cols = `1999`:`2000`,
                names_to = &quot;year&quot;,
                values_to = &quot;cases&quot;)</code></pre>
-<pre><code>## # A tibble: 6 x 3
+<pre><code>## # A tibble: 6 × 3
 ##   country     year   cases
 ##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
 ## 1 Afghanistan 1999     745
@@ -3410,7 +3453,7 @@ table4b %&gt;%
   pivot_longer(cols = `1999`:`2000`,
                names_to = &quot;year&quot;,
                values_to = &quot;population&quot;)</code></pre>
-<pre><code>## # A tibble: 6 x 3
+<pre><code>## # A tibble: 6 × 3
 ##   country     year  population
 ##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;
 ## 1 Afghanistan 1999    19987071
@@ -3435,7 +3478,7 @@ tidy4b &lt;- table4b %&gt;%
 # join
 left_join(tidy4a, tidy4b)</code></pre>
 <pre><code>## Joining, by = c(&quot;country&quot;, &quot;year&quot;)</code></pre>
-<pre><code>## # A tibble: 6 x 4
+<pre><code>## # A tibble: 6 × 4
 ##   country     year   cases population
 ##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;      &lt;int&gt;
 ## 1 Afghanistan 1999     745   19987071
@@ -3444,10 +3487,15 @@ left_join(tidy4a, tidy4b)</code></pre>
 ## 4 Brazil      2000   80488  174504898
 ## 5 China       1999  212258 1272915272
 ## 6 China       2000  213766 1280428583</code></pre>
-<p>See the <a href="https://www.rstudio.com/resources/cheatsheets/">dplyr cheatsheet</a> for a more visual depiction for the various types of joins.</p>
+<p>See the <a
+href="https://www.rstudio.com/resources/cheatsheets/">dplyr
+cheatsheet</a> for a more visual depiction for the various types of
+joins.</p>
 <ul>
-<li><code>bind_rows()</code> (Base equivalent is <code>rbind()</code>)</li>
-<li><code>bind_cols()</code> (Base equivalent is <code>cbind()</code>)</li>
+<li><code>bind_rows()</code> (Base equivalent is
+<code>rbind()</code>)</li>
+<li><code>bind_cols()</code> (Base equivalent is
+<code>cbind()</code>)</li>
 <li><code>left_join()</code>, <code>right_join()</code></li>
 <li><code>full_join()</code>, <code>inner_join()</code></li>
 </ul>
@@ -3458,7 +3506,7 @@ left_join(tidy4a, tidy4b)</code></pre>
   pivot_wider(id_cols = c(country, year),
               names_from = type,
               values_from = count)</code></pre>
-<pre><code>## # A tibble: 6 x 4
+<pre><code>## # A tibble: 6 × 4
 ##   country      year  cases population
 ##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
 ## 1 Afghanistan  1999    745   19987071
@@ -3474,7 +3522,7 @@ left_join(tidy4a, tidy4b)</code></pre>
 <pre class="r"><code>table3 %&gt;%
   separate(col = rate, 
            into = c(&quot;cases&quot;, &quot;population&quot;))</code></pre>
-<pre><code>## # A tibble: 6 x 4
+<pre><code>## # A tibble: 6 × 4
 ##   country      year cases  population
 ##   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     
 ## 1 Afghanistan  1999 745    19987071  
@@ -3484,7 +3532,9 @@ left_join(tidy4a, tidy4b)</code></pre>
 ## 5 China        1999 212258 1272915272
 ## 6 China        2000 213766 1280428583</code></pre>
 <p><code>package:stringr</code></p>
-<p>The <code>stringr</code> package is a collection of consistent functions that make operations on strings easier. It is largely a wrapper for the <code>stringi</code> package.</p>
+<p>The <code>stringr</code> package is a collection of consistent
+functions that make operations on strings easier. It is largely a
+wrapper for the <code>stringi</code> package.</p>
 <pre class="r"><code>ls(&quot;package:stringr&quot;)</code></pre>
 <pre><code>##  [1] &quot;%&gt;%&quot;             &quot;boundary&quot;        &quot;coll&quot;            &quot;fixed&quot;          
 ##  [5] &quot;fruit&quot;           &quot;invert_match&quot;    &quot;regex&quot;           &quot;sentences&quot;      
@@ -3521,7 +3571,7 @@ glimpse(gapminder)</code></pre>
   group_by(continent) %&gt;%
   summarise(avg_life_exp = mean(lifeExp)) %&gt;%
   arrange(desc(avg_life_exp))</code></pre>
-<pre><code>## # A tibble: 5 x 2
+<pre><code>## # A tibble: 5 × 2
 ##   continent avg_life_exp
 ##   &lt;fct&gt;            &lt;dbl&gt;
 ## 1 Oceania           75.2
@@ -3535,9 +3585,12 @@ glimpse(gapminder)</code></pre>
 <h2>Minimizing Repetition</h2>
 <div id="packagepurrr" class="section level3">
 <h3><code>package:purrr</code></h3>
-<p><code>purrr</code>: part of the tidyverse, the basic function <code>map()</code> is very similar to the <code>apply</code> family of functions</p>
+<p><code>purrr</code>: part of the tidyverse, the basic function
+<code>map()</code> is very similar to the <code>apply</code> family of
+functions</p>
 <ul>
-<li>The goal is to minimize repetition, while maximizing replication</li>
+<li>The goal is to minimize repetition, while maximizing
+replication</li>
 <li>Keep your code D.R.Y.</li>
 </ul>
 <p>The basic arguments for <code>map()</code> are:</p>
@@ -3554,35 +3607,40 @@ glimpse(gapminder)</code></pre>
 # notice you do not need the () after the function as you would if executing from consol
 map(df, mean)</code></pre>
 <pre><code>## $a
-## [1] -0.4387161
+## [1] -0.3528417
 ## 
 ## $b
-## [1] 0.2268106
+## [1] 0.3999835
 ## 
 ## $c
-## [1] -0.09378286
+## [1] -0.5508522
 ## 
 ## $d
-## [1] -0.3652525</code></pre>
+## [1] 0.2161427</code></pre>
 <pre class="r"><code># can pipe it an input to make the process even easier
 df %&gt;% map(mean)</code></pre>
 <pre><code>## $a
-## [1] -0.4387161
+## [1] -0.3528417
 ## 
 ## $b
-## [1] 0.2268106
+## [1] 0.3999835
 ## 
 ## $c
-## [1] -0.09378286
+## [1] -0.5508522
 ## 
 ## $d
-## [1] -0.3652525</code></pre>
-<p>You may have noticed that the output format is not necessarily in the format that we might expect. The <code>map()</code> function always outputs a list.</p>
-<p>There are helper functions that are explicit about the return types of a map function: <code>map_lgl()</code>, <code>map_int()</code>, <code>map_dbl()</code> and <code>map_chr()</code> return an atomic vector of the indicated type (or die trying).</p>
+## [1] 0.2161427</code></pre>
+<p>You may have noticed that the output format is not necessarily in the
+format that we might expect. The <code>map()</code> function always
+outputs a list.</p>
+<p>There are helper functions that are explicit about the return types
+of a map function: <code>map_lgl()</code>, <code>map_int()</code>,
+<code>map_dbl()</code> and <code>map_chr()</code> return an atomic
+vector of the indicated type (or die trying).</p>
 <pre class="r"><code># Should return a numerical vector rather than a list
 map_dbl(df, mean)</code></pre>
-<pre><code>##           a           b           c           d 
-## -0.43871613  0.22681063 -0.09378286 -0.36525246</code></pre>
+<pre><code>##          a          b          c          d 
+## -0.3528417  0.3999835 -0.5508522  0.2161427</code></pre>
 </div>
 </div>
 
