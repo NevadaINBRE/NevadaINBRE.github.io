@@ -11,7 +11,7 @@ navbar:
       menu:
         - text: "Upcoming"
         - text: "Python for ML"
-          href: bootcamp-supervised-ml-juli.html
+          href: bootcamp-supervised-ml.html
         - text: "Previous"
         - text: "R for Data Science"
           href: bootcamp-r-series.html

@@ -267,7 +267,7 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
     <li>
-      <a href="bootcamp-supervised-ml-juli.html">Python for ML</a>
+      <a href="bootcamp-supervised-ml.html">Python for ML</a>
     </li>
     <li class="dropdown-header">Previous</li>
     <li>
@@ -3607,29 +3607,29 @@ replication</li>
 # notice you do not need the () after the function as you would if executing from consol
 map(df, mean)</code></pre>
 <pre><code>## $a
-## [1] 0.4474063
+## [1] 0.09268485
 ## 
 ## $b
-## [1] 0.03801277
+## [1] -0.1231396
 ## 
 ## $c
-## [1] 0.6492357
+## [1] 0.4725334
 ## 
 ## $d
-## [1] -0.06639823</code></pre>
+## [1] 0.1835947</code></pre>
 <pre class="r"><code># can pipe it an input to make the process even easier
 df %&gt;% map(mean)</code></pre>
 <pre><code>## $a
-## [1] 0.4474063
+## [1] 0.09268485
 ## 
 ## $b
-## [1] 0.03801277
+## [1] -0.1231396
 ## 
 ## $c
-## [1] 0.6492357
+## [1] 0.4725334
 ## 
 ## $d
-## [1] -0.06639823</code></pre>
+## [1] 0.1835947</code></pre>
 <p>You may have noticed that the output format is not necessarily in the
 format that we might expect. The <code>map()</code> function always
 outputs a list.</p>
@@ -3640,7 +3640,7 @@ vector of the indicated type (or die trying).</p>
 <pre class="r"><code># Should return a numerical vector rather than a list
 map_dbl(df, mean)</code></pre>
 <pre><code>##           a           b           c           d 
-##  0.44740632  0.03801277  0.64923568 -0.06639823</code></pre>
+##  0.09268485 -0.12313961  0.47253343  0.18359469</code></pre>
 </div>
 </div>
 
