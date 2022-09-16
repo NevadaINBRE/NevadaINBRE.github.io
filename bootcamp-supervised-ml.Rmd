@@ -54,8 +54,6 @@ Many believe that the most exciting branch of machine learning today is deep lea
 
 No prior knowledge of coding or machine learning are necessary! This bootcamp is intended for novice scientists wanting to become familiar with Python and ML concepts enabling them to applied these methods to their own research endeavors. The material will be geared for graduate research projects, but everyone is encouraged to apply for participation. **Priority will be given to graduate students.**
 
-Although there are no prerequisites for this bootcamp, you are encouraged to review **Brianna, ANYTHING THEY SHOULD LOOK AT PRIOR TO THE TRANING**.
-
 ### Application and Registration Fee
 
 Spots are limited. Application for participation will be due **September 29th, 2022**. Late application will not be considered unless open seats remain. 
@@ -130,5 +128,7 @@ Important:
 This bootcamp is partially supported by a grant from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health.
 
 We thank Nevada INBRE and UNR's Graduate School to offer registration waivers to support participation in this bootcamp. 
+
+Comics thanks to https://xkcd.com/. 
 
 

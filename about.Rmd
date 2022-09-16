@@ -30,11 +30,11 @@ The primary questions that drive Ed's research program are 1) what are the genet
 </div>
 
 <div class="person">
-### Brianna Chrisman --- Need title
+### Brianna Chrisman --- Computational Geneticist
 
-<img src="media/img/ML_comic4.jpg">
+<img src="media/img/brianna_headshot.jpeg">
 
-Brianna ...
+Brianna is a recently graduated PhD student from the department of Bioengineering at Stanford University. She works in computational genomics, the intersection of computer science and biology. Brianna’s research focused on using the unmapped read space of next-gen sequencing in order to understand the human genome, virome, and contaminome. Brianna has taught several AI and biological courses, as well as mentored high schoolers, undergraduates, and grad students though computational biology projects. Outside of academics, Brianna loves rock climbing and most anything outdoors.
 
 </div>
 
