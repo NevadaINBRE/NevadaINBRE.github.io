@@ -13,7 +13,7 @@
 
 <title>Tidy R</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -180,8 +180,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -189,16 +189,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -267,11 +260,14 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
     <li>
-      <a href="bootcamp-supervised-ml.html">Python for ML</a>
+      <a href="bootcamp-supervised-ml-2023-01.html">2023 Winter: Python for ML</a>
     </li>
     <li class="dropdown-header">Previous</li>
     <li>
-      <a href="bootcamp-r-series.html">R for Data Science</a>
+      <a href="bootcamp-r-series.html">2021 Summer: R for Data Science</a>
+    </li>
+    <li>
+      <a href="bootcamp-supervised-ml-2022-10.html">2022 Fall: Python for ML</a>
     </li>
   </ul>
 </li>
@@ -3607,29 +3603,29 @@ replication</li>
 # notice you do not need the () after the function as you would if executing from consol
 map(df, mean)</code></pre>
 <pre><code>## $a
-## [1] -0.003688926
+## [1] -0.2772272
 ## 
 ## $b
-## [1] -0.09068149
+## [1] -0.08805118
 ## 
 ## $c
-## [1] 0.1867122
+## [1] 0.3821985
 ## 
 ## $d
-## [1] -0.3562301</code></pre>
+## [1] -0.2952629</code></pre>
 <pre class="r"><code># can pipe it an input to make the process even easier
 df %&gt;% map(mean)</code></pre>
 <pre><code>## $a
-## [1] -0.003688926
+## [1] -0.2772272
 ## 
 ## $b
-## [1] -0.09068149
+## [1] -0.08805118
 ## 
 ## $c
-## [1] 0.1867122
+## [1] 0.3821985
 ## 
 ## $d
-## [1] -0.3562301</code></pre>
+## [1] -0.2952629</code></pre>
 <p>You may have noticed that the output format is not necessarily in the
 format that we might expect. The <code>map()</code> function always
 outputs a list.</p>
@@ -3639,8 +3635,8 @@ of a map function: <code>map_lgl()</code>, <code>map_int()</code>,
 vector of the indicated type (or die trying).</p>
 <pre class="r"><code># Should return a numerical vector rather than a list
 map_dbl(df, mean)</code></pre>
-<pre><code>##            a            b            c            d 
-## -0.003688926 -0.090681489  0.186712194 -0.356230076</code></pre>
+<pre><code>##           a           b           c           d 
+## -0.27722717 -0.08805118  0.38219846 -0.29526292</code></pre>
 </div>
 </div>
 

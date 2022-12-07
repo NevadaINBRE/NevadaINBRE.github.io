@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Python for Supervised Machine Learning Bootcamp</title>
+
+<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Nevada INBRE DSCore</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Upcoming</li>
+    <li>
+      <a href="bootcamp-supervised-ml-2023-01.html">2023 Winter: Python for ML</a>
+    </li>
+    <li class="dropdown-header">Previous</li>
+    <li>
+      <a href="bootcamp-r-series.html">2021 Summer: R for Data Science</a>
+    </li>
+    <li>
+      <a href="bootcamp-supervised-ml-2022-10.html">2022 Fall: Python for ML</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R</li>
+    <li class="dropdown-header">Julia</li>
+    <li class="dropdown-header">Python</li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">
+    <span class="fa fa-address-book"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="https://github.com/NevadaINBRE">
+    <span class="fa fa-code-branch"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Python for Supervised Machine Learning
+Bootcamp</h1>
+
+</div>
+
+
+<style><!--Page specific style-->
+  h1 {color: #000}
+  h2 {color: #111}
+  h3 {color: #222; border-bottom: 1px solid #ccc; width: 75%;}
+  h4 {color: #666}
+  .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
+</style>
+<p><img src="media/img/questions.png" style="width: 800px; float: top; margin: 20px 20px 20px 20px;"></p>
+<p>To tackle these types of problems, we can use supervised learning -
+the branch of Artificial Intelligence that uses labeled data to train
+algorithms for a particular task!</p>
+<p><a href="https://med.unr.edu/inbre">Nevada INBRE</a> and the
+<a href="https://www.unr.edu/bioinformatics">Nevada Bioinformatics
+Center</a> are pleased to announce the upcoming Python for Supervised
+Machine Learning Bootcamp. Through hands-on learning activities, we will
+cover</p>
+<ul>
+<li>Module 1: Basics of Python for Data Science</li>
+<li>Module 2: Fundamentals of Machine Learning for Classification and
+Regression</li>
+<li>Module 3: Introductory of Deep Learning / Neural Networks for
+Computer Vision and Other Applications</li>
+</ul>
+<p>You will come out of the bootcamp understanding how to wrangle data,
+build and train both simple and sophisticated models, and evaluate your
+models in the context of different use cases.</p>
+<div id="bootcamp-overview" class="section level2">
+<h2>Bootcamp Overview</h2>
+<div id="module-i-python-crash-course" class="section level3">
+<h3>Module I: Python Crash Course</h3>
+<p><img src="media/img/Python-Symbol_logo.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">
+Python is a high-level, general-purpose, and open source programming
+language. It is emerging as one of the most popular programming
+languages, both for scientific computing and general use. In the python
+crash course, we will cover an overview of python and programming
+fundamentals, and then describe how to use python for data processing,
+analysis, and visualization. At the end of this module, you will be able
+to:</p>
+<ul>
+<li>Write and debug basic python code</li>
+<li>Use functions, loops, conditional statements, and more advanced data
+structures to build higher level programs</li>
+<li>Analyze a dataset using python libraries built for data science</li>
+<li>Process your data for downstream applications, such as machine
+learning</li>
+</ul>
+</div>
+<div id="module-ii-fundamentals-of-supervised-machine-learning"
+class="section level3">
+<h3>Module II: Fundamentals of Supervised Machine Learning</h3>
+<p><img src="media/img/ML_comic4.png" style="width: 300px; float: right; margin: 10px 10px 10px 10px;">Supervised
+machine learning - the genre of machine learning that learns from past
+measurements or signals to make predictions on new data - has
+applications in nearly every field, from biology to art, astronomy to
+history. In this second part of the course, we will cover the
+fundamentals of supervised machine learning, working through the
+intuition behind supervised machine learning models and doing hands-on
+model development. At the end of this module you, you will be able
+to:</p>
+<ul>
+<li>Describe the intuition and concepts behind supervised machine
+learning, from both a high-level overview, and from a technical
+perspective</li>
+<li>Build, train, and test classification and regression models using
+python’s machine learning libraries</li>
+<li>Diagnose, tune, and refine your models in order to improve
+performance</li>
+<li>Identify the use cases and limitations of various machine learning
+models and datasets</li>
+</ul>
+</div>
+<div id="module-iii-introduction-to-deep-learning"
+class="section level3">
+<h3>Module III: Introduction to Deep Learning</h3>
+<p>Many believe that the most exciting branch of machine learning today
+is deep learning, a type of supervised machine learning that uses a
+neural network to make predictions on large, highly featured datasets
+(and is particularly powerful for images). In this module, we will
+extend what we have learned about supervised machine learning in order
+to develop and analyze deep learning models. Again, we will work through
+both the concepts central to deep learning, and perform hands-on model
+building, At the end, you will be able to:</p>
+<ul>
+<li>Describe the intuition, use cases, and limitations of
+fully-connected neural networks, a convolution kernel, and convolution
+neural networks</li>
+<li>Manipulate and preprocess image data to be used in deep learning
+models</li>
+<li>Use Keras/TensorFlow to construct your own neural networks and apply
+popular model architectures to classification tasks</li>
+<li>Refine and evaluate your deep learning models</li>
+</ul>
+</div>
+</div>
+<div id="things-to-know" class="section level2">
+<h2>Things to Know</h2>
+<div id="audience-and-prerequisites" class="section level3">
+<h3>Audience and Prerequisites</h3>
+<p>No prior knowledge of coding or machine learning are necessary! This
+bootcamp is intended for novice scientists wanting to become familiar
+with Python and ML concepts enabling them to applied these methods to
+their own research endeavors. The material will be geared for graduate
+research projects, but everyone is encouraged to apply for
+participation. <strong>Priority will be given to graduate
+students.</strong></p>
+</div>
+<div id="application-and-registration-fee" class="section level3">
+<h3>Application and Registration Fee</h3>
+<p>Spots are limited. Application for participation will be due
+<strong>September 29th, 2022</strong>. Late application will not be
+considered unless open seats remain.</p>
+<table class="tg">
+<thead>
+<tr>
+<th>
+Module
+</th>
+<th>
+Date and Time
+</th>
+<th>
+Registration Fee
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Python Crash Course
+</td>
+<td>
+October 20 &amp; 21, 2022, 12:30-5pm
+</td>
+<td>
+$100
+</td>
+</tr>
+<tr>
+<td>
+Fundamentals of Supervised Machine Learning
+</td>
+<td>
+November 3 &amp; 4, 2022, 12:30-5pm
+</td>
+<td>
+$100
+</td>
+</tr>
+<tr>
+<td>
+Introduction to Deep Learning
+</td>
+<td>
+November 17 &amp; 18, 2021, 12:30-4pm
+</td>
+<td>
+$100
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size: 10pt;"><strong>A $50 discount will be applied
+when registering for all three modules totaling $250 for the entire
+bootcamp.</strong></span></p>
+<p>Application requires:</p>
+<ul>
+<li>Complete online application form</li>
+<li>Indicate 1 academic reference, and provide their contact information
+in the application form. The application will automatically send them a
+link to the brief reference form to fill out. All references need to be
+submitted directly by the author. Your references will not receive the
+link to the reference form until your application is fully submitted.
+Please be sure to allow enough time for your references to complete the
+form by October 4, 2022.</li>
+</ul>
+<p>If you are interested in applying for a <strong>Registration
+Waiver</strong> addition materials are required:</p>
+<ul>
+<li>Copy of unofficial transcript</li>
+<li>Personal statements not to exceed one page should address the
+following
+<ul>
+<li>Academic background and research interests</li>
+<li>Why you are interested in this bootcamp and what you hope to gained
+from this training</li>
+<li>How will this training affect your academic/research/professional
+career</li>
+<li>Anything else you want to share</li>
+</ul></li>
+</ul>
+<p><span
+style="font-size: 16pt; float: center;"><a href="https://nvideaoffice.formstack.com/forms/pythonmachinelearningbootcamp">Click
+here to be taken to the application form</a></span></p>
+<p>Application is open until <strong>September 29, 2022</strong>,
+applications will be reviewed shortly thereafter. Accepted and
+waitllisted applicants and waiver notifications will go out by October
+7, 2022. Upon reception of the confirmation email, participants will be
+asked to confirm their attendance within 2 working days days.</p>
+</div>
+<div id="additional-information" class="section level3">
+<h3>Additional Information</h3>
+<p><img src="media/img/machine_learning_comic.png" style="width: 300px; float: right; margin: 10px 10px 10px 10px;">Coordinator:
+Juli Petereit, <a href="mailto:jpetereit@unr.edu"
+class="email">jpetereit@unr.edu</a></p>
+<p>Instructor: Brianna Sierra Chrisman</p>
+<p>Important:</p>
+<ul>
+<li>Graduate student applications will receive priority</li>
+<li>Attendance is required in-person</li>
+<li>No-show policy: the associated lab/PI will be charged the
+registration fee even when a waiver was granted. In other words, if you
+don’t intend to actually be there, don’t register and take a spot from
+another student</li>
+<li>Certificate of Completion can be requested</li>
+</ul>
+</div>
+</div>
+<div id="acknowledgements" class="section level2">
+<h2>Acknowledgements</h2>
+<p>This bootcamp is partially supported by a grant from the National
+Institute of General Medical Sciences (GM103440) from the National
+Institutes of Health.</p>
+<p>We thank Nevada INBRE and UNR’s Graduate School to offer registration
+waivers to support participation in this bootcamp.</p>
+<p>Comics thanks to <a href="https://xkcd.com/"
+class="uri">https://xkcd.com/</a>.</p>
+</div>
+
+<footer>
+  <hr />
+  Copyright &copy; 2022 Nevada INBRE. All rights reserved.
+</footer>
+
+<!-- Open external links in new tab -->
+<script type="text/javascript" src="external_links.js"></script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
