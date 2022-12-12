@@ -100,7 +100,7 @@ If you are interested in applying for a **Registration Waiver** addition materia
 - Complete online application form
 - Limited **Registration Waivers** are available, must indicate why one cannot self-support their attendance  
 
-<span style="font-size: 16pt; float: center;"><a href="https://nvideaoffice.formstack.com/forms/pythonmachinelearningbootcamp">Click here to be taken to the faculty application form</a></span>
+<span style="font-size: 16pt; float: center;"><a href="https://nvideaoffice.formstack.com/forms/pythonmachinelearningbootcamp_fac">Click here to be taken to the faculty application form</a></span>
 
 
 Application is open until **January 6, 2023**. Completed applications will be reviewed weekly until the closing date and applicants will be notified. 
