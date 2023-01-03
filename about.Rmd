@@ -48,6 +48,14 @@ Hans is a bioinformatician with expertise in genomics, transcriptomics, and DNA-
 </div>
 
 <div class="person">
+### Nicole Schrad --- Bioinformatician
+
+<img src="media/img/Schrad.jpg">
+
+Nicole is a bioinformatician with expertise in microbiome and metagenomic  analysis. She has worked on various research projects ranging from molecular genetics of pathogens to studying the impact of soil microbiomes on water quality and geochemical cycling. Nicole earned her bachelor’s degree in Biological Sciences from the University of Southern California and her Ph.D. in Microbiology and Environmental Toxicology from the University of California, Santa Cruz. She joined the Nevada Bioinformatics Center in November 2022. 
+
+</div>
+<div class="person">
 ### Alex Knudson --- Data Scientist
 
 <img src="media/img/knudson.jpg">
