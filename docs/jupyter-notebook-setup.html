@@ -11,7 +11,7 @@
 
 
 
-<title>Python for Supervised Machine Learning Bootcamp</title>
+<title>What is a Jupyter Notebook?</title>
 
 <script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -311,8 +311,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Python for Supervised Machine Learning
-Bootcamp</h1>
+<h1 class="title toc-ignore">What is a Jupyter Notebook?</h1>
 
 </div>
 
@@ -324,225 +323,183 @@ Bootcamp</h1>
   h4 {color: #666}
   .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
 </style>
-<p><img src="media/img/questions.png" style="width: 800px; float: top; margin: 20px 20px 20px 20px;"></p>
-<p>To tackle these types of problems, we can use supervised learning -
-the branch of Artificial Intelligence that uses labeled data to train
-algorithms for a particular task!</p>
-<p><a href="https://med.unr.edu/inbre">Nevada INBRE</a> and the
-<a href="https://www.unr.edu/bioinformatics">Nevada Bioinformatics
-Center</a> are pleased to announce the upcoming Python for Supervised
-Machine Learning Bootcamp. Through hands-on learning activities, we will
-cover</p>
-<ul>
-<li>Module 1: Basics of Python for Data Science</li>
-<li>Module 2: Fundamentals of Machine Learning for Classification and
-Regression</li>
-<li>Module 3: Introductory of Deep Learning / Neural Networks for
-Computer Vision and Other Applications</li>
-</ul>
-<p>You will come out of the bootcamp understanding how to wrangle data,
-build and train both simple and sophisticated models, and evaluate your
-models in the context of different use cases.</p>
-<div id="bootcamp-overview" class="section level2">
-<h2>Bootcamp Overview</h2>
-<div id="module-i-python-crash-course" class="section level3">
-<h3>Module I: Python Crash Course</h3>
-<p><img src="media/img/Python-Symbol_logo.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">
-Python is a high-level, general-purpose, and open source programming
-language. It is emerging as one of the most popular programming
-languages, both for scientific computing and general use. In the python
-crash course, we will cover an overview of python and programming
-fundamentals, and then describe how to use python for data processing,
-analysis, and visualization. At the end of this module, you will be able
-to:</p>
-<ul>
-<li>Write and debug basic python code</li>
-<li>Use functions, loops, conditional statements, and more advanced data
-structures to build higher level programs</li>
-<li>Analyze a dataset using python libraries built for data science</li>
-<li>Process your data for downstream applications, such as machine
-learning</li>
-</ul>
+<p><img src="media/img/Jupyter_Notebook.png" style="width: 800px; float: top; margin: 10px 10px 10px 10px;"></p>
+<div id="the-notebook" class="section level1">
+<h1>The Notebook</h1>
+<p>A jupyter notebook is a document (produced by the jupyter notebook
+program) that contains both computer code (i.e., python) and rich text
+elements (subtitles, paragraphs, equations, figures, links, etc.).
+Notebook documents are both human-readable documents containing the
+analysis description and the results (figures, tables, etc.) as well as
+executable documents which can be run to perform data analysis. You can
+have multiple different jupyter notebooks saved in different file
+directories etc. A jupyter notebook is always saved as a .ipynb
+file.</p>
+<div id="jupyter-notebook-software" class="section level2">
+<h2>Jupyter Notebook Software</h2>
+<p>The Jupyter Notebook software is an application that allows editing
+and running notebook documents via a web browser. Behind the scenes, the
+code runs and is stored on on your computer’s CPU, but can be accessed
+and edited from a web browser. Although the jupyter notebook uses a web
+browser, you do not need internet to run Jupyter. Your local computer,
+rather than an internet provider, acts as the server. You can also wire
+jupyter in such a way that jupyter executes on an HPC, cloud computer
+system, or other remote CPU/drive, while still being accessed from your
+laptop’s browser.</p>
 </div>
-<div id="module-ii-fundamentals-of-supervised-machine-learning"
-class="section level3">
-<h3>Module II: Fundamentals of Supervised Machine Learning</h3>
-<p><img src="media/img/ML_comic4.png" style="width: 300px; float: right; margin: 10px 10px 10px 10px;">Supervised
-machine learning - the genre of machine learning that learns from past
-measurements or signals to make predictions on new data - has
-applications in nearly every field, from biology to art, astronomy to
-history. In this second part of the course, we will cover the
-fundamentals of supervised machine learning, working through the
-intuition behind supervised machine learning models and doing hands-on
-model development. At the end of this module you, you will be able
-to:</p>
-<ul>
-<li>Describe the intuition and concepts behind supervised machine
-learning, from both a high-level overview, and from a technical
-perspective</li>
-<li>Build, train, and test classification and regression models using
-python’s machine learning libraries</li>
-<li>Diagnose, tune, and refine your models in order to improve
-performance</li>
-<li>Identify the use cases and limitations of various machine learning
-models and datasets</li>
-</ul>
+<div id="jupyter-notebook-dashbaord" class="section level2">
+<h2>Jupyter Notebook Dashbaord</h2>
+<p>In addition to displaying/editing/running notebook documents, the
+Jupyter Notebook App has a “Dashboard” (Notebook Dashboard), a “control
+panel” showing local files and allowing to open notebook documents or
+shutting down their kernels.</p>
+<p>You can also edit python scripts, text files, or most other files
+using the jupyter notebook dashboard on your browser.</p>
+<p><img src="media/img/dashboard_files_tab.png" style="width: 800px; float: top; margin: 10px 10px 10px 10px;"></p>
 </div>
-<div id="module-iii-introduction-to-deep-learning"
-class="section level3">
-<h3>Module III: Introduction to Deep Learning</h3>
-<p>Many believe that the most exciting branch of machine learning today
-is deep learning, a type of supervised machine learning that uses a
-neural network to make predictions on large, highly featured datasets
-(and is particularly powerful for images). In this module, we will
-extend what we have learned about supervised machine learning in order
-to develop and analyze deep learning models. Again, we will work through
-both the concepts central to deep learning, and perform hands-on model
-building, At the end, you will be able to:</p>
-<ul>
-<li>Describe the intuition, use cases, and limitations of
-fully-connected neural networks, a convolution kernel, and convolution
-neural networks</li>
-<li>Manipulate and preprocess image data to be used in deep learning
-models</li>
-<li>Use Keras/TensorFlow to construct your own neural networks and apply
-popular model architectures to classification tasks</li>
-<li>Refine and evaluate your deep learning models</li>
-</ul>
+<div id="kernel" class="section level2">
+<h2>Kernel</h2>
+<p>A notebook kernel is a “computational engine” that executes the code
+contained in a Notebook document. The ipython kernel, referenced in this
+guide, executes python code. Kernels for many other languages exist
+(official kernels).</p>
+<p>When you open a Notebook document, the associated kernel is
+automatically launched. When the notebook is executed (either
+cell-by-cell or with menu Cell -&gt; Run All), the kernel performs the
+computation and produces the results. Depending on the type of
+computations, the kernel may consume significant CPU and RAM. Note that
+the RAM is not released until the kernel is shut-down.</p>
 </div>
 </div>
-<div id="things-to-know" class="section level2">
-<h2>Things to Know</h2>
-<div id="audience-and-prerequisites" class="section level3">
-<h3>Audience and Prerequisites</h3>
-<p>No prior knowledge of coding or machine learning are necessary! This
-bootcamp is intended for novice scientists wanting to become familiar
-with Python and ML concepts enabling them to applied these methods to
-their own research endeavors. The material will be geared for graduate
-research projects, but everyone is encouraged to apply for
-participation. <strong>Priority will be given to graduate
-students.</strong></p>
+<div id="installing-jupyter-notebook" class="section level1">
+<h1>Installing Jupyter Notebook</h1>
+<p>To install jupyter notebook download
+<a href="https://www.anaconda.com/products/distribution">anaconda</a> (a
+python source management package) for python3, 64 bits for your
+operating system (linux, macOS, or windows - jupyter will not work on
+chromebooks). Use the default settings for a single user.</p>
 </div>
-<div id="application-and-registration-fee" class="section level3">
-<h3>Application and Registration Fee</h3>
-<p>Spots are limited. Application for participation will be due
-<strong>September 29th, 2022</strong>. Late application will not be
-considered unless open seats remain.</p>
-<table class="tg">
-<thead>
-<tr>
-<th>
-Module
-</th>
-<th>
-Date and Time
-</th>
-<th>
-Registration Fee
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-Python Crash Course
-</td>
-<td>
-October 20 &amp; 21, 2022, 12:30-5pm
-</td>
-<td>
-$100
-</td>
-</tr>
-<tr>
-<td>
-Fundamentals of Supervised Machine Learning
-</td>
-<td>
-November 3 &amp; 4, 2022, 12:30-5pm
-</td>
-<td>
-$100
-</td>
-</tr>
-<tr>
-<td>
-Introduction to Deep Learning
-</td>
-<td>
-November 17 &amp; 18, 2021, 12:30-4pm
-</td>
-<td>
-$100
-</td>
-</tr>
-</tbody>
-</table>
-<p><span style="font-size: 10pt;"><strong>A $50 discount will be applied
-when registering for all three modules totaling $250 for the entire
-bootcamp.</strong></span></p>
-<p>Application requires:</p>
-<ul>
-<li>Complete online application form</li>
-<li>Indicate 1 academic reference, and provide their contact information
-in the application form. The application will automatically send them a
-link to the brief reference form to fill out. All references need to be
-submitted directly by the author. Your references will not receive the
-link to the reference form until your application is fully submitted.
-Please be sure to allow enough time for your references to complete the
-form by October 4, 2022.</li>
-</ul>
-<p>If you are interested in applying for a <strong>Registration
-Waiver</strong> addition materials are required:</p>
-<ul>
-<li>Copy of unofficial transcript</li>
-<li>Personal statements not to exceed one page should address the
-following
-<ul>
-<li>Academic background and research interests</li>
-<li>Why you are interested in this bootcamp and what you hope to gained
-from this training</li>
-<li>How will this training affect your academic/research/professional
-career</li>
-<li>Anything else you want to share</li>
-</ul></li>
-</ul>
-<p><span
-style="font-size: 16pt; float: center;"><a href="https://nvideaoffice.formstack.com/forms/pythonmachinelearningbootcamp">Click
-here to be taken to the application form</a></span></p>
-<p>Application is open until <strong>September 29, 2022</strong>,
-applications will be reviewed shortly thereafter. Accepted and
-waitllisted applicants and waiver notifications will go out by October
-7, 2022. Upon reception of the confirmation email, participants will be
-asked to confirm their attendance within 2 working days days.</p>
+<div id="running-and-navigating-jupyter-notebook"
+class="section level1">
+<h1>Running and Navigating Jupyter Notebook</h1>
+<div id="kicking-off-jupyter-notebook" class="section level2">
+<h2>Kicking off Jupyter Notebook</h2>
+<div id="windows" class="section level3">
+<h3>Windows</h3>
+<div id="option-1" class="section level4">
+<h4>Option 1:</h4>
+<p>Click on the Jupyter Notebook icon in the start menu</p>
 </div>
-<div id="additional-information" class="section level3">
-<h3>Additional Information</h3>
-<p><img src="media/img/machine_learning_comic.png" style="width: 300px; float: right; margin: 10px 10px 10px 10px;">Coordinator:
-Juli Petereit, <a href="mailto:jpetereit@unr.edu"
-class="email">jpetereit@unr.edu</a></p>
-<p>Instructor: Brianna Sierra Chrisman</p>
-<p>Important:</p>
-<ul>
-<li>Graduate student applications will receive priority</li>
-<li>Attendance is required in-person</li>
-<li>No-show policy: the associated lab/PI will be charged the
-registration fee even when a waiver was granted. In other words, if you
-don’t intend to actually be there, don’t register and take a spot from
-another student</li>
-<li>Certificate of Completion can be requested</li>
-</ul>
+<div id="option-2" class="section level4">
+<h4>Option 2:</h4>
+<ol style="list-style-type: decimal">
+<li>Open up terminal in windows (cmd)</li>
+<li>Type <code>jupyter notebook</code></li>
+</ol>
 </div>
 </div>
-<div id="acknowledgements" class="section level2">
-<h2>Acknowledgements</h2>
-<p>This bootcamp is partially supported by a grant from the National
-Institute of General Medical Sciences (GM103440) from the National
-Institutes of Health.</p>
-<p>We thank Nevada INBRE and UNR’s Graduate School to offer registration
-waivers to support participation in this bootcamp.</p>
-<p>Comics thanks to <a href="https://xkcd.com/"
-class="uri">https://xkcd.com/</a>.</p>
+<div id="macos" class="section level3">
+<h3>MacOS</h3>
+<ol style="list-style-type: decimal">
+<li>Open terminal on mac</li>
+<li>Type <code>jupyter notebook</code>.</li>
+</ol>
+<p>This should kick off a kernel (running inside terminal) and open up a
+browser with the jupyter notebook dashboard displayed.</p>
+<p>The Jupyter Notebook App is a server that appears in your browser at
+a default address (<a href="http://localhost:8888"
+class="uri">http://localhost:8888</a>). You can run many copies of the
+Jupyter Notebook App and they will show up at a similar address (only
+the number after “:”, which is the port, will increment for each new
+copy). Since with a single Jupyter Notebook App you can already open
+many notebooks, we do not recommend running multiple copies of Jupyter
+Notebook App.</p>
+</div>
+</div>
+<div id="creating-a-new-notebook" class="section level2">
+<h2>Creating a New Notebook</h2>
+<p>To create a new notebook, on the jupyter notebook dashboard navigate
+into the file directory in which you want to create your notebook and
+click New-&gt;Notebook.</p>
+</div>
+<div id="editing-the-notebook" class="section level2">
+<h2>Editing the Notebook</h2>
+<p>Jupyter Notebooks consist of cells, blocks of code or text that can
+be moved around, formatted etc. We can have coding cells, which consist
+of (in the case of ipython)</p>
+<p>Formatted text cells use markdown syntax. You can write paragraphs
+and bullet points, create headings/subheadings, and insert equations
+into these cells. You can toggle whether a cell gets read as code or
+text by clicking on the cell and then using the dropdown code/raw
+text/markdown menu.</p>
+<p>You can move cells up and down using the up.down arrows.</p>
+<p>Text cells consist of python (or whatever code your kernel is set
+for) code.</p>
+</div>
+<div id="running-code-in-your-notebook" class="section level2">
+<h2>Running code in your notebook</h2>
+<p>To run a block of code click on the block of code and click play.
+Alternatively, you can use shift + enter to run the cell you are on. To
+run all of the cells, slick kernel -&gt; run all.</p>
+<p>To interrupt the block of code running click kernel-&gt;interrupt
+execution.</p>
+<p>To restart the runtime, click kernel-&gt;restart runtime. This will
+not delete your code but will clear all local variables, etc.</p>
+</div>
+<div id="jupyter-file-directory-structure" class="section level2">
+<h2>Jupyter File Directory Structure</h2>
+<p>When started, the Jupyter Notebook App can access only files within
+its start-up folder (including any sub-folder). No configuration is
+necessary if you place your notebooks in your home folder or subfolders.
+Otherwise, you need to choose a Jupyter Notebook App start-up folder
+which will contain all the notebooks.</p>
+<div id="change-jupyter-notebook-startup-folder" class="section level3">
+<h3>Change Jupyter Notebook Startup Folder</h3>
+<div id="windows-1" class="section level4">
+<h4>Windows</h4>
+<ol style="list-style-type: decimal">
+<li>Copy the Jupyter Notebook launcher from the menu to the
+desktop.</li>
+<li>Right click on the new launcher and change the Target field, change
+%USERPROFILE% to the full path of the folder which will contain all the
+notebooks.</li>
+<li>Double-click on the Jupyter Notebook desktop launcher (icon shows
+[IPy]) to start the Jupyter Notebook App. The notebook interface will
+appear in a new browser window or tab. A secondary terminal window (used
+only for error logging and for shut down) will be also opened.</li>
+</ol>
+</div>
+<div id="macoslinux" class="section level4">
+<h4>MacOS/linux</h4>
+<ol style="list-style-type: decimal">
+<li>Click on spotlight, type terminal to open a terminal window.</li>
+<li>Enter the startup folder by typing
+<code>cd /some_folder_name</code></li>
+<li>Type jupyter notebook to launch the Jupyter Notebook App The
+notebook interface will appear in a new browser window or tab.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="closing-your-kernel" class="section level2">
+<h2>Closing your kernel</h2>
+<p>Closing the browser (or the tab) will not close the Jupyter Notebook
+App. To completely shut it down you need to close the associated
+terminal.</p>
+<p>The Jupyter Notebook App is a server that appears in your browser at
+a default address (<a href="http://localhost:8888"
+class="uri">http://localhost:8888</a>). Closing the browser will not
+shut down the server. You can reopen the previous address and the
+Jupyter Notebook App will be redisplayed.</p>
+<p>When a notebook is opened, its “computational engine” (called the
+kernel) is automatically started. Closing the notebook browser tab, will
+not shut down the kernel, instead the kernel will keep running until is
+explicitly shut down. To shut down a kernel, go to the associated
+notebook and click on menu File -&gt; Close and Halt. Alternatively, the
+Notebook Dashboard has a tab named Running that shows all the running
+notebooks (i.e. kernels) and allows shutting them down (by clicking on a
+Shutdown button).</p>
+</div>
 </div>
 
 <footer>

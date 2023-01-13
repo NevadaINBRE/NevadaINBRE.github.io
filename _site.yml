@@ -19,6 +19,8 @@ navbar:
           href: bootcamp-supervised-ml-2022-10.html
     - text: "Tutorials"
       menu:
+        - text: "Jupyter Notebook"
+          href: jupyter-notebook-setup.html
         - text: "R"
         - text: "Julia"
         - text: "Python"
