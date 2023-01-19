@@ -10,6 +10,10 @@ navbar:
     - text: "Workshops"
       menu:
         - text: "Upcoming"
+        - text: "2023 Spring: Research Day at NSC"
+          href: underConstruction.html
+        - text: "2023 Spring: Phages Genomics at CSN"
+          href: underConstruction.html
         - text: "2023 Winter: Python for ML"
           href: bootcamp-supervised-ml-2023-01.html
         - text: "Previous"
@@ -21,6 +25,8 @@ navbar:
       menu:
         - text: "Jupyter Notebook"
           href: jupyter-notebook-setup.html
+        - text: "Test"
+          href: coverage_plot.html
         - text: "R"
         - text: "Julia"
         - text: "Python"

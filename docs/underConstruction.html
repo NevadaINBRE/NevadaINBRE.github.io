@@ -11,7 +11,7 @@
 
 
 
-<title>What is a Jupyter Notebook?</title>
+<title>This Page Is Under Constuction</title>
 
 <script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -320,7 +320,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">What is a Jupyter Notebook?</h1>
+<h1 class="title toc-ignore">This Page Is Under Constuction</h1>
 
 </div>
 
@@ -332,183 +332,16 @@ $(document).ready(function () {
   h4 {color: #666}
   .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
 </style>
-<p><img src="media/img/Jupyter_Notebook.png" style="width: 800px; float: top; margin: 10px 10px 10px 10px;"></p>
-<div id="the-notebook" class="section level1">
-<h1>The Notebook</h1>
-<p>A jupyter notebook is a document (produced by the jupyter notebook
-program) that contains both computer code (i.e., python) and rich text
-elements (subtitles, paragraphs, equations, figures, links, etc.).
-Notebook documents are both human-readable documents containing the
-analysis description and the results (figures, tables, etc.) as well as
-executable documents which can be run to perform data analysis. You can
-have multiple different jupyter notebooks saved in different file
-directories etc. A jupyter notebook is always saved as a .ipynb
-file.</p>
-<div id="jupyter-notebook-software" class="section level2">
-<h2>Jupyter Notebook Software</h2>
-<p>The Jupyter Notebook software is an application that allows editing
-and running notebook documents via a web browser. Behind the scenes, the
-code runs and is stored on on your computer’s CPU, but can be accessed
-and edited from a web browser. Although the jupyter notebook uses a web
-browser, you do not need internet to run Jupyter. Your local computer,
-rather than an internet provider, acts as the server. You can also wire
-jupyter in such a way that jupyter executes on an HPC, cloud computer
-system, or other remote CPU/drive, while still being accessed from your
-laptop’s browser.</p>
+<div id="in-the-meantime-here-some-funny-comics" class="section level3">
+<h3>In the meantime, here some funny comics!</h3>
+<p><img src="media/img/data_point.png" style="width: 300px; float: center; margin: 10px 10px 10px 10px;"/></p>
+<p><img src="media/img/data_trap.png" style="width: 300px; float: center; margin: 10px 10px 10px 10px;"/></p>
+<div style="page-break-after: always;"></div>
 </div>
-<div id="jupyter-notebook-dashbaord" class="section level2">
-<h2>Jupyter Notebook Dashbaord</h2>
-<p>In addition to displaying/editing/running notebook documents, the
-Jupyter Notebook App has a “Dashboard” (Notebook Dashboard), a “control
-panel” showing local files and allowing to open notebook documents or
-shutting down their kernels.</p>
-<p>You can also edit python scripts, text files, or most other files
-using the jupyter notebook dashboard on your browser.</p>
-<p><img src="media/img/dashboard_files_tab.png" style="width: 800px; float: top; margin: 10px 10px 10px 10px;"></p>
-</div>
-<div id="kernel" class="section level2">
-<h2>Kernel</h2>
-<p>A notebook kernel is a “computational engine” that executes the code
-contained in a Notebook document. The ipython kernel, referenced in this
-guide, executes python code. Kernels for many other languages exist
-(official kernels).</p>
-<p>When you open a Notebook document, the associated kernel is
-automatically launched. When the notebook is executed (either
-cell-by-cell or with menu Cell -&gt; Run All), the kernel performs the
-computation and produces the results. Depending on the type of
-computations, the kernel may consume significant CPU and RAM. Note that
-the RAM is not released until the kernel is shut-down.</p>
-</div>
-</div>
-<div id="installing-jupyter-notebook" class="section level1">
-<h1>Installing Jupyter Notebook</h1>
-<p>To install jupyter notebook download
-<a href="https://www.anaconda.com/products/distribution">anaconda</a> (a
-python source management package) for python3, 64 bits for your
-operating system (linux, macOS, or windows - jupyter will not work on
-chromebooks). Use the default settings for a single user.</p>
-</div>
-<div id="running-and-navigating-jupyter-notebook"
-class="section level1">
-<h1>Running and Navigating Jupyter Notebook</h1>
-<div id="kicking-off-jupyter-notebook" class="section level2">
-<h2>Kicking off Jupyter Notebook</h2>
-<div id="windows" class="section level3">
-<h3>Windows</h3>
-<div id="option-1" class="section level4">
-<h4>Option 1:</h4>
-<p>Click on the Jupyter Notebook icon in the start menu</p>
-</div>
-<div id="option-2" class="section level4">
-<h4>Option 2:</h4>
-<ol style="list-style-type: decimal">
-<li>Open up terminal in windows (cmd)</li>
-<li>Type <code>jupyter notebook</code></li>
-</ol>
-</div>
-</div>
-<div id="macos" class="section level3">
-<h3>MacOS</h3>
-<ol style="list-style-type: decimal">
-<li>Open terminal on mac</li>
-<li>Type <code>jupyter notebook</code>.</li>
-</ol>
-<p>This should kick off a kernel (running inside terminal) and open up a
-browser with the jupyter notebook dashboard displayed.</p>
-<p>The Jupyter Notebook App is a server that appears in your browser at
-a default address (<a href="http://localhost:8888"
-class="uri">http://localhost:8888</a>). You can run many copies of the
-Jupyter Notebook App and they will show up at a similar address (only
-the number after “:”, which is the port, will increment for each new
-copy). Since with a single Jupyter Notebook App you can already open
-many notebooks, we do not recommend running multiple copies of Jupyter
-Notebook App.</p>
-</div>
-</div>
-<div id="creating-a-new-notebook" class="section level2">
-<h2>Creating a New Notebook</h2>
-<p>To create a new notebook, on the jupyter notebook dashboard navigate
-into the file directory in which you want to create your notebook and
-click New-&gt;Notebook.</p>
-</div>
-<div id="editing-the-notebook" class="section level2">
-<h2>Editing the Notebook</h2>
-<p>Jupyter Notebooks consist of cells, blocks of code or text that can
-be moved around, formatted etc. We can have coding cells, which consist
-of (in the case of ipython)</p>
-<p>Formatted text cells use markdown syntax. You can write paragraphs
-and bullet points, create headings/subheadings, and insert equations
-into these cells. You can toggle whether a cell gets read as code or
-text by clicking on the cell and then using the dropdown code/raw
-text/markdown menu.</p>
-<p>You can move cells up and down using the up.down arrows.</p>
-<p>Text cells consist of python (or whatever code your kernel is set
-for) code.</p>
-</div>
-<div id="running-code-in-your-notebook" class="section level2">
-<h2>Running code in your notebook</h2>
-<p>To run a block of code click on the block of code and click play.
-Alternatively, you can use shift + enter to run the cell you are on. To
-run all of the cells, slick kernel -&gt; run all.</p>
-<p>To interrupt the block of code running click kernel-&gt;interrupt
-execution.</p>
-<p>To restart the runtime, click kernel-&gt;restart runtime. This will
-not delete your code but will clear all local variables, etc.</p>
-</div>
-<div id="jupyter-file-directory-structure" class="section level2">
-<h2>Jupyter File Directory Structure</h2>
-<p>When started, the Jupyter Notebook App can access only files within
-its start-up folder (including any sub-folder). No configuration is
-necessary if you place your notebooks in your home folder or subfolders.
-Otherwise, you need to choose a Jupyter Notebook App start-up folder
-which will contain all the notebooks.</p>
-<div id="change-jupyter-notebook-startup-folder" class="section level3">
-<h3>Change Jupyter Notebook Startup Folder</h3>
-<div id="windows-1" class="section level4">
-<h4>Windows</h4>
-<ol style="list-style-type: decimal">
-<li>Copy the Jupyter Notebook launcher from the menu to the
-desktop.</li>
-<li>Right click on the new launcher and change the Target field, change
-%USERPROFILE% to the full path of the folder which will contain all the
-notebooks.</li>
-<li>Double-click on the Jupyter Notebook desktop launcher (icon shows
-[IPy]) to start the Jupyter Notebook App. The notebook interface will
-appear in a new browser window or tab. A secondary terminal window (used
-only for error logging and for shut down) will be also opened.</li>
-</ol>
-</div>
-<div id="macoslinux" class="section level4">
-<h4>MacOS/linux</h4>
-<ol style="list-style-type: decimal">
-<li>Click on spotlight, type terminal to open a terminal window.</li>
-<li>Enter the startup folder by typing
-<code>cd /some_folder_name</code></li>
-<li>Type jupyter notebook to launch the Jupyter Notebook App The
-notebook interface will appear in a new browser window or tab.</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="closing-your-kernel" class="section level2">
-<h2>Closing your kernel</h2>
-<p>Closing the browser (or the tab) will not close the Jupyter Notebook
-App. To completely shut it down you need to close the associated
-terminal.</p>
-<p>The Jupyter Notebook App is a server that appears in your browser at
-a default address (<a href="http://localhost:8888"
-class="uri">http://localhost:8888</a>). Closing the browser will not
-shut down the server. You can reopen the previous address and the
-Jupyter Notebook App will be redisplayed.</p>
-<p>When a notebook is opened, its “computational engine” (called the
-kernel) is automatically started. Closing the notebook browser tab, will
-not shut down the kernel, instead the kernel will keep running until is
-explicitly shut down. To shut down a kernel, go to the associated
-notebook and click on menu File -&gt; Close and Halt. Alternatively, the
-Notebook Dashboard has a tab named Running that shows all the running
-notebooks (i.e. kernels) and allows shutting them down (by clicking on a
-Shutdown button).</p>
-</div>
+<div id="acknowledgements" class="section level2">
+<h2>Acknowledgements</h2>
+<p>Comics thanks to <a href="https://xkcd.com/"
+class="uri">https://xkcd.com/</a>.</p>
 </div>
 
 <footer>
