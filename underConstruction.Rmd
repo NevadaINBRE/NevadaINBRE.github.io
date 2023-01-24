@@ -1,0 +1,26 @@
+---
+title: "This Page Is Under Constuction"
+---
+
+```{=html}
+<style><!--Page specific style-->
+  h1 {color: #000}
+  h2 {color: #111}
+  h3 {color: #222; border-bottom: 1px solid #ccc; width: 75%;}
+  h4 {color: #666}
+  .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
+</style>
+```
+
+
+### In the meantime, here some funny comics!
+
+<img src="media/img/data_point.png" style="width: 300px; float: center; margin: 10px 10px 10px 10px;"/>
+
+<img src="media/img/data_trap.png" style="width: 300px; float: center; margin: 10px 10px 10px 10px;"/>
+
+\newpage
+
+## Acknowledgements
+
+Comics thanks to <https://xkcd.com/>.

@@ -1,0 +1,104 @@
+---
+title: "Analyzing data with the coverage_plot pipeline"
+output:
+  html_document:
+    highlight: pygments
+---
+
+```{=html}
+<style><!--Page specific style-->
+  h1 {color: #000}
+  h2 {color: #111}
+  h3 {color: #222; border-bottom: 1px solid #ccc; width: 75%;}
+  h4 {color: #666}
+  .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
+</style>
+```
+## Step 1: Download dataset and scripts
+
+Download the aligned BAM/BAI files and associated scripts <a href="https://biox.unr.edu/ftp/biox_robletolab_workshop/bioinformatics_material/coverage_plot_dataset/">here</a>.
+
+## Step 2: Organize data
+
+-   Create a new folder for this training called "coverage_by_region"
+-   Create a subdirectory in this folder called bam_files
+-   Move the bam/bai files into the bam_files folder
+-   Move the .py and .R script into the coverage_by_region folder
+
+## Step 3: Create a list of genes text file
+
+Create a list of genes text file that you want to investigate coverage. Here is an example list below
+
+```{r, engine = 'bash', eval = FALSE}
+flgC
+flgK
+flgL
+flhO
+flhP
+fliE
+fliI
+fliJ
+fliK
+fliL
+fliM
+fliY
+hag
+motA
+motB
+```
+
+## Step 4: Load the the GTF file
+
+Previously, we used the gtf file `GCF_000009045.1_ASM904v1_genomic.gtf`. which is also needed here. You want to create a symlink to this file in the current coverage_by_region folder to make it accessible.
+
+## Step 5: Run the python script
+
+Install necessary `conda` packages
+
+```{r, engine = 'bash', eval = FALSE}
+ conda install -c bioconda gtfparse pysam
+```
+
+Run the python script by providing the bam_folder, GTF file, list of genes of interest text file, and output file.
+
+```{r, engine = 'bash', eval = FALSE}
+(base) hvasquezgross@jimkent:/mypool/projects/eduardo_robleto/coveragey_by_region$ python genesofinterest_readcount_matrix.py -f bam_files/ -g GCF_000009045.1_ASM904v1_genomic.gtf -i motility_list.fixed.txt -o motility_2022_results.tsv
+```
+
+This will create the `motility_2022_results.tsv` file which can then be provided to the R script. You will need to edit the R script with this file name and the path of the working folder.
+
+Once edited, you can run the R script as follows
+
+```{r, engine = 'bash', eval = FALSE}
+(base) hvasquezgross@jimkent:/mypool/projects/eduardo_robleto/coveragey_by_region$ Rscript region_coverage.R 
+(base) hvasquezgross@jimkent:/mypool/projects/eduardo_robleto/coveragey_by_region$ ls -1tr
+GCF_000009045.1_ASM904v1_genomic.gtf
+bam_files
+genesofinterest_readcount_matrix.py
+motility_2022_results.tsv
+region_coverage.R
+coverage_region_flgC.png
+coverage_region_flgK.png
+coverage_region_flgL.png
+coverage_region_flhO.png
+coverage_region_flhP.png
+coverage_region_fliE.png
+coverage_region_fliI.png
+coverage_region_fliJ.png
+coverage_region_fliK.png
+coverage_region_fliL.png
+coverage_region_fliM.png
+coverage_region_fliY.png
+coverage_region_hag.png
+coverage_region_motA.png
+coverage_region_motB.png
+```
+
+This will produce a coverage plot for each gene of interest listed in the text file for each sample processed in the bam_files folder.
+
+Examples of plots:
+
+-   <a href="https://biox.unr.edu/ftp/biox_robletolab_workshop/bioinformatics_material/coverage_plot_dataset/coverage_region_flgC.png">Plot 1</a>
+-   <a href="https://biox.unr.edu/ftp/biox_robletolab_workshop/bioinformatics_material/coverage_plot_dataset/coverage_region_motA.png">Plot 2</a>
+
+Note: This pipeline was built for a particular sample set and is not generalization as currently written.
