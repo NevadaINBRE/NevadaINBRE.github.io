@@ -1,0 +1,344 @@
+---
+title: "Introduction to R: Part One"
+output:
+  html_document: default
+---
+
+## Introductions and Overview
+
+This workshop serves as a gentle introduction to programming with R. We will cover the basics of R, such as using the command line as a calculator, working with variables, simple data structures, and data types. We will show how to load data sets into R, and how to summarize data with statistics and plots.
+
+## Opening the R command line
+
+-   The R command line interface (CLI) is a simple interface for entering R commands
+-   A *command* is a way of giving the computer some information and having it perform a task
+
+## Using the console as a calculator
+
+### Basic arithmetic operators
+
+| Operator | Description      | Example        |
+|:---------|:-----------------|:---------------|
+| `+`      | addition         | `3 + 4 = 7`    |
+| `-`      | subtraction      | `10 - 2 = 8`   |
+| `*`      | multiplication   | `2.5 * 4 = 10` |
+| `/`      | division         | `9 / 2 = 4.5`  |
+| `^`      | exponentiation   | `11^2 = 121`   |
+| `%%`     | modulus          | `5 %% 3 = 2`   |
+| `%/%`    | integer division | `9 %/% 2 = 4`  |
+
+```{r 010-dental-mammal}
+# Order of operations still applies
+5 - 4 + 5*2^4
+# Use parentheses to ensure desired order of operations
+(-2 + (5 / 3.8)) * 1.618^2
+```
+
+### Practice
+
+Open up your command line terminal and type in "R". This should start the R kilograms of soil you will need to fill up a garden bed that is 1m x 2m x 1m. The density of soil is 1385 kg/m\^2.
+
+### Logical operators
+
+Logical operators test for a condition. They ask a question, and the answer is either `TRUE` or `FALSE`.
+
+| Operator | Description            | Example                                        |
+|:---------|:-----------------------|:-----------------------------------------------|
+| `<`      | less than              | `5 < 4 -> FALSE`                               |
+| `<=`     | less than or equal     | `6 <= 6 -> TRUE`                               |
+| `>`      | greater than           | `Inf > 1e6 -> TRUE`                            |
+| `>=`     | greater than or equal  | `3.5 >= 9 -> FALSE`                            |
+| `==`     | exactly equal          | `sin(0) == 0 -> TRUE`                          |
+| `!=`     | not equal              | `(3+1)^2 != 3^2 + 1^1 -> TRUE`                 |
+| `!`      | not                    | `!TRUE -> FALSE`                               |
+| `&&`     | and (short-circuiting) | `(5 < 7) && (7 < 10) -> TRUE`                  |
+| \`       |                        | \`                                             |
+| `&`      | and (vectorized)       | `TRUE & 2 > c(1,2,3) -> c(FALSE, FALSE, TRUE)` |
+| \`       | \`                     | or (vectorized)                                |
+
+### Other math functions
+
+| Function               | Description                                                                | Example                              |
+|:-----------------------|:---------------------------------------------------------------------------|:-------------------------------------|
+| `abs`                  | absolute value of a number                                                 | `abs(-2.5), abs(3L), abs(3+4i)`      |
+| `sqrt`                 | square root of a number                                                    | `sqrt(0.81), sqrt(-1+0i)`            |
+| `exp`                  | $e^x$                                                                      | `exp(1) ->` `r exp(1)`               |
+| `log`                  | logarithm of a number (base is the natural number $e$ by default)          |                                      |
+| `log10`                | base 10 logarithm of a number (see also `log2`, `log1p`, `logb`)           |                                      |
+| `sin`, `cos`, `tan`    | basic trigonometric functions (radians by default)                         |                                      |
+| `asin`, `acos`, `atan` | inverse trigonometric functions                                            |                                      |
+| `sinh`, `asinh`, etc.  | hyperbolic and inverse hyperbolic trigonometric functions                  |                                      |
+| `ceiling`              | rounds a number towards infinity                                           | `ceiling(-2.8) -> -2`                |
+| `floor`                | rounds a number towards negative infinity                                  | `floor(3.9) -> 3`                    |
+| `round`                | rounds a number to a specified number of digits (round to even by default) |                                      |
+| `trunc`                | strips the decimal part from a number                                      | `trunc(2.1) -> 2`, `trunc(2.9) -> 2` |
+
+### Built-in constants and other values
+
+| Keyword | Description                                           | Example          |
+|:--------|:------------------------------------------------------|:-----------------|
+| `Inf`   | The floating point representation of infinity         | `1 / 0 -> Inf`   |
+| `-Inf`  | Negative infinity                                     | `1 / -0 -> -Inf` |
+| `NaN`   | **N**ot **a** **N**umber                              | `0 / 0 -> NaN`   |
+| `NA`    | A placeholder for missing values                      |                  |
+| `NULL`  | An R object representing the empty set or nothing     |                  |
+| `pi`    | The ratio of a circle's circumference to its diameter | `3.14159...`     |
+
+## Using RStudio
+
+RStudio is an integrated development environment (IDE) that provides an user-friendly environment to access your code, view graphs, get help, etc. The free desktop IDE RStudio can be downloaded here <https://posit.co/downloads/>.
+
+The basic RStudio set up looks like this: <img src="media/img/Rstudio.png"/>
+
+On the top left, you can create scripts. The top right shows your environment. The bottom left is your console and terminal, while the bottom right can show you the files in your working directory, the most recent plot, what packages you have downloaded, and a help menu.
+
+## How to start using RStudio
+
+Creating *projects* in RStudio can help keep your data clean and reproducible. It also makes it easier to keep track of all the files, objects, and graphs you may create with your scripts. R projects can also easily be linked to Github if you are working on a collaborative project. Go to `File` -\> `New Project` in RStudio. You can either create a project in a new directory (aka folder) or an existing one. For this workshop choose `New Directory`-\>`R Project`-\> then name your folder "R_workshop"
+
+To create a new script in RStudio you can click the icon with a white square and green check mark in the upper left hand corner of RStudio. Create a new script.
+
+## R packages
+
+R packages are free, reproducible chunks of R code. They contain R functions, compiled code, documentation, and sometimes sample data. R packages are stored in a directory called "library" in the R environment. You can download packages using install.packages() or you can use a package like devtools or BiocManager to help the download.
+
+``` r
+install.packages("tidyverse")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("dada2", version = "3.16")
+```
+
+## Accessing the built-in docs
+
+Most if not all functions in R have useful help documentation that can be accessed directly within the R console.
+
+``` r
+help(sum)
+
+?sum
+
+library(help = "base")
+```
+
+### Practice
+
+Look at the documentation in the round() function.
+
+-   What does the digits argument do?
+
+    ```{r}
+
+
+    ```
+
+## Working with variables
+
+-   Let you store a number or other object in the *environment* list
+-   Similar to "memory recall" of a calculator, but better
+
+To create a new variable, we can use *\<-* or *=* assignment. Add the following code to your new script and run it:
+
+```{r 010-youthful-mochi}
+# <- assignment
+x <- 10
+# = assignment
+y = "abcd"
+```
+
+-   You should see both values added to the environment on the right side of RStudio
+-   Note: The "=" for assignment is discouraged, so most people use "\<-"
+
+To list all variables in the session (environment), you can look in the environment tab in RStudio or do:
+
+```{r 010-united-piranha}
+# list all variables in the environment
+ls()
+```
+
+We can see what is stored in those variables by typing them into the console:
+
+```{r 010-informal-stomach}
+# show what is stored in the variables
+x
+y
+```
+
+**Good variable naming conventions (in R)**
+
+-   See the [tidyverse style guide](https://style.tidyverse.org/syntax.html#object-names) for a full rundown of object naming
+-   let your names be meaningful
+-   let your names be consistent
+-   avoid using existing function names (e.g. `mean`, `c`) and objects (e.g. `T`, `F`, `pi`)
+    -   List of reserved words in R: <https://cran.r-project.org/doc/manuals/R-lang.html#Reserved-words>
+-   avoid using dots
+
+## Basic data types in R
+
+| Data Type | Description                      | Example         |
+|:----------|:---------------------------------|:----------------|
+| Logical   | Boolean                          | `TRUE or FALSE` |
+| Integer   | Whole number without decimal     | `4L`            |
+| Double    | Real number                      | `3.6`           |
+| Complex   | Complex number                   | `3+2i`          |
+| Character | String of letters and/or numbers | `Hello 3D`      |
+
+You can see what data type a variable is using the `typeof()` function.
+
+### Practice
+
+-   What types of data are x and y?
+
+    ```{r}
+
+    ```
+
+## Overview of objects and data structures
+
+For a full overview, see the [R documentation on basic types](https://cran.r-project.org/doc/manuals/R-lang.html#Basic-types).
+
+-   Vectors
+-   Matrices and Arrays
+-   Lists
+-   Compound objects
+    -   Factors
+    -   Data frames
+
+## Working with vectors, matrices, and arrays
+
+### Vectors
+
+-   a *vector* is a collection of *same-type* objects
+-   typically created using the *concatenate* command, `c()`
+
+```{r 010-valid-savory, results="hold"}
+# a few vectors
+c(4.5, 2, 3.8)
+1:4
+c(TRUE, FALSE, FALSE)
+seq(from = 0.1, to = 1.0, by = 0.4)
+LETTERS
+```
+
+We can access the elements of a vector by using brackets: `[]`. Note that R uses "one-based indexing", meaning that arrays start at $1$, not $0$.
+
+```{r 010-fine-nosh}
+# accessing a single element from `letters`
+letters[4]
+# accessing multiple elements using a vector of indices
+letters[c(1, 3, 5)]
+# accessing a subset using conditionals
+x <- 1:10
+x[x < 4]
+# accessing the last element
+tail(letters, n = 1)
+letters[length(letters)]
+```
+
+### Matrices
+
+-   A matrix in R is a vector with a `dim` *attribute*
+-   It is stored in memory the same way as a vector is
+
+```{r 010-shamrock-roast}
+# creating a matrix using the `matrix()` function
+matrix(1:12, nrow = 3, ncol = 4)
+# filling a matrix with a single value
+matrix("m", nrow = 5, ncol = 2)
+```
+
+Matrices (and vectors and arrays) are stored in *column-major order*
+
+```{r 010-dearest-fried}
+# default: fills in down each column
+matrix(1:12, nrow = 3)
+# explicitly fill in accross rows first
+matrix(1:12, nrow = 3, byrow = TRUE)
+```
+
+Elements of a matrix can either be accessed with row-column pairs, or with *linear indexing* (matrix[rows, columns])
+
+```{r 010-bruised-jimmies}
+# create a 3x5 matrix
+(M <- matrix(1:15, nrow = 3))
+# get the element at the second row and fourth column
+M[2, 4]
+# get the 8th element in memory
+M[8]
+```
+
+## Working with lists
+
+-   A list is a "multi-verse" vector
+-   Each element of a list can be *any* type of R object
+
+```{r 010-scrawny-nosh}
+(L <- list(a = 1, "d", formula(y ~ x)))
+```
+
+Elements of a list can be accessed in three different ways.
+
+```{r 010-witty-porpoise}
+# Using single bracket notation. Returns a list containing the object at this index.
+L[1]
+# Using the `$` selector. Returns the object at this index.
+L$a
+# Using double bracket notation. Returns the object at this index.
+L[[1]]
+```
+
+## Working with data frames
+
+What are some of the key properties of a data frame?
+
+-   Two dimensional (tabular)
+-   Can be a mix of numeric, logical, and character (and more) types
+-   All columns are the same length
+
+*A data frame is essentially a list with a few extra restrictions*
+
+Accessing elements of a data frame is similar to lists *and* matrices. mtcars is a dataset was extracted from the 1974 Motor Trend US magazine. The data frame is part of the base R package.
+
+```{r 010-violet-daikon}
+mtcars
+# getting a single column using the `$` selector or `[[`
+mtcars$mpg # column "mpg"
+#mtcars[["mpg"]] # column "mpg"
+# getting multiple columns using `[` and a index/character vector
+mtcars["mpg"] # a new data frame with just the "mpg" column
+mtcars[1:3] # columns 1 through 3
+```
+
+### Practice !
+
+On your script make a variable "age" that is populated by your age, a vector named "favorite_foods" with at least 3 foods, and list that holds the times you have class on Mondays and Fridays.
+
+What the name of the 8th column of the mtcar data table?
+
+```{r}
+
+```
+
+## Fitting a linear model
+
+R has built-in support for fitting *generalized* linear models, with support for numeric and factor variables.
+
+```{r 010-radiant-mussels}
+x <- rnorm(30)
+y <- rnorm(length(x), 3*x + 2, 0.5)
+# fit a linear model
+lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`
+lm(y ~ 0 + x) # slope only model (no intercept)
+```
+
+### Practice time!
+
+Write a script that creates a linear model relating mpg and cyl of the mtcars data frame.
+
+-   What is the y intercept for your linear model?
+
+-   How can you set the y intercept to 0? When would you want to do this?
+
+```{r}
+
+```

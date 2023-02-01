@@ -1,0 +1,25 @@
+---
+title: 'Introduction to R: Part Two'
+output: html_document
+---
+
+## Calling in Data, Functions, The Tidyverse, and Reproducible Data
+
+In this section we will go over how to bring in datasets from online, spreadsheets, or another statistical program like SPSS. We will also briefly talk about functions, using a library called tidyverse, and some aspects of reproducible data. 
+
+### Calling in Data
+
+Sometimes an instrument you are using to gather data will let you download data in an .csv, .txt, or .xlsx file. We can download data from the internet. For example we can download this Rmarkdown document from the INBRE GitHub and a excel spreadsheet. 
+
+```{r}
+download.file(url="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2022-December-Single-Cell-RNA-Seq-Analysis/main/data_analysis/scRNA_Workshop-PART5.Rmd", destfile =  "Intro2R_workshop.Rmd")
+
+download.file(url="", destfile = "")
+```
+
+We can also bring in a soil dataset that we will use later on in the workshop. To do this we will need to use a package called `readxl`
+
+```{r}
+suppressMessages(install.packages("readxl"))
+library(readxl)
+
