@@ -1,6 +1,4 @@
----
-title: "Introduction to Bioinformatics for Bacteriophage Analysis"
----
+
 
 <style><!--Page specific style-->
   h1 {color: #000}
@@ -10,23 +8,24 @@ title: "Introduction to Bioinformatics for Bacteriophage Analysis"
   .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
 </style>
 
-$$\\[0.25cm]$$
+<img src="media/img/CSN_banner.png" style="width: 800px; float: top; margin: 20px 20px 20px 20px;">
+
 
 ### WHAT
 Are you interested in life science, data analytics and/or computing? Then this workshop is for you! This workshop will introduce you to the growing field of Bioinformatics and its applications. We will discuss bioinformatics approaches to analyze Bacteriophage samples and you will get the chance to run your own analysis.
 
 
 ### WHERE
-This is an in-person workshop and will be held on the College of Southern Nevada’s (CSN) campus. 
+This is an in-person workshop and will be held on the College of Southern Nevada’s (CSN) campus. <img src="media/img/Bacteria_Graphic_Blue.png" style="width: 200px; float: right; margin: 0px 20px 0px 0px;">
 
 
 ### WHO
 The workshop’s intended audience are undergraduate students, but everyone interested in Bioinformatics and Bacteriophage research is welcome to participate. 
 
 
-### WHEN
-**Friday, March 24, 2023**
+### WHEN - **Friday, March 24, 2023**
 
+<br>
 <table class="tg">
 <thead>
   <tr>
@@ -53,17 +52,22 @@ The workshop’s intended audience are undergraduate students, but everyone inte
   </tr>
 </tbody>
 </table>
+<br>
 
-$$\\[0.01cm]$$
+### INTERESTED 
+Space is limited and confirmation of participation will be required. Registration is due by **March 10th, 2023**. You can join us for any or all sessions. 
+
+<div style="text-align: center"><span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/csn_phagegenomics">Click HERE to register</a> </span></div>
+
+<br>
+Questions?? Reach out at any time, email nbc_training@unr.edu or call (775) 784-4359.
 
 ### PRESENTERS
 Hans Vasquez-Gross, PhD and Juli Petereit, PhD from the Nevada Bioinformatics Center and Nevada INBRE Data Science Core will be supporting this research event. 
 
-### INTERESTED 
-Space is limited and confirmation of participation will be required. Please complete the <a href="https://nvideaoffice.formstack.com/forms/csn_phagegenomics">registration application here</a> by **March 10th, 2023**. If you have questions about this event, contact nbc_training@unr.edu.
-
-
 ### ACKNOWLEGEDMENT
+We thank <a href="https://www.linkedin.com/in/jaiden-christopher-0568aa1ba/">Jaiden Christopher</a> for the beautiful graphics.  
+
 This event is made possible by grants from the National Science Foundation (2001385, 2019609) with additional support from a grant by the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health. 
 
 <img src="media/img/CSN_workshop_banner.png" style="width: 800px; float: center; margin: 20px 20px 20px 20px;"> 
