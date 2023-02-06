@@ -12,14 +12,16 @@ In this section we will go over how to bring in datasets from online, spreadshee
 Sometimes an instrument you are using to gather data will let you download data in an .csv, .txt, or .xlsx file. We can download data from the internet. For example we can download this Rmarkdown document from the INBRE GitHub and a excel spreadsheet. 
 
 ```{r}
-download.file(url="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2022-December-Single-Cell-RNA-Seq-Analysis/main/data_analysis/scRNA_Workshop-PART5.Rmd", destfile =  "Intro2R_workshop.Rmd")
+download.file(url="https://raw.githubusercontent.com/NevadaINBRE/NevadaINBRE.github.io/main/NSC_workshop/IntrotoR2.Rmd", destfile =  "Intro_to_R_workshop.Rmd")
 
-download.file(url="", destfile = "")
 ```
 
 We can also bring in a soil dataset that we will use later on in the workshop. To do this we will need to use a package called `readxl`
 
 ```{r}
-suppressMessages(install.packages("readxl"))
-library(readxl)
+library (readr)
+
+urlfile="https://raw.githubusercontent.com/lrjoshi/webpage/master/public/post/c159s.csv"
+
+mydata<-read_csv(url(urlfile))
 
