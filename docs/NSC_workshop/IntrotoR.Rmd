@@ -36,14 +36,14 @@ This workshop serves as a gentle introduction to programming with R. We will cov
 
 ### Practice
 
-Open up your command line terminal and type in "R". This should start the R kilograms of soil you will need to fill up a garden bed that is 1m x 2m x 1m. The density of soil is 1385 kg/m\^2.
+Open up your command line terminal and type in "R". This should bring up the R welcome prompt that states what version you will be using. Next, calculate the kilograms of soil you will need to fill up a garden bed that is 1m x 2m x 1m. The density of soil is 1385 kg/m\^2.
 
 ### Logical operators
 
 Logical operators test for a condition. They ask a question, and the answer is either `TRUE` or `FALSE`.
 
 | Operator | Description            | Example                                        |
-|:---------|:-----------------------|:-----------------------------------------------|
+|:---------------|:------------------|:-------------------------------------|
 | `<`      | less than              | `5 < 4 -> FALSE`                               |
 | `<=`     | less than or equal     | `6 <= 6 -> TRUE`                               |
 | `>`      | greater than           | `Inf > 1e6 -> TRUE`                            |
@@ -59,7 +59,7 @@ Logical operators test for a condition. They ask a question, and the answer is e
 ### Other math functions
 
 | Function               | Description                                                                | Example                              |
-|:-----------------------|:---------------------------------------------------------------------------|:-------------------------------------|
+|:----------------|:------------------------------------|:-----------------|
 | `abs`                  | absolute value of a number                                                 | `abs(-2.5), abs(3L), abs(3+4i)`      |
 | `sqrt`                 | square root of a number                                                    | `sqrt(0.81), sqrt(-1+0i)`            |
 | `exp`                  | $e^x$                                                                      | `exp(1) ->` `r exp(1)`               |
@@ -76,7 +76,7 @@ Logical operators test for a condition. They ask a question, and the answer is e
 ### Built-in constants and other values
 
 | Keyword | Description                                           | Example          |
-|:--------|:------------------------------------------------------|:-----------------|
+|:--------------|:------------------------------------------|:--------------|
 | `Inf`   | The floating point representation of infinity         | `1 / 0 -> Inf`   |
 | `-Inf`  | Negative infinity                                     | `1 / -0 -> -Inf` |
 | `NaN`   | **N**ot **a** **N**umber                              | `0 / 0 -> NaN`   |
