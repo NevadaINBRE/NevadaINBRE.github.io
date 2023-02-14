@@ -13,7 +13,7 @@ navbar:
         - text: "2023 Spring: Research Day at NSC"
           href: NSC_ResearchDay_2023-03.html
         - text: "2023 Spring: Programming with R at UNR"
-          href: bootcamp-intro-r_2023-03.html
+          href: bootcamp-intro-R_2023-03.html
         - text: "2023 Spring: Phages Genomics at CSN"
           href: CSN_phageGenomics_2023-03.html
         - text: "Previous"

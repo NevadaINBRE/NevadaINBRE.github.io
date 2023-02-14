@@ -21,7 +21,7 @@ R is a complete, flexible, and open source system for statistical analysis and g
 
 ### Day 1: R Crash Course with Introduction to Data Analytics
 
-<img src="media/img/data_point.png" style="width: 220px; float: right; margin: 20px 10px 10px 10px;"/>Day 1 will be an introduction to programming with R and teach you how to use Rstudio. R basics will be covered, such as using the command line as a calculator, storing values in a variable, **basic data structures (vector, matrix, list, data frame, etc.)**, and data types. We will show how to **read-in basic data sets** and access rows/columns, and summarize data with statistics and plots. Then we will move on to **scripting in R, including control flow (choices and loops), writing functions, and installing/loading libraries** (and the differences between CRAN, GitHub, and Bioconductor packages).  
+<img src="media/img/data_point.png" style="width: 230px; float: right; margin: 5px 10px 10px 20px;"/>Day 1 will be an introduction to programming with R and teach you how to use Rstudio. R basics will be covered, such as using the command line as a calculator, storing values in a variable, **basic data structures (vector, matrix, list, data frame, etc.)**, and data types. We will show how to **read-in basic data sets** and access rows/columns, and summarize data with statistics and plots. Then we will move on to **scripting in R, including control flow (choices and loops), writing functions, and installing/loading libraries** (and the differences between CRAN, GitHub, and Bioconductor packages).  
 
 ### Day 2: Tidy R, Figures, and Reproducibility 
 
@@ -50,7 +50,7 @@ We will discuss commonly seen coding problems and introduce what it means to **c
 
 </tbody>
 </table>
-<span style="font-size: 10pt;">**noon - 1pm: lunch on your own.**</span>
+<span style="font-size: 10pt;">**noon - 1pm: lunch on your own**</span>
 
 <br>
 

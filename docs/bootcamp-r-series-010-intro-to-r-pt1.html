@@ -263,7 +263,7 @@ $(document).ready(function () {
       <a href="NSC_ResearchDay_2023-03.html">2023 Spring: Research Day at NSC</a>
     </li>
     <li>
-      <a href="bootcamp-intro-r_2023-03.html">2023 Spring: Programming with R at UNR</a>
+      <a href="bootcamp-intro-R_2023-03.html">2023 Spring: Programming with R at UNR</a>
     </li>
     <li>
       <a href="CSN_phageGenomics_2023-03.html">2023 Spring: Phages Genomics at CSN</a>
@@ -887,24 +887,24 @@ integer (most of the time).</p>
 <pre class="r"><code># most often used for categorical observations
 pets &lt;- c(&quot;cat&quot;, &quot;dog&quot;, &quot;lizard&quot;, &quot;raccoon&quot;)
 (pet_obs &lt;- sample(pets, 20, TRUE))</code></pre>
-<pre><code>##  [1] &quot;cat&quot;     &quot;raccoon&quot; &quot;dog&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;cat&quot;     &quot;lizard&quot; 
-##  [8] &quot;raccoon&quot; &quot;dog&quot;     &quot;lizard&quot;  &quot;raccoon&quot; &quot;dog&quot;     &quot;dog&quot;     &quot;dog&quot;    
-## [15] &quot;lizard&quot;  &quot;cat&quot;     &quot;cat&quot;     &quot;lizard&quot;  &quot;dog&quot;     &quot;raccoon&quot;</code></pre>
+<pre><code>##  [1] &quot;cat&quot;     &quot;lizard&quot;  &quot;raccoon&quot; &quot;dog&quot;     &quot;dog&quot;     &quot;dog&quot;     &quot;cat&quot;    
+##  [8] &quot;cat&quot;     &quot;dog&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;lizard&quot;  &quot;raccoon&quot;
+## [15] &quot;dog&quot;     &quot;raccoon&quot; &quot;cat&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;lizard&quot;</code></pre>
 <pre class="r"><code># Turn the character vector into a set of factors
 pet_fct &lt;- factor(pet_obs)
 pet_fct</code></pre>
-<pre><code>##  [1] cat     raccoon dog     dog     cat     cat     lizard  raccoon dog    
-## [10] lizard  raccoon dog     dog     dog     lizard  cat     cat     lizard 
-## [19] dog     raccoon
+<pre><code>##  [1] cat     lizard  raccoon dog     dog     dog     cat     cat     dog    
+## [10] dog     raccoon raccoon lizard  raccoon dog     raccoon cat     raccoon
+## [19] raccoon lizard 
 ## Levels: cat dog lizard raccoon</code></pre>
 <pre class="r"><code># can be converted to an integer vector
 as.integer(pet_fct)</code></pre>
-<pre><code>##  [1] 1 4 2 2 1 1 3 4 2 3 4 2 2 2 3 1 1 3 2 4</code></pre>
+<pre><code>##  [1] 1 3 4 2 2 2 1 1 2 2 4 4 3 4 2 4 1 4 4 3</code></pre>
 <pre class="r"><code># can be converted to a character vector
 as.character(pet_fct)</code></pre>
-<pre><code>##  [1] &quot;cat&quot;     &quot;raccoon&quot; &quot;dog&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;cat&quot;     &quot;lizard&quot; 
-##  [8] &quot;raccoon&quot; &quot;dog&quot;     &quot;lizard&quot;  &quot;raccoon&quot; &quot;dog&quot;     &quot;dog&quot;     &quot;dog&quot;    
-## [15] &quot;lizard&quot;  &quot;cat&quot;     &quot;cat&quot;     &quot;lizard&quot;  &quot;dog&quot;     &quot;raccoon&quot;</code></pre>
+<pre><code>##  [1] &quot;cat&quot;     &quot;lizard&quot;  &quot;raccoon&quot; &quot;dog&quot;     &quot;dog&quot;     &quot;dog&quot;     &quot;cat&quot;    
+##  [8] &quot;cat&quot;     &quot;dog&quot;     &quot;dog&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;lizard&quot;  &quot;raccoon&quot;
+## [15] &quot;dog&quot;     &quot;raccoon&quot; &quot;cat&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;lizard&quot;</code></pre>
 </div>
 <div id="overview-of-objects-and-data-structures"
 class="section level2">
@@ -1325,7 +1325,7 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.118        2.961</code></pre>
+##       2.082        3.130</code></pre>
 <pre class="r"><code>lm(y ~ 0 + x) # slope only model (no intercept)</code></pre>
 <pre><code>## 
 ## Call:
@@ -1333,7 +1333,7 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ##     x  
-## 2.658</code></pre>
+## 2.749</code></pre>
 <p>Can also fit a generalized linear model using (you guessed it) the
 <code>glm()</code> function.</p>
 <pre class="r"><code># logit(theta) = 3x + 2
@@ -1347,11 +1347,11 @@ glm(k ~ 1 + x, family = binomial(link = &quot;logit&quot;))</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.745        3.849  
+##       2.204        2.649  
 ## 
 ## Degrees of Freedom: 29 Total (i.e. Null);  28 Residual
-## Null Deviance:       34.79 
-## Residual Deviance: 16.42     AIC: 20.42</code></pre>
+## Null Deviance:       32.6 
+## Residual Deviance: 16.46     AIC: 20.46</code></pre>
 </div>
 <div id="summarizing-data-frames-and-models" class="section level2">
 <h2>Summarizing data frames and models</h2>
@@ -1360,18 +1360,18 @@ models, and it is the <code>summary()</code> function.</p>
 <pre class="r"><code># summarize a numeric vector
 z &lt;- rnorm(50)
 summary(z)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -2.3291 -0.4112  0.1720  0.2544  1.0175  2.5178</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -2.615041 -0.783526  0.062304 -0.006475  0.994036  1.755283</code></pre>
 <pre class="r"><code># summarize a data frame
 df &lt;- data.frame(a = 1L:10L, b = rexp(10), c = factor(sample(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), 10, TRUE)))
 summary(df)</code></pre>
 <pre><code>##        a               b           c    
-##  Min.   : 1.00   Min.   :0.08625   a:1  
-##  1st Qu.: 3.25   1st Qu.:0.25701   b:5  
-##  Median : 5.50   Median :0.49098   c:4  
-##  Mean   : 5.50   Mean   :0.92006        
-##  3rd Qu.: 7.75   3rd Qu.:1.28449        
-##  Max.   :10.00   Max.   :2.67255</code></pre>
+##  Min.   : 1.00   Min.   :0.04397   a:3  
+##  1st Qu.: 3.25   1st Qu.:0.26661   b:4  
+##  Median : 5.50   Median :0.42864   c:3  
+##  Mean   : 5.50   Mean   :0.56900        
+##  3rd Qu.: 7.75   3rd Qu.:0.98492        
+##  Max.   :10.00   Max.   :1.22214</code></pre>
 <pre class="r"><code># summarize a linear model
 fit &lt;- lm(y ~ 1 + x)
 summary(fit)</code></pre>
@@ -1381,18 +1381,18 @@ summary(fit)</code></pre>
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -1.15099 -0.34469  0.02502  0.39827  1.02638 
+## -1.00796 -0.27942  0.02954  0.32915  0.92539 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   2.1182     0.1035   20.47   &lt;2e-16 ***
-## x             2.9611     0.1262   23.46   &lt;2e-16 ***
+## (Intercept)  2.08189    0.09851   21.14   &lt;2e-16 ***
+## x            3.13040    0.08799   35.58   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.5629 on 28 degrees of freedom
-## Multiple R-squared:  0.9516, Adjusted R-squared:  0.9499 
-## F-statistic: 550.5 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.5281 on 28 degrees of freedom
+## Multiple R-squared:  0.9784, Adjusted R-squared:  0.9776 
+## F-statistic:  1266 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Notice that it outputs differently for different input objects. This
 is because <code>summary()</code> is a <em>generic</em> function,
 meaning that it has multiple <em>methods</em> defined for different R
