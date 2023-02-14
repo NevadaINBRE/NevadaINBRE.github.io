@@ -15,6 +15,8 @@ This training will be focused around **hands-on learning activities** and you ar
 
 You will be introduced to the <a href="https://www.r-project.org/">R programming language</a> and to a popular editor <a href="https://posit.co/downloads/">Posit, formerly known as RStudio</a> while learning a little about Data Science. Example data sets will be used to practice data manipulation, organization, and graphical exploration. You are also encouraged to bring your own data and data challenges. In addition, major concepts of scientific research such as reproducibility will be addressed. Participants will gain the skills necessary to manage and organize data, run basic analyses, and generate beautiful, high-quality figures in R.
 
+<a href="https://www.canva.com/design/DAFakeR09b4/view">Here</a> is the flyer, feel free to post it at your bulletin boards.<br>
+
 ## Bootcamp Overview
 
 R is a complete, flexible, and open source system for statistical analysis and graphics, and has become a tool of choice for many life scientists. 
@@ -26,7 +28,6 @@ R is a complete, flexible, and open source system for statistical analysis and g
 ### Day 2: Tidy R, Figures, and Reproducibility 
 
 We will discuss commonly seen coding problems and introduce what it means to **conduct reproducible data science**. During the second day, we will go through an example of **setting up a new project folder, loading "messy" data, organizing scripts, creating high quality plots, and creating output files**. In reference to the messy data, we will go over what "tidy" data is, and how to use `tidyverse` libraries. Then will go over some **principles of the visual display of quantitative data**, and go more into plotting in R with `base` and `ggplot2`.
-
 <br>
 
 ## Schedule
@@ -40,73 +41,79 @@ We will discuss commonly seen coding problems and introduce what it means to **c
 </thead>
 <tbody>
   <tr>
-    <td>[R Crash Course with Introduction to Data Analytics]</td>   <!--(#intro1) before td to make a link-->
+    <td>R Crash Course with Introduction to Data Analytics</td>   <!--(#intro1) before td to make a link-->
     <td>March 20, 2023, 9 - 4pm</td>
   </tr>
   <tr>
-    <td>[Tidy R, Figures, and Reproducibility]</td>   <!--(#intro2)-->
+    <td>Tidy R, Figures, and Reproducibility</td>   <!--(#intro2)-->
     <td>March 21, 2023, 9 - 4pm</td>
   </tr>
 
 </tbody>
 </table>
 <span style="font-size: 10pt;">**noon - 1pm: lunch on your own**</span>
-
 <br>
 
 ## Things to Know
 
 ### Audience and Prerequisites
 
-
 **No prior knowledge about data analytics or coding experience are necessary!**
 
- This bootcamp is addressed to beginners wanting to become familiar with the R syntax, environment, and the most common commands to start using R to explore, interpret, and present their data.
+This bootcamp is intended to beginners wanting to become familiar with the R syntax, environment, and the most common commands to start using R to explore, interpret, and present their data.
 
 This **is NOT a training on statistics** but rather a training on how to use R to perform different tasks.
 
-You will need your own laptop and must install <a href="https://www.r-project.org/">R  language</a> and <a href="https://posit.co/downloads/">Posit (aka RStudio)</a> prior to the training, follow the instructions on their websites. We recommend to first download R and then Posit. 
+You will need your own laptop and must install <a href="https://www.r-project.org/">R  language</a> and <a href="https://posit.co/downloads/">Posit (aka RStudio)</a> prior to the training; follow the instructions on their websites. We recommend to first download R and then Posit. If you don't have a labtop, please let us know and we will provide a loaner laptop. 
 
 You are encouraged to go through some of the R documentation: https://www.r-project.org/.
 
 ### Application and Registration Fee
 
-Application is required to be considered to participate. Students and faculty from TMCC, WNC, SNU, and UNR interested in R are encouraged to apply. This is a two day workshop and participants must attend both days to be considered for a registration waiver. g
+<div style="text-align: center"><span style="font-size: 16pt;">**The registration fee for this workshop is \$180.** </span></div>
+<div style="text-align: center"><span style="font-size: 16pt;">**Limited registration waivers are available, everyone is welcome to apply!** </span></div><br>
 
-**For students:**
+We have a limited number of registration fee waivers available, but we also encourage your professors to support your participation. Application is open until **March 13th, 2023 **, but will close as soon as spots are filled with confirmed participants.
 
-<span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/bootcamp_application">Click here to be taken to the application form</a></span>
+Application is required to be considered to participate. Students and faculty from TMCC, WNC, SNU, and UNR interested in R are encouraged to apply. This is a two day workshop and participants must attend both days to be considered for a registration waiver.
 
-Application requires:
+**For Students and Postdocs**, application requires: 
 
-- Copy of unofficial transcript
-- Academic references
-- Personal statements
-  - Tell us about yourself and why you are interested (1000-character limit)
-  - How will this workshop affect your academic and professional career (1000-character limit)
-  - Any research you may currently be involved in (1000-character limit)
-  - Anything else you want to share (1000-character limit)
+- Complete online application form
+- Indicate 1 academic reference, and provide their contact information in the application form. The application will automatically send them a link to the brief reference form to fill out. All references need to be submitted directly by the author. Your references will not receive the link to the reference form until your application is fully submitted. 
 
-Application is open until **March 13th ,2023 **, but will close as soon as spots are filled with qualifying participants.
+If you are interested in applying for a Registration Waiver addition materials are required:
 
-You will receive an email to confirm participation confirmation by no later than March 15th, 2023. Upon reception of the confirmation email, participants will be asked to confirm their attendance within 2 days. 
+- Copy of unofficial transcript (not for postdocs)
+- Academic references (need to provide an account number/worktag)
+- Personal statements not to exceed one page addressing the following
+    - Academic background and research interests
+    - Why you are interested in this bootcamp and what you hope to gained from this training
+    - How will this training affect your academic/research/professional career
+    - Anything else you want to share
 
-**For faculty:**
+<div style="text-align: center"><span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/programmingwithr">Click here to be taken to the student/postodoc application form</a></span></div>
 
-Please email <nbc_training@unr.edu>  to  Dr. Juli Petereit directly at <jpetereit@unr.edu> (priority will be given to students, but we are planning a faculty-specific workshop, and your interest/feedback would be appreciated).
+You will receive an email to confirm participation, upon reception of the confirmation email, participants will be asked to confirm their attendance within 2 days. 
+
+**For Faculty and Staff**, application requires:
+
+- Complete online application form
+- Limited Registration Waivers are available, must indicate why one cannot self-support their attendance
+
+<div style="text-align: center"><span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/programmingwithr_faculty">Click here to be taken to the facutly/staff application form</a></span></div>
+
 
 ### Additional Information
 
+- Applications from TMCC, WNC, and SNU will receive priority
+- No-show policy: the associated lab/PI will be charged the registration fee even when a waiver was granted. In other words, if you don’t intend to actually be there, don’t register and take a seat from another student
+- Attendance is required in-person
+- Participants attending the entire bootcamp may request a certificate of completion. 
+
 Coordinator: Juli Petereit
 
-Non-UNR affiliates will receive a parking pass sponsored by NV INBRE.
-
-Participants attending all section will receive a certificate of completion. 
-
-Important: 
-
-- Applications from TMCC, WNC, and SNU will receive priority
-- Attendance is required in-person
+Instructors: Nicole Schrad and Juli Petereit
 
 <!-- --- -->
 
@@ -225,4 +232,4 @@ Important:
 
 We thank Nevada INBRE, UNR's Graduate Student Association, and UNR's Graduate School for offering limited number of registration waivers to students and postdoctoral fellows. 
 
-
+Comics thanks to https://xkcd.com/.

@@ -3615,29 +3615,29 @@ replication</li>
 # notice you do not need the () after the function as you would if executing from consol
 map(df, mean)</code></pre>
 <pre><code>## $a
-## [1] 0.2262651
+## [1] 0.3438757
 ## 
 ## $b
-## [1] 0.4531178
+## [1] -0.002689941
 ## 
 ## $c
-## [1] -0.05571998
+## [1] -0.6323213
 ## 
 ## $d
-## [1] -0.304763</code></pre>
+## [1] 0.2360318</code></pre>
 <pre class="r"><code># can pipe it an input to make the process even easier
 df %&gt;% map(mean)</code></pre>
 <pre><code>## $a
-## [1] 0.2262651
+## [1] 0.3438757
 ## 
 ## $b
-## [1] 0.4531178
+## [1] -0.002689941
 ## 
 ## $c
-## [1] -0.05571998
+## [1] -0.6323213
 ## 
 ## $d
-## [1] -0.304763</code></pre>
+## [1] 0.2360318</code></pre>
 <p>You may have noticed that the output format is not necessarily in the
 format that we might expect. The <code>map()</code> function always
 outputs a list.</p>
@@ -3647,8 +3647,8 @@ of a map function: <code>map_lgl()</code>, <code>map_int()</code>,
 vector of the indicated type (or die trying).</p>
 <pre class="r"><code># Should return a numerical vector rather than a list
 map_dbl(df, mean)</code></pre>
-<pre><code>##           a           b           c           d 
-##  0.22626507  0.45311781 -0.05571998 -0.30476305</code></pre>
+<pre><code>##            a            b            c            d 
+##  0.343875715 -0.002689941 -0.632321339  0.236031820</code></pre>
 </div>
 </div>
 
