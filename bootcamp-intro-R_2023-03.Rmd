@@ -1,6 +1,3 @@
----
-title: "This Page Is Under Constuction"
----
 
 <style><!--Page specific style-->
   h1 {color: #000}
@@ -22,12 +19,40 @@ You will be introduced to the <a href="https://www.r-project.org/">R programming
 
 R is a complete, flexible, and open source system for statistical analysis and graphics, and has become a tool of choice for many life scientists. 
 
-## Day 1: R Crash Course with Introduction to Data Analytics
+### Day 1: R Crash Course with Introduction to Data Analytics
 
-## Day 2: Tidy R, Figures, and Reproducibility 
+<img src="media/img/data_point.png" style="width: 220px; float: right; margin: 20px 10px 10px 10px;"/>Day 1 will be an introduction to programming with R and teach you how to use Rstudio. R basics will be covered, such as using the command line as a calculator, storing values in a variable, **basic data structures (vector, matrix, list, data frame, etc.)**, and data types. We will show how to **read-in basic data sets** and access rows/columns, and summarize data with statistics and plots. Then we will move on to **scripting in R, including control flow (choices and loops), writing functions, and installing/loading libraries** (and the differences between CRAN, GitHub, and Bioconductor packages).  
 
-<img src="media/img/data_point.png" style="width: 300px; float: center; margin: 10px 10px 10px 10px;"/>
+### Day 2: Tidy R, Figures, and Reproducibility 
 
+We will discuss commonly seen coding problems and introduce what it means to **conduct reproducible data science**. During the second day, we will go through an example of **setting up a new project folder, loading "messy" data, organizing scripts, creating high quality plots, and creating output files**. In reference to the messy data, we will go over what "tidy" data is, and how to use `tidyverse` libraries. Then will go over some **principles of the visual display of quantitative data**, and go more into plotting in R with `base` and `ggplot2`.
+
+<br>
+
+## Schedule
+
+<table class="tg">
+<thead>
+  <tr>
+    <th>Outline</th>
+    <th>Date and Time</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>[R Crash Course with Introduction to Data Analytics]</td>   <!--(#intro1) before td to make a link-->
+    <td>March 20, 2023, 9 - 4pm</td>
+  </tr>
+  <tr>
+    <td>[Tidy R, Figures, and Reproducibility]</td>   <!--(#intro2)-->
+    <td>March 21, 2023, 9 - 4pm</td>
+  </tr>
+
+</tbody>
+</table>
+<span style="font-size: 10pt;">**noon - 1pm: lunch on your own.**</span>
+
+<br>
 
 ## Things to Know
 
@@ -38,9 +63,9 @@ R is a complete, flexible, and open source system for statistical analysis and g
 
  This bootcamp is addressed to beginners wanting to become familiar with the R syntax, environment, and the most common commands to start using R to explore, interpret, and present their data.
 
-Note this bootcamp **is NOT a training on statistics** but rather a training on how to use R to perform different tasks.
+This **is NOT a training on statistics** but rather a training on how to use R to perform different tasks.
 
-You will need your own laptop and must install <a href="https://www.r-project.org/">R  language</a> and <a href="https://posit.co/downloads/">Posit (aka RStudio)</a> prior to training, follow the instructions on their websites. We recommend to first download R and then Posit. 
+You will need your own laptop and must install <a href="https://www.r-project.org/">R  language</a> and <a href="https://posit.co/downloads/">Posit (aka RStudio)</a> prior to the training, follow the instructions on their websites. We recommend to first download R and then Posit. 
 
 You are encouraged to go through some of the R documentation: https://www.r-project.org/.
 

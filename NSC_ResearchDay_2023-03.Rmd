@@ -1,4 +1,6 @@
-
+---
+title: "Nevada INBRE Research Day"
+---
 
 <style><!--Page specific style-->
   h1 {color: #000}
@@ -10,9 +12,6 @@
 
 <img src="media/img/NSC_ResearchDay_2023-03_banner.png" style="width: 800px; float: top; margin: 20px 20px 20px 20px;">
 
----
-title: "Nevada INBRE Research Day"
----
 
 <!-- [Flyer](research_day_pdf.html) -->
 

@@ -55,7 +55,7 @@ The workshop’s intended audience are undergraduate students, but everyone inte
 <br>
 
 ### INTERESTED 
-Space is limited and confirmation of participation will be required. Registration is due by **March 10th, 2023**. You can join us for any or all sessions. 
+<img src="media/img/phage_pink.png" style="width: 100px; float: left; margin: 0px 20px 0px 0px;">Space is limited and confirmation of participation will be required. Registration is due by **March 10th, 2023**. You can join us for any or all sessions. 
 
 <div style="text-align: center"><span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/csn_phagegenomics">Click HERE to register</a> </span></div>
 

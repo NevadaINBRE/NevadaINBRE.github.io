@@ -30,15 +30,6 @@ The primary questions that drive Ed's research program are 1) what are the genet
 </div>
 
 <div class="person">
-### Brianna Chrisman --- Computational Geneticist
-
-<img src="media/img/brianna_headshot.jpeg">
-
-Brianna is a recently graduated PhD student from the department of Bioengineering at Stanford University. She works in computational genomics, the intersection of computer science and biology. Brianna’s research focused on using the unmapped read space of next-gen sequencing in order to understand the human genome, virome, and contaminome. Brianna has taught several AI and biological courses, as well as mentored high schoolers, undergraduates, and grad students though computational biology projects. Outside of academics, Brianna loves rock climbing and most anything outdoors.
-
-</div>
-
-<div class="person">
 ### Hans Vasquez-Gross --- Bioinformatician
 
 <img src="media/img/vasquez-gross.jpg">
@@ -61,6 +52,15 @@ Nicole is a bioinformatician with expertise in microbiome and metagenomic  analy
 <img src="media/img/knudson.jpg">
 
 Alex is a data scientist with a passion for programming. He is a UNR alumnus who received his M.S. in Statistics and Data Science, and joined the Nevada Bioinformatics Center in August 2020 and has been helping on and off ever since. 
+
+</div>
+
+<div class="person">
+### Brianna Chrisman --- Computational Geneticist
+
+<img src="media/img/brianna_headshot.jpeg">
+
+Brianna is a recently graduated PhD student from the department of Bioengineering at Stanford University. She works in computational genomics, the intersection of computer science and biology. Brianna’s research focused on using the unmapped read space of next-gen sequencing in order to understand the human genome, virome, and contaminome. Brianna has taught several AI and biological courses, as well as mentored high schoolers, undergraduates, and grad students though computational biology projects. Outside of academics, Brianna loves rock climbing and most anything outdoors.
 
 </div>
 
