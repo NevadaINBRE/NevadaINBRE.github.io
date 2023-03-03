@@ -1,0 +1,25 @@
+---
+title: 'Microbiome Workshop'
+output: html_document
+---
+
+## Introduction to Microbiome Analysis
+
+```{r}
+library(tidyverse)
+library(dada2)
+library(phyloseq)
+library(ggplot2)
+```
+
+Download the raw fastqs and metadata here and put in your project folder https://github.com/NevadaINBRE/NevadaINBRE.github.io/tree/main/NSC_workshop/raw_fastq/
+
+
+```{r}
+#set this to the path to the raw files
+path <- "~/Documents/GitHub/NevadaINBRE.github.io/docs/NSC_workshop/raw_fastq"
+fnFs <- sort(list.files(path, pattern="_R1_001*", full.names = TRUE))
+fnRs <- sort(list.files(path, pattern="_R2_001*", full.names = TRUE))
+
+
+```
