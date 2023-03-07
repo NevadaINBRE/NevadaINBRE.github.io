@@ -5,23 +5,243 @@ output: html_document
 
 ## Calling in Data, Functions, The Tidyverse, and Reproducible Data
 
-In this section we will go over how to bring in datasets from online, spreadsheets, or another statistical program like SPSS. We will also briefly talk about functions, using a library called tidyverse, and some aspects of reproducible data. 
+In this section we will go over how to bring in datasets from online, spreadsheets, or another statistical program like SPSS. We will also briefly talk about functions, using a library called tidyverse, and some aspects of reproducible data.
 
 ### Calling in Data
 
-Sometimes an instrument you are using to gather data will let you download data in an .csv, .txt, or .xlsx file. We can download data from the internet. For example we can download this Rmarkdown document from the INBRE GitHub and a excel spreadsheet. 
+Sometimes an instrument you are using to gather data will let you download data in an .csv, .txt, or .xlsx file. We can download data from the internet. For example we can download this Rmarkdown document from the INBRE GitHub and a excel spreadsheet.
 
 ```{r}
 download.file(url="https://raw.githubusercontent.com/NevadaINBRE/NevadaINBRE.github.io/main/NSC_workshop/IntrotoR2.Rmd", destfile =  "Intro_to_R_workshop.Rmd")
-
 ```
 
-We can also bring in a soil dataset that we will use later on in the workshop. To do this we will need to use a package called `readxl`
+We can also bring in a soil dataset that we will use later on in the workshop. To do this we will need to use a package called `readr`
 
 ```{r}
 library (readr)
 
-urlfile="https://raw.githubusercontent.com/lrjoshi/webpage/master/public/post/c159s.csv"
+urlfile="https://raw.githubusercontent.com/NevadaINBRE/NevadaINBRE.github.io/main/NSC_workshop/Soil_data.csv"
 
-mydata<-read_csv(url(urlfile))
+suppressMessages(soil_data<-read_csv(url(urlfile)))
+```
 
+To view the data table you can either click on the variable item on the top right corner or use the command `view(soil_data)`
+
+Other ways to pull in data involve using packages such as, `readxl` for Excel files, `haven` for SPSS and STATA files, and `readRDS` for previously created R objects.
+
+## Writing functions
+
+-   We've already seen some functions like math functions
+-   Packages are usually compilations of functions
+-   Functions are necessary to write flexible and reusable code
+-   Rule of thumb: if you copy and paste a block of code more than once, turn it into a function
+    -   this applies to making plots as well
+-   Functions are made up of 3 components
+    -   Body: The code inside a function
+    -   Formals: A list of arguments that controls how you call a function
+    -   Environment: A map of where the variables of the function are located
+
+Functions usually look like this:
+
+> function_example\<- function(formals){ body_of_function }
+
+An example of a function converts Fahrenheit temperature to Celsius
+
+```{r}
+# 
+temp_convert<-function(temp){
+  celsius<-round((temp-32)*(5/9),1)
+  celsius
+}
+temp_convert(15)
+```
+
+### Practice
+
+Write a function that converts cm to whole integer inches (divide by 2.54)
+
+```{r}
+cm_to_in<-
+```
+
+### If statements 
+
+If statements allow you to make logical comparisons between a value and what you expect. 
+```{r }
+# An if statement can stand alone
+if (7 > 3) {
+  cat("hello from inside the 'if' block\n")
+}
+
+# You can have an if and an else
+do_first_condition <- FALSE
+if (do_first_condition) {
+  cat("This shouldn't print\n")
+} else {
+  cat("This is the fallback option\n")
+}
+
+#You can use ifelse
+a<- c(1:10)
+ ifelse(a<3, "Less than 3", "More than 3")
+```
+
+### Loops
+
+There are two types of loops (technically one, but practically two), and they are the `while`\-loop and the `for`\-loop.
+
+`while`\-loop
+
+```{r 020-private-olive}
+some_condition_is_true <- TRUE
+some_counter <- 0
+number_of_iterations <- 12
+
+while (some_condition_is_true) {
+  # do stuff
+  cat("This is iteration:\t", some_counter, "\n")
+  
+  if (some_counter == 7) {
+    some_condition_is_true <- FALSE
+  }
+  
+  some_counter <- some_counter + 1
+}
+```
+
+When we know ahead of time how many iterations we are going to do, we can instead use a `for`\-loop which will take care of incrementing for us. We can also use a for-loop to *iterate* over elements in a vector.
+
+```{r 020-vital-larva}
+x <- 3:7
+# print the number doubled
+# note that the alias for each element in 'x' can be any variable name
+for (some_alias_for_element in x) {
+  print(some_alias_for_element * 2)
+}
+```
+
+## The Tidyverse
+
+The tidyverse is a set of R packages that have a common design, grammar structure, and philosophy. Functions in the tidyverse help take you from importing data, transforming it, and visualizing it. You can read more about the principles behind the tidyverse here: <https://r4ds.had.co.nz/index.html>. This is how you load the packages
+
+```{r}
+suppressMessages(library(tidyverse))   
+```
+
+We are now going to use the tidyverse to transform the soil data we previously loaded. This data is from 3 experiment conducted at different locations. At each location \~1 m\^3 plots were dug, and soil was sampled under the plot. The plots were then exposed to a treatment (biochar, woodchips, a mixture, or left untreated) and water infiltrated through the plot for 3 weeks. The soil data has 14 columns: SampleID, Sample1, Location, Treatment, Timing, Treated, depth below plot (cm), depth below ground (cm), Replicate, % Carbon (by weight), % Nitrogen (by weight), % Sand, % Sand, and % Clay. We are going to use this data to create different plots that give us information about the soil. First, we are going to subset the data.
+
+```{r}
+#selecting columns
+CN_data<-select(soil_data, SampleID, C, N)
+#selecting only samples from KTR
+KTR<-filter(soil_data, Location=="KTR")
+#selecting samples that weren't treated with Biochar (BC)
+non_BC<-filter(soil_data, Treatment!="BC")
+#selecting samples that were not treated and from below 80 cm beneath the plot
+not_treated_80<-filter(soil_data, Treated==FALSE & depth_below_plot_cm >80)
+#selecting Replicates 1 and 2
+Replicates<-filter(soil_data, Replicate %in% c(1,2))
+```
+
+We can create new columns or change current columns using the `mutate` function:
+
+```{r}
+#creating column that calculates depth below 20cm of water
+soil_data<-mutate(soil_data, depth_below_waterlevel=depth_below_plot_cm + 20)
+#mutate can also be used to change aspects of a current column
+soil_data_lower<-mutate(soil_data, Treatment=tolower(Treatment))
+```
+
+### Practice
+
+Make a table called "soil_data_cleaned" that only includes NS and WC treated plots and contains only replicate 1. Next use `mutate` and your function `cm_to_in` to create a new column that shows depth below the plot in inches.
+
+```{r}
+soil_data_cleaned<-
+```
+
+Fix the following code (3 bugs):
+
+```{r}
+soil_data_bug<-mutae(soil_data, Control=if_else(Treatment="NS", "Control", "Not Control))
+```
+
+Many times, the error message will give you an indication of what is wrong with your script. Common errors include: -Misspelled variables or functions -Not closing parentheses or quotations -Using only one = to filter
+
+### Piping functions
+
+If you want to call sequential or chain functions on the same dataset you can use the pipe function (`%>%` or `|>`). This will pipe the data from the previous function into the next function. If data isn't the first formal in a sequential function you can use "." to notate it.
+
+```{r}
+#creating 
+tested_cols<-c('C','N','Sand','Silt','Clay')
+mean_of_locations<-soil_data%>%
+  group_by(Location,Treatment, Timing)%>%
+  summarize(across(all_of(tested_cols), list(mean=mean, sd=sd)))
+#linear model of whether % Sand affects C
+model_sand_C<- soil_data%>%
+  lm(C~Sand, data=.)
+summary(model_sand_C)
+plot(C~Sand, data=soil_data, col="#c2b280")
+abline(lm(C~Sand, data = soil_data))
+```
+
+### Cheat Sheets
+
+Many of the tidyverse packages have cheat sheets that explain the different packages and how to use them. You can find cheat sheets for the packages you have installed. Go to the top ribbon -\> Help -\> Cheat Sheets. These are useful for data transformation and data visualization. If you are having trouble with a a certain aspect of a function, you can always look at the documentation.
+
+## Reproducible Data Science
+
+### Examples of bad habits
+
+-   Having files, data, code, and documentation all scattered in different locations
+-   Using excel to store, modify, and visualize data
+-   Doing version control by copying and renaming files
+-   Not documenting or commenting code
+
+### A few scenarios
+
+> You have data saved in an excel sheet, and proceed to open it up, create some new columns using excel functions, remove various rows, and fill in missing values with zeros. A few weeks later, the criteria for missing values changes. You can't remember which zeros were genuine, and which were originally missing. Furthermore, the removed rows are acutally necessary and they're gone! Hopefully the originally collected data is somewhere and unmodified.
+
+*Problem*: there is no good way to track the changes that have been made to an excel sheet.
+
+*Solution*: treat data as immutable, and use scripts to make procedural changes to the data.
+
+> You decide that doing everything in excel is a bad idea, and instead write a script to process the data. You know it's good to keep backups of files, so every time your script changes, you save it as a new file. You now have `process_data.R`, `process_data2.R`, `process_data_new.R`, and `process_data_20210505.R` as files. You send the code to a friend to review, and they send you back `process_data_20210507.R` as their modified version. Two months later you come back to these files because you can reuse some of the code, but you're not sure which one is the most up to date. You spend the rest of the day reading through the code of each file looking for differences.
+
+*Problem*: duplicating files can lead to confusion, and changes are not tracked over time.
+
+*Solution*: utilize a source control management system (like Git or SVM) to always have access to past versions and keep track of the most recent version.
+
+### Setting up a Github repository
+
+*It is assumed that you have created a GitHub account.*
+
+-   Open [GitHub.com](https://github.com/)
+-   Start creating a new repo
+    -   There is a "new" button on the left and a "+" button at the top right
+-   Choose a project (repository) name (no spaces)
+-   Make it public or private
+    -   a private repo may not be supported by all free Git GUI's
+-   Optional
+    -   `README.md` is a special file that gets rendered in Markdown and is displayed to anyone who may view your repo <video width="100%" autoplay muted loop controls> <source src="media/vid/03-creating-github-repo.webm" type="video/webm"> </video>
+
+After you set up a repository, you can link it to your RStudio (Posit) project either using the free Github desktop app or you can go to the top ribbon -\> Tools -\> Project Options -\> Git/SVN to connect it. Then you can use the repository to conduct version control. There will then be a Git tab in the upper right hand side of your project that you can use to commit changes and push/pull to the repository.
+
+### Other things to note about making clean reproducible code
+
+In a perfect world, code should be self-documenting. From the Tidyverse style guide:
+
+> In data analysis code, use comments to record important findings and analysis decisions. If you need comments to explain what your code is doing, consider rewriting your code to be clearer. If you discover that you have more comments than code, consider switching to R Markdown.
+
+-   Use comments to explain steps of your code that aren't easily interpretable (you can comment use the \# key or comment multiple lines using `Command+Shift+C` (Mac) or `Control+ Shift+ C` (PC))
+-   Keeping raw data RAW
+-   Avoid reinventing the wheel. Look for packages that do what you are looking for
+-   Create functions for task you continually repeat
+-   Commit changes to repositories often
+
+Next we are going to go over how to make plots. You can download the next Rmd File here:
+
+```{r}
+download.file(url="https://raw.githubusercontent.com/NevadaINBRE/NevadaINBRE.github.io/main/NSC_workshop/IntrotoR3.Rmd", destfile =  "Intro_to_R_workshop_dataviz.Rmd")
+```
