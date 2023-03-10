@@ -10,13 +10,13 @@ Install necessary packages:
 ```{r}
 #pacman is a package that loads and installs packages 
 library(pacman)
-p_load(tidyverse, dada2, decontam, phyloseq, Biostrings, vegan)
+p_load(tidyverse, dada2, decontam, phyloseq, Biostrings)
 # I always set a seed in case any of my functions rely on random values and i want reproducibility.
 set.seed(3618)
 ```
 ### Download data
 
-Download the raw fastqs and metadata here and put in your project folder 
+Download the raw fastqs and metadata here: https://biox.unr.edu/ftp/NSC_workshop/ , unzip, and put in your project folder 
 
 ```{r}
 #set this to the path to the raw files
