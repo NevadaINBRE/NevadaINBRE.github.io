@@ -64,7 +64,7 @@ This bootcamp is intended to beginners wanting to become familiar with the R syn
 
 This **is NOT a training on statistics** but rather a training on how to use R to perform different tasks.
 
-You will need your own laptop and must install <a href="https://www.r-project.org/">R  language</a> and <a href="https://posit.co/downloads/">Posit (aka RStudio)</a> prior to the training; follow the instructions on their websites. We recommend to first download R and then Posit. If you don't have a labtop, please let us know and we will provide a loaner laptop. 
+You will need your own laptop and must install <a href="https://www.r-project.org/">R  language</a> and <a href="https://posit.co/downloads/">Posit (aka RStudio)</a> prior to the training; follow the instructions on their websites. We recommend to first download R and then Posit. If you don't have a laptop, please let us know and we will provide a loaner laptop. 
 
 You are encouraged to go through some of the R documentation: https://www.r-project.org/.
 

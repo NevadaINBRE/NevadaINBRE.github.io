@@ -28,6 +28,7 @@ navbar:
         - text: "Jupyter Notebook"
           href: jupyter-notebook-setup.html
         - text: "R"
+          href: NSC_IntrotoR.html
         - text: "Julia"
         - text: "Python"
   right:
