@@ -259,15 +259,6 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
-    <li>
-      <a href="NSC_ResearchDay_2023-03.html">2023 Spring: Research Day at NSC</a>
-    </li>
-    <li>
-      <a href="bootcamp-intro-R_2023-03.html">2023 Spring: Programming with R at UNR</a>
-    </li>
-    <li>
-      <a href="CSN_phageGenomics_2023-03.html">2023 Spring: Phages Genomics at CSN</a>
-    </li>
     <li class="dropdown-header">Previous</li>
     <li>
       <a href="bootcamp-r-series.html">2021 Summer: R for Data Science at UNR</a>
@@ -277,6 +268,15 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="bootcamp-supervised-ml-2023-01.html">2023 Winter: Python for ML at UNR</a>
+    </li>
+    <li>
+      <a href="NSC_ResearchDay_2023-03.html">2023 Spring: Research Day at NSC</a>
+    </li>
+    <li>
+      <a href="bootcamp-intro-R_2023-03.html">2023 Spring: Programming with R at UNR</a>
+    </li>
+    <li>
+      <a href="CSN_phageGenomics_2023-03.html">2023 Spring: Phages Genomics at CSN</a>
     </li>
   </ul>
 </li>
@@ -1075,7 +1075,7 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.091        3.022</code></pre>
+##       1.989        3.294</code></pre>
 <pre class="r"><code>lm(y ~ 0 + x) # slope only model (no intercept)</code></pre>
 <pre><code>## 
 ## Call:
@@ -1083,7 +1083,7 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ##     x  
-## 2.817</code></pre>
+## 3.323</code></pre>
 <div id="practice-time" class="section level3">
 <h3>Practice time!</h3>
 <p>Write a script that creates a linear model relating mpg and cyl of
@@ -1093,6 +1093,215 @@ the mtcars data frame.</p>
 <li><p>How can you set the y intercept to 0? When would you want to do
 this?</p></li>
 </ul>
+</div>
+</div>
+<div
+id="calling-data-functions-and-a-little-about-tidyverse-and-reproducible-data"
+class="section level2">
+<h2>Calling Data, Functions, and a little about Tidyverse, and
+reproducible data</h2>
+<p>In this section we will go over how to bring in datasets from online,
+spreadsheets, or another statistical program like SPSS. We will also
+briefly talk about functions, using a library called tidyverse, and some
+aspects of reproducible data.Common data files include .csv, .txt, or
+.xlsx, which all can be uploaded into R.</p>
+<div id="download-a-file-from-the-internet" class="section level3">
+<h3>Download a file from the internet</h3>
+<p>Here is an example of how to downloaded a csv from the Nevada INBRE
+github page and we specify the new file name.</p>
+<pre class="r"><code>download.file(url=&quot;https://raw.githubusercontent.com/NevadaINBRE/NevadaINBRE.github.io/main/docs/data/billboard.csv&quot;, 
+              destfile =  &quot;my_tmp_NewBillboard.csv&quot;)</code></pre>
+</div>
+<div id="read-in-data-from-the-internet-rather-than-downloading"
+class="section level3">
+<h3>Read in data from the internet (rather than downloading)</h3>
+<p>With the package <code>readr</code> we can directly read in data from
+the internet rather than downloading it onto the local computer.</p>
+<pre class="r"><code>library (readr)
+
+url_location &lt;- &quot;https://raw.githubusercontent.com/NevadaINBRE/NevadaINBRE.github.io/main/docs/data/billboard.csv&quot;
+suppressMessages(myBillboard &lt;- read_csv(url(url_location)))</code></pre>
+</div>
+<div id="read-in-data-from-the-local-computer" class="section level3">
+<h3>Read in data from the local computer</h3>
+<p>Let’s use the file we downloaded and read it in</p>
+<pre class="r"><code>myOtherBillboard &lt;- read.csv(&quot;my_tmp_NewBillboard.csv&quot;)</code></pre>
+<p>After reading in data, it is good practice to check what the data
+look like within the R environment. There are multiple ways to do
+that:</p>
+<pre class="r"><code>head(myBillboard)</code></pre>
+<pre><code>## # A tibble: 6 × 83
+##    year artist…¹ track time  genre date.ent…² date.pea…³ x1st.…⁴ x2nd.…⁵ x3rd.…⁶
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;tim&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1  2000 Destiny… Inde… 03:38 Rock  2000-09-23 2000-11-18      78      63      49
+## 2  2000 Santana  Mari… 04:18 Rock  2000-02-12 2000-04-08      15       8       6
+## 3  2000 Savage … I Kn… 04:07 Rock  1999-10-23 2000-01-29      71      48      43
+## 4  2000 Madonna  Music 03:45 Rock  2000-08-12 2000-09-16      41      23      18
+## 5  2000 Aguiler… Come… 03:38 Rock  2000-08-05 2000-10-14      57      47      45
+## 6  2000 Janet    Does… 04:17 Rock  2000-06-17 2000-08-26      59      52      43
+## # … with 73 more variables: x4th.week &lt;dbl&gt;, x5th.week &lt;dbl&gt;, x6th.week &lt;dbl&gt;,
+## #   x7th.week &lt;dbl&gt;, x8th.week &lt;dbl&gt;, x9th.week &lt;dbl&gt;, x10th.week &lt;dbl&gt;,
+## #   x11th.week &lt;dbl&gt;, x12th.week &lt;dbl&gt;, x13th.week &lt;dbl&gt;, x14th.week &lt;dbl&gt;,
+## #   x15th.week &lt;dbl&gt;, x16th.week &lt;dbl&gt;, x17th.week &lt;dbl&gt;, x18th.week &lt;dbl&gt;,
+## #   x19th.week &lt;dbl&gt;, x20th.week &lt;dbl&gt;, x21st.week &lt;dbl&gt;, x22nd.week &lt;dbl&gt;,
+## #   x23rd.week &lt;dbl&gt;, x24th.week &lt;dbl&gt;, x25th.week &lt;dbl&gt;, x26th.week &lt;dbl&gt;,
+## #   x27th.week &lt;dbl&gt;, x28th.week &lt;dbl&gt;, x29th.week &lt;dbl&gt;, x30th.week &lt;dbl&gt;, …</code></pre>
+<pre class="r"><code>head(myOtherBillboard)</code></pre>
+<pre><code>##   year     artist.inverted                                 track time genre
+## 1 2000     Destiny&#39;s Child              Independent Women Part I 3:38  Rock
+## 2 2000             Santana                          Maria, Maria 4:18  Rock
+## 3 2000       Savage Garden                    I Knew I Loved You 4:07  Rock
+## 4 2000             Madonna                                 Music 3:45  Rock
+## 5 2000 Aguilera, Christina Come On Over Baby (All I Want Is You) 3:38  Rock
+## 6 2000               Janet                 Doesn&#39;t Really Matter 4:17  Rock
+##   date.entered date.peaked x1st.week x2nd.week x3rd.week x4th.week x5th.week
+## 1   2000-09-23  2000-11-18        78        63        49        33        23
+## 2   2000-02-12  2000-04-08        15         8         6         5         2
+## 3   1999-10-23  2000-01-29        71        48        43        31        20
+## 4   2000-08-12  2000-09-16        41        23        18        14         2
+## 5   2000-08-05  2000-10-14        57        47        45        29        23
+## 6   2000-06-17  2000-08-26        59        52        43        30        29
+##   x6th.week x7th.week x8th.week x9th.week x10th.week x11th.week x12th.week
+## 1        15         7         5         1          1          1          1
+## 2         3         2         2         1          1          1          1
+## 3        13         7         6         4          4          4          6
+## 4         1         1         1         1          2          2          2
+## 5        18        11         9         9         11          1          1
+## 6        22        15        10        10          5          1          1
+##   x13th.week x14th.week x15th.week x16th.week x17th.week x18th.week x19th.week
+## 1          1          1          1          1          1          1          1
+## 2          1          1          1          1          1          1          8
+## 3          4          2          1          1          1          2          1
+## 4          2          2          4          8         11         16         20
+## 5          1          1          4          8         12         22         23
+## 6          1          2          2          3          3          7          8
+##   x20th.week x21st.week x22nd.week x23rd.week x24th.week x25th.week x26th.week
+## 1          2          3          7         10         12         15         22
+## 2         15         19         21         26         36         48         47
+## 3          2          4          8          8         12         14         17
+## 4         25         27         27         29         44         NA         NA
+## 5         43         44         NA         NA         NA         NA         NA
+## 6         20         25         37         40         41         NA         NA
+##   x27th.week x28th.week x29th.week x30th.week x31st.week x32nd.week x33rd.week
+## 1         29         31         NA         NA         NA         NA         NA
+## 2         NA         NA         NA         NA         NA         NA         NA
+## 3         21         24         30         34         37         46         47
+## 4         NA         NA         NA         NA         NA         NA         NA
+## 5         NA         NA         NA         NA         NA         NA         NA
+## 6         NA         NA         NA         NA         NA         NA         NA
+##   x34th.week x35th.week x36th.week x37th.week x38th.week x39th.week x40th.week
+## 1         NA         NA         NA         NA         NA         NA         NA
+## 2         NA         NA         NA         NA         NA         NA         NA
+## 3         NA         NA         NA         NA         NA         NA         NA
+## 4         NA         NA         NA         NA         NA         NA         NA
+## 5         NA         NA         NA         NA         NA         NA         NA
+## 6         NA         NA         NA         NA         NA         NA         NA
+##   x41st.week x42nd.week x43rd.week x44th.week x45th.week x46th.week x47th.week
+## 1         NA         NA         NA         NA         NA         NA         NA
+## 2         NA         NA         NA         NA         NA         NA         NA
+## 3         NA         NA         NA         NA         NA         NA         NA
+## 4         NA         NA         NA         NA         NA         NA         NA
+## 5         NA         NA         NA         NA         NA         NA         NA
+## 6         NA         NA         NA         NA         NA         NA         NA
+##   x48th.week x49th.week x50th.week x51st.week x52nd.week x53rd.week x54th.week
+## 1         NA         NA         NA         NA         NA         NA         NA
+## 2         NA         NA         NA         NA         NA         NA         NA
+## 3         NA         NA         NA         NA         NA         NA         NA
+## 4         NA         NA         NA         NA         NA         NA         NA
+## 5         NA         NA         NA         NA         NA         NA         NA
+## 6         NA         NA         NA         NA         NA         NA         NA
+##   x55th.week x56th.week x57th.week x58th.week x59th.week x60th.week x61st.week
+## 1         NA         NA         NA         NA         NA         NA         NA
+## 2         NA         NA         NA         NA         NA         NA         NA
+## 3         NA         NA         NA         NA         NA         NA         NA
+## 4         NA         NA         NA         NA         NA         NA         NA
+## 5         NA         NA         NA         NA         NA         NA         NA
+## 6         NA         NA         NA         NA         NA         NA         NA
+##   x62nd.week x63rd.week x64th.week x65th.week x66th.week x67th.week x68th.week
+## 1         NA         NA         NA         NA         NA         NA         NA
+## 2         NA         NA         NA         NA         NA         NA         NA
+## 3         NA         NA         NA         NA         NA         NA         NA
+## 4         NA         NA         NA         NA         NA         NA         NA
+## 5         NA         NA         NA         NA         NA         NA         NA
+## 6         NA         NA         NA         NA         NA         NA         NA
+##   x69th.week x70th.week x71st.week x72nd.week x73rd.week x74th.week x75th.week
+## 1         NA         NA         NA         NA         NA         NA         NA
+## 2         NA         NA         NA         NA         NA         NA         NA
+## 3         NA         NA         NA         NA         NA         NA         NA
+## 4         NA         NA         NA         NA         NA         NA         NA
+## 5         NA         NA         NA         NA         NA         NA         NA
+## 6         NA         NA         NA         NA         NA         NA         NA
+##   x76th.week
+## 1         NA
+## 2         NA
+## 3         NA
+## 4         NA
+## 5         NA
+## 6         NA</code></pre>
+<pre class="r"><code>tail(myBillboard)</code></pre>
+<pre><code>## # A tibble: 6 × 83
+##    year artist…¹ track time  genre date.ent…² date.pea…³ x1st.…⁴ x2nd.…⁵ x3rd.…⁶
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;tim&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1  2000 Master P Soul… 03:33 Rap   2000-11-18 2000-11-18      98      NA      NA
+## 2  2000 Ghostfa… Cher… 03:04 R&amp;B   2000-08-05 2000-08-05      98      NA      NA
+## 3  2000 Smith, … Frea… 03:58 Rap   2000-02-12 2000-02-12      99      99      99
+## 4  2000 Zombie … Kern… 03:30 Rock  2000-09-02 2000-09-02      99      99      NA
+## 5  2000 Eastsid… Got … 03:58 Rap   2000-07-01 2000-07-01      99      99      NA
+## 6  2000 Fragma   Toca… 03:22 R&amp;B   2000-10-28 2000-10-28      99      NA      NA
+## # … with 73 more variables: x4th.week &lt;dbl&gt;, x5th.week &lt;dbl&gt;, x6th.week &lt;dbl&gt;,
+## #   x7th.week &lt;dbl&gt;, x8th.week &lt;dbl&gt;, x9th.week &lt;dbl&gt;, x10th.week &lt;dbl&gt;,
+## #   x11th.week &lt;dbl&gt;, x12th.week &lt;dbl&gt;, x13th.week &lt;dbl&gt;, x14th.week &lt;dbl&gt;,
+## #   x15th.week &lt;dbl&gt;, x16th.week &lt;dbl&gt;, x17th.week &lt;dbl&gt;, x18th.week &lt;dbl&gt;,
+## #   x19th.week &lt;dbl&gt;, x20th.week &lt;dbl&gt;, x21st.week &lt;dbl&gt;, x22nd.week &lt;dbl&gt;,
+## #   x23rd.week &lt;dbl&gt;, x24th.week &lt;dbl&gt;, x25th.week &lt;dbl&gt;, x26th.week &lt;dbl&gt;,
+## #   x27th.week &lt;dbl&gt;, x28th.week &lt;dbl&gt;, x29th.week &lt;dbl&gt;, x30th.week &lt;dbl&gt;, …</code></pre>
+<pre class="r"><code>View(myBillboard)
+myBillboard[1:4,1:4]</code></pre>
+<pre><code>## # A tibble: 4 × 4
+##    year artist.inverted track                    time  
+##   &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;                    &lt;time&gt;
+## 1  2000 Destiny&#39;s Child Independent Women Part I 03:38 
+## 2  2000 Santana         Maria, Maria             04:18 
+## 3  2000 Savage Garden   I Knew I Loved You       04:07 
+## 4  2000 Madonna         Music                    03:45</code></pre>
+<pre class="r"><code>dim(myBillboard)</code></pre>
+<pre><code>## [1] 317  83</code></pre>
+<pre class="r"><code>dim(myOtherBillboard)</code></pre>
+<pre><code>## [1] 317  83</code></pre>
+<p>There are many other functions to read in data, but we can also read
+in an objects. Two common R object are <code>.rds</code> and
+<code>.RData</code>. We will have an example of this later.</p>
+</div>
+<div id="writing-functions" class="section level3">
+<h3>Writing functions</h3>
+<ul>
+<li>We’ve already seen some functions like <code>abs()</code> or
+<code>type()</code></li>
+<li>Packages are usually compilations of functions</li>
+<li>Functions are necessary to write flexible and reusable code</li>
+<li>Rule of thumb: if you copy and paste a block of code more than once,
+turn it into a function
+<ul>
+<li>this applies to making plots as well</li>
+</ul></li>
+<li>Functions are made up of 3 components
+<ul>
+<li>Body: The code inside a function</li>
+<li>Formals, aka input: A list of arguments that controls how you call a
+function</li>
+<li>Environment: A map of where the variables of the function are
+located</li>
+</ul></li>
+</ul>
+<p>Functions usually look like this:</p>
+<pre class="r"><code>function_example &lt;- function(formals){
+  body_of_function 
+  }</code></pre>
+<p>Let’s build a function that calculates the mean of four input
+variables:</p>
+<pre class="r"><code>my_mean_fun &lt;- function(x1, x2, x3, x4){
+  my_mean &lt;- (x1 + x2 + x3 + x4)/4 
+  }</code></pre>
 </div>
 </div>
 

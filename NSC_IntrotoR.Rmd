@@ -342,3 +342,79 @@ Write a script that creates a linear model relating mpg and cyl of the mtcars da
 ```{r}
 
 ```
+
+## Calling Data, Functions, and a little about Tidyverse, and reproducible data
+
+In this section we will go over how to bring in datasets from online, spreadsheets, or another statistical program like SPSS. We will also briefly talk about functions, using a library called tidyverse, and some aspects of reproducible data.Common data files include .csv, .txt, or .xlsx, which all can be uploaded into R.
+
+### Download a file from the internet
+
+Here is an example of how to downloaded a csv from the Nevada INBRE github page and we specify the new file name.  
+```{r}
+download.file(url="https://raw.githubusercontent.com/NevadaINBRE/NevadaINBRE.github.io/main/docs/data/billboard.csv", 
+              destfile =  "my_tmp_NewBillboard.csv")
+```
+
+### Read in data from the internet (rather than downloading)
+
+With the package `readr` we can directly read in data from the internet rather than downloading it onto the local computer. 
+```{r}
+library (readr)
+
+url_location <- "https://raw.githubusercontent.com/NevadaINBRE/NevadaINBRE.github.io/main/docs/data/billboard.csv"
+suppressMessages(myBillboard <- read_csv(url(url_location)))
+```
+
+### Read in data from the local computer
+
+Let's use the file we downloaded and read it in
+```{r}
+myOtherBillboard <- read.csv("my_tmp_NewBillboard.csv")
+```
+
+After reading in data, it is good practice to check what the data look like within the R environment. There are multiple ways to do that: 
+```{r}
+head(myBillboard)
+head(myOtherBillboard)
+tail(myBillboard)
+View(myBillboard)
+myBillboard[1:4,1:4]
+
+dim(myBillboard)
+dim(myOtherBillboard)
+
+```
+
+There are many other functions to read in data, but we can also read in an objects. Two common R object are `.rds` and `.RData`. We will have an example of this later. 
+
+### Writing functions
+
+-   We've already seen some functions like `abs()` or `type()`
+-   Packages are usually compilations of functions
+-   Functions are necessary to write flexible and reusable code
+-   Rule of thumb: if you copy and paste a block of code more than once, turn it into a function
+    -   this applies to making plots as well
+-   Functions are made up of 3 components
+    -   Body: The code inside a function
+    -   Formals, aka input: A list of arguments that controls how you call a function
+    -   Environment: A map of where the variables of the function are located
+
+Functions usually look like this:
+
+```{r}
+function_example <- function(formals){
+  body_of_function 
+  }
+```
+
+Let's build a function that calculates the mean of four input variables: 
+```{r}
+my_mean_fun <- function(x1, x2, x3, x4){
+  my_mean <- (x1 + x2 + x3 + x4)/4 
+  }
+```
+
+
+
+
+

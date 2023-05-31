@@ -230,6 +230,8 @@ Instructors: Nicole Schrad and Juli Petereit
 
 ## Acknowledgements
 
-We thank Nevada INBRE, UNR's Graduate Student Association, and UNR's Graduate School for offering limited number of registration waivers to students and postdoctoral fellows. 
+We thank Nevada INBRE (GM103440), UNR's Graduate Student Association, and UNR's Graduate School for offering limited number of registration waivers to students and postdoctoral fellows. 
+
+This bootcamp was also partially supported by grants from the National Science Foundation (2203236 and 2141660).
 
 Comics thanks to https://xkcd.com/.

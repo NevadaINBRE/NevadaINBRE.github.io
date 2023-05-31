@@ -259,15 +259,6 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
-    <li>
-      <a href="NSC_ResearchDay_2023-03.html">2023 Spring: Research Day at NSC</a>
-    </li>
-    <li>
-      <a href="bootcamp-intro-R_2023-03.html">2023 Spring: Programming with R at UNR</a>
-    </li>
-    <li>
-      <a href="CSN_phageGenomics_2023-03.html">2023 Spring: Phages Genomics at CSN</a>
-    </li>
     <li class="dropdown-header">Previous</li>
     <li>
       <a href="bootcamp-r-series.html">2021 Summer: R for Data Science at UNR</a>
@@ -277,6 +268,15 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="bootcamp-supervised-ml-2023-01.html">2023 Winter: Python for ML at UNR</a>
+    </li>
+    <li>
+      <a href="NSC_ResearchDay_2023-03.html">2023 Spring: Research Day at NSC</a>
+    </li>
+    <li>
+      <a href="bootcamp-intro-R_2023-03.html">2023 Spring: Programming with R at UNR</a>
+    </li>
+    <li>
+      <a href="CSN_phageGenomics_2023-03.html">2023 Spring: Phages Genomics at CSN</a>
     </li>
   </ul>
 </li>
@@ -3617,29 +3617,29 @@ replication</li>
 # notice you do not need the () after the function as you would if executing from consol
 map(df, mean)</code></pre>
 <pre><code>## $a
-## [1] -0.2300667
+## [1] -0.03924412
 ## 
 ## $b
-## [1] -0.2048627
+## [1] -0.02152988
 ## 
 ## $c
-## [1] -0.3696322
+## [1] 0.03867723
 ## 
 ## $d
-## [1] -0.09501818</code></pre>
+## [1] -0.2076875</code></pre>
 <pre class="r"><code># can pipe it an input to make the process even easier
 df %&gt;% map(mean)</code></pre>
 <pre><code>## $a
-## [1] -0.2300667
+## [1] -0.03924412
 ## 
 ## $b
-## [1] -0.2048627
+## [1] -0.02152988
 ## 
 ## $c
-## [1] -0.3696322
+## [1] 0.03867723
 ## 
 ## $d
-## [1] -0.09501818</code></pre>
+## [1] -0.2076875</code></pre>
 <p>You may have noticed that the output format is not necessarily in the
 format that we might expect. The <code>map()</code> function always
 outputs a list.</p>
@@ -3650,7 +3650,7 @@ vector of the indicated type (or die trying).</p>
 <pre class="r"><code># Should return a numerical vector rather than a list
 map_dbl(df, mean)</code></pre>
 <pre><code>##           a           b           c           d 
-## -0.23006669 -0.20486273 -0.36963220 -0.09501818</code></pre>
+## -0.03924412 -0.02152988  0.03867723 -0.20768748</code></pre>
 </div>
 </div>
 

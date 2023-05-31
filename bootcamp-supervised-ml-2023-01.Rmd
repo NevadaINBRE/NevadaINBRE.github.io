@@ -123,7 +123,7 @@ Important:
 
 ## Acknowledgements
 
-This bootcamp is partially supported by a grant from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health.
+This bootcamp is partially supported by grants from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health and from the National Science Foundation (2203236 and 2141660).
 
 Comics thanks to https://xkcd.com/. 
 

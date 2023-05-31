@@ -68,7 +68,7 @@ Hans Vasquez-Gross, PhD and Juli Petereit, PhD from the Nevada Bioinformatics Ce
 ### ACKNOWLEGEDMENT
 We thank <a href="https://www.linkedin.com/in/jaiden-christopher-0568aa1ba/">Jaiden Christopher</a> for the beautiful graphics.  
 
-This event is made possible by grants from the National Science Foundation (2001385, 2019609) with additional support from a grant by the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health. 
+This event is made possible by grants from the National Science Foundation (2203236 and 2141660) with additional support from a grant by the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health. 
 
 <img src="media/img/CSN_workshop_banner.png" style="width: 800px; float: center; margin: 20px 20px 20px 20px;"> 
 

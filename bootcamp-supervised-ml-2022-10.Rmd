@@ -125,7 +125,7 @@ Important:
 
 ## Acknowledgements
 
-This bootcamp is partially supported by a grant from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health.
+This bootcamp is partially supported by grants from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health and from the National Science Foundation (2203236 and 2141660).
 
 We thank Nevada INBRE and UNR's Graduate School to offer registration waivers to support participation in this bootcamp. 
 

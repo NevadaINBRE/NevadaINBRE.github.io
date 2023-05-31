@@ -10,12 +10,6 @@ navbar:
     - text: "Workshops"
       menu:
         - text: "Upcoming"
-        - text: "2023 Spring: Research Day at NSC"
-          href: NSC_ResearchDay_2023-03.html
-        - text: "2023 Spring: Programming with R at UNR"
-          href: bootcamp-intro-R_2023-03.html
-        - text: "2023 Spring: Phages Genomics at CSN"
-          href: CSN_phageGenomics_2023-03.html
         - text: "Previous"
         - text: "2021 Summer: R for Data Science at UNR"
           href: bootcamp-r-series.html
@@ -23,6 +17,12 @@ navbar:
           href: bootcamp-supervised-ml-2022-10.html
         - text: "2023 Winter: Python for ML at UNR"
           href: bootcamp-supervised-ml-2023-01.html
+        - text: "2023 Spring: Research Day at NSC"
+          href: NSC_ResearchDay_2023-03.html
+        - text: "2023 Spring: Programming with R at UNR"
+          href: bootcamp-intro-R_2023-03.html
+        - text: "2023 Spring: Phages Genomics at CSN"
+          href: CSN_phageGenomics_2023-03.html
     - text: "Tutorials"
       menu:
         - text: "Jupyter Notebook"
