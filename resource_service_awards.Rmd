@@ -1,0 +1,73 @@
+---
+title: "Nevada INBRE Scientifc Core Service Awards"
+---
+
+<style><!--Page specific style-->
+  h1 {color: #000}
+  h2 {color: #111}
+  h3 {color: #222; border-bottom: 1px solid #ccc; width: 75%;}
+  h4 {color: #666}
+  .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
+</style>
+
+The Nevada INBRE seeks applicants for Scientific Core Service Awards to foster your research, publications and grants three times a year: April, August, and December.
+
+Services can be requested from
+
+ - <a href="https://unr.edu/bioinformatics">Nevada Bioinformatics Center</a> at UNR
+ - <a href="https://unr.edu/proteomics">Mick Hitchcock Ph.D. Nevada Proteomics Center</a> at UNR
+ - <a href="https://unr.edu/genomics">Nevada Genomics Center</a> at UNR [Quotes can be requested after Aug 7th]
+ - <a href="https://www.unlv.edu/genomics">Genomics Core Facility</a> at UNLV
+ - <a href="https://naes.unr.edu/cal/">Core Analytical Lab</a> at UNR [New!]
+ 
+Applicants may request services from one or multiple cores. No award will be issued for more than \$5,000. A maximum of \$2000 in services may be requested from the Proteomics and/or Genomics Cores. For example, you may request services up to \$2,000 from Proteomics and $3,000 from Bioinformatics.
+
+Here are some highlighted services:
+
+ - Quantitative proteomics using both label-free (e.g., DIA, spectral counting) and isobaric labelling (TMT) methodologies and data analyses
+ - Experimental and computational support for single-cell RNA-Seq (scRNA-Seq)
+ - Experimental and computational support for microbiome projects
+ - Pathway analysis for human, mouse, or rat via iPathwayGuide (iPG), for other organisms please consult with the NBC
+ - (Multi) Omics data analysis
+ - Phenotype prediction and metagenomics
+ - Bioinformatics and Data Science training workshops, e.g., R for Data Science, First Steps with Python, Introduction to Microbiome Data Analysis, Introduction to RNAseq
+ - Supporting analytical chemistry research, e.g., ion chromatography
+
+This list is not exhaustive. For more information about additional services and ways the cores could assist in your research endeavors, please reach out to the cores directly. Also, our NV INBRE Data Science directors, Drs. Juli Petereit and Ed Oh are here in case there are general questions or concerns.
+
+<div style="text-align: center"><span style="font-size: 16pt;">Service Award applications are now open. <a href="https://nvideaoffice.formstack.com/forms/inbreserviceawardapp">Click here to complete the application form.</a></span></div>
+
+<div style="text-align: center"><span style="font-size: 18pt;">**Applications are due August 31, 2023 at 11:59pm.**</span></div>
+
+<br>
+
+Awards will be issued by mid-September and must be utilized by December 30, 2023. Extensions will be considered, but must be requested in writing and send to nvinbre@unr.edu by December 1, 2023.
+
+Any researcher at Nevada INBRE Partner Institutions (CSN, DRI, GBC, NSC, TMCC, UNLV, UNR, WNC) needing scientific core services or support can apply.
+
+Outreach institutions (CSN, GBC, NSC, TMCC, WNC) may apply at any time. Please complete <a href="https://nvideaoffice.formstack.com/forms/inbreserviceawardapp_outreach">this application form </a> which remains open and applications will be considered throughout the year.
+
+Please complete the short Scientific Core Service Award Application online which covers the following points: 
+
+1. Project overview, including experimental design (e.g., organism, sample size, replicates)
+2. Testing hypothesis, expected outcomes, and project timeline (any deadlines if applicable)
+3. Description of requested core services including a quote from the core(s)
+4. Relevance of the project to PI’s research and plans for additional (federal) funding
+5. Biomedical implication of the proposed project (UNR applications without biomedical relevance will be considered thanks to the supported by UNR Research & Innovation)
+6. Undergraduate/graduate student and/or post-doctoral participation
+7. Optional: supporting figures
+
+IMPORTANT INFORMATION:
+
+ - You must consult with scientific core staff about your project to obtain a quote for requested services. The quote must be included in your application
+ - Priority will be given to investigators who are unfunded or can provide matching funds, as well as those who have not received a service award in the past
+ - Non-biomedical research projects will only be considered for applications from CSN, GBC, NSC, TMCC, and WNC with student involvement, but priority will be given to biomedical related projects (UNR non-biomedical applications will be considered thanks to support from UNR Research & Innovation)
+ - One of NV INBRE's missions is to foster the next generation of scientist and as such undergraduate student involvement is very important to us
+ - Undergraduate and graduate students, residents, and postdoctoral fellows are welcome to apply
+ - Any material presented or published on this work requires a NV INBRE funding acknowledgement
+ - Awardees will be required to present their data/research at an annual seminar
+ - Awardees will be required to complete a report for NV INBRE in December/January regarding publications, presentations, and grants applied for and/or awarded as a result of this service award for the next 3-5 years
+
+
+
+

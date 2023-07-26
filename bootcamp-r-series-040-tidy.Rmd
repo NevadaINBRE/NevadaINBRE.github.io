@@ -251,9 +251,13 @@ cols <- data.frame(
   start = c(1,     12,    16,      18),
   end =   c(11,    15,    17,      21))
 
-names <- stringr::str_c(c("value", "mflag", "qflag", "sflag"), 
-                        rep(1:31, each = 4), 
-                        sep = "_")
+# this no longer renders: Can't recycle `..1` (size 4) to match `..2` (size 124)
+#names <- stringr::str_c(c("value", "mflag", "qflag", "sflag"), 
+#                        rep(1:31, each = 4), 
+#                        sep = "_")
+names <- c(paste0("value_", 1:31), paste0("mflag", 1:31), 
+           paste0("qflag", 1:31), paste0("sflag", 1:31))
+
 starts <- cumsum(c(22, rep(c(5, 1, 1, 1), 31)))
 starts <- starts[-length(starts)]
 ends <- c(starts[-1], starts[length(starts)] + 1) - 1
@@ -267,11 +271,15 @@ weather_raw <- subset(weather_raw, year == 2010 & element %in% c("TMIN", "TMAX")
 weather_raw <- weather_raw[, c(1:4, which(stringr::str_detect(names(weather_raw), "value")))]
 weather_raw$id <- str_c(str_sub(weather_raw$id, 1, 2), str_sub(weather_raw$id, -5, -1))
 
-names(weather_raw)[-(1:4)] <- str_c("d", 1:31)
+names(weather_raw)[-(1:4)]        <- str_c("d", 1:31)
 weather_raw[weather_raw == -9999] <- NA
-weather_raw[-(1:4)] <- weather_raw[-(1:4)] / 10 
+weather_raw[weather_raw == 'S']   <- NA
+
+# data frame is a mix of character and numeric
+weather_raw           <- weather_raw %>% mutate_at(-(1:4), as.numeric)
+weather_raw[-(1:4)]   <- weather_raw[-(1:4)]/10
 rownames(weather_raw) <- NULL
-weather_raw$element <- tolower(weather_raw$element)
+weather_raw$element   <- tolower(weather_raw$element)
 
 weather_raw %>%
   select(all_of(1:24)) %>%

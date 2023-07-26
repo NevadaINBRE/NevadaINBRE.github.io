@@ -7,6 +7,10 @@ navbar:
     - text: "Home"
       icon: fa-home
       href: index.html
+    - text: "Funding Opportunities"
+      menu:
+        - text: "Scientific Core Service Awards"
+          href: resource_service_awards.html
     - text: "Workshops"
       menu:
         - text: "Upcoming"
