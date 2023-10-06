@@ -10,7 +10,7 @@ navbar:
     - text: "Data Science Initiative"
       menu:
         - text: "Welcome"
-          href: underConstruction.html
+          href: DSI_welcome.html
     - text: "Funding Opportunities"
       menu:
         - text: "Scientific Core Service Awards"
