@@ -13,7 +13,7 @@ title: "This Page Is Under Constuction"
 ```
 
 
-### In the meantime, here some funny comics!
+### We will soon add more information about the Data Science Initiative. In the meantime, here some funny comics!
 
 <img src="media/img/data_point.png" style="width: 300px; float: center; margin: 10px 10px 10px 10px;"/>
 
