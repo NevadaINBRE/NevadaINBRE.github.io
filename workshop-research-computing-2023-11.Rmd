@@ -1,0 +1,108 @@
+---
+title: "Nevada INBRE Research Day"
+---
+
+<style><!--Page specific style-->
+  h1 {color: #000}
+  h2 {color: #111}
+  h3 {color: #222; border-bottom: 1px solid #ccc; width: 75%;}
+  h4 {color: #666}
+  .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
+</style>
+
+<img src="media/img/NSC_ResearchDay_2023-03_banner.png" style="width: 800px; float: top; margin: 20px 20px 20px 20px;">
+
+
+<!-- [Flyer](research_day_pdf.html) -->
+
+<span style="font-size: 14pt;">Have you been interested in R programming, but don't know how to get started </span><br>
+<span style="font-size: 14pt;">You have heard about Data Science and would like to know more</span><br>
+<span style="font-size: 14pt;">Or are interested in Microbiome research </span><br>
+
+<div style="text-align: center"><span style="font-size: 14pt;">... then come join us and be part of **Nevada INBRE's Research Day at NSC** </span></div><br>
+
+The the morning, you will be introduced to the <a href="https://www.r-project.org/">R programming language</a> and get you started with <a href="https://posit.co/downloads/">Posit, formerly known as RStudio</a> while learning a little about Data Science. We will then have an INBRE supported lunch, followed by an introduction to microbial community analysis using R. 
+
+## Research Day Overview
+
+### Introductory to R Programming
+
+<img src="media/img/icon_coding.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;"> In this training you will be introduced to the R programming language and Posit, formerly known as RStudio to analyze your data. We will teach you how to read and write data, manipulate it, and create publication-ready graphs.
+
+**No prior programming experience is required.** <br>
+
+### Nevada INBRE Lunch
+
+<img src="media/img/icon_lunch.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;"> Come join us for an informal lunch to learn more about Data Science, Bioinformatics, and Microbiome Research, the INBRE program and how you can take advantage, or if you just want to chat about the world. 
+<br>
+<br>
+<br>
+
+### Microbiome Analysis
+
+<img src="media/img/icon_analysis.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;"> Here we will show you how to analyze microbiome data using the DADA2 pipeline, starting with sequencing data and showing you how to define Amplicon Sequence Variants (ASVs), assign taxonomy, and perform basic microbiome analysis. 
+
+**Some R knowlege is required, aka come join us in the morning session.** 
+<br>
+<br>
+
+## Things to Know
+
+### Where
+This is an in-person event and will be held on the Nevada State College’s (NSC) campus. 
+<br>
+
+### Who
+The workshop’s intended audience are undergraduate students, but everyone interested in R and/or microbiome research is welcome to participate - but registration is required, keep on reading. 
+<br>
+
+### When - **Friday, March 10, 2023**
+
+<br>
+<table class="tg">
+<thead>
+  <tr>
+    <th>Module</th>
+    <th>Time</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Hands-on Training: Introductory R</td>
+    <td>8:00am – 11:30am</td>
+  </tr>
+    <tr>
+    <td>How to Apply to Grad/Med School presented *by Mrs. Martinez-Anderson, Director of Admissions UNR Med*</td>
+    <td>11:30pm – 12:00pm</td>
+  </tr>
+    <tr>
+    <td>Nevada INBRE supported Lunch</td>
+    <td>12:00pm – 1:00pm</td>
+  </tr>
+    <tr>
+    <td>Hands-on Training: Microbiome Analysis</td>
+    <td>1:15pm – 4:00pm</td>
+  </tr>
+  <tr>
+    <td>Ask Me Anything, we will sick around if there are questions</td>
+    <td>4:00pm – 5:00pm</td>
+  </tr>
+</tbody>
+</table>
+<br> 
+
+### Interested
+Space is limited and confirmation of participation will be required. Registration is due by **March 1st, 2023**. You can join us for any or all sessions. 
+
+<div style="text-align: center"><span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/nsc_researchday">Click HERE to register</a> </span></div>
+
+<br>
+Questions?? Reach out at any time, email nbc_training@unr.edu or call (775) 784-4359.
+
+### Presenters
+Nicole Schrad, PhD and Juli Petereit, PhD from the Nevada Bioinformatics Center and Nevada INBRE Data Science Core will be supporting this research event. 
+
+### Acknowlegement
+This event is made possible by a grant from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health. 
+
+<img src="media/img/NVINBRE-logo.jpg" style="width: 200px; float: center; margin: 20px 20px 20px 20px;"> 
