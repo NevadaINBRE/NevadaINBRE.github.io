@@ -11,9 +11,15 @@ navbar:
       menu:
         - text: "Scientific Core Service Awards"
           href: resource_service_awards.html
-    - text: "Workshops"
+    - text: "Training Opportunities"
       menu:
         - text: "Upcoming"
+        - text: "2023 Fall: Research Computing"
+          href: workshop-research-computing-2023-11.html
+        - text: "2024 Winter: Data Viz with R"
+          href: underConstruction.html
+        - text: "2024 Spring Break: TBD"
+          href: underConstruction.html
         - text: "Previous"
         - text: "2021 Summer: R for Data Science at UNR"
           href: bootcamp-r-series.html
