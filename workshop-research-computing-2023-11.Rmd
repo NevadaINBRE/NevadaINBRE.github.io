@@ -19,104 +19,96 @@ title: " "
 <span style="font-size: 14pt;">Ever wondered how advanced high performance computing can transform your academic and research pursuits?</span><br>
 <span style="font-size: 14pt;">Want to learn how to take advantage of local resources?</span><br>
 
-<div style="text-align: center"><span style="font-size: 14pt;">... then sign up for our **upcoming training event in November ** </span></div><br>
+<div style="text-align: center"><span style="font-size: 14pt;">... then sign up for our **upcoming training event in November. ** </span></div><br>
 
+Discover the power of Pronghorn, the cutting-edge HPC system on UNR's campus that could supercharge your research experience. Join us to embark on your journey from novice to HPC user in no time!
 
-Get ready for an exhilarating journey into the world of high-performance computing! Join us for an electrifying workshop that will take you from novice to HPC expert in no time!
+By the end of the workshop, you'll master the installations of programs using Conda, conquer the HPC scheduler (SLURM) like a pro, write simple bash scripts and converting them to SBTACH to allow for parallel processing.
 
-Discover the power of Pronghorn, the cutting-edge HPC system that will supercharge your computing experience. Unleash your potential with the command line as you embark on this thrilling adventure.
+Don't miss out on this opportunity to level up your HPC skills. 
 
-But that's not all! In this heart-pounding workshop, you'll master the art of program installations using Conda, conquer the HPC scheduler (SLURM) like a pro, and unlock the secrets of bash scripting. Your scripts will evolve into powerful submission (SBATCH) scripts, propelling your projects to new heights!
+## Workshop Overview
 
-Hold on tight because we're not stopping there! You'll soar to new heights as you dive into the exhilarating world of parallel processing. Learn to harness the raw power of array jobs and watch your data processing capabilities reach unprecedented speeds.
+### Day 1: Introduction & Setup
 
-Don't miss out on this pulse-pounding opportunity to level up your HPC skills. Join us for a workshop that will have you on the edge of your seat, pushing the boundaries of what's possible in the world of high-performance computing! 
+In the first session we will make sure everyone is set up and can log into Pronghorn; we will discuss the local resources and the group's interst in Research Computing. 
 
-Are you ready to elevate your research to unprecedented heights? Learn about Pronghorn, UNR's High-Performance Computing Cluster, and open the door to a world of endless scientific opportunities! 
+**No prior programming or HPC experience is required.** 
 
-More information to follow. 
+### Day 2: 
 
+Add information
 
-<!-- ## Research Day Overview -->
+### Day3: 
 
-<!-- ### Introductory to R Programming -->
+Add information
 
-<!-- <img src="media/img/icon_coding.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;"> In this training you will be introduced to the R programming language and Posit, formerly known as RStudio to analyze your data. We will teach you how to read and write data, manipulate it, and create publication-ready graphs. -->
+## Things to Know
 
-<!-- **No prior programming experience is required.** <br> -->
+### Where
+This is an in-person event and will be held on UNR's main campus; room information will be shared with accepted applications. 
+<br>
 
-<!-- ### Nevada INBRE Lunch -->
+### Who
+The workshop’s intended audience are graduate students, but everyone interested in utilizing HPC is welcome to participate - but registration is required, keep on reading.
+<br>
 
-<!-- <img src="media/img/icon_lunch.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;"> Come join us for an informal lunch to learn more about Data Science, Bioinformatics, and Microbiome Research, the INBRE program and how you can take advantage, or if you just want to chat about the world.  -->
-<!-- <br> -->
-<!-- <br> -->
-<!-- <br> -->
+### When
 
-<!-- ### Microbiome Analysis -->
+<br>
+<table class="tg">
+<thead>
+  <tr>
+    <th>Module</th>
+    <th>Day</th>
+    <th>Time</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Day 1: Introduction & Setup</td>
+    <td>Thursday, 11/02/23</td>
+    <td>3:00pm – 5:00pm</td>
+  </tr>
+  <tr>
+    <td>Day 2: Title</td>
+    <td>Thursday, 11/09/23</td>
+    <td>1:30pm – 5:00pm</td>
+  </tr>
+  <tr>
+    <td>Day 2: Title</td>
+    <td>Thursday, 11/16/23</td>
+    <td>1:30pm – 5:00pm</td>
+  </tr>
 
-<!-- <img src="media/img/icon_analysis.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;"> Here we will show you how to analyze microbiome data using the DADA2 pipeline, starting with sequencing data and showing you how to define Amplicon Sequence Variants (ASVs), assign taxonomy, and perform basic microbiome analysis.  -->
+</tbody>
+</table>
+<br>
 
-<!-- **Some R knowlege is required, aka come join us in the morning session.**  -->
-<!-- <br> -->
-<!-- <br> -->
+### Interested
+Space is limited and confirmation of participation will be required. Registration is due by **October 31st, 2023**. Late application might be considered if space is available.
 
-<!-- ## Things to Know -->
+<div style="text-align: center"><span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/researchcomputing">Click HERE to Register for the Workshop</a> </span></div>
 
-<!-- ### Where -->
-<!-- This is an in-person event and will be held on the Nevada State College’s (NSC) campus.  -->
-<!-- <br> -->
+<br>
 
-<!-- ### Who -->
-<!-- The workshop’s intended audience are undergraduate students, but everyone interested in R and/or microbiome research is welcome to participate - but registration is required, keep on reading.  -->
-<!-- <br> -->
+In addition to the registration you need to complete  onboard with UNR's HPC pronghorn system. 
 
-<!-- ### When - **Friday, March 10, 2023** -->
+<div style="text-align: center"><span style="font-size: 14pt;"><a href="https://nevada.formstack.com/forms/high_performance_computing_application">Click HERE to Complete HPC Onboarding Form</a> </span></div>
 
-<!-- <br> -->
-<!-- <table class="tg"> -->
-<!-- <thead> -->
-<!--   <tr> -->
-<!--     <th>Module</th> -->
-<!--     <th>Time</th> -->
-<!--   </tr> -->
-<!-- </thead> -->
-<!-- <tbody> -->
-<!--   <tr> -->
-<!--     <td>Hands-on Training: Introductory R</td> -->
-<!--     <td>8:00am – 11:30am</td> -->
-<!--   </tr> -->
-<!--     <tr> -->
-<!--     <td>How to Apply to Grad/Med School presented *by Mrs. Martinez-Anderson, Director of Admissions UNR Med*</td> -->
-<!--     <td>11:30pm – 12:00pm</td> -->
-<!--   </tr> -->
-<!--     <tr> -->
-<!--     <td>Nevada INBRE supported Lunch</td> -->
-<!--     <td>12:00pm – 1:00pm</td> -->
-<!--   </tr> -->
-<!--     <tr> -->
-<!--     <td>Hands-on Training: Microbiome Analysis</td> -->
-<!--     <td>1:15pm – 4:00pm</td> -->
-<!--   </tr> -->
-<!--   <tr> -->
-<!--     <td>Ask Me Anything, we will sick around if there are questions</td> -->
-<!--     <td>4:00pm – 5:00pm</td> -->
-<!--   </tr> -->
-<!-- </tbody> -->
-<!-- </table> -->
-<!-- <br>  -->
+<br>
 
-<!-- ### Interested -->
-<!-- Space is limited and confirmation of participation will be required. Registration is due by **March 1st, 2023**. You can join us for any or all sessions.  -->
+Questions?? Reach out at any time, email nbc_training@unr.edu or call (775) 784-4359.
 
-<!-- <div style="text-align: center"><span style="font-size: 14pt;"><a href="https://nvideaoffice.formstack.com/forms/nsc_researchday">Click HERE to register</a> </span></div> -->
+### Flier
 
-<!-- <br> -->
-<!-- Questions?? Reach out at any time, email nbc_training@unr.edu or call (775) 784-4359. -->
+<div style="text-align: center"><img src="media/img/Flier_Research_Computing_2023-11.png" style="width: 600px; float: center; margin: 10px 10px 10px 10px;"/></div>
 
-<!-- ### Presenters -->
-<!-- Nicole Schrad, PhD and Juli Petereit, PhD from the Nevada Bioinformatics Center and Nevada INBRE Data Science Core will be supporting this research event.  -->
+### Presenters
+Hans Vasquez-Gross, PhD from the Nevada Bioinformatics Center
+John Anderson from OIT Research Computing
 
-<!-- ### Acknowlegement -->
-<!-- This event is made possible by a grant from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health.  -->
+### Acknowlegement
+This event is part of the Data Science Initiative and made possible by a grant from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health.
 
-<!-- <img src="media/img/NVINBRE-logo.jpg" style="width: 200px; float: center; margin: 20px 20px 20px 20px;">  -->
+<img src="media/img/NVINBRE-logo.jpg" style="width: 200px; float: center; margin: 20px 20px 20px 20px;">
