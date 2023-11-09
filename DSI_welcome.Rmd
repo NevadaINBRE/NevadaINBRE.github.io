@@ -13,14 +13,27 @@ title: "This Page Is Under Constuction"
 ```
 
 
-### We will soon add more information about the Data Science Initiative. In the meantime, here some funny comics!
+<!-- ## We will soon add more information about the Data Science Initiative. In the meantime, here some funny comics! -->
 
-<img src="media/img/data_point.png" style="width: 300px; float: center; margin: 10px 10px 10px 10px;"/>
+---
 
-<img src="media/img/data_trap.png" style="width: 300px; float: center; margin: 10px 10px 10px 10px;"/>
+<!-- <br> -->
 
-\newpage
+<!-- <img src="media/img/data_point.png" style="width: 300px; float: left; margin: 30px 10px 10px 10px;"/> -->
 
-## Acknowledgements
+<!-- <img src="media/img/data_trap.png" style="width: 300px; float: right; margin: 10px 10px 10px 30px;"/></p> -->
 
-Comics thanks to <https://xkcd.com/>.
+<!-- <br> -->
+
+
+Save the Data - March 7 & 8, 2024
+We are excited to announce that we will be hosting a conference on March 7, 2024, complete with post-conference workshops.
+
+Your support and input are instrumental to the success of this Data Science Initiative, and we look forward to your continued collaboration. If you would like to stay up to date and connected with the Data Science Initiative, [join the group email list](https://lists.unr.edu/mailman3/postorius/lists/datascience.lists.unr.edu/).
+
+Please feel free to reach out if you have any questions, suggestions, or want to get more invovled at DataScienceInitiative@unr.edu. 
+
+
+<!-- ## Acknowledgements -->
+
+<!-- Comics thanks to <https://xkcd.com/>. -->

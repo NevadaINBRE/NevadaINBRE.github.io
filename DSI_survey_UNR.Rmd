@@ -1,0 +1,37 @@
+---
+title: "Join us in shaping the \n University of Nevada, Reno's Data Science Initiative!"
+---
+
+<style><!--Page specific style-->
+  h1 {color: #000}
+  h2 {color: #111}
+  h3 {color: #222; border-bottom: 1px solid #ccc; width: 75%;}
+  h4 {color: #666}
+  .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
+</style>
+
+<br>
+
+Dear UNR Campus Community and Extended Networl,
+
+We are thrilled to announce the inception of a Data Science Initiative on our campus, supported by a Nevada INBRE supplemental award for Building Data Science Capacity, along with Research & Innovation.
+
+One of the pivotal elements of this proposal is the baseline climate survey, designed to assess the current state of knowledge, skills and attitude about data science at our institution. **We would appreciate if you could take 10-15 minutes to complete the survey.** We hope to receive answers from a diverse population and everyone on UNR's campus is invited to participate.
+
+<br>
+
+<div style="text-align: center"><span style="font-size: 14pt;">**Your feedback and suggestions are a vital part in tailoring the Data Science Initiative to our campus' specific needs.**</span></div>
+
+<div style="text-align: center">*Submit your responses by Nov. 27, 2023 for a chance to be one of the lucky 50 participants who will win a $10 Starbucks gift card!*</div>
+
+<br>
+
+<div style="text-align: center"><span style="font-size: 24pt;"><a href="https://unr.az1.qualtrics.com/jfe/form/SV_2cux0Tr4nJO9iS2">Take the Survey</a></span></div>
+
+<br>
+
+Thank you for your support in shaping the Data Science Initiative at UNR. 
+
+
+
+

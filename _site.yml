@@ -11,6 +11,10 @@ navbar:
       menu:
         - text: "Welcome"
           href: DSI_welcome.html
+        - text: "Data Science Climate Survey (UNR)"
+          href: DSI_survey_UNR.html
+        - text: "Conference 2024"
+          href: DSI_conference.html
     - text: "Funding Opportunities"
       menu:
         - text: "Scientific Core Service Awards"
