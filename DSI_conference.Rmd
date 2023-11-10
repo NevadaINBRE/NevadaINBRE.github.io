@@ -14,11 +14,14 @@ title: ""
 
 <br>
 
-### **Panterns and Sponsors**
+Mark your calendars! We are excited to host the 1st Annual Data Science Conference on March 7 and 8, 2024. This event will bring together leading experts, researchers, and students. Our conference will feature keynote speakers, panel discussions, interactive workshops, and networking opportunities that you don’t want to miss.
+
+### **Partnership and Sponsorship**
 
 We invite you to join us as a sponsor for our upcoming campus-wide Data Science Conference, where we are passionate about promoting diversity in the field of data science. 
 
 This event will bring together a diverse and talented group of students, faculty, professionals, and experts to celebrate the rich tapestry of perspectives and ideas that make data science thrive. By supporting our conference, you can be an integral part of this movement towards inclusivity and innovation. 
+
 Our sponsorship opportunities range from basic to premium, allowing you to choose a level that aligns with your objectives and budget. Whether you're looking to increase brand visibility, engage with a diverse talent pool, or demonstrate your commitment to fostering diversity in the tech world, we have sponsorship options that will help you achieve your goals. Join us in making a meaningful impact, enhancing diversity, and driving the future of data science. 
 
 ***Together, we can make a difference!***
@@ -95,6 +98,15 @@ Various levels of sponsorship are available. If you are interested in sponsoring
   </tr>  
   <tr>
     <td>Enhanced logo placement on conference materials as well as display of logo at the event at the door.
+    <td>
+    <td>
+    <td>x
+    <td>x
+    <td>x
+    <td>x
+  </tr>
+  <tr>
+    <td>Dedicated exhibit booth location
     <td>
     <td>
     <td>x

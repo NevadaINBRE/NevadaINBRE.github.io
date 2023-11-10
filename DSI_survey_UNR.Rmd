@@ -12,7 +12,7 @@ title: "Join us in shaping the \n University of Nevada, Reno's Data Science Init
 
 <br>
 
-Dear UNR Campus Community and Extended Networl,
+Dear UNR Campus Community and Extended Network,
 
 We are thrilled to announce the inception of a Data Science Initiative on our campus, supported by a Nevada INBRE supplemental award for Building Data Science Capacity, along with Research & Innovation.
 
