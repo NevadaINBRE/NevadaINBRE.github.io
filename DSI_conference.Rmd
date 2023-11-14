@@ -14,7 +14,9 @@ title: ""
 
 <br>
 
-Mark your calendars! We are excited to host the 1st Annual Data Science Conference on March 7 and 8, 2024. This event will bring together leading experts, researchers, and students. Our conference will feature keynote speakers, panel discussions, interactive workshops, and networking opportunities that you don’t want to miss.
+Mark your calendars! We are excited to host the 1st Annual Data Science Conference on March 7 and 8, 2024. **This event will bring together leading experts, researchers, and students to grow data science knowledge and skills on our campus.** Our conference will feature keynote speakers, panel discussions, interactive workshops, and networking opportunities that you don’t want to miss.
+
+<br>
 
 ### **Partnership and Sponsorship**
 
