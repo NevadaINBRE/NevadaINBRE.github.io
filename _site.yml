@@ -9,10 +9,10 @@ navbar:
       href: index.html
     - text: "Data Science Initiative"
       menu:
-        - text: "Welcome"
-          href: DSI_welcome.html
-        - text: "Data Science Climate Survey (UNR)"
-          href: DSI_survey_UNR.html
+        # - text: "Welcome"
+        #   href: DSI_welcome.html
+        # - text: "Data Science Climate Survey (UNR)"
+        #   href: DSI_survey_UNR.html
         - text: "Conference 2024"
           href: DSI_conference.html
     - text: "Funding Opportunities"
