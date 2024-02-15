@@ -21,8 +21,7 @@ Services can be requested from
  - <a href="https://naes.unr.edu/cal/">Core Analytical Lab</a> at UNR
  - <a href="https://med.unr.edu/research/core-facilities-and-centers/cobre-cardiovascular/scientific-cores/core-c">High Spatial and Temporal Resolution Imaging Core</a> at UNR [NEW!]
 
- 
-Applicants may request services from one or multiple cores. No award will be issued for more than \$5,000. A maximum of \$2000 in services may be requested from the Proteomics and/or Genomics Cores. For example, you may request services up to \$2,000 from Proteomics and $3,000 from Bioinformatics.
+Applicants may request services from one or multiple cores. No award will be issued for more than \$5,000. A maximum of \$2000 in services may be requested from each core; Bioinformatics' requests of up to \$3,000 will be considered.  
 
 Here are some highlighted services:
 
@@ -37,18 +36,17 @@ Here are some highlighted services:
  - Confocal imaging of cells and tissue (Leica Stellaris 5 and 8)
  - Single molecule tracking (Olympus TIRF)
 
-
 This list is not exhaustive. For more information about additional services and ways the cores could assist in your research endeavors, please reach out to the cores directly. Also, our NV INBRE Data Science directors, Drs. [Juli Petereit](jpetereit@unr.edu) and [Ed Oh](edwin.oh@unlv.edu) are here in case there are general questions or concerns.
 
 <div style="text-align: center"><span style="font-size: 16pt;">Service Award applications are now open. <a href="https://nvideaoffice.formstack.com/forms/inbreserviceawardapp">Click here to complete the application form.</a></span></div>
 
-<div style="text-align: center"><span style="font-size: 18pt;">**Applications are due December 3, 2023 at 11:59pm.**</span></div>
+<div style="text-align: center"><span style="font-size: 18pt;">**Applications are due April 10, 2024 at 11:59pm.**</span></div>
 
-<div style="text-align: center">Note: Dec 3rd is a Sunday. Make sure to get your core quotes by Dec 1st!</div>
+<div style="text-align: center">Note: Consult with the Cores early!</div>
 
 <br>
 
-Awards will be issued by mid-December and must be utilized by March 31, 2023; extensions for INBRE awards will not be possible. 
+Awards will be issued by late-April and must be utilized by September 30, 2024; extensions will be considered if requested in written by August 15, 2024. 
 
 Any researcher at Nevada INBRE Partner Institutions (CSN, DRI, GBC, NSU, TMCC, UNLV, UNR, WNC) needing scientific core services or support can apply.
 
@@ -77,11 +75,11 @@ IMPORTANT INFORMATION:
 
 ## Acknowledgements
 
-This program was initiated by Nevada INBRE a grant from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health.
+This program was initiated by Nevada INBRE, a grant from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health.
 
 Additional supporting partners include: 
 
- - UNR Research & Innovation
+ - UNR Research \& Innovation
  - UNR CABNR
  - UNR COBRE for Molecular and Cellular Signal Transduction in the Cardiovascular System (P20GM130459)
 
