@@ -10,22 +10,78 @@ title: " "
   .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
 </style>
 
-<!-- <img src="media/img/banner_research_computing.png" style="width: 800px; float: top; margin: 20px 20px 20px 20px;"> -->
+<img src="media/img/banner_microbiome.png" style="width: 1000px; float: top; margin: 10px 10px 10px 10px;">
+
+<span style="font-size: 14pt;">From bench to computer, a comprehensive research experience for students interested in biomedical life science and data science. </span><br>
+
+The primary objective of this program is to expose undergraduate students to microbiome research at the University of Nevada, Reno. 
+
+During this three-week program participants will be introduced to:
+
+ - Safe lab procedures and etiquette
+ - DNA extraction and sample preparation for sequencing
+ - Introduction to research computing (cloud and/or high-performance computing, Linux)
+ - R coding
+ - Bioinformatics and data science
+ - Analysis of 16S rRNA sequencing data
+ - Interpretation of microbiome data
+ - Creation of scientific poster and presentation
+
+For NSHE faculty: If you are interested in participating or supporting this program, please reach out to nvinbre@unr.edu. We certainly would welcome the support.
+
+## Eligibility & How to apply
+
+The program is directed towards students who have completed at least their freshman year of undergraduate education and are 18 years or older. Seniors with a graduation date of August 2024 or after are also welcome to apply. Graduate students will be considered if the available spots are not filled by undergraduates.
+
+Student application is due Tuesday April 30, 2024. 
+
+### How to apply
+
+1. Complete and submit an online application here. 
+2. Prepare and upload a one single-spaced page personal statement that addresses 
+    a) your academic background
+    b) your scientific interests
+    c) your research experience if any (none are required, but if you do we would like to know about it)
+    d) what you hope to gain from the research experience.
+3. Upload your current unofficial transcript
+4. Indicate one academic reference, and provide their contact information in the application form. 
+    The application will automatically send them a link to the reference form to fill out. All references need to be submitted directly by the author by Friday, May 3. Your references will not receive the link to the reference form until your application is fully submitted. Please be sure to allow enough time for your references to complete the reference form by the deadline. 
+
+Applications will be reviewed by the review committee and selected applicants will be notified of acceptance by May 11. Acceptance by the student will need to be confirmed by May 18 due to the competitiveness of this application and limited space.
+
+## Program Details
+
+The summer research program runs for three weeks from Monday, July 22 through Friday, August 9, 2024. 
+
+Week 1: Wet-lab, preparing samples for sequencing
+
+Week 2: Introduction to biomedical data science and bioinformatics
+
+Week 3: Analyzing sequencing samples and presenting research findings
+
+The program's project is designed to give the student an in-depth, hands-on exposure to biomedical research. Although the focus is on the microbiome, many of these skills are transferable and can be applied to other areas. The program will give students the unique experience of starting at the wet-lab bench preparing samples for sequencing, and will end with analyzing the samples via bioinformatics and biomedical data science. As such this program is of interested to students majoring in any of the life sciences, but also computational students interested in computer science and statistics.
+
+There are no prerequisites, but lab experience or familiarity with R coding will be beneficial for participants.
+
+Throughout the three weeks, students will be able to tour the University's campus in Reno and Incline Village, meet a variety of researchers, and be introduced to various scientific technologies beyond microbiome research.
+
+Students will present their research via Scientific Poster at the Wolf Pack Discoveries, an undergraduate research symposium. 
+
+It is expected that students will provide a one-page summary of the summer experience to the program director within 30 days after completion of their project.
+
+This program is at no cost for accepted students enrolled in any NSHE institution and includes room and board. 
+
+## Logistics
+
+This program will be conducted in person at the University of Nevada, Reno in Reno and Incline Village. 
+
+Dorm rooms (double occupancy) in Reno will be available for students who are not local to Reno (further than 30 miles from the University's campus); dorm rooms in Incline Village will be provided to all students.
+
+Travel arrangement will need to be coordinated with program coordinator. 
+
+More details about the program will be shared upon acceptance. 
 
 
-<!-- <!-- [Flyer](research_day_pdf.html) --> -->
-
-<!-- <span style="font-size: 14pt;">Interested in learning about Research Computing? </span><br> -->
-<!-- <span style="font-size: 14pt;">Ever wondered how advanced high performance computing can transform your academic and research pursuits?</span><br> -->
-<!-- <span style="font-size: 14pt;">Want to learn how to take advantage of local resources?</span><br> -->
-
-<!-- <div style="text-align: center"><span style="font-size: 14pt;">... then sign up for our **upcoming training event in November. ** </span></div><br> -->
-
-<!-- Discover the power of Pronghorn, the cutting-edge HPC system on UNR's campus that could supercharge your research experience. Join us to embark on your journey from novice to HPC user in no time! -->
-
-<!-- By the end of the workshop, you’ll master the installations of programs using Conda, conquer the HPC scheduler (SLURM) like a pro, write simple bash scripts and converting them to SBATCH submission scripts or SBATCH array scripts to allow for parallel processing. -->
-
-<!-- Don't miss out on this opportunity to level up your HPC skills.  -->
 
 <!-- ## Workshop Overview -->
 
@@ -106,7 +162,6 @@ title: " "
 Nevada Bioinformatics Center / Nevada INBRE Data Science Core
 
  - Juli Petereit, PhD 
- - Melanie Hess, PhD
 
 Department of Nutrition
 
