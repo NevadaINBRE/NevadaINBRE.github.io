@@ -23,7 +23,7 @@ title: " "
 
 Discover the power of Pronghorn, the cutting-edge HPC system on UNR's campus that could supercharge your research experience. Join us to embark on your journey from novice to HPC user in no time!
 
-By the end of the workshop, you’ll master the installations of programs using Conda, conquer the HPC scheduler (SLURM) like a pro, write simple bash scripts and converting them to SBATCH submission scripts or SBATCH array scripts to allow for parallel processing. You will also learn how to run R Studio Server and Jupyter Notebook Server to keep using the analysis frameworks you are used to, but also leverage the computing power on our HPC!
+By the end of the workshop, you’ll master the installation of programs using Conda, conquer the HPC scheduler (SLURM) like a pro, write simple bash scripts and convert them to SBATCH submission scripts or SBATCH array scripts to allow for parallel processing. You will also learn how to run R Studio Server and Jupyter Notebook Server to keep using the analysis frameworks you are used to, while leveraging the computing power of our HPC!
 
 Don't miss out on this opportunity to level up your HPC skills. 
 
