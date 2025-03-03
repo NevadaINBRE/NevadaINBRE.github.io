@@ -22,10 +22,6 @@ navbar:
     - text: "Training Opportunities"
       menu:
         - text: "Upcoming"
-        - text: "2024 Spring: Research Computing"
-          href: workshop-research-computing-2024-04.html
-        - text: "2024 Summer: Microbiome Bootcamp"
-          href: bootcamp-microbiome_2024-07.html
         - text: "2024 Summer: TBD Additional Trainings"
           href: underConstruction.html
         - text: "Previous"
@@ -43,6 +39,10 @@ navbar:
           href: CSN_phageGenomics_2023-03.html
         - text: "2023 Fall: Research Computing"
           href: workshop-research-computing-2023-11.html
+        - text: "2024 Spring: Research Computing"
+          href: workshop-research-computing-2024-04.html
+        - text: "2024 Summer: Microbiome Bootcamp"
+          href: bootcamp-microbiome_2024-07.html
     - text: "Tutorials"
       menu:
         - text: "Jupyter Notebook"
