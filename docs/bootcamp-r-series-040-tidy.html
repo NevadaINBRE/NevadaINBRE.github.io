@@ -284,7 +284,10 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
     <li>
-      <a href="underConstruction.html">2024 Summer: TBD Additional Trainings</a>
+      <a href="NSU_ResearchDay_2025-03.html">2025 Spring: Data Science for Research</a>
+    </li>
+    <li>
+      <a href="underConstruction.html">2025 Summer: TBD Additional Trainings</a>
     </li>
     <li class="dropdown-header">Previous</li>
     <li>
@@ -1957,29 +1960,29 @@ replication</li>
 # notice you do not need the () after the function as you would if executing from consol
 map(df, mean)</code></pre>
 <pre><code>## $a
-## [1] 0.3173634
+## [1] -0.03214262
 ## 
 ## $b
-## [1] -0.1902037
+## [1] -0.4758772
 ## 
 ## $c
-## [1] 0.1331861
+## [1] 0.08944687
 ## 
 ## $d
-## [1] 0.4569262</code></pre>
+## [1] -0.8184972</code></pre>
 <pre class="r"><code># can pipe it an input to make the process even easier
 df %&gt;% map(mean)</code></pre>
 <pre><code>## $a
-## [1] 0.3173634
+## [1] -0.03214262
 ## 
 ## $b
-## [1] -0.1902037
+## [1] -0.4758772
 ## 
 ## $c
-## [1] 0.1331861
+## [1] 0.08944687
 ## 
 ## $d
-## [1] 0.4569262</code></pre>
+## [1] -0.8184972</code></pre>
 <p>You may have noticed that the output format is not necessarily in the
 format that we might expect. The <code>map()</code> function always
 outputs a list.</p>
@@ -1989,8 +1992,8 @@ of a map function: <code>map_lgl()</code>, <code>map_int()</code>,
 vector of the indicated type (or die trying).</p>
 <pre class="r"><code># Should return a numerical vector rather than a list
 map_dbl(df, mean)</code></pre>
-<pre><code>##          a          b          c          d 
-##  0.3173634 -0.1902037  0.1331861  0.4569262</code></pre>
+<pre><code>##           a           b           c           d 
+## -0.03214262 -0.47587716  0.08944687 -0.81849723</code></pre>
 </div>
 </div>
 
