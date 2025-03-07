@@ -24,6 +24,8 @@ navbar:
         - text: "Upcoming"
         - text: "2025 Spring: Data Science for Research"
           href: NSU_ResearchDay_2025-03.html
+        - text: "2025 Summer: Microbiome Bootcamp"
+          href: bootcamp-microbiome_2025-07.html
         - text: "2025 Summer: TBD Additional Trainings"
           href: underConstruction.html
         - text: "Previous"
