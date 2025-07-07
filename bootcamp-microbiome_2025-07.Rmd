@@ -12,7 +12,7 @@ title: ""
 
 <img src="media/img/banner_microbootcamp_2025.png" style="width: 1000px; float: top; margin: 10px 10px 10px 10px;"> 
 
-<div style="text-align: center"><span style="font-size: 18pt;">**August 11 - August 14, 2025**</span></div>
+<div style="text-align: center"><span style="font-size: 18pt;">**August 11 - August 14, 2025 • University of Nevada, Las Vegas • Full‑time in‑person**</span></div>
 
 <br> 
 
