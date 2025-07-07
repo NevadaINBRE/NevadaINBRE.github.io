@@ -29,7 +29,7 @@ During this three and a half (3.5) day training program participants will be int
  - Present your findings in a 3-minute flash talk
 
 
-**For NSHE faculty:** If you are interested in participating or supporting this program, please reach out to nbc@unr.edu. We certainly would welcome your support.
+**For NSHE faculty:** If you are interested in participating or supporting this program, please reach out to nbc_training@unr.edu. We certainly would welcome your support.
 
 <!-- ## Blast from the Past -->
 
@@ -63,13 +63,13 @@ Registrations will be reviewed every Friday until August 4 or until the micro-bo
 
 The summer micro-research program runs from **Monday, August 11 through Thursday, August 14, 2025**. 
 
-This guided micro-research experience offers an immersive journey into biomedical research, with a primary focus on the gut microbiome. Its structured approach equips students with valuable hands-on skills applicable across various domains. Beginning with a gentle introduction to R coding and the gut microbiome, participants progress to the analysis phase using bioinformatics and biomedical data science tools. This program appeals not only to life science majors but also to computational students interested in computer science, data science, and statistics and program offers a unique and enriching learning opportunity for aspiring researchers in diverse disciplines.
+This guided micro-research experience offers an immersive journey into biomedical research, with a primary focus on the gut microbiome. Its structured approach equips students with valuable hands-on skills applicable across various domains. Beginning with a gentle introduction to R coding and the gut microbiome, participants progress to the analysis phase using bioinformatics and biomedical data science tools. This program appeals not only to life science majors but also to computational students interested in computer science, data science, and statistics. The program offers a unique and enriching learning opportunity for aspiring researchers in diverse disciplines.
 
 Students will be using and analyzing samples from [Dr. Steven Frese's Wolf Pack Study](https://freselab.org/wolfpack/). 
 
 There are no prerequisites!
 
-Students will work in groups of 2-4, develop a research questions, and present their research findings via a 3-minute flash talk at the end of the program.
+Students will work in groups of 2-4, develop a research question, and present their findings via a 3-minute flash talk at the end of the program.
 
 Please note that this training event is a full-time commitment from August 11 - August 14, 2025
 
@@ -128,7 +128,7 @@ This is an in-person event and will be held on the **University of Nevada, Las V
 
 ### Questions
 
-Reach out at any time, email nbc@unr.edu or call (775) 784-4359.
+Reach out at any time, email nbc_training@unr.edu or call (775) 784-4359.
 
 <!-- ### Flier -->
 
