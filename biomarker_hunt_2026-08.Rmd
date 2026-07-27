@@ -92,7 +92,7 @@ Complete and submit the online application. Applications will be reviewed on a r
 
 ### <img src="media/img/icon_Rviz.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Program Details
 
-The program runs from **Thursday, August 27 at 4pm through Sunday, August 30, 2036 at 3pm**. 
+The program runs from **Thursday, August 27 at 4pm through Sunday, August 30, 2026 at 3pm**. 
 *Please note that this training event is a full-time commitment, and we will be staying the entire time at the Lake Tahoe Campus*
 
 The Biomarker Hunt is designed to simulate the early stages of a real data-intensive research project. Short instructional sessions will introduce key concepts and tools, but most of the program will focus on team-based exploration and analysis.
@@ -116,7 +116,7 @@ This Program May Be a Good Fit If You Are Interested In
 
 <br>
 
-### <img src="media/img/icon_lake.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Where \& When
+### <img src="media/img/icon_lake.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Event Logistics
 
 The program will be held at the **University of Nevada, Reno at Lake Tahoe campus in Incline Village, Nevada**.
 
@@ -154,14 +154,13 @@ The program will be held at the **University of Nevada, Reno at Lake Tahoe campu
 </tbody>
 </table>
 
-*Days will be long, but there are breaks build in.*
+*Days will be long, but they are breaks built in.*
 <br>
 
-## Logistics
 
-Dorm rooms (triple occupancy) at Lake Tahoe will be provided to **all** students.
+Dorm rooms (triple same-sex occupancy) at Lake Tahoe will be provided to **all** students.
 
-We are not offering travel arrangements to Lake Tahoe for this program. Shall you be in need for travel support, please reach out to nbc_training@unr.edu. If you are participating from any NSHE institution but UNR, please reach out to your local NV INBRE representative to inquire about travel support.
+We are not offering travel arrangements to Lake Tahoe for this program. Shall you be in need for travel support, please reach out to nbc_training@unr.edu. If you are participating from any NSHE institution other than UNR, please reach out to your local NV INBRE representative to inquire about travel support.
 
 More details about the program will be shared upon acceptance.
 <br>
