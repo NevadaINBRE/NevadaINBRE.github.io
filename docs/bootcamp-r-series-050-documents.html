@@ -13,7 +13,7 @@
 
 <title>Creating Polished Documents</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -286,10 +286,10 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Upcoming</li>
     <li>
-      <a href="bootcamp-microbiome_2025-07.html">2025 Summer: Microbiome Micro-Bootcamp</a>
+      <a href="biomarker_hunt_2026-08.html">2026 Fall: Biomarker Hunt</a>
     </li>
     <li>
-      <a href="underConstruction.html">2025 Summer: TBD Additional Trainings</a>
+      <a href="underConstruction.html">TBD Additional Trainings</a>
     </li>
     <li class="dropdown-header">Previous</li>
     <li>
@@ -321,6 +321,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="NSU_ResearchDay_2025-03.html">2025 Spring: Data Science for Research</a>
+    </li>
+    <li>
+      <a href="bootcamp-microbiome_2025-07.html">2025 Summer: Microbiome Micro-Bootcamp</a>
     </li>
   </ul>
 </li>
@@ -385,21 +388,21 @@ colors, facets, scales, etc.</p>
 <pre class="r"><code># Creates an empty plot
 iris %&gt;%
   ggplot()</code></pre>
-<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-1.png" alt="" width="672" /></p>
 <pre class="r"><code># Mapping variables to the x and y axes
 iris %&gt;%
   ggplot(aes(x = Petal.Length, y = Petal.Width))</code></pre>
-<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-2.png" alt="" width="672" /></p>
 <pre class="r"><code># Adding a geometry layer (geom_)
 iris %&gt;%
   ggplot(aes(x = Petal.Length, y = Petal.Width)) +
   geom_point()</code></pre>
-<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-3.png" alt="" width="672" /></p>
 <pre class="r"><code># Mapping the species variable to the point color
 iris %&gt;%
   ggplot(aes(x = Petal.Length, y = Petal.Width, color = Species)) +
   geom_point()</code></pre>
-<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-4.png" width="672" /></p>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-4.png" alt="" width="672" /></p>
 <pre class="r"><code># Adding in extras to make a professional-looking graphic
 iris %&gt;%
   ggplot(aes(x = Petal.Length, y = Petal.Width, color = Species)) +
@@ -410,7 +413,7 @@ iris %&gt;%
        x = &quot;Length (cm)&quot;,
        y = &quot;Width (cm)&quot;) +
   theme_bw()</code></pre>
-<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-5.png" width="672" /></p>
+<p><img src="bootcamp-r-series-050-documents_files/figure-html/unnamed-chunk-1-5.png" alt="" width="672" /></p>
 <div id="list-of-resources" class="section level3">
 <h3>List of Resources</h3>
 <p>There is so much that can be done with <code>ggplot2</code> and
