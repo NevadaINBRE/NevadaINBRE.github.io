@@ -934,24 +934,24 @@ integer (most of the time).</p>
 <pre class="r"><code># most often used for categorical observations
 pets &lt;- c(&quot;cat&quot;, &quot;dog&quot;, &quot;lizard&quot;, &quot;raccoon&quot;)
 (pet_obs &lt;- sample(pets, 20, TRUE))</code></pre>
-<pre><code>##  [1] &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;raccoon&quot; &quot;dog&quot;    
-##  [8] &quot;lizard&quot;  &quot;cat&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;cat&quot;     &quot;dog&quot;     &quot;raccoon&quot;
-## [15] &quot;lizard&quot;  &quot;raccoon&quot; &quot;lizard&quot;  &quot;cat&quot;     &quot;lizard&quot;  &quot;lizard&quot;</code></pre>
+<pre><code>##  [1] &quot;raccoon&quot; &quot;raccoon&quot; &quot;cat&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;dog&quot;    
+##  [8] &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;cat&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;lizard&quot; 
+## [15] &quot;lizard&quot;  &quot;dog&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;raccoon&quot; &quot;dog&quot;</code></pre>
 <pre class="r"><code># Turn the character vector into a set of factors
 pet_fct &lt;- factor(pet_obs)
 pet_fct</code></pre>
-<pre><code>##  [1] lizard  dog     lizard  dog     lizard  raccoon dog     lizard  cat    
-## [10] raccoon raccoon cat     dog     raccoon lizard  raccoon lizard  cat    
-## [19] lizard  lizard 
+<pre><code>##  [1] raccoon raccoon cat     cat     dog     cat     dog     lizard  dog    
+## [10] lizard  cat     cat     dog     lizard  lizard  dog     raccoon raccoon
+## [19] raccoon dog    
 ## Levels: cat dog lizard raccoon</code></pre>
 <pre class="r"><code># can be converted to an integer vector
 as.integer(pet_fct)</code></pre>
-<pre><code>##  [1] 3 2 3 2 3 4 2 3 1 4 4 1 2 4 3 4 3 1 3 3</code></pre>
+<pre><code>##  [1] 4 4 1 1 2 1 2 3 2 3 1 1 2 3 3 2 4 4 4 2</code></pre>
 <pre class="r"><code># can be converted to a character vector
 as.character(pet_fct)</code></pre>
-<pre><code>##  [1] &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;raccoon&quot; &quot;dog&quot;    
-##  [8] &quot;lizard&quot;  &quot;cat&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;cat&quot;     &quot;dog&quot;     &quot;raccoon&quot;
-## [15] &quot;lizard&quot;  &quot;raccoon&quot; &quot;lizard&quot;  &quot;cat&quot;     &quot;lizard&quot;  &quot;lizard&quot;</code></pre>
+<pre><code>##  [1] &quot;raccoon&quot; &quot;raccoon&quot; &quot;cat&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;cat&quot;     &quot;dog&quot;    
+##  [8] &quot;lizard&quot;  &quot;dog&quot;     &quot;lizard&quot;  &quot;cat&quot;     &quot;cat&quot;     &quot;dog&quot;     &quot;lizard&quot; 
+## [15] &quot;lizard&quot;  &quot;dog&quot;     &quot;raccoon&quot; &quot;raccoon&quot; &quot;raccoon&quot; &quot;dog&quot;</code></pre>
 </div>
 <div id="overview-of-objects-and-data-structures"
 class="section level2">
@@ -1372,7 +1372,7 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.076        3.012</code></pre>
+##       2.024        2.877</code></pre>
 <pre class="r"><code>lm(y ~ 0 + x) # slope only model (no intercept)</code></pre>
 <pre><code>## 
 ## Call:
@@ -1380,7 +1380,7 @@ lm(y ~ x) # slope-intercept model. Same as `lm(y ~ 1 + x)`</code></pre>
 ## 
 ## Coefficients:
 ##     x  
-## 2.634</code></pre>
+## 1.633</code></pre>
 <p>Can also fit a generalized linear model using (you guessed it) the
 <code>glm()</code> function.</p>
 <pre class="r"><code># logit(theta) = 3x + 2
@@ -1394,11 +1394,11 @@ glm(k ~ 1 + x, family = binomial(link = &quot;logit&quot;))</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       3.001        4.786  
+##       2.948        5.055  
 ## 
 ## Degrees of Freedom: 29 Total (i.e. Null);  28 Residual
-## Null Deviance:       38.19 
-## Residual Deviance: 10.77     AIC: 14.77</code></pre>
+## Null Deviance:       39.43 
+## Residual Deviance: 17.38     AIC: 21.38</code></pre>
 </div>
 <div id="summarizing-data-frames-and-models" class="section level2">
 <h2>Summarizing data frames and models</h2>
@@ -1408,17 +1408,17 @@ models, and it is the <code>summary()</code> function.</p>
 z &lt;- rnorm(50)
 summary(z)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -2.0113 -0.9857 -0.1241 -0.1232  0.6994  1.8483</code></pre>
+## -2.1173 -1.0992 -0.2891 -0.1582  0.4905  2.5211</code></pre>
 <pre class="r"><code># summarize a data frame
 df &lt;- data.frame(a = 1L:10L, b = rexp(10), c = factor(sample(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), 10, TRUE)))
 summary(df)</code></pre>
 <pre><code>##        a               b           c    
-##  Min.   : 1.00   Min.   :0.03359   a:6  
-##  1st Qu.: 3.25   1st Qu.:0.40492   b:3  
-##  Median : 5.50   Median :0.90672   c:1  
-##  Mean   : 5.50   Mean   :1.54575        
-##  3rd Qu.: 7.75   3rd Qu.:1.35103        
-##  Max.   :10.00   Max.   :6.13911</code></pre>
+##  Min.   : 1.00   Min.   :0.07537   a:2  
+##  1st Qu.: 3.25   1st Qu.:0.38077   b:1  
+##  Median : 5.50   Median :0.55756   c:7  
+##  Mean   : 5.50   Mean   :0.64401        
+##  3rd Qu.: 7.75   3rd Qu.:0.87110        
+##  Max.   :10.00   Max.   :1.45466</code></pre>
 <pre class="r"><code># summarize a linear model
 fit &lt;- lm(y ~ 1 + x)
 summary(fit)</code></pre>
@@ -1428,18 +1428,18 @@ summary(fit)</code></pre>
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -1.28853 -0.41091  0.00689  0.32983  1.21636 
+## -1.19226 -0.11523  0.04622  0.33933  0.90945 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   2.0763     0.1062   19.55   &lt;2e-16 ***
-## x             3.0121     0.1014   29.70   &lt;2e-16 ***
+## (Intercept)   2.0240     0.1097   18.45   &lt;2e-16 ***
+## x             2.8768     0.1453   19.80   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.5711 on 28 degrees of freedom
-## Multiple R-squared:  0.9692, Adjusted R-squared:  0.9681 
-## F-statistic: 881.8 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.5323 on 28 degrees of freedom
+## Multiple R-squared:  0.9333, Adjusted R-squared:  0.9309 
+## F-statistic: 391.9 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Notice that it outputs differently for different input objects. This
 is because <code>summary()</code> is a <em>generic</em> function,
 meaning that it has multiple <em>methods</em> defined for different R

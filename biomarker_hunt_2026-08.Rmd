@@ -61,6 +61,7 @@ Participants should have
  - Basic R programming experience
  - Introductory understanding of statistics
  - Interest in working with data and solving open-ended problems
+ 
 But prior experience with high-performance computing (HPC), cloud computing, bioinformatics, transcriptomics, or proteomics is NOT required.
 
 **Important Information**
@@ -71,13 +72,13 @@ Failure to participate after confirming your registration may require us to cont
 
 We understand that this training event may overlap with your course schedule. We are happy to provide a letter to your instructor verifying your participation and requesting reasonable accommodation for any missed class activities.
 
-**This is not an introductory R workshop.** Participants should be comfortable with basic R concepts such as importing data, working with data frames, and creating simple plots. Additional preparation resources will be provided before the program. If you have not experience with R but would like to participate, please reach out UNR libraries will be offering a *R Introductory* workshop the week prior. 
+**This is not an introductory R workshop.** Participants should be comfortable with basic R concepts such as importing data, working with data frames, and creating simple plots. Additional preparation resources will be provided before the program. If you have no experience with R but would like to participate, please reach out; UNR libraries will be offering an *R Introductory* workshop the week prior. 
 
 <br> 
 
 ### <img src="media/img/icon_coding.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">How to apply
 
-Complete and submit the online application. Applications will be reviewed on a rolling basis until the program reaches capacity. If circumstances change and you can no longer participate, please inform us as soo as possible, so that a reserved spot can be passed on to another student. 
+Complete and submit the online application. Applications will be reviewed on a rolling basis until the program reaches capacity. If circumstances change and you can no longer participate, please inform us as soon as possible, so that a reserved spot can be passed on to another student. 
 
 **Application materials**
 
@@ -89,10 +90,10 @@ Complete and submit the online application. Applications will be reviewed on a r
 
 <br>
 
-### <img src="media/img/icon_analysis.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Program Details
+### <img src="media/img/icon_Rviz.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Program Details
 
 The program runs from **Thursday, August 27 at 4pm through Sunday, August 30, 2036 at 3pm**. 
-*Please note that this training event is a full-time commitment and we will be staying the entire at the Lake Tahoe Campus*
+*Please note that this training event is a full-time commitment, and we will be staying the entire time at the Lake Tahoe Campus*
 
 The Biomarker Hunt is designed to simulate the early stages of a real data-intensive research project. Short instructional sessions will introduce key concepts and tools, but most of the program will focus on team-based exploration and analysis.
 
@@ -118,49 +119,49 @@ This Program May Be a Good Fit If You Are Interested In
 ### <img src="media/img/icon_lake.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Where \& When
 
 The program will be held at the **University of Nevada, Reno at Lake Tahoe campus in Incline Village, Nevada**.
-<!-- <br> -->
 
-<!-- ### <img src="media/img/icon_Rviz.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">When -->
+<br>
 
 <table class="tg">
 <thead>
   <tr>
     <th>Module</th>
     <th>Day</th>
-    <th>Time</th>
+    <th> Start Time</th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td>Day 1: Welcome + Intro to R</td>
-    <td>Thurday 8/27/26 </td>
+    <td>Thursday 8/27/26 </td>
     <td>4pm Welcome at the Lake Tahoe Campus</td>
   </tr>
   <tr>
     <td>Day 2: Explore: Data, Study Design, and Visualization</td>
     <td>Friday 8/28/26 </td>
-    <td>8:30pm - 9:00pm</td>
+    <td>9am </td>
   </tr>
   <tr>
     <td>Day 3: Analyze: RNA-seq, Proteomics, and Team Investigation</td>
     <td>Saturday 8/29/26 </td>
-    <td>8:30pm - 9:00pm</td>
+    <td>9am</td>
   </tr>
   <tr>
     <td>Day 4: Discover: Final Analysis and 3-Minute Flash Talks</td>
-    <td>Thursday 8/14/25 </td>
-    <td>8:30am – 3pm</td>
+    <td>Sunday 8/30/26 </td>
+    <td>9am</td>
   </tr>
 </tbody>
 </table>
 
-*Days are long, but there are breaks build in.*
+*Days will be long, but there are breaks build in.*
+<br>
 
-### Logistics
+## Logistics
 
 Dorm rooms (triple occupancy) at Lake Tahoe will be provided to **all** students.
 
-We are not offering travel arrangement to Lake Tahoe for this program. Shall you be in need for travel support, please reach out to nbc_training@unr.edu. If you are participating from ant NSHE institution but UNR, please reach out to your local NV INBRE representative to inquire travel support.
+We are not offering travel arrangements to Lake Tahoe for this program. Shall you be in need for travel support, please reach out to nbc_training@unr.edu. If you are participating from any NSHE institution but UNR, please reach out to your local NV INBRE representative to inquire about travel support.
 
 More details about the program will be shared upon acceptance.
 <br>
@@ -178,10 +179,10 @@ Nevada Bioinformatics Center / Nevada INBRE Data Science Core
 
  - Juli Petereit, PhD 
  - Cassandra Hui, PhD
- - Hans Vaseqez-Gross, PhD
+ - Hans Vasquez-Gross, PhD
 
-### Acknowlegement
-This bootcamp is made possible by grants from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health and and the National Science Foundation (2203236).
+### Acknowledgement
+This bootcamp is made possible by grants from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health and the National Science Foundation (2203236).
 
 <!-- <img src="media/img/NVINBRE-logo.jpg" style="width: 200px; float: center; margin: 20px 20px 20px 20px;"> -->
 
