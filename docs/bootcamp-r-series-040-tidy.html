@@ -13,7 +13,7 @@
 
 <title>Tidy R</title>
 
-<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -287,6 +287,9 @@ $(document).ready(function () {
       <a href="biomarker_hunt_2026-08.html">2026 Fall: Biomarker Hunt</a>
     </li>
     <li>
+      <a href="workshop-intro-ml_2026-11.html">2026 Fall: Intro to Machine Learning at UNLV</a>
+    </li>
+    <li>
       <a href="underConstruction.html">TBD Additional Trainings</a>
     </li>
     <li class="dropdown-header">Previous</li>
@@ -552,7 +555,7 @@ messy data:</p>
 <h3>Data in the column headers</h3>
 <p><strong>Messy</strong></p>
 <pre><code>## re-encoding from CP1252</code></pre>
-<table style="width:100%;">
+<table style="width:99%;">
 <caption>Column header with variables</caption>
 <colgroup>
 <col width="34%" />
@@ -734,7 +737,7 @@ messy data:</p>
 <div id="multiple-variables-in-one-column" class="section level3">
 <h3>Multiple variables in one column</h3>
 <p><strong>Messy</strong></p>
-<table style="width:100%;">
+<table style="width:99%;">
 <caption>Multiple data in individual columns</caption>
 <colgroup>
 <col width="13%" />
@@ -1384,7 +1387,7 @@ class="section level3">
 <h3>Multiple types of observational units are stored in the same
 variable</h3>
 <p><strong>Messy</strong></p>
-<table style="width:100%;">
+<table style="width:99%;">
 <colgroup>
 <col width="5%" />
 <col width="17%" />
@@ -1460,7 +1463,7 @@ variable</h3>
 </tr>
 <tr class="even">
 <td align="right">2000</td>
-<td align="left">98^0</td>
+<td align="left">98?</td>
 <td align="left">Give Me Just One Night</td>
 <td align="right">3M 24S</td>
 <td align="left">2000-08-19</td>
@@ -1511,7 +1514,7 @@ variable</h3>
 </tbody>
 </table>
 <p><strong>Half Tidy</strong></p>
-<table style="width:100%;">
+<table style="width:99%;">
 <colgroup>
 <col width="6%" />
 <col width="10%" />
@@ -1673,7 +1676,7 @@ variable</h3>
 </tr>
 <tr class="even">
 <td align="right">6</td>
-<td align="left">98^0</td>
+<td align="left">98?</td>
 <td align="left">Give Me Just One Night</td>
 <td align="right">3M 24S</td>
 </tr>
@@ -1916,8 +1919,9 @@ wrapper for the <code>stringi</code> package.</p>
 <p>Select, transform, summarize</p>
 <div id="group-by-and-summarize" class="section level3">
 <h3>Group by and Summarize</h3>
-<pre class="r"><code>library(gapminder)
-glimpse(gapminder)</code></pre>
+<pre class="r"><code>library(gapminder)</code></pre>
+<pre><code>## Warning: package &#39;gapminder&#39; was built under R version 4.5.3</code></pre>
+<pre class="r"><code>glimpse(gapminder)</code></pre>
 <pre><code>## Rows: 1,704
 ## Columns: 6
 ## $ country   &lt;fct&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, …
@@ -1967,29 +1971,29 @@ replication</li>
 # notice you do not need the () after the function as you would if executing from consol
 map(df, mean)</code></pre>
 <pre><code>## $a
-## [1] 0.08184061
+## [1] 0.1865534
 ## 
 ## $b
-## [1] 0.06706115
+## [1] 0.2677202
 ## 
 ## $c
-## [1] -0.17237
+## [1] -0.4666551
 ## 
 ## $d
-## [1] -0.06753297</code></pre>
+## [1] -0.6693295</code></pre>
 <pre class="r"><code># can pipe it an input to make the process even easier
 df %&gt;% map(mean)</code></pre>
 <pre><code>## $a
-## [1] 0.08184061
+## [1] 0.1865534
 ## 
 ## $b
-## [1] 0.06706115
+## [1] 0.2677202
 ## 
 ## $c
-## [1] -0.17237
+## [1] -0.4666551
 ## 
 ## $d
-## [1] -0.06753297</code></pre>
+## [1] -0.6693295</code></pre>
 <p>You may have noticed that the output format is not necessarily in the
 format that we might expect. The <code>map()</code> function always
 outputs a list.</p>
@@ -1999,8 +2003,8 @@ of a map function: <code>map_lgl()</code>, <code>map_int()</code>,
 vector of the indicated type (or die trying).</p>
 <pre class="r"><code># Should return a numerical vector rather than a list
 map_dbl(df, mean)</code></pre>
-<pre><code>##           a           b           c           d 
-##  0.08184061  0.06706115 -0.17237002 -0.06753297</code></pre>
+<pre><code>##          a          b          c          d 
+##  0.1865534  0.2677202 -0.4666551 -0.6693295</code></pre>
 </div>
 </div>
 

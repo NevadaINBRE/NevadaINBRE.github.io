@@ -1,0 +1,31 @@
+---
+title: "Intro to Machine Learning at UNLV"
+---
+
+NV INBRE invites you to join us for an introductory Machine Learning Workshop at UNLV on Monday, November 23, 2026!
+
+Machine learning is transforming how we analyze data, identify patterns, and approach complex research questions across many disciplines. Whether you are completely new to machine learning or simply interested in exploring its applications, this workshop is a great opportunity to get started.
+
+## Workshop Details
+
+- **Date:** Monday, November 23, 2026 
+- **Time:** 9:00 am – 12:00 pm
+- **Location:** University of Nevada, Las Vegas (UNLV); room details will be shared after the registration deadline
+- **Who can attend:** All NSHE students, faculty, researchers, and staff, with undergraduate students especially encouraged to participate
+- **Registration deadline:** November 16, 2026
+
+## What will you learn?
+
+During this three-hour, in-person workshop, participants will be introduced to:
+
+- Fundamental concepts of machine learning
+- Differences between supervised and unsupervised machine learning and their applications
+- Practical implementation of unsupervised machine learning methods
+
+No prior coding or machine learning experience is required! Some familiarity with Python or coding may be helpful.
+
+Additional information, including any preparation instructions, will be shared with registered participants before the workshop.
+
+## Interested in joining us?
+
+Please [register here](https://forms.gle/LUJRzjiJJNuWBfJ57) by November 16, 2026.

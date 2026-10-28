@@ -24,6 +24,8 @@ navbar:
         - text: "Upcoming"
         - text: "2026 Fall: Biomarker Hunt"
           href: biomarker_hunt_2026-08.html
+        - text: "2026 Fall: Intro to Machine Learning at UNLV"
+          href: workshop-intro-ml_2026-11.html
         - text: "TBD Additional Trainings"
           href: underConstruction.html
 
