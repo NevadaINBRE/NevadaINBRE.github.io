@@ -20,29 +20,23 @@ title: ""
 
 <br> 
 
-**The Biomarker Hunt** is a collaborative research data challenge that combines short instructional sessions with hands-on analysis. Working in small teams, participants will analyze authentic transcriptomics (RNA-seq) and proteomics (DIA) datasets to investigate biomedical questions while developing practical data science skills that are broadly applicable across research disciplines.
+**The Biomarker Hunt** is a collaborative research data challenge combining short instructional sessions with hands-on investigation. Working in small teams, participants will explore authentic proteomics (DIA) and transcriptomics (RNA-seq) datasets to investigate biomedical questions and develop practical data science skills.
 
-**Rather than following step-by-step tutorials, participants learn by doing.** Teams explore real-world datasets, ask questions, experiment with different analytical approaches, and develop creative ways to analyze, visualize, and communicate complex data.
-
-The challenge emphasizes creativity, critical thinking, analytical reasoning, reproducible workflows, effective data visualization, teamwork, and scientific communication. The biomedical datasets provide the context, but the skills developed are transferable to many data-intensive fields.
+**Think like a researcher, not just a tutorial follower.** Teams will ask questions, evaluate data quality, choose analytical approaches, and find creative ways to visualize and communicate their results. The challenge emphasizes critical thinking, reproducibility, teamwork, and scientific communication—skills that transfer well beyond biomedical research.
 
 **What You Will Experience**
 
  - Strengthen R programming skills through applied data analysis
- - Perform quality control and exploratory analysis of RNA-seq transcriptomics and DIA proteomics datasets
- - Identify differentially expressed genes and proteins
+ - Explore and assess the quality of proteomics and transcriptomics datasets
+ - Investigate differentially abundant proteins and expressed genes
  - Explore biological pathways and potential molecular biomarkers
- - Generate and evaluate hypotheses using multi-omics data
- - Experiment with creative approaches for analyzing and displaying large datasets
- - Collaborate in a small research team
- - Communicate your analytical approach and discoveries in a concise presentation
- 
-**Like real research, there is no single right answer.** Each team will explore the data, make analytical decisions, and tell the story its results reveal. Teams may progress through the challenge at different rates, and the focus is on exploration, learning, and creative problem solving.
+ - Develop and evaluate hypotheses using multi-omics data
+ - Experiment with effective and creative data visualizations
+ - Collaborate in a small research team and communicate your discoveries
 
-**At the end of the challenge, teams will share their discoveries in a 3-minute flash talk.** Awards will recognize creativity, innovation, effective data visualization, scientific communication, and analytical thinking.
+**Like real research, there is no single right answer.** Teams will follow their own questions and may progress at different rates. At the end of the challenge, each team will share its discoveries in a **3-minute flash talk**. Awards will recognize creativity, innovation, data visualization, scientific communication, and analytical thinking.
 
-
-
+<br>
 
 <!-- ## Blast from the Past -->
 
@@ -50,79 +44,62 @@ The challenge emphasizes creativity, critical thinking, analytical reasoning, re
 
 <!-- <img src="media/img/microbiome_highlights.png" style="width: 1000px; float: top; margin: 10px 10px 10px 10px;"> -->
 
+
+### <img src="media/img/icon_Rviz.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Program Details
+
+The program runs from **Tuesday, January 12, 2027, at 1:30 PM through Saturday, January 16, 2027, at 3:30 PM**.
+
+*This is a full-time, residential training event. Participants are expected to stay on-site for the entire program at the University of Nevada, Reno at Lake Tahoe campus in Incline Village.*
+
+The Biomarker Hunt simulates the early stages of a data-intensive research project. Short instructional sessions introduce key concepts and analytical tools, while most of the program is dedicated to hands-on, team-based investigation.
+
+Teams will explore proteomics and transcriptomics data, evaluate data quality, investigate biological questions, and identify potential biomarkers. Each team will determine its own analytical approach and present its findings in a final flash talk. **Completing every possible analysis is not required.** The emphasis is on curiosity, critical thinking, collaboration, and learning through exploration.
+
+<br>
+
+### Program Costs and Travel Support
+
+**All program fees include training, shared accommodations, and meals.**
+
+ - **Nevada System of Higher Education (NSHE) students — FREE!** Thanks to funding from the NIH-supported Nevada INBRE program, participation is free for NSHE students
+ - **Students from other INBRE states — $300.** We welcome students from other states participating in the NIH IDeA program! Please contact us, and we will be happy to explore potential financial support through your home state's INBRE program
+ - **Students from non-INBRE states — $500.** Students from states without an INBRE program are also welcome to participate!
+
+**Transportation is not included.** Participants are responsible for arranging travel to and from the Lake Tahoe campus in Incline Village, **not UNR's main campus in Reno**. For those flying, the nearest major airport is Reno-Tahoe International Airport (RNO). Incline Village is approximately a 45-minute drive from Reno under favorable conditions; winter weather can substantially affect travel times and road conditions.
+
+Participants may arrange a shuttle, rideshare, or carpool. We are happy to share transportation information and, with participants' permission, connect accepted students interested in carpooling from Reno or Carson City. **Carpooling and other transportation options are not guaranteed.** To inquire about potential travel funding, please contact your local INBRE representative (site coordinator).
+
 <br>
 
 ### <img src="media/img/icon_group.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Eligibility & Recommended Background
 
-The program is intended for students interested in (biomedical) data science who have completed at least their freshman year. Graduate students are welcome to apply, but priority will be given to undergraduate students.
+The program is intended for students interested in biomedical data science who have completed at least one year of college. Graduate students are welcome to apply, but **priority will be given to undergraduate students**.
 
-Participants should have
+Participants should have:
 
- - Basic R programming experience
- - Introductory understanding of statistics
- - Interest in working with data and solving open-ended problems
- 
-Prior experience with bioinformatics, transcriptomics, or proteomics is NOT required.
+ - Basic R programming experience, including importing data, working with data frames, and making simple plots
+ - An introductory understanding of statistics
+ - An interest in working with data and solving open-ended problems
 
-**Important Information**
+**Previous experience with bioinformatics, transcriptomics, or proteomics is not required.** This is not an introductory R workshop, but preparation resources will be shared before the program. If you are interested and have not yet learned R, please reach out. NV INBRE Data Science Core North and South are planning an *R Introductory Plus* workshop the week before the challenge.
 
-Please note: Once your registration has been confirmed, we reserve a seat, housing, meals, and training materials specifically for you. If you are unable to attend, please let us know as soon as possible so we can offer your spot to another student.
-
-Failure to participate after confirming your registration may require us to contact your faculty mentor or PI to recover a portion of the costs incurred for reserving your place in the program.
-
-<!-- We understand that this training event may overlap with your course schedule. We are happy to provide a letter to your instructor verifying your participation and requesting reasonable accommodation for any missed class activities. -->
-
-**This is not an introductory R workshop.** Participants should be comfortable with basic R concepts such as importing data, working with data frames, and creating simple plots. Additional preparation resources will be provided before the program. If you have no experience with R but would like to participate, please reach out; NV INBRE Data Science Core South and North are planning to offer an *R Introductory Plus* workshop the week prior to the bootcamp. 
-
-This program starts in Incline Village, NV, not on UNR's main campus in Reno. 
-
-<br> 
-
-### <img src="media/img/icon_coding.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">How to apply
-
-Complete and submit the online application. *Applications will be reviewed on a rolling basis until the program reaches capacity.* If circumstances change and you can no longer participate, please inform us as soon as possible, so that a reserved spot can be passed on to another student. 
-
-**Application materials**
-
- - A brief personal statement describing why you would like to participate in The Biomarker Hunt and what you hope to gain from the experience
- - An unofficial transcript
- - One academic or professional reference who can speak to your academic performance and personal qualities; the reference may be contacted as part of the application review process
-
-<div style="text-align: center"><span style="font-size: 24pt;"><a href="https://nvideaoffice.formstack.com/forms/biomarkerhunt">**Apply Now!**</a></span></div>
+**Laptop requirements:** Participants need a laptop with **R and RStudio installed**, as well as sufficient internal storage to work with the training datasets. Tablets, including tablet-style Surface devices, are not sufficient. If you do not have a suitable laptop, indicate this in your application; **we can provide a loaner for the training event**. Additional setup instructions will be shared before the program.
 
 <br>
 
-### <img src="media/img/icon_Rviz.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Program Details
+### <img src="media/img/icon_coding.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">How to Apply
 
-The program runs from **Tuesday, January 12 at 1:30pm through Saturday, January 16, 2027 at 3:30pm**. 
+Complete the online application by **December 27, 2026**. Applications will be reviewed on a rolling basis **every Friday beginning December 4**, with acceptance or waitlist notifications sent the following Monday. **Early applications are encouraged**, as space is limited.
 
-*Please note that this training event requires a full-time commitment, and participants will stay on-site for the duration of the program at the University of Nevada, Lake Tahoe Campus, in Incline Village.*
+**Application materials**
 
-The Biomarker Hunt is designed to simulate the early stages of a real data-intensive research project. Short instructional sessions will introduce key concepts and tools, but most of the program will focus on team-based exploration and analysis.
+ - A brief personal statement describing why you would like to participate and what you hope to gain
+ - An unofficial transcript
+ - One academic or professional reference who can speak to your academic performance and personal qualities; the reference may be contacted during review
 
-Participants will work with curated biomedical datasets and progress from data exploration and quality control to differential analysis, visualization, interpretation, and hypothesis generation. Teams will choose how to approach the data, decide which questions to pursue, and determine how best to communicate what they learn.
+**Participation commitment:** Once you accept your place, we reserve housing, meals, and training resources for you. If your plans change, please notify us as early as possible so we can offer your place to another student and avoid unnecessary expenses. We appreciate your consideration for fellow applicants!
 
-Throughout the program, teams will work toward an exploratory multi-omics analysis, candidate biomarker identification, hypothesis development, and a final flash talk. Completing every possible analysis is not required. The goal is to engage thoughtfully with the data, try new approaches, and build confidence working through an open-ended problem.
-
-**Program Costs and Travel Support**
-
-All program fees include training, accommodations, and meals.
-
- - NSHE Students – FREE! Thanks to funding from the NIH-supported Nevada INBRE program, participation is free for students enrolled in the Nevada System of Higher Education (NSHE)
- - Students from Other INBRE States – $300: We welcome students from other NIH IDeA states! Please reach out to us, and we will be happy to explore potential financial support through your home state's INBRE program
- - Students from Non-INBRE States – $500: Students from states without an INBRE program are also welcome to participate!
-
-Transportation: Travel to and from the UNR Lake Tahoe Campus is not included. Participants are responsible for arranging their own transportation. We are happy to help coordinate carpooling opportunities from Reno or Carson City. Students seeking travel assistance are encouraged to contact their local INBRE representative (site coordinator) to inquire about potential support.
-
-**This Program May Be a Good Fit If You Are Interested In**
-
- - Data science
- - Bioinformatics and computational biology
- - Statistics and machine learning
- - Genomics and proteomics
- - Biomedical or health research
- - Data visualization and scientific communication
- - Applying coding skills to real research questions
+<div style="text-align: center"><span style="font-size: 24pt;"><a href="https://nvideaoffice.formstack.com/forms/biomarkerhunt">**Apply Now!**</a></span></div>
 
 <br>
 
@@ -132,54 +109,37 @@ The program will be held at the **University of Nevada, Reno at Lake Tahoe campu
 
 <br>
 
+**Tentative Program Schedule**
+
 <table class="tg">
 <thead>
-  <tr>
-    <th>Module</th>
-    <th>Day</th>
-    <th> Start Time</th>
-  </tr>
+  <tr><th>Day</th><th>Program Focus</th><th>Start Time</th></tr>
 </thead>
 <tbody>
   <tr>
-    <td>Day 1: Welcome & Foundations: Introductions, R refresher, and biological concepts</td>
-    <td>Tuesday 01/12/27 </td>
-    <td>1:30pm Welcome at the Lake Tahoe Campus</td>
+      <td>Tuesday, Jan 12</td>
+      <td><strong>Welcome &amp; Foundations:</strong> Introductions, R refresher, and biological concepts</td>
+      <td>1:30 PM — Welcome and check-in</td>
   </tr>
   <tr>
-    <td>Day 2: Explore & Analyze: Study design, data exploration, visualization, and introduction to proteomics</td>
-    <td>Wednesday 01/13/27 </td>
-    <td>8:45am Instructions start</td>
+      <td>Wednesday, Jan 13</td>
+      <td><strong>Explore &amp; Analyze:</strong> Study design, data exploration, visualization, and introduction to proteomics</td>
+      <td>8:45 AM — Activities begin</td>
   </tr>
-  <tr>
-    <td>Day 3: Analyze & Investigate: Transcriptomics, differential analysis, and team investigations</td>
-    <td>Thursday 01/14/27 </td>
-    <td>8:30am Instructions start</td>
-  </tr>
-  <tr>
-    <td>Day 4: Integrate & Discover: Multi-omics exploration, biomarker discovery, and hypothesis development</td>
-    <td>Friday 01/15/27 </td>
-    <td>8:45am Instructions start </td>
-  </tr>
-  <tr>
-    <td>Day 5: Communicate & Reflect: Final analyses, 3-minute flash talks, and closing discussion</td>
-    <td>Saturday 01/16/27 </td>
-    <td>8:30am Instructions start, program concludes at Lake Tahoe at 3:30pm</td>
-  </tr>
-
+  <tr><td>Thursday, Jan 14</td><td><strong>Analyze &amp; Investigate:</strong> Transcriptomics, differential analysis, and team investigations</td><td>8:30 AM — Activities begin</td></tr>
+  <tr><td>Friday, Jan 15</td><td><strong>Integrate &amp; Discover:</strong> Multi-omics exploration, biomarker discovery, and hypothesis development</td><td>8:45 AM — Activities begin</td></tr>
+  <tr><td>Saturday, Jan 16</td><td><strong>Communicate &amp; Reflect:</strong> Final analyses, 3-minute flash talks, and closing discussion</td><td>8:30 AM — Activities begin; program ends at 3:30 PM</td></tr>
 </tbody>
 </table>
 
-*This is a tentative schedule. The program combines short instructional sessions with extensive hands-on, team-based investigations. Activities may be adjusted to support participants' progress and discoveries.*
-<br>
+*The schedule combines short instructional sessions with extensive hands-on, team-based investigation. Activities may be adjusted to support participants' progress and discoveries.*
 
+**Accommodations:** Shared dormitory rooms (triple, same-sex occupancy) will be provided for all participants. Bedding, linens, and towels are included. Additional housing details will be shared after acceptance.
 
-Dorm rooms (triple same-sex occupancy) at Lake Tahoe will be provided to **all** students.
+**Meals:** Meals are included throughout the program, with a variety of options and labeled food selections. Please provide any dietary restrictions in your registration information. We plan to share the initial dietary requirements with the campus kitchen on December 17; please communicate your needs as early as possible. We will do our best to accommodate later requests, but cannot guarantee them.
 
-We are not offering travel arrangements to Lake Tahoe for this program. Shall you be in need for travel support, please reach out to nbc_training@unr.edu. If you are participating from any NSHE institution other than UNR, please reach out to your local NV INBRE representative to inquire about travel support.
+**Before arrival:** Accepted participants will receive additional information about laptop setup, campus arrival, accommodations, and transportation options.
 
-More details about the program will be shared upon acceptance.
-<br>
 
 ### Questions
 
@@ -196,7 +156,7 @@ Nevada Bioinformatics Center / Nevada INBRE Data Science Core
  - Cassandra Hui, PhD
  - Hans Vasquez-Gross, PhD
 
-### Acknowledgement
+### Acknowledgments
 This bootcamp is made possible by grants from the National Institute of General Medical Sciences (GM103440) from the National Institutes of Health and the National Science Foundation (2203236).
 
 <!-- <img src="media/img/NVINBRE-logo.jpg" style="width: 200px; float: center; margin: 20px 20px 20px 20px;"> -->

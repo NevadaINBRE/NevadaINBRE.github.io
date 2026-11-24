@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>biomarker_hunt_2027-01_original.knit</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Nevada INBRE DSCore</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Funding Opportunities
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="resource_service_awards.html">Scientific Core Service Awards</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Training Opportunities
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Upcoming</li>
+    <li>
+      <a href="biomarker_hunt_2027-01.html">2027 Winter: Biomarker Hunt</a>
+    </li>
+    <li>
+      <a href="underConstruction.html">TBD Additional Trainings</a>
+    </li>
+    <li class="dropdown-header">Previous</li>
+    <li>
+      <a href="bootcamp-r-series.html">2021 Summer: R for Data Science at UNR</a>
+    </li>
+    <li>
+      <a href="bootcamp-supervised-ml-2022-10.html">2022 Fall: Python for ML at UNR</a>
+    </li>
+    <li>
+      <a href="bootcamp-supervised-ml-2023-01.html">2023 Winter: Python for ML at UNR</a>
+    </li>
+    <li>
+      <a href="NSC_ResearchDay_2023-03.html">2023 Spring: Research Day at NSC</a>
+    </li>
+    <li>
+      <a href="bootcamp-intro-R_2023-03.html">2023 Spring: Programming with R at UNR</a>
+    </li>
+    <li>
+      <a href="CSN_phageGenomics_2023-03.html">2023 Spring: Phages Genomics at CSN</a>
+    </li>
+    <li>
+      <a href="workshop-research-computing-2023-11.html">2023 Fall: Research Computing</a>
+    </li>
+    <li>
+      <a href="workshop-research-computing-2024-04.html">2024 Spring: Research Computing</a>
+    </li>
+    <li>
+      <a href="bootcamp-microbiome_2024-07.html">2024 Summer: Microbiome Bootcamp</a>
+    </li>
+    <li>
+      <a href="NSU_ResearchDay_2025-03.html">2025 Spring: Data Science for Research</a>
+    </li>
+    <li>
+      <a href="bootcamp-microbiome_2025-07.html">2025 Summer: Microbiome Micro-Bootcamp</a>
+    </li>
+    <li>
+      <a href="biomarker_hunt_2026-08.html">2026 Fall: Biomarker Hunt</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="jupyter-notebook-setup.html">Jupyter Notebook</a>
+    </li>
+    <li>
+      <a href="NSC_IntrotoR.html">R</a>
+    </li>
+    <li class="dropdown-header">Julia</li>
+    <li class="dropdown-header">Python</li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">
+    <span class="fa fa-address-book"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="https://github.com/NevadaINBRE">
+    <span class="fa fa-code-branch"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<style><!--Page specific style-->
+  h1 {color: #000}
+  h2 {color: #111}
+  h3 {color: #222; border-bottom: 1px solid #ccc; width: 75%;}
+  h4 {color: #666}
+  .top {color: #ccc; display: inline-block; padding: 25px 0px 5px 0px;}
+</style>
+<p><img src="media/img/banner_biomarkerHunt2.png" style="width: 800px; float: top; margin: 10px 10px 10px 10px;"></p>
+<p><span style="font-size: 20pt;"><strong>The Biomarker Hunt: A Research
+Data Challenge</strong></span><br> <span
+style="font-size: 16pt;"><em>Think like a data scientist. Work like a
+research team.</em></span><br> <br> <span
+style="font-size: 14pt;"><strong>January 12 - January 16,
+2027</strong></span><br> <span
+style="font-size: 14pt;"><strong>University of Nevada, Reno at Lake
+Tahoe </strong></span></p>
+<p><br></p>
+<p><strong>The Biomarker Hunt</strong> is a collaborative research data
+challenge that combines short instructional sessions with hands-on
+analysis. Working in small teams, participants will analyze authentic
+transcriptomics (RNA-seq) and proteomics (DIA) datasets to investigate
+biomedical questions while developing practical data science skills that
+are broadly applicable across research disciplines.</p>
+<p><strong>Rather than following step-by-step tutorials, participants
+learn by doing.</strong> Teams explore real-world datasets, ask
+questions, experiment with different analytical approaches, and develop
+creative ways to analyze, visualize, and communicate complex data.</p>
+<p>The challenge emphasizes creativity, critical thinking, analytical
+reasoning, reproducible workflows, effective data visualization,
+teamwork, and scientific communication. The biomedical datasets provide
+the context, but the skills developed are transferable to many
+data-intensive fields.</p>
+<p><strong>What You Will Experience</strong></p>
+<ul>
+<li>Strengthen R programming skills through applied data analysis</li>
+<li>Perform quality control and exploratory analysis of RNA-seq
+transcriptomics and DIA proteomics datasets</li>
+<li>Identify differentially expressed genes and proteins</li>
+<li>Explore biological pathways and potential molecular biomarkers</li>
+<li>Generate and evaluate hypotheses using multi-omics data</li>
+<li>Experiment with creative approaches for analyzing and displaying
+large datasets</li>
+<li>Collaborate in a small research team</li>
+<li>Communicate your analytical approach and discoveries in a concise
+presentation</li>
+</ul>
+<p><strong>Like real research, there is no single right answer.</strong>
+Each team will explore the data, make analytical decisions, and tell the
+story its results reveal. Teams may progress through the challenge at
+different rates, and the focus is on exploration, learning, and creative
+problem solving.</p>
+<p><strong>At the end of the challenge, teams will share their
+discoveries in a 3-minute flash talk.</strong> Awards will recognize
+creativity, innovation, effective data visualization, scientific
+communication, and analytical thinking.</p>
+<!-- ## Blast from the Past -->
+<!-- <a href="https://www.unr.edu/nevada-today/news/2023/microbiome-research-program">Check out the Nevada Today Article about our program.</a> -->
+<!-- <img src="media/img/microbiome_highlights.png" style="width: 1000px; float: top; margin: 10px 10px 10px 10px;"> -->
+<p><br></p>
+<div id="eligibility-recommended-background" class="section level3">
+<h3><img src="media/img/icon_group.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Eligibility
+&amp; Recommended Background</h3>
+<p>The program is intended for students interested in (biomedical) data
+science who have completed at least their freshman year. Graduate
+students are welcome to apply, but priority will be given to
+undergraduate students.</p>
+<p>Participants should have</p>
+<ul>
+<li>Basic R programming experience</li>
+<li>Introductory understanding of statistics</li>
+<li>Interest in working with data and solving open-ended problems</li>
+</ul>
+<p>Prior experience with bioinformatics, transcriptomics, or proteomics
+is NOT required.</p>
+<p><strong>Important Information</strong></p>
+<p>Please note: Once your registration has been confirmed, we reserve a
+seat, housing, meals, and training materials specifically for you. If
+you are unable to attend, please let us know as soon as possible so we
+can offer your spot to another student.</p>
+<p>Failure to participate after confirming your registration may require
+us to contact your faculty mentor or PI to recover a portion of the
+costs incurred for reserving your place in the program.</p>
+<!-- We understand that this training event may overlap with your course schedule. We are happy to provide a letter to your instructor verifying your participation and requesting reasonable accommodation for any missed class activities. -->
+<p><strong>This is not an introductory R workshop.</strong> Participants
+should be comfortable with basic R concepts such as importing data,
+working with data frames, and creating simple plots. Additional
+preparation resources will be provided before the program. If you have
+no experience with R but would like to participate, please reach out; NV
+INBRE Data Science Core South and North are planning to offer an <em>R
+Introductory Plus</em> workshop the week prior to the bootcamp.</p>
+<p>This program starts in Incline Village, NV, not on UNR’s main campus
+in Reno.</p>
+<p><br></p>
+</div>
+<div id="how-to-apply" class="section level3">
+<h3><img src="media/img/icon_coding.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">How
+to apply</h3>
+<p>Complete and submit the online application. <em>Applications will be
+reviewed on a rolling basis until the program reaches capacity.</em> If
+circumstances change and you can no longer participate, please inform us
+as soon as possible, so that a reserved spot can be passed on to another
+student.</p>
+<p><strong>Application materials</strong></p>
+<ul>
+<li>A brief personal statement describing why you would like to
+participate in The Biomarker Hunt and what you hope to gain from the
+experience</li>
+<li>An unofficial transcript</li>
+<li>One academic or professional reference who can speak to your
+academic performance and personal qualities; the reference may be
+contacted as part of the application review process</li>
+</ul>
+<div style="text-align: center">
+<span
+style="font-size: 24pt;"><a href="https://nvideaoffice.formstack.com/forms/biomarkerhunt"><strong>Apply
+Now!</strong></a></span>
+</div>
+<p><br></p>
+</div>
+<div id="program-details" class="section level3">
+<h3><img src="media/img/icon_Rviz.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Program
+Details</h3>
+<p>The program runs from <strong>Tuesday, January 12 at 1:30pm through
+Saturday, January 16, 2027 at 3:30pm</strong>.</p>
+<p><em>Please note that this training event requires a full-time
+commitment, and participants will stay on-site for the duration of the
+program at the University of Nevada, Lake Tahoe Campus, in Incline
+Village.</em></p>
+<p>The Biomarker Hunt is designed to simulate the early stages of a real
+data-intensive research project. Short instructional sessions will
+introduce key concepts and tools, but most of the program will focus on
+team-based exploration and analysis.</p>
+<p>Participants will work with curated biomedical datasets and progress
+from data exploration and quality control to differential analysis,
+visualization, interpretation, and hypothesis generation. Teams will
+choose how to approach the data, decide which questions to pursue, and
+determine how best to communicate what they learn.</p>
+<p>Throughout the program, teams will work toward an exploratory
+multi-omics analysis, candidate biomarker identification, hypothesis
+development, and a final flash talk. Completing every possible analysis
+is not required. The goal is to engage thoughtfully with the data, try
+new approaches, and build confidence working through an open-ended
+problem.</p>
+<p><strong>Program Costs and Travel Support</strong></p>
+<p>All program fees include training, accommodations, and meals.</p>
+<ul>
+<li>NSHE Students – FREE! Thanks to funding from the NIH-supported
+Nevada INBRE program, participation is free for students enrolled in the
+Nevada System of Higher Education (NSHE)</li>
+<li>Students from Other INBRE States – $300: We welcome students from
+other NIH IDeA states! Please reach out to us, and we will be happy to
+explore potential financial support through your home state’s INBRE
+program</li>
+<li>Students from Non-INBRE States – $500: Students from states without
+an INBRE program are also welcome to participate!</li>
+</ul>
+<p>Transportation: Travel to and from the UNR Lake Tahoe Campus is not
+included. Participants are responsible for arranging their own
+transportation. We are happy to help coordinate carpooling opportunities
+from Reno or Carson City. Students seeking travel assistance are
+encouraged to contact their local INBRE representative (site
+coordinator) to inquire about potential support.</p>
+<p><strong>This Program May Be a Good Fit If You Are Interested
+In</strong></p>
+<ul>
+<li>Data science</li>
+<li>Bioinformatics and computational biology</li>
+<li>Statistics and machine learning</li>
+<li>Genomics and proteomics</li>
+<li>Biomedical or health research</li>
+<li>Data visualization and scientific communication</li>
+<li>Applying coding skills to real research questions</li>
+</ul>
+<p><br></p>
+</div>
+<div id="event-logistics" class="section level3">
+<h3><img src="media/img/icon_lake.png" style="width: 80px; float: left; margin: 0px 20px 0px 0px;">Event
+Logistics</h3>
+<p>The program will be held at the <strong>University of Nevada, Reno at
+Lake Tahoe campus in Incline Village, Nevada</strong>.</p>
+<p><br></p>
+<table class="tg">
+<thead>
+<tr>
+<th>
+Module
+</th>
+<th>
+Day
+</th>
+<th>
+Start Time
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Day 1: Welcome &amp; Foundations: Introductions, R refresher, and
+biological concepts
+</td>
+<td>
+Tuesday 01/12/27
+</td>
+<td>
+1:30pm Welcome at the Lake Tahoe Campus
+</td>
+</tr>
+<tr>
+<td>
+Day 2: Explore &amp; Analyze: Study design, data exploration,
+visualization, and introduction to proteomics
+</td>
+<td>
+Wednesday 01/13/27
+</td>
+<td>
+8:45am Instructions start
+</td>
+</tr>
+<tr>
+<td>
+Day 3: Analyze &amp; Investigate: Transcriptomics, differential
+analysis, and team investigations
+</td>
+<td>
+Thursday 01/14/27
+</td>
+<td>
+8:30am Instructions start
+</td>
+</tr>
+<tr>
+<td>
+Day 4: Integrate &amp; Discover: Multi-omics exploration, biomarker
+discovery, and hypothesis development
+</td>
+<td>
+Friday 01/15/27
+</td>
+<td>
+8:45am Instructions start
+</td>
+</tr>
+<tr>
+<td>
+Day 5: Communicate &amp; Reflect: Final analyses, 3-minute flash talks,
+and closing discussion
+</td>
+<td>
+Saturday 01/16/27
+</td>
+<td>
+8:30am Instructions start, program concludes at Lake Tahoe at 3:30pm
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>This is a tentative schedule. The program combines short
+instructional sessions with extensive hands-on, team-based
+investigations. Activities may be adjusted to support participants’
+progress and discoveries.</em> <br></p>
+<p>Dorm rooms (triple same-sex occupancy) at Lake Tahoe will be provided
+to <strong>all</strong> students.</p>
+<p>We are not offering travel arrangements to Lake Tahoe for this
+program. Shall you be in need for travel support, please reach out to <a
+href="mailto:nbc_training@unr.edu"
+class="email">nbc_training@unr.edu</a>. If you are participating from
+any NSHE institution other than UNR, please reach out to your local NV
+INBRE representative to inquire about travel support.</p>
+<p>More details about the program will be shared upon acceptance.
+<br></p>
+</div>
+<div id="questions" class="section level3">
+<h3>Questions</h3>
+<p>Reach out at any time, email <a href="mailto:nbc_training@unr.edu"
+class="email">nbc_training@unr.edu</a> or call (775) 784-4359.</p>
+<!-- ### Flier -->
+<!-- <div style="text-align: center"><img src="media/img/Flier_Microbiome_2024-07.png" style="width: 600px; float: center; margin: 10px 10px 10px 10px;"/></div> -->
+</div>
+<div id="presenters" class="section level3">
+<h3>Presenters</h3>
+<p>Nevada Bioinformatics Center / Nevada INBRE Data Science Core</p>
+<ul>
+<li>Juli Petereit, PhD</li>
+<li>Cassandra Hui, PhD</li>
+<li>Hans Vasquez-Gross, PhD</li>
+</ul>
+</div>
+<div id="acknowledgement" class="section level3">
+<h3>Acknowledgement</h3>
+<p>This bootcamp is made possible by grants from the National Institute
+of General Medical Sciences (GM103440) from the National Institutes of
+Health and the National Science Foundation (2203236).</p>
+<!-- <img src="media/img/NVINBRE-logo.jpg" style="width: 200px; float: center; margin: 20px 20px 20px 20px;"> -->
+<p><img src="media/img/banner_sponsors.png" style="width: 600px; float: center; margin: 20px 20px 20px 20px;"></p>
+</div>
+
+<footer>
+  <hr />
+  Copyright &copy; 2026 Nevada INBRE. All rights reserved.
+</footer>
+
+<!-- Open external links in new tab -->
+<script type="text/javascript" src="external_links.js"></script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
