@@ -7,14 +7,14 @@ navbar:
     - text: "Home"
       icon: fa-home
       href: index.html
-    - text: "Data Science Initiative"
-      menu:
-        # - text: "Welcome"
-        #   href: DSI_welcome.html
-        # - text: "Data Science Climate Survey (UNR)"
-        #   href: DSI_survey_UNR.html
-        - text: "Conference 2024"
-          href: DSI_conference.html
+    # - text: "Data Science Initiative"
+    #   menu:
+    #     # - text: "Welcome"
+    #     #   href: DSI_welcome.html
+    #     # - text: "Data Science Climate Survey (UNR)"
+    #     #   href: DSI_survey_UNR.html
+    #     - text: "Conference 2024"
+    #       href: DSI_conference.html
     - text: "Funding Opportunities"
       menu:
         - text: "Scientific Core Service Awards"
@@ -22,8 +22,8 @@ navbar:
     - text: "Training Opportunities"
       menu:
         - text: "Upcoming"
-        - text: "2026 Fall: Biomarker Hunt"
-          href: biomarker_hunt_2026-08.html
+        - text: "2027 Winter: Biomarker Hunt"
+          href: biomarker_hunt_2027-01.html
         - text: "TBD Additional Trainings"
           href: underConstruction.html
 
@@ -50,6 +50,8 @@ navbar:
           href: NSU_ResearchDay_2025-03.html
         - text: "2025 Summer: Microbiome Micro-Bootcamp"
           href: bootcamp-microbiome_2025-07.html
+        - text: "2026 Fall: Biomarker Hunt"
+          href: biomarker_hunt_2026-08.html
 
     - text: "Tutorials"
       menu:
